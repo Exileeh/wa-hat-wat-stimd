@@ -19,8 +19,9 @@
 > - **✅ DONE — Phase 7: `collect_notubiz` adapter (NO TOKEN NEEDED).** Shipped 2026-06-15: events +
 >   votings API (`version=1.21`) + portal `vergadering` HTML → **4 provinces, tier A** (exact per-member
 >   counts, incl. verworpen): **Zuid-Holland** 1062, **Fryslân** 807, **Gelderland** 429, **Overijssel**
->   549 stemmingen. **Groningen turned out a dead end** (0 votings across all 38 plenary meetings) → 4,
->   not 5. PS now **3/12 → 7/12**. As-built recipe: data-sources.md §11; reliability: coverage.md.
+>   549 stemmingen. **Groningen's votings API is empty** (0 across all 38 plenary meetings) → auto-yields 4,
+>   not 5 (but Groningen *does* publish votes in its Handelingen PDF — lobby candidate, see below). PS now
+>   **3/12 → 7/12**. As-built recipe: data-sources.md §11; reliability: coverage.md.
 > - **✅ DONE — griffie lobby → Drenthe** (GO stemgedrag data). Mailed 2026-06-11, nudged 2026-06-29;
 >   the Statengriffie had GemeenteOplossingen locate the votes. Turned out the GO votings JSON was live
 >   all along at a **different path** (`/Leden/{slug}/votings`, not Utrecht's `/Samenstelling/...`) —
@@ -28,7 +29,11 @@
 >   Drenthe = **443 stemmingen, 15 fracties, tier A** (per-fractie member counts). Landed 2026-07-05.
 > - **Still open → Flevoland** (`griffie@flevoland.nl`, same GO stemgedrag ask). No reply yet; followed
 >   up 2026-06-29. If GO enables/locates its votes too, Flevoland is likewise config-only → PS 9/12.
->   (Groningen + the iBabs dead-ends Noord-Brabant/Zeeland are the rest.)
+> - **Groningen, Noord-Brabant, Zeeland — publish-as-data lobby candidates (probed 2026-07-05).** Not
+>   data-absence dead ends: all three *publish* per-fractie votes as **PDF** (Groningen Handelingen —
+>   both sides + totals; Zeeland concept-besluitenlijst — fracties named; NB verbatim notulen — full
+>   member-name roll-call, confirmed 2026-07-05, richest of the three), just not as machine-readable data.
+>   Griffie mails for all three drafted ([outreach.md](outreach.md) §3). If they publish as data → PS toward 11/12.
 > - **Optional polish:** ✅ EP **Dutch-delegation breakout** shipped (second EP scope, by national party,
 >   with MEP rosters). ✅ EP source attribution → HowTheyVote.eu. TK perf checked = fine (slightly slower
 >   first load, no sluggishness after). Pick up gemeenteraden/waterschappen only on demand (parked).
@@ -41,8 +46,9 @@
 > - **Notubiz: DONE (no token needed).** Notubiz declined a token 2026-06-15 (a token alone is
 >   insufficient; would also need a rights-bearing account) — but it didn't matter: the data is fully
 >   public (events + votings API at `version=1.21` + portal `vergadering` HTML). `collect_notubiz` shipped
->   the same day → 4 provinces live (ZH, Fryslân, Gelderland, Overijssel; Groningen = dead end). No
->   follow-up to send; an optional thank-you only.
+>   the same day → 4 provinces live (ZH, Fryslân, Gelderland, Overijssel; Groningen's votings API empty
+>   → auto-skipped, but publishes votes in its Handelingen PDF, so it's a lobby candidate). No
+>   follow-up to send on the built four; an optional thank-you only.
 > - **Griffie mails** ([outreach.md](outreach.md) §2, sent 2026-06-11 to `griffie@flevoland.nl` +
 >   `Statengriffie@drentsparlement.nl`). **Drenthe paid off** (live 2026-07-05, GO path variant — see
 >   above). **Flevoland still the only open outreach**; nudged 2026-06-29, awaiting reply before the
@@ -58,8 +64,11 @@
 > level, aangenomen only) and **Limburg** (321 items, **per-member counts incl. verworpen**) live as
 > provinces 2 & 3. Adapter unions multiple reports per province and supports two vote formats
 > (`votes`: `stemverhouding` = NH free-text, `stemmen` = Limburg structured counts). The other two
-> iBabs provinces are **dead ends**: **Zeeland** registers are empty; **Noord-Brabant** publishes
-> outcomes but no per-fractie breakdown. Coverage + per-source **reliability**: [coverage.md](coverage.md).
+> iBabs provinces have **no structured vote feed**: **Zeeland** registers are empty; **Noord-Brabant**
+> publishes outcome + indieners only. **But (probed 2026-07-05) neither is a data-absence dead end** —
+> Zeeland's concept-besluitenlijst PDF names the voting fracties, and NB's verbatim notulen record full
+> hoofdelijke stemming per lid. So both are publish-as-data lobby candidates, not impossibilities
+> ([outreach.md](outreach.md) §3). Coverage + per-source **reliability**: [coverage.md](coverage.md).
 
 v1 goal: a website where you pick a **province** and see a table — rows = moties,
 columns = parties, cells = **V** (green) / **T** (red) / **-** (tie) / blank (afwezig).
@@ -321,8 +330,10 @@ Result: **Zuid-Holland** 1062, **Fryslân** 807, **Gelderland** 429, **Overijsse
 tier A (`granularity: "member"`, incl. verworpen + the odd *staken* tie). Item type from `voting_type`
 (null for Gelderland / much of ZH → title-code fallback, incl. Frisian "Moasje"/"Amendemint"). Spelling
 variants merged (`NOTUBIZ_ALIASES`); non-fractie labels dropped (`NOTUBIZ_SKIP` "Geen partij"); member
-names parsed but not stored (party-level, privacy). **Groningen** (also Notubiz) is a **dead end** — 0
-votings across all 38 plenary meetings. Frontend: generic (no IA change — four new scopes in the catalog,
+names parsed but not stored (party-level, privacy). **Groningen** (also Notubiz) has an **empty votings
+API** (0 across all 38 plenary meetings) so the adapter skips it — but it's not a data-absence dead end:
+a 2026-07-05 probe found the votes in its Handelingen PDF (lobby candidate, see the NEXT block).
+Frontend: generic (no IA change — four new scopes in the catalog,
 each with its own huisstijl). The weekly Action picks them up via the full `collect.py` run. Reliability:
 [coverage.md](coverage.md).
 

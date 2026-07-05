@@ -117,6 +117,111 @@ Drenthe brands its PS as the *Drents Parlement*, so its griffie lives on `@drent
 
 ---
 
-## 3. (optional) Notubiz provinces with stemgedrag module off
-Gelderland publicly shows only aangenomen/verworpen status (stemgedrag module off). The same
-griffie ask as #2 could apply — but the Notubiz **token** (#1) is the more general unlock.
+## 3. Publish-as-data lobby — Groningen, Zeeland, Noord-Brabant
+
+> **Basis (probed live 2026-07-05):** these three are **not** data-absence dead ends. Each already
+> **publishes** who voted how, but only as **unstructured PDF**, not machine-readable open data:
+> - **Groningen** (Notubiz) — votings API empty, but the **Handelingen** name both sides per fractie + totals.
+> - **Zeeland** (iBabs) — Stemming/Moties/Amendementen reports empty, but the **concept-besluitenlijst** PDF
+>   names the voting fracties per item.
+> - **Noord-Brabant** (iBabs) — Moties report = outcome + indieners only; the votes are in the verbatim
+>   **notulen** as full **hoofdelijke stemming per lid** (confirmed 2026-07-05 — richest of the three).
+>
+> So the ask is the same as §2: *publish the per-fractie vote you already record as open data.* Each has a
+> **precedent on its own vendor** — cite it.
+>
+> **✅ All three sent 2026-07-05** (drafts below), to the verified addresses:
+> `statengriffie@provinciegroningen.nl` · `statengriffier@zeeland.nl` (note the *-griffier* form) ·
+> `statengriffie@brabant.nl`. Cold contacts right before the **zomerreces (~mid-July)** — so expect little
+> before September; **nudge late August** if silent (the Drenthe playbook: mail → nudge → result).
+
+### 3a. Groningen (Notubiz)
+**To:** `statengriffie@provinciegroningen.nl` (✅ **sent 2026-07-05** — address correct).
+**Onderwerp:** Verzoek: stemgedrag per fractie als open data publiceren (Notubiz stemgedrag-module)
+
+> Geachte Statengriffie,
+>
+> Ik bouw een open, non-commercieel overzicht van het stemgedrag in de Provinciale Staten, en zou
+> provincie Groningen daar graag aan toevoegen.
+>
+> In de **Handelingen** van uw Statenvergaderingen staat per motie/amendement keurig vermeld welke
+> fracties voor en tegen stemden, met de aantallen. Diezelfde gegevens zijn via uw
+> vergaderportaal (Notubiz) echter **niet als open data** beschikbaar: de stemmingen-API levert voor
+> Groningen geen resultaten, terwijl dat bij andere Notubiz-provincies (Zuid-Holland, Gelderland,
+> Fryslân, Overijssel) wél het geval is — daar kan ik het stemgedrag automatisch inlezen.
+>
+> Zou u de **stemgedrag-/stemmingenmodule** in Notubiz kunnen (laten) inschakelen, zodat de stemmingen
+> die u toch al vastlegt ook als open data beschikbaar komen? Voor u is het naar verwachting een
+> kwestie van publiceren; het werk van registreren doet u immers al.
+>
+> Het project is open en non-commercieel; u kunt het hier bekijken:
+> – Website: https://carefulcamel61097.github.io/wie-stemde-wat/
+> – Broncode: https://github.com/carefulCamel61097/wie-stemde-wat
+> (Utrecht, Drenthe, Noord-Holland, Limburg en vier Notubiz-provincies zijn er al in opgenomen.)
+>
+> Met vriendelijke groet,
+> [naam]
+
+### 3b. Zeeland (iBabs)
+**To:** `statengriffier@zeeland.nl` (✅ **sent 2026-07-05**. NB: it's `statengriffie**r**@zeeland.nl`
+— the *-griffier* form, not `statengriffie@…` which was the wrong guess.)
+**Onderwerp:** Verzoek: stemgedrag per fractie als open data publiceren (iBabs stemmingenregister)
+
+> Geachte Statengriffie,
+>
+> Ik bouw een open, non-commercieel overzicht van het stemgedrag in de Provinciale Staten, en zou
+> provincie Zeeland daar graag aan toevoegen.
+>
+> In de **concept-besluitenlijst** van uw Statenvergaderingen staat per motie/amendement/voorstel
+> vermeld welke fracties voor stemden (bijvoorbeeld: *"aangenomen met de stemmen van de aanwezige leden
+> van de fracties van BBB, CDA, CU, D66, PvdA-GL, PVV, SGP en VVD voor"*). Via uw vergaderportaal
+> (iBabs) is dit stemgedrag echter **niet als open data** beschikbaar: de registers Moties,
+> Amendementen en **Stemming** zijn leeg. Bij provincie Limburg — dat hetzelfde iBabs-systeem gebruikt —
+> is het stemgedrag per fractie wél als open data ontsloten, en kan ik het automatisch inlezen.
+>
+> Zou u het **stemmingenregister** kunnen (laten) vullen / het stemgedrag per fractie als open data
+> willen publiceren? De gegevens legt u in de besluitenlijst immers al vast; het gaat om het ook als
+> data beschikbaar stellen.
+>
+> Het project is open en non-commercieel; u kunt het hier bekijken:
+> – Website: https://carefulcamel61097.github.io/wie-stemde-wat/
+> – Broncode: https://github.com/carefulCamel61097/wie-stemde-wat
+> (Utrecht, Drenthe, Noord-Holland en Limburg zijn er al in opgenomen — zo ziet het resultaat eruit.)
+>
+> Met vriendelijke groet,
+> [naam]
+
+### 3c. Noord-Brabant (iBabs)
+**Confirmed 2026-07-05:** NB's verbatim **notulen** record the **hoofdelijke stemming per lid** (full
+member-name voor/tegen lists for contested votes; totals for near-unanimous ones) — the richest of the
+three. But the structured Moties report carries only outcome + indieners, so the votes aren't open data.
+**To:** `statengriffie@brabant.nl` (✅ **sent 2026-07-05** — address correct).
+**Onderwerp:** Verzoek: stemgedrag per fractie als open data publiceren (iBabs stemmingenregister)
+
+> Geachte Statengriffie,
+>
+> Ik bouw een open, non-commercieel overzicht van het stemgedrag in de Provinciale Staten, en zou
+> provincie Noord-Brabant daar graag aan toevoegen.
+>
+> In uw **notulen** wordt bij hoofdelijke stemmingen precies vastgelegd welke leden voor en tegen
+> stemden. Via uw vergaderportaal (iBabs) is dit stemgedrag echter **niet als open data** beschikbaar:
+> het motieregister toont alleen de uitslag (aangenomen/verworpen) en de indienende fracties, niet hoe
+> elke fractie stemde. Bij provincie Limburg — dat hetzelfde iBabs-systeem gebruikt — is het stemgedrag
+> per fractie wél als open data ontsloten, en kan ik het automatisch inlezen.
+>
+> Zou u het **stemmingenregister** kunnen (laten) vullen / het stemgedrag per fractie als open data
+> willen publiceren? De gegevens legt u in de notulen immers al vast; het gaat om het ook als data
+> beschikbaar stellen.
+>
+> Het project is open en non-commercieel; u kunt het hier bekijken:
+> – Website: https://carefulcamel61097.github.io/wie-stemde-wat/
+> – Broncode: https://github.com/carefulCamel61097/wie-stemde-wat
+> (Utrecht, Drenthe, Noord-Holland en Limburg zijn er al in opgenomen — zo ziet het resultaat eruit.)
+>
+> Met vriendelijke groet,
+> [naam]
+
+> **Note (for us, not the mail):** if the lobby stalls, NB is the most parseable of the three — the
+> notulen name every member, and NB's **Ledenlijst PS** report maps member → fractie, so a fragile
+> parser could yield **tier A** (per-member counts). PDF URL pattern: iBabs global search
+> `/Search?q=notulen` → `api1.ibabs.eu/publicdownload.aspx?site=NoordBrabant&id={guid}`.

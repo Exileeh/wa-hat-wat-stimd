@@ -168,12 +168,12 @@ Known so far (to be completed for all 12):
 | Flevoland | **GO** (votes 404 — griffie lobby) | (GO — reuse our adapter) |
 | Noord-Holland | **iBabs** ✅ | noordholland.bestuurlijkeinformatie.nl |
 | Limburg | **iBabs** ✅ | limburg.bestuurlijkeinformatie.nl |
-| Noord-Brabant, Zeeland | **iBabs** (dead ends) | (no per-fractie breakdown / empty) |
+| Noord-Brabant, Zeeland | **iBabs** (no structured feed; votes in PDF) | noordbrabant./zeeland.bestuurlijkeinformatie.nl |
 | Zuid-Holland | **Notubiz** ✅ | pzh.notubiz.nl |
 | Fryslân | **Notubiz** ✅ | fryslan.notubiz.nl |
 | Gelderland | **Notubiz** ✅ | gelderland.notubiz.nl |
 | Overijssel | **Notubiz** ✅ | overijssel.notubiz.nl |
-| Groningen | **Notubiz** (dead end — 0 votings) | groningen.notubiz.nl |
+| Groningen | **Notubiz** (votings API empty; votes in Handelingen PDF) | groningen.notubiz.nl |
 | Drenthe | **GO** ✅ (path variant `/Leden/...`) | drentsparlement.nl |
 
 ⇒ Architecture: **one adapter per vendor** (GO / iBabs / Notubiz), each normalizing to a
@@ -260,7 +260,9 @@ What the live build surfaced beyond the recipe above:
   (NH = `#2891e0`). Party slugs reuse the existing `ABBR` map where they slugify the same.
 
 ### Other iBabs provinces (probed)
-Not every iBabs portal is like NH — the vote *format* varies, and two are dead ends:
+Not every iBabs portal is like NH — the vote *format* varies. Two lack a usable **structured** feed
+(Noord-Brabant, Zeeland), but a 2026-07-05 PDF probe showed both still *publish* the per-fractie votes
+in document form — so they're open-data gaps, not data-absence dead ends (see the note after Zeeland):
 - **Limburg** — BEST iBabs province (built). Detail pages have a structured **"Stemmen"** field
   (not "Stemverhouding"): `<div class="vote-summary-legend-{in-favour|against}"><div class="text">
   Fractie (Statenleden) (N), …</div>` — i.e. **per-fractie member counts** for the voor and tegen
@@ -269,10 +271,26 @@ Not every iBabs portal is like NH — the vote *format* varies, and two are dead
   321 in-term items (271 moties + 50 amendementen). Moties decided *bij acclamatie* (no hoofdelijke
   stemming) have an empty Stemmen field → skipped. Reports: Moties `0493fdd4-…`, Amendementen
   `34a4e0ce-…`. Handled by the adapter's `votes: "stemmen"` format.
-- **Noord-Brabant** — Moties register has the status (incl. verworpen) but **no per-fractie
-  breakdown** on the detail page → unusable for our table (outcome only).
+- **Noord-Brabant** — Moties register (report `376cf779-…`) has status (incl. verworpen) + the
+  **indienende** fracties, but **no stemverhouding** → outcome only, unusable for our table *from the
+  structured feed*. But the verbatim **notulen** record the **hoofdelijke stemming per lid** — full
+  member-name voor/tegen lists for contested votes (*"Voor hebben gestemd de leden Berkvens, Boon…
+  Tegen hebben gestemd de leden Bijl, Van den Broek…"*), totals only for near-unanimous ones. Confirmed
+  2026-07-05 via iBabs global search (`/Search?q=notulen` → direct PDFs at
+  `api1.ibabs.eu/publicdownload.aspx?site=NoordBrabant&id={guid}`). Member→fractie via NB's published
+  **Ledenlijst PS** report → potentially **tier A** (per-member counts) if ever parsed. Richest of the three.
 - **Zeeland** — all three registers (Moties, Amendementen, **Stemming** `8f77ee0a-…`) return
-  **0 rows**. Empty; nothing to collect.
+  **0 rows** (recordsTotal 0). But the **concept-besluitenlijst** PDF (attached to the next PS agenda as
+  "Vaststellen concept-besluitenlijst van de Statenvergadering op …") *does* name the votes per item:
+  e.g. *"aangenomen met de stemmen van de aanwezige leden van de fracties van BBB, CDA, CU, D66, PvdA-GL,
+  PVV, SGP en VVD voor"* / *"met algemene stemmen aangenomen."* One-side-named (NH-style, tier B),
+  parseable but fragile. Fetch: agenda → the besluitenlijst `documentId` → `/Document/View/{id}` (PDF).
+
+> **Not data-absence dead ends (probed 2026-07-05).** Noord-Brabant and Zeeland (iBabs) *and* Groningen
+> (Notubiz, votings API empty — but its **Handelingen** name both sides + totals) all publish per-fractie
+> votes as **unstructured PDF**, not machine-readable data. So the fix is a *publish-as-data* ask to the
+> griffie (like Drenthe), not PDF-scraping — though scraping is a possible fragile fallback. See
+> [outreach.md](outreach.md) §3.
 
 ⇒ The adapter now branches on a province `votes` format: `"stemverhouding"` (NH free-text,
 faction-level, inference) vs `"stemmen"` (Limburg structured, per-member counts, exact).
@@ -540,7 +558,12 @@ Key facts the build pinned down (vs the recipe above):
 
 **Live (4):** Zuid-Holland (org 3868, gremium 11157, `pzh`) 1062 · Fryslân (822, 430, `fryslan`) 807 ·
 Gelderland (1769, 2437, `gelderland`) 429 · Overijssel (1750, 2229, `overijssel`) 549 — all tier A,
-`granularity: "member"`, incl. verworpen. **Groningen (1396, gremium 887, `groningen`) is a DEAD END**:
-0 votings across all 38 plenary meetings in the term — it doesn't record/publish hoofdelijke stemmingen
-on the portal. So Notubiz yields 4, not 5, taking PS to **7/12** (→ **8/12** after Drenthe landed via
-the GO path variant on 2026-07-05; see §2b + roadmap Phase 8).
+`granularity: "member"`, incl. verworpen. **Groningen (1396, gremium 887, `groningen`)** returns **0
+votings** across all 38 plenary meetings — the Notubiz stemgedrag/votings module isn't populated, so the
+adapter finds nothing. **But it is not a data-absence dead end:** a 2026-07-05 probe found the per-fractie
+votes in Groningen's **Handelingen** (verbatim report, a meeting document — e.g. doc id 16210480 for PS
+24-9-2025), naming *both* sides by fractie **with totals** ("Voor deze motie hebben gestemd … tegen
+hebben gestemd … 30 stemmen voor, 9 stemmen tegen"). So the fix is a publish-as-data ask (enable the
+module — the 4 live Notubiz provinces already expose it) or fragile Handelingen-PDF parsing. So Notubiz
+auto-yields 4, not 5, taking PS to **7/12** (→ **8/12** after Drenthe landed via the GO path variant on
+2026-07-05; see §2b + roadmap Phase 8). Groningen is a lobby candidate — see [outreach.md](outreach.md) §3.

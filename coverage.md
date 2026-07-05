@@ -31,9 +31,18 @@ the "things we DO have" companion to [provinces.md](provinces.md) (feasibility f
 > Gelderland, Overijssel, **Drenthe**). The 4 Notubiz provinces above are **tier A** — the portal records
 > each vote hoofdelijk (per member), so we aggregate exact per-fractie counts. **Drenthe** (added
 > 2026-07-05) is GO like Utrecht — tier A per-member counts — reached via the `/Leden/...` votings path
-> after the griffie lobby (see §2b in data-sources.md). **Groningen** is on Notubiz but publishes **no**
-> per-stemming data (0 votings across all 38 plenary meetings) → a dead end, like Noord-Brabant on iBabs.
-> **Flevoland** (GO) is the last easy win — still blocked on the griffie lobby.
+> after the griffie lobby (see §2b in data-sources.md). The remaining four (Groningen, Noord-Brabant,
+> Zeeland, Flevoland) are **not data-absence dead ends** — see the callout below.
+
+> **The four not-yet-live provinces all *record* per-fractie votes; the gap is machine-readability, not
+> secrecy** (probed live 2026-07-05). **Groningen** (Notubiz) — the votings API is empty, but the
+> **Handelingen** (verbatim report) name both sides per fractie **with totals**. **Zeeland** (iBabs) — the
+> structured reports (Moties/Amendementen/Stemming) are all empty, but the **concept-besluitenlijst** PDF
+> names the voting fracties per item ("aangenomen met de stemmen van de fracties van … voor"). **Noord-
+> Brabant** (iBabs) — the Moties report gives only outcome + *indienende* fracties; the verbatim **notulen**
+> record full **hoofdelijke stemming per lid** (member-name voor/tegen lists) — richest of the three.
+> **Flevoland** (GO) — awaiting the griffie lobby. So all four are candidates for the *publish-as-data*
+> lobby (the Drenthe path), or fragile PDF-parsing as a last resort. See [outreach.md](outreach.md) §3.
 
 > Note: vendor ≠ reliability. Both Limburg and Noord-Holland run iBabs, but Limburg's portal
 > publishes structured per-member vote counts (tier A) while NH publishes only free-text faction
@@ -56,11 +65,16 @@ How directly the published data maps to what we display, and how much we infer.
   fractie voted voor/tegen" on the items present, with the caveats below. *Noord-Holland* (iBabs
   "Stemverhouding" — one side named + "overige fracties" inferred) and *Eerste Kamer* (eerstekamer.nl
   HTML — **both** sides named, so nothing inferred, but no seat counts). Both are faction-level V/T.
-- **C — derived / unavailable (not implemented).** Votes exist only in PDFs (GO **Flevoland**
-  besluitenlijsten — Drenthe was here too until 2026-07-05, when its structured votes surfaced at the
-  `/Leden/...` path → now tier A). The Notubiz `role_id → fractie` API map *is* auth-gated, but it turned out we don't
-  need it — the public portal already names the fractie + members (tier A; §11). Nothing in the dataset
-  is tier C yet.
+- **C — derived / unavailable (not implemented).** Votes exist only as **unstructured PDF prose**, not
+  machine-readable. This is where **Groningen** (Notubiz Handelingen — both sides + totals), **Zeeland**
+  (iBabs concept-besluitenlijst — voting fracties named), **Noord-Brabant** (verbatim notulen — full
+  member-name roll-call) and **Flevoland** (GO besluitenlijsten) sit today — the votes *are* published, just not as data (probed
+  2026-07-05). Drenthe was here too until 2026-07-05, when its structured votes surfaced at the `/Leden/...`
+  path → now tier A. Parsing these PDFs is possible (Zeeland NH-style tier B; Groningen richer but verbatim)
+  yet fragile/per-province, so it's deprioritized in favour of the publish-as-data lobby. The Notubiz
+  `role_id → fractie` API map *is* auth-gated, but it turned out we don't need it — the four live Notubiz
+  portals already name the fractie + members (tier A; §11). **Nothing in the shipped dataset is tier C** —
+  tier C describes the four not-yet-collected provinces.
 
 ## Per-scope caveats (what could be wrong, and why)
 
@@ -204,12 +218,16 @@ know these limits before trusting an exact figure:
 ## Known gaps to revisit
 - **Niet-aangenomen items (some iBabs provinces).** Limburg publishes verworpen items; **Noord-Holland
   does not** (its registers are adopted-only — rejected ones live only in besluitenlijst/notulen PDFs).
-  So the gap is portal-specific, not vendor-wide. (Zeeland's "Stemming" report turned out **empty**;
-  Noord-Brabant publishes outcomes but no per-fractie breakdown — neither is usable yet.)
+  So the gap is portal-specific, not vendor-wide.
 - **Faction-level provinces lose "ruwe getallen" / exact splits** — inherent to iBabs *free-text*
   provinces (NH). The Notubiz provinces are the opposite: per-member counts, so tier A.
-- **Notubiz dead end: Groningen** publishes no per-stemming votings via the portal (0 across the term);
-  revisit only if the province starts recording hoofdelijke stemmingen there. The remaining Notubiz
-  province, **Flevoland**, sits under the GO griffie lobby (it's on GO, not Notubiz).
+- **The four not-live provinces publish votes only as PDF (probed 2026-07-05, corrects earlier "dead
+  end" wording).** **Zeeland**'s structured Stemming/Moties/Amendementen reports are empty, but its
+  **concept-besluitenlijst** PDF names the voting fracties per item. **Groningen**'s Notubiz votings API
+  is empty, but its **Handelingen** name both sides + totals. **Noord-Brabant**'s Moties report is
+  outcome + indieners only; its verbatim **notulen** record full **hoofdelijke stemming per lid**
+  (member-name roll-call, confirmed). **Flevoland** (GO) is the griffie-lobby case. None is a data-absence dead end — the votes
+  are recorded and public, just not machine-readable → publish-as-data lobby (see [outreach.md](outreach.md)
+  §3), with fragile PDF-parsing as a fallback.
 - **Spot-checking.** Tier-B data isn't self-verifying; eyeball a few moties against the portal after
   big parser changes. Method per source is in [data-sources.md](data-sources.md).
