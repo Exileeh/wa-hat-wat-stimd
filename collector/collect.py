@@ -47,6 +47,20 @@ SOURCES = [
         "license": "Open data - Provincie Utrecht / Statengriffie",
     },
     {
+        "key": "drenthe",
+        "name": "Drenthe",
+        "vendor": "go",
+        "base": "https://www.drentsparlement.nl",
+        # Same GemeenteOplossingen stack as Utrecht, but this install routes the per-fractie
+        # votings page via /Leden/{slug}/votings instead of /Samenstelling/... The Statengriffie
+        # had GO enable/locate the stemgedrag data after outreach (bevestigd 2026-06-30).
+        "votings_path": "Leden",
+        "term_start": (2023, 3, 29),   # PS election 29 March 2023
+        "term_label": "2023-2027",
+        "style": {"accent": "#76b82a", "headerBg": "#16321a"},   # Drenthe huisstijlgroen
+        "license": "Open data - Provincie Drenthe / Statengriffie (Drents Parlement)",
+    },
+    {
         "key": "noord-holland",
         "name": "Noord-Holland",
         "vendor": "ibabs",
@@ -337,7 +351,8 @@ def classify(title):
         return "amendement"
     if "motie" in low or re.match(r"^m\s*\d", low):
         return "motie"
-    if low.startswith("sv") or "statenvoorstel" in low or "besluit" in low:
+    if (low.startswith("sv") or "statenstuk" in low or "statenvoorstel" in low
+            or "besluit" in low):
         return "besluit"
     return "overig"
 
@@ -369,10 +384,14 @@ def collect_go(p):
                if g.get("type") == "Fractie" and g["name"] not in NOT_A_PARTY]
     print(f"  candidate parties: {len(parties)}")
 
+    # The per-fractie votings page lives under a portal-specific path segment. Utrecht (and the GO
+    # default) exposes it at /Samenstelling/{slug}/votings; Drenthe's install routes it via
+    # /Leden/{slug}/votings (confirmed by GemeenteOplossingen, 2026-06-30). Same JSON either way.
+    vpath = p.get("votings_path", "Samenstelling")
     moties = {}
     parties_with_data = {}
     for party in parties:
-        data = try_json(f"{base}/Samenstelling/{party['slug']}/votings")
+        data = try_json(f"{base}/{vpath}/{party['slug']}/votings")
         time.sleep(SLEEP)
         items_by_year = data.get("items") if data else None
         if not isinstance(items_by_year, dict):   # empty result is [] not {}, or 404

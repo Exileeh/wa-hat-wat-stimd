@@ -7,9 +7,10 @@
 > 2. **Eerste Kamer** — ✅ LIVE (Phase 5). `data/eerste-kamer.json`, 449 stemmingen (2023–2027). No EK API —
 >    per-fractie V/T parsed from the "stemmingen per vergaderdag" HTML (both sides named, no counts → tier B);
 >    hamerstukken excluded, hoofdelijke aggregated to fractie. Recipe: data-sources.md §9.
-> 3. **Provinciale Staten** — ◑ category LIVE, **7/12 provinces** (Utrecht, Noord-Holland, Limburg,
->    Zuid-Holland, Fryslân, Gelderland, Overijssel). The 4 Notubiz provinces shipped in Phase 7 (tier A);
->    remaining growth (Flevoland/Drenthe) is the griffie lobby below.
+> 3. **Provinciale Staten** — ◑ category LIVE, **8/12 provinces** (Utrecht, Noord-Holland, Limburg,
+>    Zuid-Holland, Fryslân, Gelderland, Overijssel, **Drenthe**). The 4 Notubiz provinces shipped in
+>    Phase 7 (tier A); **Drenthe** landed 2026-07-05 after the griffie lobby paid off (GO enabled/located
+>    its stemgedrag data — config-only via a `votings_path` variant). Remaining growth (Flevoland) below.
 > 4. **Europees Parlement** — ✅ LIVE (Phase 6). `data/europees-parlement.json`, 545 votes (2024–2029), by
 >    **European political group**. Source = HowTheyVote.eu API (`stats.by_group`, exact per-group MEP counts
 >    → tier A), concurrent detail fetch, ODbL. Recipe: data-sources.md §10.
@@ -20,8 +21,14 @@
 >   counts, incl. verworpen): **Zuid-Holland** 1062, **Fryslân** 807, **Gelderland** 429, **Overijssel**
 >   549 stemmingen. **Groningen turned out a dead end** (0 votings across all 38 plenary meetings) → 4,
 >   not 5. PS now **3/12 → 7/12**. As-built recipe: data-sources.md §11; reliability: coverage.md.
-> - **Then griffie lobby → Flevoland/Drenthe** (GO stemgedrag module) — still blocked on replies. After
->   those two, PS would be 9/12 (Groningen + the iBabs dead-ends Noord-Brabant/Zeeland are the rest).
+> - **✅ DONE — griffie lobby → Drenthe** (GO stemgedrag data). Mailed 2026-06-11, nudged 2026-06-29;
+>   the Statengriffie had GemeenteOplossingen locate the votes. Turned out the GO votings JSON was live
+>   all along at a **different path** (`/Leden/{slug}/votings`, not Utrecht's `/Samenstelling/...`) —
+>   so it was config-only: one `votings_path` key + a `classify()` tweak for "Statenstuk" titles.
+>   Drenthe = **443 stemmingen, 15 fracties, tier A** (per-fractie member counts). Landed 2026-07-05.
+> - **Still open → Flevoland** (`griffie@flevoland.nl`, same GO stemgedrag ask). No reply yet; followed
+>   up 2026-06-29. If GO enables/locates its votes too, Flevoland is likewise config-only → PS 9/12.
+>   (Groningen + the iBabs dead-ends Noord-Brabant/Zeeland are the rest.)
 > - **Optional polish:** ✅ EP **Dutch-delegation breakout** shipped (second EP scope, by national party,
 >   with MEP rosters). ✅ EP source attribution → HowTheyVote.eu. TK perf checked = fine (slightly slower
 >   first load, no sluggishness after). Pick up gemeenteraden/waterschappen only on demand (parked).
@@ -37,9 +44,9 @@
 >   the same day → 4 provinces live (ZH, Fryslân, Gelderland, Overijssel; Groningen = dead end). No
 >   follow-up to send; an optional thank-you only.
 > - **Griffie mails** ([outreach.md](outreach.md) §2, sent 2026-06-11 to `griffie@flevoland.nl` +
->   `Statengriffie@drentsparlement.nl`) → if they enable the GO stemgedrag module, Flevoland/Drenthe
->   become config-only. (PDF-parsing rejected: fragile, per-griffie, low ROI.) **STILL the only live
->   outreach.** Follow-up ~24–25 Jun (2 wk), before the provincial **zomerreces (~mid-July)**.
+>   `Statengriffie@drentsparlement.nl`). **Drenthe paid off** (live 2026-07-05, GO path variant — see
+>   above). **Flevoland still the only open outreach**; nudged 2026-06-29, awaiting reply before the
+>   **zomerreces (~mid-July)**. (PDF-parsing rejected: fragile, per-griffie, low ROI.)
 >
 > **Parked categories (decided NOT to pursue):** gemeenteraden (~340 — fragmented, local, not national
 > news, low per-unit salience) and waterschappen (elected but niche/low-profile). Reconsider only on demand.
@@ -64,7 +71,7 @@ the site just reads it.
 
 ```
  per-vendor adapters                normalized                static site (HTML+JS)
- ┌─ GO     (Utrecht, Flevoland) ─┐   dataset
+ ┌─ GO     (Utrecht, Drenthe)   ─┐   dataset
  ├─ iBabs  (Noord-Holland, …)   ─┼─▶ data/<province>.json ─▶  table views  ─▶ GitHub Pages
  └─ Notubiz(Overijssel, …)      ─┘   (the "union" step)            ▲
         ▲                                                          │
@@ -163,8 +170,10 @@ Parked (v1.1 / v2):
 - Other bodies (Tweede Kamer, etc.).
 
 ### Multi-province (Phase 3) — discovery done, see [provinces.md](provinces.md)
-3a complete. Key finding: the clean per-party vote API is **Utrecht-only** (GO stemgedrag
-module is opt-in; Flevoland/Drenthe GO have the API but votes 404). Vendor split: GO 3,
+3a complete. Key finding: the clean per-party vote API looked **Utrecht-only** (GO stemgedrag
+module seemed opt-in; Flevoland/Drenthe GO votes 404'd during discovery). **Corrected 2026-07-05:**
+Drenthe's votes were live all along at a *different path* (`/Leden/...` vs Utrecht's
+`/Samenstelling/...`) — surfaced via the griffie/GO, now shipped. Flevoland still 404. Vendor split: GO 3,
 Notubiz 5, iBabs 4. iBabs + Notubiz are JS SPAs → votes need backend reverse-engineering
 (one effort per vendor unlocks its 4–5 provinces); they expose **faction-level** votes
 (fine for V/T, degrades "ruwe getallen"/split).
@@ -176,10 +185,11 @@ Notubiz 5, iBabs 4. iBabs + Notubiz are JS SPAs → votes need backend reverse-e
   *aangenomen* moties only (surfaced via `meta.note`).
 - **Next**: replicate to the other iBabs provinces (Limburg, Noord-Brabant, Zeeland) — see the
   NEXT block at the top — and/or crack **Notubiz** (5 provinces) once a token arrives.
-- **Action — lobby for the easy wins**: e-mail the Statengriffie of **Flevoland** and **Drenthe**
+- **Action — lobby for the easy wins**: e-mailed the Statengriffie of **Flevoland** and **Drenthe**
   (GO provinces) asking them to enable the GO **stemgedrag** module / publish per-party votes as
-  open data like Utrecht. If they do, those provinces become config-only (free). Same ask could
-  apply to Notubiz provinces with the module off (e.g. Gelderland). Contact the province, not GO.
+  open data like Utrecht. **Drenthe delivered (2026-07-05)** — the votes were live at a different path
+  all along; config-only, now shipped. **Flevoland still pending.** Confirms the lobby-the-province
+  (not GO) approach works. Same ask could apply to Notubiz provinces with the module off.
 
 ### Phase 4 — Tweede Kamer + category split  ✅ DONE (2026-06-11)
 The first **second category** (legislative body) beyond Provinciale Staten. Realizes the
@@ -315,6 +325,19 @@ names parsed but not stored (party-level, privacy). **Groningen** (also Notubiz)
 votings across all 38 plenary meetings. Frontend: generic (no IA change — four new scopes in the catalog,
 each with its own huisstijl). The weekly Action picks them up via the full `collect.py` run. Reliability:
 [coverage.md](coverage.md).
+
+### Phase 8 — Drenthe (GO, griffie-lobby win)  ✅ DONE (2026-07-05)
+The **first province unlocked purely by outreach**, and a reminder that a "votes 404" during discovery
+isn't always a dead end. Drenthe runs the same **GemeenteOplossingen** stack as Utrecht; back in Phase 3
+its `/Samenstelling/{slug}/votings` returned nothing, so it was filed as "GO stemgedrag module off." The
+2026-06-11 griffie mail (+ 2026-06-29 nudge) prompted the Statengriffie to have GO investigate; GO reported
+the data was live all along at a **different path** — `/Leden/{slug}/votings` (Utrecht uses
+`/Samenstelling/...`). Same JSON schema, so the fix was **config-only**: a `votings_path` key on the
+SOURCES entry (default `"Samenstelling"`, Drenthe `"Leden"`) + one `classify()` tweak so "Statenstuk …"
+titles map to *besluit* (Drenthe labels its statenvoorstellen that way; 173 would otherwise land in
+*overig*). Result: **443 stemmingen, 15 fracties, tier A** (`granularity: "member"`, per-fractie member
+counts incl. verworpen). PS **7/12 → 8/12**. Only **Flevoland** (same GO ask, still awaiting reply)
+remains of the easy GO wins. Reliability: [coverage.md](coverage.md).
 
 ## Decisions
 **Locked**

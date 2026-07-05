@@ -17,6 +17,7 @@ the "things we DO have" companion to [provinces.md](provinces.md) (feasibility f
 | **Europees Parlement — Europese fracties** | Europees Parlement | HowTheyVote.eu API | clean JSON API | per **fractie** (MEP-aantallen) | wetgeving, resolutie, initiatiefverslag, begroting | 545 | **aangenomen + verworpen** | **A — exact** |
 | **Europees Parlement — Nederlandse afvaardiging** | Europees Parlement | HowTheyVote API + EP Open Data | JSON API + portal map | per **NL-partij** (MEP-aantallen) | idem | 545 | **aangenomen + verworpen** | **A — exact** |
 | **Utrecht** | Prov. Staten | GO | clean JSON API | per **member** (counts) | motie, amendement, besluit, ordevoorstel | 566 | all (aangenomen + verworpen) | **A — exact** |
+| **Drenthe** | Prov. Staten | GO | clean JSON API | per **member** (counts) | motie, amendement, besluit | 443 | **aangenomen + verworpen** | **A — exact** |
 | **Limburg** | Prov. Staten | iBabs | HTML structured parse | per **member** (counts) | motie, amendement | 321 | **aangenomen + verworpen** | **A — exact** |
 | **Noord-Holland** | Prov. Staten | iBabs | HTML free-text parse | per **fractie** (V/T only) | motie, amendement | 181 | **aangenomen only** | **B — parsed/inferred** |
 | **Zuid-Holland** | Prov. Staten | Notubiz | API + portal HTML parse | per **member** (counts) | motie, amendement, besluit, ordevoorstel | 1062 | **aangenomen + verworpen** | **A — exact** |
@@ -26,11 +27,13 @@ the "things we DO have" companion to [provinces.md](provinces.md) (feasibility f
 
 (Counts as of the last refresh; the weekly Action keeps them current. TK = current term, 2025–heden.)
 
-> **Provinciale Staten: 7/12 live** (Utrecht, Noord-Holland, Limburg, Zuid-Holland, Fryslân,
-> Gelderland, Overijssel). The 4 Notubiz provinces above are **tier A** — the portal records each vote
-> hoofdelijk (per member), so we aggregate exact per-fractie counts. **Groningen** is also on Notubiz
-> but publishes **no** per-stemming data (0 votings across all 38 plenary meetings in the term) → a
-> dead end, like Noord-Brabant on iBabs. Flevoland/Drenthe (GO) remain blocked on the griffie lobby.
+> **Provinciale Staten: 8/12 live** (Utrecht, Noord-Holland, Limburg, Zuid-Holland, Fryslân,
+> Gelderland, Overijssel, **Drenthe**). The 4 Notubiz provinces above are **tier A** — the portal records
+> each vote hoofdelijk (per member), so we aggregate exact per-fractie counts. **Drenthe** (added
+> 2026-07-05) is GO like Utrecht — tier A per-member counts — reached via the `/Leden/...` votings path
+> after the griffie lobby (see §2b in data-sources.md). **Groningen** is on Notubiz but publishes **no**
+> per-stemming data (0 votings across all 38 plenary meetings) → a dead end, like Noord-Brabant on iBabs.
+> **Flevoland** (GO) is the last easy win — still blocked on the griffie lobby.
 
 > Note: vendor ≠ reliability. Both Limburg and Noord-Holland run iBabs, but Limburg's portal
 > publishes structured per-member vote counts (tier A) while NH publishes only free-text faction
@@ -44,8 +47,8 @@ How directly the published data maps to what we display, and how much we infer.
   normalize, we don't interpret. Exact counts and real split votes; minimal inference.
   *Tweede Kamer* (OData `Stemming` — per-fractie `Soort` + `FractieGrootte` seat counts),
   *Europees Parlement* (HowTheyVote.eu `stats.by_group` — exact per-group MEP counts FOR/AGAINST/
-  ABSTENTION; a group split across FOR/AGAINST is a real split), *Utrecht* (GO JSON, per-member
-  tallies), *Limburg* (iBabs "Stemmen" field — per-fractie member counts for the voor/tegen sides) and
+  ABSTENTION; a group split across FOR/AGAINST is a real split), *Utrecht* and *Drenthe* (GO JSON,
+  per-member tallies), *Limburg* (iBabs "Stemmen" field — per-fractie member counts for the voor/tegen sides) and
   the **four Notubiz provinces** (*Zuid-Holland, Fryslân, Gelderland, Overijssel* — the portal lists
   every member's own voor/tegen vote, so counts and intra-fractie splits are exact).
 - **B — parsed / inferred (semi-structured source).** The outcome is published, but as text/HTML we
@@ -53,8 +56,9 @@ How directly the published data maps to what we display, and how much we infer.
   fractie voted voor/tegen" on the items present, with the caveats below. *Noord-Holland* (iBabs
   "Stemverhouding" — one side named + "overige fracties" inferred) and *Eerste Kamer* (eerstekamer.nl
   HTML — **both** sides named, so nothing inferred, but no seat counts). Both are faction-level V/T.
-- **C — derived / unavailable (not implemented).** Votes exist only in PDFs (GO Flevoland/Drenthe
-  besluitenlijsten). The Notubiz `role_id → fractie` API map *is* auth-gated, but it turned out we don't
+- **C — derived / unavailable (not implemented).** Votes exist only in PDFs (GO **Flevoland**
+  besluitenlijsten — Drenthe was here too until 2026-07-05, when its structured votes surfaced at the
+  `/Leden/...` path → now tier A). The Notubiz `role_id → fractie` API map *is* auth-gated, but it turned out we don't
   need it — the public portal already names the fractie + members (tier A; §11). Nothing in the dataset
   is tier C yet.
 
@@ -130,6 +134,16 @@ sides are named, so nothing is inferred), but less than the tier-A sources (no s
 - The dataset mirrors the GO stemgedrag module. The main residual risk is upstream: if a vote was
   mis-recorded in the source, we faithfully reproduce it. Dates are resolved via `meetingId`.
 - Practically nothing is inferred on our side.
+
+### Drenthe — tier A
+- Same GO stemgedrag module and adapter as Utrecht, so the same "mirrors the source, nothing inferred"
+  guarantee holds — reached via the `/Leden/{slug}/votings` path (Utrecht uses `/Samenstelling/...`;
+  see data-sources.md §2b). Per-member voor/tegen counts, incl. verworpen. Added 2026-07-05.
+- Type labels: Drenthe titles its statenvoorstellen "Statenstuk YYYY-NN; …" → classified as *besluit*
+  (added to the shared `classify()`). Moties/amendementen use "M …"/"A …" codes with the words spelled
+  out. One item (0.2%) stays *overig* — a source typo ("Staenstuk", missing a t) not worth special-casing.
+- Column universe: only groups typed `Fractie` in the GO `groups` API that actually cast votes appear;
+  the role-typed pseudo-fracties (Voorzitter, Gedeputeerde, …) drop out for want of votings data.
 
 ### Limburg — tier A
 - The "Stemmen" field lists each fractie with its member count on the voor and tegen sides, so

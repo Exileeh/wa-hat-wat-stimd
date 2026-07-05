@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T09:56:55+00:00",
+  "generated_at": "2026-07-05T09:42:04+00:00",
   "default": {
     "category": "provinciale-staten",
     "scope": "utrecht"
@@ -55,6 +55,15 @@
           }
         },
         {
+          "key": "drenthe",
+          "name": "Drenthe",
+          "available": true,
+          "style": {
+            "accent": "#76b82a",
+            "headerBg": "#16321a"
+          }
+        },
+        {
           "key": "noord-holland",
           "name": "Noord-Holland",
           "available": true,
@@ -75,7 +84,7 @@
         {
           "key": "zuid-holland",
           "name": "Zuid-Holland",
-          "available": false,
+          "available": true,
           "style": {
             "accent": "#a07400",
             "headerBg": "#221900"
@@ -84,7 +93,7 @@
         {
           "key": "fryslan",
           "name": "Fryslân",
-          "available": false,
+          "available": true,
           "style": {
             "accent": "#c8102e",
             "headerBg": "#2a0a0c"
@@ -93,7 +102,7 @@
         {
           "key": "gelderland",
           "name": "Gelderland",
-          "available": false,
+          "available": true,
           "style": {
             "accent": "#0d5eaf",
             "headerBg": "#08203d"
@@ -102,7 +111,7 @@
         {
           "key": "overijssel",
           "name": "Overijssel",
-          "available": false,
+          "available": true,
           "style": {
             "accent": "#147ab3",
             "headerBg": "#0a2a3d"

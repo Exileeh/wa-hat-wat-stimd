@@ -54,11 +54,15 @@ endpoint. A token lets us group votes per party.
 ---
 
 ## 2. Statengriffie Flevoland & Drenthe — enable the GO stemgedrag module
-> **✅ Sent 2026-06-11** to `griffie@flevoland.nl` and `Statengriffie@drentsparlement.nl`
-> (after the `statengriffie@…nl` guesses bounced). Awaiting reply.
-> **Follow-up:** griffies are slower (often routed to a data/ICT colleague), so give them ~2 weeks —
-> if silent by **~24–25 June**, send the nudge below. Crucially, get it out **before the provincial
-> zomerreces (~mid-July)**; after that, expect no reply until late Aug/Sept. Separate mails per griffie.
+> **✅ DRENTHE DONE (live 2026-07-05).** Mailed 2026-06-11, nudged 2026-06-29; the Statengriffie had
+> GemeenteOplossingen investigate. Verdict: the votes were **published all along, at a different path**
+> (`/Leden/{slug}/votings`, not Utrecht's `/Samenstelling/...`) — so no module toggle was even needed;
+> config-only on our side. Drenthe = 443 stemmingen, 15 fracties, tier A. See data-sources.md §2b + roadmap Phase 8.
+>
+> **⏳ FLEVOLAND — still the only open outreach.** `griffie@flevoland.nl`, mailed 2026-06-11, followed up
+> 2026-06-29, no reply. Same GO ask. **Given Drenthe: explicitly ask them to have GO check the `/Leden/...`
+> path** — the votes may already exist there. Get any reply moving **before the zomerreces (~mid-July)**;
+> after that, expect nothing until late Aug/Sept.
 >
 > _Reminder draft (reply on each original thread):_
 > > Geachte Statengriffie,
@@ -72,10 +76,12 @@ endpoint. A token lets us group votes per party.
 > >
 > > _(Drenthe: "Provinciale Staten" eventueel vervangen door "het Drents Parlement".)_
 
-**Unlocks (if done):** Flevoland, Drenthe (becomes config-only — zero extra code for us).
-**Why:** Both run GemeenteOplossingen and expose the GO `/api/v2` (structure), but the optional
-**stemgedrag** module isn't enabled, so per-party votes aren't published as open data (404 on
-`/Samenstelling/{fractie}/votings`). Utrecht has it enabled — clear precedent.
+**Unlocks (if done):** Flevoland (config-only — zero extra code for us). **Drenthe already unlocked.**
+**Why:** Both run GemeenteOplossingen and expose the GO `/api/v2` (structure). We assumed the
+**stemgedrag** votes weren't published because `/Samenstelling/{fractie}/votings` 404'd — but **Drenthe
+proved that was a path issue, not a missing module**: its votes live at `/Leden/{fractie}/votings`. So
+for Flevoland, the ask is really "please have GO confirm the votings path / enable the data." Utrecht
+(`/Samenstelling/...`) and now Drenthe (`/Leden/...`) are both clear precedents.
 
 **To:** Flevoland → `griffie@flevoland.nl` · Drenthe → `Statengriffie@drentsparlement.nl`
 (✔ verified 2026-06-11. NB: the obvious guesses `statengriffie@flevoland.nl` and

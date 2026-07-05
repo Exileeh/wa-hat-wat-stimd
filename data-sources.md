@@ -55,6 +55,14 @@ Example: `/Samenstelling/bbb/votings`. Returns `items` keyed by year; each entry
 Here `voteCounts` is **this party's own** vote split (BBB: 6 voor, 0 tegen → "voor").
 `updatedAt` gives the date. No HTML parsing needed.
 
+> **Path varies per GO install (found 2026-07-05).** Utrecht serves this at
+> `/Samenstelling/{slug}/votings`; **Drenthe** (`drentsparlement.nl`, same GO stack) serves the
+> *identical* JSON at `/Leden/{slug}/votings`. During Phase-3 discovery Drenthe's `/Samenstelling/...`
+> returned nothing, so it was wrongly filed as "stemgedrag module off." It wasn't — just a different
+> route. The collector now takes a per-source `votings_path` (default `"Samenstelling"`, Drenthe
+> `"Leden"`). If a GO province looks empty, try `/Leden/...` before concluding the votes are unpublished.
+> (Surfaced by the Statengriffie/GemeenteOplossingen after the griffie lobby — see roadmap Phase 8.)
+
 **Cross-party detail for a single motie (the "i" popup):**
 ```
 GET /vergaderingen/stemmingen/{type}/{ref}
@@ -166,11 +174,12 @@ Known so far (to be completed for all 12):
 | Gelderland | **Notubiz** ✅ | gelderland.notubiz.nl |
 | Overijssel | **Notubiz** ✅ | overijssel.notubiz.nl |
 | Groningen | **Notubiz** (dead end — 0 votings) | groningen.notubiz.nl |
-| Drenthe | **GO** (votes 404 — griffie lobby) | (GO) |
+| Drenthe | **GO** ✅ (path variant `/Leden/...`) | drentsparlement.nl |
 
 ⇒ Architecture: **one adapter per vendor** (GO / iBabs / Notubiz), each normalizing to a
-common schema. Our Utrecht reverse-engineering = the **GO adapter** (works for Flevoland
-too, same software).
+common schema. Our Utrecht reverse-engineering = the **GO adapter**, now serving **Utrecht +
+Drenthe** (Drenthe via the `/Leden/...` path variant — see §2b). Flevoland is the same software;
+still awaiting the griffie to enable/locate its votes.
 
 - **iBabs**: has an API + open data (data.overheid.nl "ibabs-online"). Adapter TODO.
 - **Notubiz**: public API at `api.notubiz.nl` (no formal public docs). **BUILT — no token needed**
@@ -533,4 +542,5 @@ Key facts the build pinned down (vs the recipe above):
 Gelderland (1769, 2437, `gelderland`) 429 · Overijssel (1750, 2229, `overijssel`) 549 — all tier A,
 `granularity: "member"`, incl. verworpen. **Groningen (1396, gremium 887, `groningen`) is a DEAD END**:
 0 votings across all 38 plenary meetings in the term — it doesn't record/publish hoofdelijke stemmingen
-on the portal. So Notubiz yields 4, not 5, taking PS to **7/12**.
+on the portal. So Notubiz yields 4, not 5, taking PS to **7/12** (→ **8/12** after Drenthe landed via
+the GO path variant on 2026-07-05; see §2b + roadmap Phase 8).
