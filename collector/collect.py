@@ -100,6 +100,26 @@ SOURCES = [
                 "Moties/amendementen zonder hoofdelijke stemming zijn niet opgenomen.",
     },
     {
+        "key": "noord-brabant",
+        "name": "Noord-Brabant",
+        "vendor": "ibabs",
+        "votes": "stemmen",   # same structured "Stemmen" block as Limburg (per-fractie counts)
+        "base": "https://noordbrabant.bestuurlijkeinformatie.nl",
+        # The Statengriffie confirmed (Emma Beers, 2026-07-06) the hoofdelijke stemmingen are
+        # already in the portal: the motie/amendement detail carries the same "Stemmen" field
+        # (vote-summary-legend-in-favour/-against) as Limburg -> config-only, tier A. No lobby needed.
+        "reports": [
+            {"guid": "376cf779-9567-4cf0-ab50-8a7d938e02f4", "type": "motie"},
+            {"guid": "0b5f0bd5-960c-4a01-b250-339749f40292", "type": "amendement"},
+        ],
+        "term_start": (2023, 3, 29),   # PS election 15 March 2023
+        "term_label": "2023-2027",
+        "style": {"accent": "#cd1319", "headerBg": "#2b0a0c"},   # Noord-Brabant huisstijlrood
+        "license": "Open data - Provincie Noord-Brabant (iBabs publieksportaal)",
+        "note": "Stemmen zijn per fractie met aantallen geregistreerd (aangenomen én verworpen). "
+                "Moties/amendementen zonder hoofdelijke stemming zijn niet opgenomen.",
+    },
+    {
         # Notubiz province. No token needed (data-sources.md §11): the public events + votings API
         # (version=1.21) discovers meetings + per-stemming metadata, and the public portal vergadering
         # page carries the per-fractie breakdown with EXACT member counts -> tier A. Reference province
@@ -469,6 +489,10 @@ IBABS_ALIASES = {
     "pvda": "PvdA", "partij van de arbeid": "PvdA",
     "pvdd": "PvdD", "partij voor de dieren": "PvdD",
     "cu": "ChristenUnie", "christenunie": "ChristenUnie", "christen unie": "ChristenUnie",
+    # NB records the combined fractie under two spellings over time (slash until 2025, hyphen from
+    # 2026); both are the same group -> one canonical column.
+    "christenunie/sgp": "ChristenUnie-SGP", "christenunie-sgp": "ChristenUnie-SGP",
+    "cu-sgp": "ChristenUnie-SGP", "cu/sgp": "ChristenUnie-SGP",
     "cda": "CDA", "d66": "D66", "vvd": "VVD", "bbb": "BBB", "sp": "SP",
     "pvv": "PVV", "ja21": "JA21", "ja 21": "JA21", "volt": "Volt",
     "fvd": "FvD", "forum voor democratie": "FvD",

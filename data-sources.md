@@ -168,7 +168,8 @@ Known so far (to be completed for all 12):
 | Flevoland | **GO** (votes 404 — griffie lobby) | (GO — reuse our adapter) |
 | Noord-Holland | **iBabs** ✅ | noordholland.bestuurlijkeinformatie.nl |
 | Limburg | **iBabs** ✅ | limburg.bestuurlijkeinformatie.nl |
-| Noord-Brabant, Zeeland | **iBabs** (no structured feed; votes in PDF) | noordbrabant./zeeland.bestuurlijkeinformatie.nl |
+| Noord-Brabant | **iBabs** ✅ (`Stemmen` field, like Limburg) | noordbrabant.bestuurlijkeinformatie.nl |
+| Zeeland | **iBabs** (registers empty; votes in PDF) | zeeland.bestuurlijkeinformatie.nl |
 | Zuid-Holland | **Notubiz** ✅ | pzh.notubiz.nl |
 | Fryslân | **Notubiz** ✅ | fryslan.notubiz.nl |
 | Gelderland | **Notubiz** ✅ | gelderland.notubiz.nl |
@@ -260,37 +261,42 @@ What the live build surfaced beyond the recipe above:
   (NH = `#2891e0`). Party slugs reuse the existing `ABBR` map where they slugify the same.
 
 ### Other iBabs provinces (probed)
-Not every iBabs portal is like NH — the vote *format* varies. Two lack a usable **structured** feed
-(Noord-Brabant, Zeeland), but a 2026-07-05 PDF probe showed both still *publish* the per-fractie votes
-in document form — so they're open-data gaps, not data-absence dead ends (see the note after Zeeland):
-- **Limburg** — BEST iBabs province (built). Detail pages have a structured **"Stemmen"** field
-  (not "Stemverhouding"): `<div class="vote-summary-legend-{in-favour|against}"><div class="text">
-  Fractie (Statenleden) (N), …</div>` — i.e. **per-fractie member counts** for the voor and tegen
-  sides (tier A, like Utrecht). A fractie on both sides = a real split. The register **includes
-  verworpen** (status field: Aangenomen/Verworpen/Ingetrokken/Aangehouden). Date = list `datum`.
-  321 in-term items (271 moties + 50 amendementen). Moties decided *bij acclamatie* (no hoofdelijke
-  stemming) have an empty Stemmen field → skipped. Reports: Moties `0493fdd4-…`, Amendementen
-  `34a4e0ce-…`. Handled by the adapter's `votes: "stemmen"` format.
-- **Noord-Brabant** — Moties register (report `376cf779-…`) has status (incl. verworpen) + the
-  **indienende** fracties, but **no stemverhouding** → outcome only, unusable for our table *from the
-  structured feed*. But the verbatim **notulen** record the **hoofdelijke stemming per lid** — full
-  member-name voor/tegen lists for contested votes (*"Voor hebben gestemd de leden Berkvens, Boon…
-  Tegen hebben gestemd de leden Bijl, Van den Broek…"*), totals only for near-unanimous ones. Confirmed
-  2026-07-05 via iBabs global search (`/Search?q=notulen` → direct PDFs at
-  `api1.ibabs.eu/publicdownload.aspx?site=NoordBrabant&id={guid}`). Member→fractie via NB's published
-  **Ledenlijst PS** report → potentially **tier A** (per-member counts) if ever parsed. Richest of the three.
-- **Zeeland** — all three registers (Moties, Amendementen, **Stemming** `8f77ee0a-…`) return
-  **0 rows** (recordsTotal 0). But the **concept-besluitenlijst** PDF (attached to the next PS agenda as
-  "Vaststellen concept-besluitenlijst van de Statenvergadering op …") *does* name the votes per item:
-  e.g. *"aangenomen met de stemmen van de aanwezige leden van de fracties van BBB, CDA, CU, D66, PvdA-GL,
-  PVV, SGP en VVD voor"* / *"met algemene stemmen aangenomen."* One-side-named (NH-style, tier B),
-  parseable but fragile. Fetch: agenda → the besluitenlijst `documentId` → `/Document/View/{id}` (PDF).
+Not every iBabs portal is like NH — the vote *format* varies. **Limburg and Noord-Brabant** both serve the
+structured `Stemmen` field (tier A, built); **Zeeland**'s registers are empty (its votes are PDF-only):
+- **Limburg** — Detail pages have a structured **"Stemmen"** field (not "Stemverhouding"):
+  `<div class="vote-summary-legend-{in-favour|against}"><div class="text">Fractie (Statenleden) (N), …</div>`
+  — i.e. **per-fractie member counts** for the voor and tegen sides (tier A, like Utrecht). A fractie on
+  both sides = a real split. The register **includes verworpen** (status field:
+  Aangenomen/Verworpen/Ingetrokken/Aangehouden). Date = list `datum`. 321 in-term items (271 moties + 50
+  amendementen). Moties decided *bij acclamatie* (no hoofdelijke stemming) have an empty Stemmen field →
+  skipped. Reports: Moties `0493fdd4-…`, Amendementen `34a4e0ce-…`. Handled by `votes: "stemmen"`.
+- **Noord-Brabant** — ✅ **built 2026-07-06, same `Stemmen` path as Limburg.** The Moties *report row*
+  (`GetReportData`, report `376cf779-…`) has status (incl. verworpen) + **indienende** fracties but no
+  votes, and the detail's `Stemverhouding` field is empty — which is why NB was *first* mis-filed as
+  "notulen-only". But the **item detail** carries the populated **`Stemmen`** field (behind the portal's
+  "toon stemmen" toggle) with per-fractie member counts, identical markup to Limburg → the existing parser
+  reads it verbatim. The griffie (Emma Beers) flagged this on 2026-07-06 in reply to the lobby mail.
+  Reports: Moties `376cf779-…`, Amendementen `0b5f0bd5-…`. **628 stemmingen (534 + 94), 15 fracties, tier A.**
+  One quirk: NB records the combined CU-SGP fractie as `ChristenUnie/SGP` (until 2025) then `ChristenUnie-SGP`
+  (from 2026) → merged via an `IBABS_ALIASES` entry. The verbatim notulen (full member-name roll-call) exist
+  too but are no longer needed.
+  > **⚠️ Lesson:** on iBabs, a province can populate *either* `Stemverhouding` (free text, NH) *or* `Stemmen`
+  > (structured, Limburg/NB) — and the *report row* shows neither. Always check **both** fields on the item
+  > detail before concluding "no structured votes". NB was a false negative for exactly this reason.
+- **Zeeland** — all three registers (Moties `e34a898a-…`, Amendementen `6dafaa63-…`, **Stemming**
+  `8f77ee0a-…`) return **0 rows** (recordsTotal 0) — re-checked 2026-07-06 incl. the `Stemmen` field, so
+  this is *not* the NB mistake; the registers are genuinely unpopulated. But the **concept-besluitenlijst**
+  PDF (attached to the next PS agenda as "Vaststellen concept-besluitenlijst van de Statenvergadering op …")
+  *does* name the votes per item: e.g. *"aangenomen met de stemmen van de aanwezige leden van de fracties van
+  BBB, CDA, CU, D66, PvdA-GL, PVV, SGP en VVD voor"*. One-side-named (NH-style, tier B), parseable but fragile.
+  Fetch: agenda → besluitenlijst `documentId` → `/Document/View/{id}` (PDF).
 
-> **Not data-absence dead ends (probed 2026-07-05).** Noord-Brabant and Zeeland (iBabs) *and* Groningen
-> (Notubiz, votings API empty — but its **Handelingen** name both sides + totals) all publish per-fractie
-> votes as **unstructured PDF**, not machine-readable data. So the fix is a *publish-as-data* ask to the
-> griffie (like Drenthe), not PDF-scraping — though scraping is a possible fragile fallback. See
-> [outreach.md](outreach.md) §3.
+> **Remaining open-data gaps (probed 2026-07-05/06).** Zeeland (iBabs, registers empty) *and* Groningen
+> (Notubiz — votings API empty *and* no per-fractie markup in the portal render, re-probed 2026-07-06 across
+> 5 meetings: stemgedrag module off; its **Handelingen** name both sides + totals) publish per-fractie votes
+> only as **unstructured PDF**. So the fix is a *publish-as-data* ask to the griffie (like Drenthe), not
+> PDF-scraping — though scraping is a possible fragile fallback. **Noord-Brabant was on this list until
+> 2026-07-06**, when its `Stemmen` field turned up → now built, tier A. See [outreach.md](outreach.md) §3.
 
 ⇒ The adapter now branches on a province `votes` format: `"stemverhouding"` (NH free-text,
 faction-level, inference) vs `"stemmen"` (Limburg structured, per-member counts, exact).
@@ -559,11 +565,14 @@ Key facts the build pinned down (vs the recipe above):
 **Live (4):** Zuid-Holland (org 3868, gremium 11157, `pzh`) 1062 · Fryslân (822, 430, `fryslan`) 807 ·
 Gelderland (1769, 2437, `gelderland`) 429 · Overijssel (1750, 2229, `overijssel`) 549 — all tier A,
 `granularity: "member"`, incl. verworpen. **Groningen (1396, gremium 887, `groningen`)** returns **0
-votings** across all 38 plenary meetings — the Notubiz stemgedrag/votings module isn't populated, so the
-adapter finds nothing. **But it is not a data-absence dead end:** a 2026-07-05 probe found the per-fractie
-votes in Groningen's **Handelingen** (verbatim report, a meeting document — e.g. doc id 16210480 for PS
-24-9-2025), naming *both* sides by fractie **with totals** ("Voor deze motie hebben gestemd … tegen
-hebben gestemd … 30 stemmen voor, 9 stemmen tegen"). So the fix is a publish-as-data ask (enable the
-module — the 4 live Notubiz provinces already expose it) or fragile Handelingen-PDF parsing. So Notubiz
-auto-yields 4, not 5, taking PS to **7/12** (→ **8/12** after Drenthe landed via the GO path variant on
-2026-07-05; see §2b + roadmap Phase 8). Groningen is a lobby candidate — see [outreach.md](outreach.md) §3.
+votings** across its plenary meetings — the Notubiz stemgedrag/votings module isn't populated, so the
+adapter finds nothing. **Re-probed 2026-07-06** (5 recent meetings): the votings API is empty *and* the
+portal `vergadering` pages (fully server-rendered, 125–558 KB) contain **zero** `chart_`/`votes_parties`
+per-fractie markup — confirming the module is simply off, not a parse miss. **But it is not a data-absence
+dead end:** the per-fractie votes are in Groningen's **Handelingen** (verbatim report, a meeting document —
+e.g. doc id 16210480 for PS 24-9-2025), naming *both* sides by fractie **with totals** ("Voor deze motie
+hebben gestemd … tegen hebben gestemd … 30 stemmen voor, 9 stemmen tegen"). So the fix is a publish-as-data
+ask (enable the module — the 4 live Notubiz provinces already expose it) or fragile Handelingen-PDF parsing.
+So Notubiz auto-yields 4, not 5. PS reached **8/12** after Drenthe (GO path variant, 2026-07-05) and
+**9/12** after Noord-Brabant (iBabs `Stemmen` field, 2026-07-06; see §7 + roadmap Phases 8–9). Groningen is
+a lobby candidate — see [outreach.md](outreach.md) §3.

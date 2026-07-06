@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-05T09:42:04+00:00",
+  "generated_at": "2026-07-06T09:59:28+00:00",
   "default": {
     "category": "provinciale-staten",
     "scope": "utrecht"
@@ -79,6 +79,15 @@
           "style": {
             "accent": "#0059a2",
             "headerBg": "#0a2540"
+          }
+        },
+        {
+          "key": "noord-brabant",
+          "name": "Noord-Brabant",
+          "available": true,
+          "style": {
+            "accent": "#cd1319",
+            "headerBg": "#2b0a0c"
           }
         },
         {

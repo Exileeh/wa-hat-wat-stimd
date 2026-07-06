@@ -117,23 +117,30 @@ Drenthe brands its PS as the *Drents Parlement*, so its griffie lives on `@drent
 
 ---
 
-## 3. Publish-as-data lobby — Groningen, Zeeland, Noord-Brabant
+## 3. Publish-as-data lobby — Groningen & Zeeland  (Noord-Brabant ✅ resolved)
 
-> **Basis (probed live 2026-07-05):** these three are **not** data-absence dead ends. Each already
-> **publishes** who voted how, but only as **unstructured PDF**, not machine-readable open data:
-> - **Groningen** (Notubiz) — votings API empty, but the **Handelingen** name both sides per fractie + totals.
-> - **Zeeland** (iBabs) — Stemming/Moties/Amendementen reports empty, but the **concept-besluitenlijst** PDF
->   names the voting fracties per item.
-> - **Noord-Brabant** (iBabs) — Moties report = outcome + indieners only; the votes are in the verbatim
->   **notulen** as full **hoofdelijke stemming per lid** (confirmed 2026-07-05 — richest of the three).
+> **Basis (probed live 2026-07-05/06):** these publish who voted how, but only as **unstructured PDF**,
+> not machine-readable open data:
+> - **Groningen** (Notubiz) — votings API empty *and* portal render has no per-fractie markup (stemgedrag
+>   module off; re-probed 2026-07-06), but the **Handelingen** name both sides per fractie + totals.
+> - **Zeeland** (iBabs) — Stemming/Moties/Amendementen reports all 0 rows incl. the `Stemmen` field
+>   (re-probed 2026-07-06 — genuinely empty), but the **concept-besluitenlijst** PDF names the voting fracties.
 >
 > So the ask is the same as §2: *publish the per-fractie vote you already record as open data.* Each has a
 > **precedent on its own vendor** — cite it.
 >
-> **✅ All three sent 2026-07-05** (drafts below), to the verified addresses:
-> `statengriffie@provinciegroningen.nl` · `statengriffier@zeeland.nl` (note the *-griffier* form) ·
-> `statengriffie@brabant.nl`. Cold contacts right before the **zomerreces (~mid-July)** — so expect little
-> before September; **nudge late August** if silent (the Drenthe playbook: mail → nudge → result).
+> **✅ Noord-Brabant is resolved — no lobby needed.** The mail was sent 2026-07-05, but the griffie (Emma
+> Beers) replied 2026-07-06 that the votes are *already* in the portal behind "toon stemmen". They were
+> right: NB is iBabs like Limburg, and its item detail carries the structured **`Stemmen`** field
+> (per-fractie member counts) — we'd mis-filed it as notulen-only. **Shipped 2026-07-06 as tier A,
+> config-only (628 items).** See §3c below and provinces.md. *(A short thank-you reply is warranted — see
+> the draft at the end of §3c.)*
+>
+> **Groningen & Zeeland:** ✅ sent 2026-07-05 to `statengriffie@provinciegroningen.nl` ·
+> `statengriffier@zeeland.nl` (note the *-griffier* form). Cold contacts right before the **zomerreces
+> (~mid-July)** — expect little before September; **nudge late August** if silent (Drenthe playbook: mail →
+> nudge → result). NB's outcome is a useful nudge point: for Zeeland especially, "please populate the
+> `Stemmen` field like Noord-Brabant and Limburg do" is now a same-vendor, same-field precedent.
 
 ### 3a. Groningen (Notubiz)
 **To:** `statengriffie@provinciegroningen.nl` (✅ **sent 2026-07-05** — address correct).
@@ -191,37 +198,44 @@ Drenthe brands its PS as the *Drents Parlement*, so its griffie lives on `@drent
 > Met vriendelijke groet,
 > [naam]
 
-### 3c. Noord-Brabant (iBabs)
-**Confirmed 2026-07-05:** NB's verbatim **notulen** record the **hoofdelijke stemming per lid** (full
-member-name voor/tegen lists for contested votes; totals for near-unanimous ones) — the richest of the
-three. But the structured Moties report carries only outcome + indieners, so the votes aren't open data.
-**To:** `statengriffie@brabant.nl` (✅ **sent 2026-07-05** — address correct).
-**Onderwerp:** Verzoek: stemgedrag per fractie als open data publiceren (iBabs stemmingenregister)
+### 3c. Noord-Brabant (iBabs) — ✅ RESOLVED, no lobby needed
 
-> Geachte Statengriffie,
->
-> Ik bouw een open, non-commercieel overzicht van het stemgedrag in de Provinciale Staten, en zou
-> provincie Noord-Brabant daar graag aan toevoegen.
->
-> In uw **notulen** wordt bij hoofdelijke stemmingen precies vastgelegd welke leden voor en tegen
-> stemden. Via uw vergaderportaal (iBabs) is dit stemgedrag echter **niet als open data** beschikbaar:
-> het motieregister toont alleen de uitslag (aangenomen/verworpen) en de indienende fracties, niet hoe
-> elke fractie stemde. Bij provincie Limburg — dat hetzelfde iBabs-systeem gebruikt — is het stemgedrag
-> per fractie wél als open data ontsloten, en kan ik het automatisch inlezen.
->
-> Zou u het **stemmingenregister** kunnen (laten) vullen / het stemgedrag per fractie als open data
-> willen publiceren? De gegevens legt u in de notulen immers al vast; het gaat om het ook als data
-> beschikbaar stellen.
->
-> Het project is open en non-commercieel; u kunt het hier bekijken:
-> – Website: https://carefulcamel61097.github.io/wie-stemde-wat/
-> – Broncode: https://github.com/carefulCamel61097/wie-stemde-wat
-> (Utrecht, Drenthe, Noord-Holland en Limburg zijn er al in opgenomen — zo ziet het resultaat eruit.)
->
-> Met vriendelijke groet,
-> [naam]
+**Outcome (2026-07-06):** the lobby mail (sent 2026-07-05 to `statengriffie@brabant.nl`) got a reply from
+the Statengriffie (**Emma Beers**): *"Op ons Stateninformatiesysteem zijn de hoofdelijke stemmingen
+inzichtelijk … Door bij de stemuitslag te klikken op 'toon stemmen' zijn de stemmen van afzonderlijke
+Statenleden in te zien."* She was right. NB is iBabs like Limburg, and the motie/amendement **item detail**
+(not the report row) carries the structured **`Stemmen`** field — `vote-summary-legend-in-favour/-against`
+with per-fractie member counts, exactly what the Limburg parser already reads. Our earlier "notulen-only"
+verdict was a false negative: the *report row* and the `Stemverhouding` field are empty, but the `Stemmen`
+field (behind "toon stemmen") is fully populated.
 
-> **Note (for us, not the mail):** if the lobby stalls, NB is the most parseable of the three — the
-> notulen name every member, and NB's **Ledenlijst PS** report maps member → fractie, so a fragile
-> parser could yield **tier A** (per-member counts). PDF URL pattern: iBabs global search
-> `/Search?q=notulen` → `api1.ibabs.eu/publicdownload.aspx?site=NoordBrabant&id={guid}`.
+**Shipped 2026-07-06, config-only:** SOURCES entry (`vendor: ibabs`, `votes: stemmen`, Moties report
+`376cf779-…` + Amendementen `0b5f0bd5-…`) → **628 stemmingen (534 moties + 94 amendementen), 15 fracties,
+tier A** (per-member counts, incl. verworpen). One data fix: NB records the combined CU-SGP fractie as
+`ChristenUnie/SGP` until 2025 and `ChristenUnie-SGP` from 2026 — merged via an alias.
+
+**Lesson:** on iBabs, check **both** vote fields on the item detail — `Stemverhouding` (free text, NH) *and*
+`Stemmen` (structured, Limburg/NB) — not just the report row. This is worth re-checking on any future iBabs
+province before concluding "no structured votes".
+
+> **Thank-you reply to Emma Beers** (reply on the same thread). Graceful close: confirm the tip worked and
+> that NB is now included — which also quietly reinforces the same "publish as data" point for Zeeland.
+>
+> > Geachte mevrouw Beers,
+> >
+> > Hartelijk dank voor uw reactie en de tip. U heeft gelijk — via "toon stemmen" bij de stemuitslag zijn
+> > de stemmen per Statenlid inderdaad in te zien, en het blijkt dat die per fractie ook als gestructureerde
+> > data in het portaal beschikbaar zijn. Ik heb provincie Noord-Brabant daarmee inmiddels aan het overzicht
+> > kunnen toevoegen: het stemgedrag per fractie op alle moties en amendementen van deze Statenperiode wordt
+> > nu automatisch ingelezen.
+> >
+> > U kunt het resultaat hier bekijken: https://carefulcamel61097.github.io/wie-stemde-wat/
+> >
+> > Nogmaals dank voor het meedenken.
+> >
+> > Met vriendelijke groet,
+> > [naam]
+
+> **Note (superseded):** the old fallback plan — parse the verbatim notulen (member-name roll-call) and map
+> member → fractie via NB's **Ledenlijst PS** report — is no longer needed now that the `Stemmen` field
+> gives the same tier A directly. Kept for reference only.

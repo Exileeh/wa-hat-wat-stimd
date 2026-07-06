@@ -7,10 +7,11 @@
 > 2. **Eerste Kamer** — ✅ LIVE (Phase 5). `data/eerste-kamer.json`, 449 stemmingen (2023–2027). No EK API —
 >    per-fractie V/T parsed from the "stemmingen per vergaderdag" HTML (both sides named, no counts → tier B);
 >    hamerstukken excluded, hoofdelijke aggregated to fractie. Recipe: data-sources.md §9.
-> 3. **Provinciale Staten** — ◑ category LIVE, **8/12 provinces** (Utrecht, Noord-Holland, Limburg,
->    Zuid-Holland, Fryslân, Gelderland, Overijssel, **Drenthe**). The 4 Notubiz provinces shipped in
->    Phase 7 (tier A); **Drenthe** landed 2026-07-05 after the griffie lobby paid off (GO enabled/located
->    its stemgedrag data — config-only via a `votings_path` variant). Remaining growth (Flevoland) below.
+> 3. **Provinciale Staten** — ◑ category LIVE, **9/12 provinces** (Utrecht, Noord-Holland, Limburg,
+>    **Noord-Brabant**, Zuid-Holland, Fryslân, Gelderland, Overijssel, **Drenthe**). The 4 Notubiz provinces
+>    shipped in Phase 7 (tier A); **Drenthe** landed 2026-07-05 (GO `votings_path` variant); **Noord-Brabant**
+>    landed 2026-07-06 (iBabs `Stemmen` field like Limburg — config-only, tier A, 628 items). Remaining growth
+>    (Flevoland) below.
 > 4. **Europees Parlement** — ✅ LIVE (Phase 6). `data/europees-parlement.json`, 545 votes (2024–2029), by
 >    **European political group**. Source = HowTheyVote.eu API (`stats.by_group`, exact per-group MEP counts
 >    → tier A), concurrent detail fetch, ODbL. Recipe: data-sources.md §10.
@@ -27,13 +28,18 @@
 >   all along at a **different path** (`/Leden/{slug}/votings`, not Utrecht's `/Samenstelling/...`) —
 >   so it was config-only: one `votings_path` key + a `classify()` tweak for "Statenstuk" titles.
 >   Drenthe = **443 stemmingen, 15 fracties, tier A** (per-fractie member counts). Landed 2026-07-05.
+> - **✅ DONE — Noord-Brabant** (iBabs). A lobby mail (2026-07-05) drew a griffie reply pointing to "toon
+>   stemmen": NB was a **false negative** — its item detail carries the structured `Stemmen` field (like
+>   Limburg), we'd only checked the empty report row / `Stemverhouding`. Shipped 2026-07-06 config-only:
+>   **628 stemmingen, 15 fracties, tier A**. Lesson: on iBabs, check **both** `Stemverhouding` and `Stemmen`.
 > - **Still open → Flevoland** (`griffie@flevoland.nl`, same GO stemgedrag ask). No reply yet; followed
->   up 2026-06-29. If GO enables/locates its votes too, Flevoland is likewise config-only → PS 9/12.
-> - **Groningen, Noord-Brabant, Zeeland — publish-as-data lobby candidates (probed 2026-07-05).** Not
->   data-absence dead ends: all three *publish* per-fractie votes as **PDF** (Groningen Handelingen —
->   both sides + totals; Zeeland concept-besluitenlijst — fracties named; NB verbatim notulen — full
->   member-name roll-call, confirmed 2026-07-05, richest of the three), just not as machine-readable data.
->   Griffie mails for all three drafted ([outreach.md](outreach.md) §3). If they publish as data → PS toward 11/12.
+>   up 2026-06-29. If GO enables/locates its votes too, Flevoland is likewise config-only → PS 10/12.
+> - **Groningen, Zeeland — publish-as-data lobby candidates (probed 2026-07-05/06).** Not data-absence
+>   dead ends: both *publish* per-fractie votes as **PDF** (Groningen Handelingen — both sides + totals;
+>   Zeeland concept-besluitenlijst — fracties named), just not as machine-readable data. Re-probed 2026-07-06:
+>   Groningen's Notubiz stemgedrag module is off (API empty + no portal markup), Zeeland's registers incl.
+>   the `Stemmen` field are truly empty. Griffie mails sent ([outreach.md](outreach.md) §3). If they publish
+>   as data → PS toward 12/12 (with Flevoland).
 > - **Optional polish:** ✅ EP **Dutch-delegation breakout** shipped (second EP scope, by national party,
 >   with MEP rosters). ✅ EP source attribution → HowTheyVote.eu. TK perf checked = fine (slightly slower
 >   first load, no sluggishness after). Pick up gemeenteraden/waterschappen only on demand (parked).
@@ -192,8 +198,9 @@ Notubiz 5, iBabs 4. iBabs + Notubiz are JS SPAs → votes need backend reverse-e
 - **3d DONE**: built the iBabs adapter (`collect_ibabs`) and shipped **Noord-Holland** (2nd
   province). Votes are faction-level (`agree/disagree = 1/0`); NH's motieregister holds
   *aangenomen* moties only (surfaced via `meta.note`).
-- **Next**: replicate to the other iBabs provinces (Limburg, Noord-Brabant, Zeeland) — see the
-  NEXT block at the top — and/or crack **Notubiz** (5 provinces) once a token arrives.
+- **Next**: replicate to the other iBabs provinces — **Limburg** (tier A `Stemmen`) and **Noord-Brabant**
+  (tier A `Stemmen`, added 2026-07-06) are **done**; only **Zeeland** remains and its registers are empty
+  (publish-as-data lobby, not config) — and/or crack **Notubiz** (5 provinces) once a token arrives.
 - **Action — lobby for the easy wins**: e-mailed the Statengriffie of **Flevoland** and **Drenthe**
   (GO provinces) asking them to enable the GO **stemgedrag** module / publish per-party votes as
   open data like Utrecht. **Drenthe delivered (2026-07-05)** — the votes were live at a different path
@@ -349,6 +356,19 @@ titles map to *besluit* (Drenthe labels its statenvoorstellen that way; 173 woul
 *overig*). Result: **443 stemmingen, 15 fracties, tier A** (`granularity: "member"`, per-fractie member
 counts incl. verworpen). PS **7/12 → 8/12**. Only **Flevoland** (same GO ask, still awaiting reply)
 remains of the easy GO wins. Reliability: [coverage.md](coverage.md).
+
+### Phase 9 — Noord-Brabant (iBabs, false-negative recovery)  ✅ DONE (2026-07-06)
+The **second province unlocked via outreach — but the data was already there.** A 2026-07-05 publish-as-data
+mail drew a griffie reply (Emma Beers) pointing to the "toon stemmen" toggle. NB runs iBabs like Limburg, and
+its motie/amendement **item detail** carries the same structured **`Stemmen`** field
+(`vote-summary-legend-in-favour/-against`, per-fractie member counts). We'd mis-filed NB as "notulen-only"
+because the *report row* (`GetReportData`) and the `Stemverhouding` field are both empty — we never checked the
+*other* vote field on the detail page. Fix was **config-only**: a SOURCES entry (`votes: "stemmen"`, Moties
+`376cf779-…` + Amendementen `0b5f0bd5-…`) reusing the Limburg parser, plus a CU-SGP alias (NB switched the
+combined fractie's spelling from `ChristenUnie/SGP` to `ChristenUnie-SGP` in 2026). Result: **628 stemmingen,
+15 fracties, tier A**. PS **8/12 → 9/12**. Lesson: on iBabs, always check **both** `Stemverhouding` *and*
+`Stemmen` on the item detail before concluding a province has no structured votes. Reliability:
+[coverage.md](coverage.md).
 
 ## Decisions
 **Locked**

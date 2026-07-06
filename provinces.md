@@ -12,14 +12,14 @@ research + live probing (curl with a browser UA; Notubiz/iBabs block plain bots)
 | Flevoland | stateninformatie.flevoland.nl | GO | ❌ structured votes 404; besluitenlijst PDF only — griffie lobby |
 | **Drenthe** | drentsparlement.nl | GO | ✅ **done** — GO JSON at `/Leden/…` (not `/Samenstelling/…`); tier A (443 items) |
 | **Fryslân** | fryslan.stateninformatie.nl | Notubiz (org 822) | ✅ **done** — collect_notubiz, tier A |
-| Groningen | groningen.stateninformatie.nl (+ iBabs portal) | Notubiz (org 1396) | ⚠️ votings API empty; **Handelingen PDF names both sides + totals** (probed 2026-07-05) |
+| Groningen | groningen.stateninformatie.nl (+ iBabs portal) | Notubiz (org 1396) | ⚠️ votings API empty **and** portal render has no per-fractie markup (stemgedrag module off; re-probed 2026-07-06); **Handelingen PDF names both sides + totals** |
 | **Gelderland** | gelderland.stateninformatie.nl | Notubiz (org 1769) | ✅ **done** — collect_notubiz, tier A |
 | **Zuid-Holland** | pzh.notubiz.nl | Notubiz | ✅ **done** — collect_notubiz, tier A |
 | **Overijssel** | overijssel.notubiz.nl | Notubiz | ✅ **done** — collect_notubiz, tier A |
 | **Noord-Holland** | noordholland.bestuurlijkeinformatie.nl | **iBabs** | ✅ **done** (adapter; 141 moties + 40 amendementen, aangenomen only) |
 | **Limburg** | limburg.bestuurlijkeinformatie.nl | **iBabs** | ✅ **done** — "Stemmen" field, **per-member counts + verworpen** (321 items) |
-| Noord-Brabant | noordbrabant.bestuurlijkeinformatie.nl | iBabs | ⚠️ Moties report = outcome + indieners only; verbatim **notulen** = full **hoofdelijke stemming per lid** (confirmed 2026-07-05) |
-| Zeeland | zeeland.bestuurlijkeinformatie.nl | iBabs | ⚠️ structured reports empty; **concept-besluitenlijst PDF names voting fracties** (probed 2026-07-05) |
+| **Noord-Brabant** | noordbrabant.bestuurlijkeinformatie.nl | **iBabs** | ✅ **done** — iBabs **"Stemmen"** field (like Limburg): per-fractie member counts, tier A (628 items). Report row shows only outcome + indieners, but the item detail's `Stemmen` field (behind "toon stemmen") has the votes (griffie confirmed 2026-07-06) |
+| Zeeland | zeeland.bestuurlijkeinformatie.nl | iBabs | ⚠️ structured reports empty — Moties/Amendementen/**Stemming** all 0 rows incl. the `Stemmen` field (re-probed 2026-07-06); **concept-besluitenlijst PDF names voting fracties** |
 
 **Vendor split:** GO = 3 (Utrecht, Flevoland, Drenthe) · Notubiz = 5 (Fryslân, Groningen,
 Gelderland, Zuid-Holland, Overijssel) · iBabs = 4 (Noord-Holland, Limburg, Noord-Brabant, Zeeland).
@@ -32,12 +32,17 @@ seemed opt-in; probing Flevoland, the GO **`/api/v2`** existed (meetings, groups
 `/Samenstelling` and every `/votings` path returned **404**. So "other GO provinces are basically
 free" read as **wrong** — every province except Utrecht needed real work.
 
-**Update 2026-07-05:** that was too pessimistic. **Drenthe** turned out to serve the *same* GO votes
-JSON at a **different path** (`/Leden/{slug}/votings`) — now shipped, tier A. And a live probe showed
-the three iBabs/Notubiz "dead ends" (Groningen, Noord-Brabant, Zeeland) all *do* publish per-fractie
-votes — in **PDF** (Handelingen / besluitenlijst / notulen), just not as machine-readable data. So the
-gap for the four not-live provinces is **open-data publishing, not data absence** → griffie/publish-as-
-data lobby (Groningen, Zeeland, Noord-Brabant, Flevoland). See [outreach.md](outreach.md) §3 and
+**Update 2026-07-05/06:** that was too pessimistic. **Drenthe** turned out to serve the *same* GO votes
+JSON at a **different path** (`/Leden/{slug}/votings`) — now shipped, tier A. **Noord-Brabant** was an
+outright false negative: it's iBabs like Limburg, and its motie/amendement detail carries the same
+structured **"Stemmen"** field (per-fractie member counts, behind "toon stemmen") — we'd mis-filed it as
+notulen-only because the *report row* and the `Stemverhouding` field are empty. The Statengriffie pointed
+it out (2026-07-06); shipped tier A, config-only (628 items). That leaves **Groningen** and **Zeeland**
+as genuine open-data gaps (votes published only as PDF — Handelingen / concept-besluitenlijst), plus
+**Flevoland** (GO, awaiting griffie). Re-probed 2026-07-06: Zeeland's registers incl. the `Stemmen` field
+are truly empty (not the NB mistake), and Groningen's Notubiz stemgedrag module is off (API empty *and*
+no per-fractie markup in the portal render). So the gap for the three not-live provinces is **open-data
+publishing, not data absence** → griffie/publish-as-data lobby. See [outreach.md](outreach.md) §3 and
 [coverage.md](coverage.md).
 
 ## Feasibility by vendor (one adapter unlocks all its provinces)
@@ -104,8 +109,10 @@ per-party votes, despite fewer provinces.**
 1. **Build iBabs first** — it gives per-fractie votes directly (sidesteps Notubiz's exact blocker).
    Crack `/Reports/GetReportData` → adapter → 4 provinces (Noord-Holland, Limburg, Noord-Brabant,
    Zeeland; Zeeland also has a dedicated Stemming report).
-   - ✅ **DONE**: `collect_ibabs` built & shipped on **Noord-Holland** (data-sources.md §7).
-     Remaining iBabs provinces are config-only (report GUID + huisstijl + any local fracties).
+   - ✅ **DONE**: `collect_ibabs` shipped on **Noord-Holland** (free-text `Stemverhouding`, tier B),
+     **Limburg** and **Noord-Brabant** (structured `Stemmen` field, tier A per-member). Each added
+     province is config-only (report GUID + `"votes":"stemmen"` + huisstijl + any local fracties).
+     Only **Zeeland** remains, and its registers are empty → publish-as-data lobby, not config.
 2. **In parallel, request a Notubiz open-data API token** (outreach). If granted, the Notubiz
    adapter becomes clean and unlocks the other 5 provinces. Token is the cheapest unlock for the
    biggest group.
