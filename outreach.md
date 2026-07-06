@@ -218,8 +218,8 @@ tier A** (per-member counts, incl. verworpen). One data fix: NB records the comb
 `Stemmen` (structured, Limburg/NB) — not just the report row. This is worth re-checking on any future iBabs
 province before concluding "no structured votes".
 
-> **Thank-you reply to Emma Beers** (reply on the same thread). Graceful close: confirm the tip worked and
-> that NB is now included — which also quietly reinforces the same "publish as data" point for Zeeland.
+> **Thank-you reply to Emma Beers — ✅ sent 2026-07-06** (reply on the same thread). Graceful close: confirmed
+> the tip worked and that NB is now included — which also quietly reinforces the "publish as data" point for Zeeland.
 >
 > > Geachte mevrouw Beers,
 > >
