@@ -383,11 +383,13 @@ avondklok / toeslagenaffaire votes.
 - **Adapters:** TK adds one OData date bound; EK and EP were refactored to crawl/fetch their full history
   **once** (cached by base) and slice per term — otherwise every term would re-crawl.
 - **What shipped:** TK **2008→now, all 6 previous terms, tier A** (~58 k stemmingen); EK **2019–2023 +
-  2015–2019** (tier B); EP **2019–2024** (tier A, Europese-fracties view). ~60 k extra stemmingen.
+  2015–2019** (tier B); EP **2019–2024** (tier A, **both** views). ~60 k extra stemmingen.
 - **Source limits found:** TK OData floor = **2008** (hard cliff); EK archive reaches only **~mid-2015**
-  (2011/2007 terms not served → dropped); EP floor = **2019-07** (HowTheyVote). EP **NL-afvaardiging is
-  current-term only** — the historical MEP→partij map isn't built, so we ship only the complete group
-  view for 2019–2024 (follow-up: build it from EP Open Data).
+  (2011/2007 terms not served → dropped); EP floor = **2019-07** (HowTheyVote).
+- **EP NL-afvaardiging map (2026-07-08):** the by-national-party view needs a per-term MEP→partij map
+  (a person's party can differ per term). Built `EP_NL_PARTY_T9` from **EP Open Data** (each MEP's
+  `NATIONAL_POLITICAL_GROUP` membership dated to the term; longest-overlap wins) — 33 MEPs, 10 parties,
+  GroenLinks/PvdA separate. `ep_nl_config` picks the map by term. Gap now **closed** (was group-view-only).
 - **Size solve (the real one, not "accept it"):** a 4-year TK term is ~14 MB. `write_scope` chunks any
   scope > 5 000 stemmingen into **per-year files + a manifest**; the frontend loads the newest year first
   (~0.8 MB first paint), streams the rest in the background, and adds a **"Periode" (jaar) filter** that

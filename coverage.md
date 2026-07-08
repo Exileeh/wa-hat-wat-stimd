@@ -46,7 +46,7 @@ three bodies — the votes on the coronawet, avondklok, steunpakketten, toeslage
 | **Tweede Kamer** | 2006–2010 (Balkenende IV) | TK OData | 4 561 | A | **vanaf 2008** — OData's roll-call floor (niets ervoor) |
 | **Eerste Kamer** | 2019–2023 (corona) | eerstekamer.nl | 638 | B | |
 | **Eerste Kamer** | 2015–2019 | eerstekamer.nl | 354 | B | |
-| **Europees Parlement** | 2019–2024 (corona) | HowTheyVote.eu | 1 807 | A | **Europese fracties** only — see NL-gap below |
+| **Europees Parlement** | 2019–2024 (corona) | HowTheyVote.eu | 1 807 | A | both views (Europese fracties + Nederlandse afvaardiging) |
 
 ~60 000 extra stemmingen. Tiers match each body's current term (TK/EP tier A exact, EK tier B
 faction-level). **Source limits found while building this:**
@@ -56,10 +56,12 @@ faction-level). **Source limits found while building this:**
   stemmingen* chain ends there (probed: 145 pages), so the 2011 and 2007 EK terms aren't served as
   data and aren't advertised.
 - **EP floor is 2019-07** — HowTheyVote only holds the 9th term onward; there is no pre-2019 EP data.
-- **EP Nederlandse afvaardiging is current-term only.** The by-national-party view needs a per-term
-  MEP→partij map, and `EP_NL_PARTY` covers only the 10th (current) term; 22 of the 9th-term NL MEPs
-  are unmapped. Rather than ship an *incomplete* NL breakdown for 2019–2024 we ship only the complete
-  **Europese-fracties** view for that term. (Follow-up: build the historical NL map from EP Open Data.)
+- **EP Nederlandse afvaardiging — historical map built (2026-07-08).** The by-national-party view needs
+  a per-term MEP→partij map (a person's national party can differ per term). `EP_NL_PARTY_T9` for the 9th
+  term was resolved from **EP Open Data** (each MEP's `NATIONAL_POLITICAL_GROUP` membership dated to the
+  term; longest-overlapping party wins for mid-term switchers) — 33 NL MEPs, 10 parties, with **GroenLinks
+  and PvdA separate** (pre-2023-merger). `ep_nl_config(term_start)` picks the right map. One MEP excluded:
+  **Dorien Rookmaker** (elected FvD, left 2021, sat as a non-party independent for most of the term).
 
 **Large terms are chunked.** A multi-year TK term is ~14 MB, which is too big to load as one file, so
 `write_scope` splits any scope > 5 000 stemmingen into **per-year files + a small manifest**
@@ -169,9 +171,9 @@ NI), not individual MEPs or Dutch MEPs only. Source: HowTheyVote.eu `stats.by_gr
 3. **Group at vote time.** `stats.by_group` reflects each MEP's group on the vote date, so a mid-term
    group switch is handled upstream — no inference on our side.
 4. **Term:** current (10th) EP, votes on/after 2024-07-16 (differs from the TK and EK terms), plus the
-   **9th term (2019–2024)** as a previous-period scope — *Europese fracties* view only (the NL-delegation
-   map is current-term only; see *Historische termijnen*). HowTheyVote's floor is 2019-07, so there is
-   no earlier EP data. Includes **verworpen** (47 of 545 in the current term).
+   **9th term (2019–2024)** as a previous-period scope — **both** views (Europese fracties + Nederlandse
+   afvaardiging; the 9th-term NL map is built from EP Open Data, see *Historische termijnen*).
+   HowTheyVote's floor is 2019-07, so there is no earlier EP data. Includes **verworpen**.
 5. **Licence/attribution:** HowTheyVote.eu data is ODbL; `meta.license` credits HowTheyVote.eu + the
    European Parliament.
 6. **Two views (scopes).** *Europese fracties* (by Euro-group) and *Nederlandse afvaardiging* (the 31

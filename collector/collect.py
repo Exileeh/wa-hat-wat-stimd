@@ -315,7 +315,8 @@ _EP_TERMS = [
     ("2019", (2019, 7, 2), (2024, 7, 16), "2019–2024", "coronaperiode"),
 ]
 
-_SHARED = ("vendor", "category", "body", "base", "public", "style", "license", "compact", "note", "breakout")
+_SHARED = ("vendor", "category", "body", "base", "public", "style", "license", "compact", "note",
+           "breakout", "sourceName")
 
 
 def _derive_terms():
@@ -329,16 +330,15 @@ def _derive_terms():
             e.update({"key": f"{key}-{suf}", "name": label, "termNote": sub,
                       "term_start": ts, "term_end": te, "term_label": label})
             SOURCES.append(e)
-    # EP previous terms: group view only. The Dutch-delegation breakdown (breakout="nl") needs a
-    # per-term MEP→national-party map, and EP_NL_PARTY only covers the current (10th) term — 22 of the
-    # 9th-term NL MEPs are unmapped, which would make that view *incomplete*. So we ship the complete
-    # group view for older terms and defer the NL-afvaardiging until the historical map is built.
-    cur = base_of("europees-parlement")
-    for suf, ts, te, label, _sub in _EP_TERMS:
-        e = {k: cur[k] for k in _SHARED if k in cur}
-        e.update({"key": f"europees-parlement-{suf}", "name": cur["name"], "termNote": label,
-                  "term_start": ts, "term_end": te, "term_label": label})
-        SOURCES.append(e)
+    # EP previous terms: both breakdowns (group + NL delegation). The NL view uses a term-specific
+    # MEP→partij map (ep_nl_config); the 9th-term map (EP_NL_PARTY_T9) is built from EP Open Data.
+    for cur_key in ("europees-parlement", "europees-parlement-nl"):
+        cur = base_of(cur_key)
+        for suf, ts, te, label, _sub in _EP_TERMS:
+            e = {k: cur[k] for k in _SHARED if k in cur}
+            e.update({"key": f"{cur_key}-{suf}", "name": cur["name"], "termNote": label,
+                      "term_start": ts, "term_end": te, "term_label": label})
+            SOURCES.append(e)
 
 
 _derive_terms()
@@ -1404,6 +1404,33 @@ EP_NL_PARTY = {
 # Column order for the NL breakout: by 2024 EP-election seats (the adapter falls back to activity).
 EP_NL_ORDER = ["GL-PvdA", "PVV", "VVD", "D66", "CDA", "BBB", "Volt", "PvdD", "SGP", "NSC"]
 
+# Same map for the 9th term (2019–2024). Resolved from EP Open Data (`/meps/{id}` -> the MEP's
+# NATIONAL_POLITICAL_GROUP membership overlapping the term; longest-overlapping party wins for the
+# handful who switched mid-term). NB: GroenLinks and PvdA are SEPARATE here (they had distinct EP
+# delegations until the 10th-term "GL-PvdA" merger). Excluded: Dorien Rookmaker (204733) — elected FvD,
+# left in 2021 and sat as a non-party independent ("MDD") for most of the term, so no party column.
+EP_NL_PARTY_T9 = {
+    "197778": "CDA", "95074": "CDA", "4560": "CDA", "253043": "CDA", "125030": "CDA", "38398": "CDA",
+    "247709": "CU", "96809": "CU",
+    "28266": "D66", "197868": "D66",
+    "125025": "FvD", "97133": "FvD",
+    "96725": "GroenLinks", "197772": "GroenLinks", "197870": "GroenLinks",
+    "218349": "JA21", "197776": "JA21", "197709": "JA21",
+    "197782": "PvdA", "125021": "PvdA", "218347": "PvdA", "125020": "PvdA", "197756": "PvdA",
+    "5392": "PvdA", "37229": "PvdA",
+    "125023": "PvdD",
+    "197773": "SGP",
+    "197781": "VVD", "197780": "VVD", "58789": "VVD", "190519": "VVD", "229519": "VVD", "197869": "VVD",
+}
+EP_NL_ORDER_T9 = ["PvdA", "VVD", "CDA", "GroenLinks", "FvD", "D66", "JA21", "CU", "PvdD", "SGP"]
+
+
+def ep_nl_config(term_start):
+    """The NL delegation's MEP→partij map + column order for a term. HowTheyVote MEP ids are stable,
+    but a person's national party can differ per term (e.g. GroenLinks in the 9th term, "GL-PvdA" in
+    the 10th), so the map is term-specific."""
+    return (EP_NL_PARTY_T9, EP_NL_ORDER_T9) if term_start.year <= 2019 else (EP_NL_PARTY, EP_NL_ORDER)
+
 _EP_CACHE = {}   # base -> {"metas": [...], "details": {id: detail}} — shared across the two EP scopes
 
 
@@ -1517,9 +1544,9 @@ def ep_assemble_groups(metas, details):
     return ep_finalize(items, appear, name_by_slug, seats)
 
 
-def ep_assemble_nl(metas, details):
+def ep_assemble_nl(metas, details, nl_map, order_hint):
     """Dutch-delegation view: group the NL MEPs (member_votes, country NLD) by national party
-    (EP_NL_PARTY) -> exact per-party MEP counts. Same vote set as the group view; carries MEP rosters."""
+    (nl_map) -> exact per-party MEP counts. Same vote set as the group view; carries MEP rosters."""
     items, appear, name_by_slug, seats, members = [], {}, {}, {}, {}
     unknown = {}
     for r in metas:
@@ -1531,7 +1558,7 @@ def ep_assemble_nl(metas, details):
             m = mv.get("member") or {}
             if (m.get("country") or {}).get("code") != "NLD":
                 continue
-            party = EP_NL_PARTY.get(str(m.get("id")))
+            party = nl_map.get(str(m.get("id")))
             if not party:
                 unknown[str(m.get("id"))] = m.get("full_name") or ""
                 continue
@@ -1560,9 +1587,9 @@ def ep_assemble_nl(metas, details):
         for slug in votes:
             appear[slug] = appear.get(slug, 0) + 1
     if unknown:
-        print(f"  WARN: {len(unknown)} NL MEP(s) not in EP_NL_PARTY (update the map): "
+        print(f"  WARN: {len(unknown)} NL MEP(s) not in the NL map (update it): "
               + ", ".join(f"{k} {v}" for k, v in list(unknown.items())[:8]))
-    return ep_finalize(items, appear, name_by_slug, seats, order_hint=EP_NL_ORDER, members=members)
+    return ep_finalize(items, appear, name_by_slug, seats, order_hint=order_hint, members=members)
 
 
 def _ep_date(r):
@@ -1581,7 +1608,10 @@ def collect_ep(p):
     metas = [r for r in metas_all if in_term(_ep_date(r), term_start, term_end)]
     if not metas:
         return None
-    return ep_assemble_nl(metas, details) if p.get("breakout") == "nl" else ep_assemble_groups(metas, details)
+    if p.get("breakout") == "nl":
+        nl_map, nl_order = ep_nl_config(term_start)
+        return ep_assemble_nl(metas, details, nl_map, nl_order)
+    return ep_assemble_groups(metas, details)
 
 
 # --- Notubiz adapter ----------------------------------------------------------

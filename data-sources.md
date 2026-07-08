@@ -598,10 +598,17 @@ have a COVID hole; TK 2020 alone has **4 155** roll-call votes).
     **once** (`ek_load`, cached by base, down to `ek_floor()`) and each term slices it — not 5× re-crawls.
   - **EP (HowTheyVote):** `/api/votes` holds the **9th term onward (from 2019-07-18)** — no pre-2019
     data (oldest vote confirmed 2019-07-18). `ep_load` now fetches down to `ep_floor()` once (all metas +
-    details, cached) and each term/breakdown slices it. **NL-afvaardiging is current-term only:**
-    `EP_NL_PARTY` maps 10th-term MEP ids; 22 of the 9th-term NL MEPs are unmapped, so 2019–2024 ships the
-    complete **Europese-fracties** view only (TODO: build the historical map from EP Open Data's
-    `NATIONAL_POLITICAL_GROUP` membership per term).
+    details, cached) and each term/breakdown slices it. **NL-afvaardiging map is term-specific**
+    (`ep_nl_config(term_start)`): a person's national party can differ per term, so `EP_NL_PARTY` (10th)
+    and `EP_NL_PARTY_T9` (9th) are separate. The **9th-term map was built from EP Open Data** —
+    `GET /api/v2/meps/{id}` (ld+json) → the MEP's `hasMembership` entry with `membershipClassification =
+    def/ep-entities/NATIONAL_POLITICAL_GROUP` whose `memberDuring` overlaps the term; the **longest-
+    overlapping** party wins for mid-term switchers (e.g. In 't Veld → D66, Rooken → JA21, Manders → CDA);
+    the org id resolves to a party label via `GET /api/v2/corporate-bodies/{n}` (ld+json). Result: 33 NL
+    MEPs, 10 parties, **GroenLinks and PvdA separate** (pre-2023 merger). One MEP excluded (Dorien
+    Rookmaker — non-party independent for most of the term). HowTheyVote itself only exposes the EP group,
+    not national party (hence the map). NB: `sourceName` ("HowTheyVote.eu", ODbL attribution) is inherited
+    by derived terms via `_SHARED`.
 - **Chunking (the size solve).** A 4-year TK term ≈ **14 MB / ~14 k stemmingen** — too big for one file
   and one `render()`. `write_scope(key, out, compact)` splits any scope **> `CHUNK_MIN` (5 000)** into
   `data/{key}.{year}.json` (one per calendar year, newest first) + a manifest `data/{key}.json`
