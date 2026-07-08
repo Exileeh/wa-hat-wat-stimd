@@ -576,3 +576,40 @@ ask (enable the module — the 4 live Notubiz provinces already expose it) or fr
 So Notubiz auto-yields 4, not 5. PS reached **8/12** after Drenthe (GO path variant, 2026-07-05) and
 **9/12** after Noord-Brabant (iBabs `Stemmen` field, 2026-07-06; see §7 + roadmap Phases 8–9). Groningen is
 a lobby candidate — see [outreach.md](outreach.md) §3.
+
+## 12. Historische termijnen — multi-term model + per-year chunking (BUILT 2026-07-07)
+
+The national/EU bodies (TK, EK, EP) keep **one scope per parliamentary term** — the previous terms are
+config-only additions that reuse the current-term adapters. Chosen over a Provinciale-Staten previous
+cycle because these three sources are clean/stable *and* actually hold the coronaperiode as structured
+data (probed: the Notubiz PS provinces recorded **0** structured votes in 2020, so a PS backfill would
+have a COVID hole; TK 2020 alone has **4 155** roll-call votes).
+
+- **`term_bounds(p)` = `[term_start, term_end)`**; the current term omits `term_end` (open). Previous
+  terms set it to the *next* term's installation date. `in_term(d, ts, te)` gates every adapter's date
+  filter. Previous-term SOURCES entries are appended programmatically (`_TK_TERMS`/`_EK_TERMS`/`_EP_TERMS`
+  + `_derive_terms()`) from each body's current entry, so shared fields aren't repeated. **22 SOURCES.**
+- **Per-body reach (hard limits, probed):**
+  - **TK (OData):** roll-call `Stemming` data has a **hard floor at 2008** (2004/2006 = 0 rows; 2008 =
+    1 145, then full). Terms: 2008→now. Just add `and Agendapunt/Activiteit/Datum lt {term_end}`.
+  - **EK (eerstekamer.nl):** the "stemmingen per vergaderdag" *eerdere stemmingen* chain ends at
+    **~mid-2015** (crawl: 145 pages, 1 477 raw stemmingen, then no older link). So only 2015–2019 and
+    2019–2023 are served; 2011/2007 aren't advertised. `collect_ek` now crawls the **whole** history
+    **once** (`ek_load`, cached by base, down to `ek_floor()`) and each term slices it — not 5× re-crawls.
+  - **EP (HowTheyVote):** `/api/votes` holds the **9th term onward (from 2019-07-18)** — no pre-2019
+    data (oldest vote confirmed 2019-07-18). `ep_load` now fetches down to `ep_floor()` once (all metas +
+    details, cached) and each term/breakdown slices it. **NL-afvaardiging is current-term only:**
+    `EP_NL_PARTY` maps 10th-term MEP ids; 22 of the 9th-term NL MEPs are unmapped, so 2019–2024 ships the
+    complete **Europese-fracties** view only (TODO: build the historical map from EP Open Data's
+    `NATIONAL_POLITICAL_GROUP` membership per term).
+- **Chunking (the size solve).** A 4-year TK term ≈ **14 MB / ~14 k stemmingen** — too big for one file
+  and one `render()`. `write_scope(key, out, compact)` splits any scope **> `CHUNK_MIN` (5 000)** into
+  `data/{key}.{year}.json` (one per calendar year, newest first) + a manifest `data/{key}.json`
+  (`{meta, parties, chunked:true, chunks:[{year,count,file}]}`; `meta.types` carries the full type set so
+  the filter chips are complete before every chunk loads). Small scopes stay a single `{key}.json`.
+  Stale chunk files are cleaned up when a scope shrinks/unchunks. **Frontend:** `openScope` detects the
+  manifest, loads the **newest year first** (fast ~0.8 MB paint), then `loadRemainingChunks` streams the
+  rest and merges into `DATA.moties`; a **"Periode" (jaar) `<select>`** (only shown for chunked scopes,
+  default = newest year) caps the rendered table via `passes()` while the matrix/profiel/vergelijk
+  analyses use the whole loaded term. Wins: fast first paint, per-year CDN caching, and weekly reruns
+  only rewrite the current year's file (no multi-MB git churn). Verified end-to-end with Playwright.

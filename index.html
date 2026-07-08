@@ -295,6 +295,9 @@
         <option value="result">Op uitslag</option>
       </select>
     </label>
+    <label class="field" id="yearField" hidden>Periode
+      <select id="year"></select>
+    </label>
   </div>
   <div class="controls-row controls-row-2">
     <div class="toggles">
@@ -502,7 +505,7 @@ function showHome(cat){
     step.innerHTML = `<button class="home-back">&#8592; terug</button>
       <p class="home-step-label">Kies een ${esc(cat.scopeNoun||"onderdeel")}</p><div class="cards">${
       cat.scopes.map(s => `<button class="card${s.available?"":" disabled"}" data-scope="${esc(s.key)}"${s.available?"":" disabled"}>
-        <div class="card-name">${esc(s.name)}</div>${s.available?"":`<span class="soon">binnenkort</span>`}</button>`).join("")}</div>`;
+        <div class="card-name">${esc(s.name)}</div>${s.termNote?`<div class="card-desc">${esc(s.termNote)}</div>`:""}${s.available?"":`<span class="soon">binnenkort</span>`}</button>`).join("")}</div>`;
     step.querySelector(".home-back").onclick = () => { location.hash = ""; };
     step.querySelectorAll(".card[data-scope]:not([disabled])").forEach(b =>
       b.onclick = () => { location.hash = `${cat.key}/${b.dataset.scope}`; });
@@ -514,8 +517,20 @@ async function openScope(cat, scope){
   $("#home").hidden = true;
   $("#app").hidden = false;
   applyTheme(scope.style || {});   // theme now (before the large data fetch) so there's no colour flash
-  DATA = await (await fetch(`data/${scope.key}.json`)).json();
-  ALLTYPES = [...new Set(DATA.moties.map(m => m.type))];
+  const raw = await (await fetch(`data/${scope.key}.json`)).json();
+  // A large scope (multi-year Tweede Kamer term) is a manifest: {meta, parties, chunked, chunks[]}
+  // with the stemmingen split into per-year files. Load the newest year now for a fast first paint,
+  // then stream the rest in the background (loadRemainingChunks). Small scopes are a plain data file.
+  const chunked = !!raw.chunked;
+  DATA = chunked ? {meta: raw.meta, parties: raw.parties, moties: [], chunks: raw.chunks, loading: true}
+                 : raw;
+  if(chunked){
+    const first = await (await fetch(`data/${raw.chunks[0].file}`)).json();
+    DATA.moties = first.moties || [];
+  }
+  // Types come from meta (complete even before every chunk loads); fall back to the loaded moties.
+  ALLTYPES = (DATA.meta.types && DATA.meta.types.length) ? DATA.meta.types.slice()
+             : [...new Set(DATA.moties.map(m => m.type))];
   AG = ORDER = MTYPES = PTYPES = CTYPES = null;   // reset per-scope popup caches
   PIN_KEY = `wsw_pinned_${scope.key}`;
   state = {
@@ -523,6 +538,7 @@ async function openScope(cat, scope){
     parties: new Set(DATA.parties.map(p => p.slug)),
     search: "", result: "all", controversial: false, onlyPinned: false, raw: false,
     sort: "date-desc",
+    year: chunked ? raw.chunks[0].year : null,   // chunked scopes default to the newest year
     pinned: new Set(JSON.parse(localStorage.getItem(PIN_KEY) || "[]")),
   };
   applyTheme(DATA.meta.style || {});   // reaffirm from the data (matches the catalog style)
@@ -530,13 +546,15 @@ async function openScope(cat, scope){
   // Source label: a multi-scope category (provinces) reads "Provinciale Staten, provincie X";
   // a single-body category (Tweede Kamer) just its own name (scopeNoun is null there).
   const multi = cat.scopes.length > 1;
-  const art = /parlement/i.test(DATA.meta.body) ? "het" : "de";   // "het Europees Parlement" vs "de … Kamer"
-  const srcName = DATA.meta.sourceName ? esc(DATA.meta.sourceName)   // explicit attribution (EP: HowTheyVote.eu)
-    : (multi && cat.scopeNoun)
-    ? `${esc(DATA.meta.body)}, ${esc(cat.scopeNoun)} ${esc(DATA.meta.province)}` : esc(DATA.meta.body);
-  // Multi-scope copy: provinces read "… van Noord-Holland" (a place); other multi categories (EP:
-  // "Europese fracties" / "Nederlandse afvaardiging") read "… het Europees Parlement · <weergave>".
   const isProv = cat.scopeNoun === "provincie";
+  const art = /parlement/i.test(DATA.meta.body) ? "het" : "de";   // "het Europees Parlement" vs "de … Kamer"
+  // "Bron:" label: only a province folds its name into the source ("Provinciale Staten, provincie X").
+  // Chambers keep just the body name — the term is shown separately as "· periode …" on the same line.
+  const srcName = DATA.meta.sourceName ? esc(DATA.meta.sourceName)   // explicit attribution (EP: HowTheyVote.eu)
+    : isProv ? `${esc(DATA.meta.body)}, ${esc(cat.scopeNoun)} ${esc(DATA.meta.province)}`
+    : esc(DATA.meta.body);
+  // Multi-scope copy: provinces read "… van Noord-Holland" (a place); other multi categories (chamber
+  // terms / EP weergaven) read "… de Tweede Kamer · <periode>" / "… het Europees Parlement · <weergave>".
   $("#appLead").innerHTML = !multi
     ? `Stemgedrag per fractie in ${art} <b>${esc(DATA.meta.body)}</b> — <b>Voor</b> of <b>Tegen</b> per stemming.`
     : isProv
@@ -559,7 +577,32 @@ async function openScope(cat, scope){
   buildControls(ALLTYPES);
   $("#search").value = ""; $("#result").value = "all"; $("#sort").value = "date-desc";
   $("#controversial").checked = false; $("#onlyPinned").checked = false; $("#raw").checked = false;
+  buildYearControl(DATA.chunks, state.year);
   updatePartySummary();
+  render();
+  if(DATA.chunks) loadRemainingChunks(scope.key);   // fire-and-forget: stream older years in
+}
+
+// The "Periode" (year) selector only appears for chunked scopes. It caps the (potentially ~15k-row)
+// table to one year at a time while the analyses still use every year that has loaded.
+function buildYearControl(chunks, current){
+  const field = $("#yearField"), sel = $("#year");
+  if(!chunks){ field.hidden = true; sel.onchange = null; return; }
+  field.hidden = false;
+  sel.innerHTML = chunks.map(c => `<option value="${c.year}">${c.year} (${c.count})</option>`).join("")
+    + `<option value="all">Alle jaren (${DATA.meta.counts.moties})</option>`;
+  sel.value = current;
+  sel.onchange = e => { state.year = e.target.value; render(); };
+}
+
+// Load every year-chunk except the newest (already loaded), merge into DATA.moties, then refresh.
+async function loadRemainingChunks(key){
+  const rest = DATA.chunks.slice(1);
+  const parts = await Promise.all(rest.map(c =>
+    fetch(`data/${c.file}`).then(r => r.json()).catch(() => ({moties: []}))));
+  for(const p of parts) DATA.moties.push(...(p.moties || []));
+  DATA.loading = false;
+  AG = ORDER = MTYPES = PTYPES = CTYPES = null;   // analyses now cover the whole term
   render();
 }
 
@@ -830,6 +873,7 @@ function isControversial(m){
   return false;
 }
 function passes(m){
+  if(state.year && state.year!=="all" && (m.date||"").slice(0,4)!==state.year) return false;
   if(!state.types.has(m.type)) return false;
   if(state.result!=="all" && m.result!==state.result) return false;
   if(state.search && !m.title.toLowerCase().includes(state.search)) return false;
@@ -889,7 +933,10 @@ function render(){
     : tableHTML(mainRows, vps);
 
   const shown = (state.onlyPinned?pinnedRows.length:mainRows.length+pinnedRows.length);
-  $("#count").textContent = `${shown} van ${DATA.moties.length} stemmingen · ${vps.length} partijen`;
+  // For a chunked scope the total is the whole term (meta.counts), even while older years still load.
+  const total = (DATA.meta.counts && DATA.meta.counts.moties) || DATA.moties.length;
+  const loadNote = DATA.loading ? " · overige jaren laden…" : "";
+  $("#count").textContent = `${shown} van ${total} stemmingen · ${vps.length} partijen${loadNote}`;
 }
 
 // Split a title into its code (e.g. "A26"), number ("19") and the rest. Formats vary per province:

@@ -195,7 +195,8 @@ SOURCES = [
         # A second *category* (not a province): the national parliament. Clean OData v4 API with
         # per-fractie votes incl. seat counts -> tier A. See data-sources.md §8.
         "key": "tweede-kamer",
-        "name": "Tweede Kamer",
+        "name": "2025–heden",
+        "termNote": "huidige Kamer",
         "vendor": "tk",
         "category": "tweede-kamer",
         "body": "Tweede Kamer",
@@ -203,8 +204,9 @@ SOURCES = [
         "public": "https://www.tweedekamer.nl",   # human-facing site (per-item: /zoeken?qry={nummer})
         # Current term = Kamer installed after the 29 Oct 2025 election (constituerende verg. 12 Nov;
         # first stemming 13 Nov). Date-gating here drops old-composition votes cast before installation.
+        # Previous Kamers (back to 2008, the OData floor) are appended below via _TK_TERMS.
         "term_start": (2025, 11, 13),
-        "term_label": "2025-heden",
+        "term_label": "2025–heden",
         "style": {"accent": "#154273", "headerBg": "#0c1d33"},   # Rijkshuisstijl blue
         "license": "Open data - Tweede Kamer der Staten-Generaal (opendata.tweedekamer.nl)",
         "compact": True,   # ~3k stemmingen -> write minified JSON to keep the file ~3 MB
@@ -218,15 +220,18 @@ SOURCES = [
         # Faction-level V/T, no seat counts -> tier B, but BOTH sides are named (nothing inferred).
         # See data-sources.md §9.
         "key": "eerste-kamer",
-        "name": "Eerste Kamer",
+        "name": "2023–2027",
+        "termNote": "huidige Kamer",
         "vendor": "ek",
         "category": "eerste-kamer",
         "body": "Eerste Kamer",
         "base": "https://www.eerstekamer.nl",
         # Current EK installed 13 June 2023 (elected by the March 2023 Provinciale Staten). Note: the
         # EK term (2023-2027) differs from the TK term (2025-heden) — different election cycles.
+        # Previous Kamers (back to 2007) are appended below via _EK_TERMS; the site's full stemmingen
+        # history is crawled once (ek_load) and each term slices it.
         "term_start": (2023, 6, 13),
-        "term_label": "2023-2027",
+        "term_label": "2023–2027",
         "style": {"accent": "#00669a", "headerBg": "#0a2e44"},   # EK huisstijl blue
         "license": "Open data - Eerste Kamer der Staten-Generaal (eerstekamer.nl)",
         "note": "Stemmen zijn op fractieniveau geregistreerd (voor/tegen, zonder zetelaantallen): de "
@@ -239,13 +244,15 @@ SOURCES = [
         # (stats.by_group) -> exact tallies, tier A. See data-sources.md §10. ODbL license.
         "key": "europees-parlement",
         "name": "Europese fracties",
+        "termNote": "2024–2029",
         "vendor": "ep",
         "category": "europees-parlement",
         "body": "Europees Parlement",
         "base": "https://howtheyvote.eu",
         # Current (10th) term: first sitting after the June 2024 election. (Differs again from TK/EK.)
+        # The previous (9th) term 2019–2024 is appended below via _EP_TERMS — HowTheyVote's floor.
         "term_start": (2024, 7, 16),
-        "term_label": "2024-2029",
+        "term_label": "2024–2029",
         "style": {"accent": "#003399", "headerBg": "#041f4a"},   # EU flag blue
         "sourceName": "HowTheyVote.eu",   # ODbL attribution — the "Bron:" link points here, not the EP
         "license": "Open data - HowTheyVote.eu (ODbL 1.0) op basis van hoofdelijke stemmingen "
@@ -261,13 +268,14 @@ SOURCES = [
         # fetch). Columns carry a `members` roster (the MEP names) for the frontend.
         "key": "europees-parlement-nl",
         "name": "Nederlandse afvaardiging",
+        "termNote": "2024–2029",
         "vendor": "ep",
         "breakout": "nl",
         "category": "europees-parlement",
         "body": "Europees Parlement",
         "base": "https://howtheyvote.eu",
         "term_start": (2024, 7, 16),
-        "term_label": "2024-2029",
+        "term_label": "2024–2029",
         "style": {"accent": "#003399", "headerBg": "#041f4a"},
         "sourceName": "HowTheyVote.eu",
         "license": "Open data - HowTheyVote.eu (ODbL 1.0) op basis van hoofdelijke stemmingen "
@@ -278,17 +286,77 @@ SOURCES = [
     },
 ]
 
+# --- Previous terms (config-only) --------------------------------------------------------------
+# Each national/EU body keeps ONE scope per parliamentary term. The adapters slice a body's full
+# history by term_bounds(p) = [term_start, term_end); the current term (defined above) leaves
+# term_end open. Previous terms are appended here to avoid repeating the shared per-body fields.
+# term_start/term_end are (installation of this Kamer, installation of the NEXT Kamer).
+
+# Tweede Kamer — OData holds roll-call votes back to 2008 (hard floor; nothing before). One scope
+# per Kamer between elections. The 2006–2010 Kamer is only covered from 2008 onward.
+_TK_TERMS = [
+    # (key suffix, term_start,       term_end,         label,        subtitle)
+    ("2023", (2023, 12, 6), (2025, 11, 13), "2023–2025", "kabinet-Schoof"),
+    ("2021", (2021, 3, 31), (2023, 12, 6),  "2021–2023", "Rutte IV"),
+    ("2017", (2017, 3, 23), (2021, 3, 31),  "2017–2021", "Rutte III · coronaperiode"),
+    ("2012", (2012, 9, 20), (2017, 3, 23),  "2012–2017", "Rutte II"),
+    ("2010", (2010, 6, 17), (2012, 9, 20),  "2010–2012", "Rutte I"),
+    ("2008", (2008, 1, 1),  (2010, 6, 17),  "2006–2010", "Balkenende IV · vanaf 2008"),
+]
+# Eerste Kamer — the site's "stemmingen per vergaderdag" archive. The "eerdere stemmingen" chain
+# only reaches back to ~mid-2015 (probed: 145 pages, then the chain ends), so older EK terms simply
+# aren't served as data — we advertise only what's reachable (2015 onward).
+_EK_TERMS = [
+    ("2019", (2019, 6, 11), (2023, 6, 13), "2019–2023", "coronaperiode"),
+    ("2015", (2015, 6,  9), (2019, 6, 11), "2015–2019", None),
+]
+# Europees Parlement — HowTheyVote's floor is the 9th term (2019-07). Both breakdowns per term.
+_EP_TERMS = [
+    ("2019", (2019, 7, 2), (2024, 7, 16), "2019–2024", "coronaperiode"),
+]
+
+_SHARED = ("vendor", "category", "body", "base", "public", "style", "license", "compact", "note", "breakout")
+
+
+def _derive_terms():
+    """Append previous-term scopes derived from each body's current-term entry (defined above)."""
+    def base_of(key):
+        return next(s for s in SOURCES if s["key"] == key)
+    for key, terms in (("tweede-kamer", _TK_TERMS), ("eerste-kamer", _EK_TERMS)):
+        cur = base_of(key)
+        for suf, ts, te, label, sub in terms:
+            e = {k: cur[k] for k in _SHARED if k in cur}
+            e.update({"key": f"{key}-{suf}", "name": label, "termNote": sub,
+                      "term_start": ts, "term_end": te, "term_label": label})
+            SOURCES.append(e)
+    # EP previous terms: group view only. The Dutch-delegation breakdown (breakout="nl") needs a
+    # per-term MEP→national-party map, and EP_NL_PARTY only covers the current (10th) term — 22 of the
+    # 9th-term NL MEPs are unmapped, which would make that view *incomplete*. So we ship the complete
+    # group view for older terms and defer the NL-afvaardiging until the historical map is built.
+    cur = base_of("europees-parlement")
+    for suf, ts, te, label, _sub in _EP_TERMS:
+        e = {k: cur[k] for k in _SHARED if k in cur}
+        e.update({"key": f"europees-parlement-{suf}", "name": cur["name"], "termNote": label,
+                  "term_start": ts, "term_end": te, "term_label": label})
+        SOURCES.append(e)
+
+
+_derive_terms()
+
 # Categories (legislative bodies) -> how the frontend labels the "pick category -> pick scope" UX.
 # scope_noun is the word for one scope ("provincie"); None when the category is a single body (TK).
 CATEGORY_META = {
     "provinciale-staten": {"name": "Provinciale Staten", "scope_noun": "provincie",
                            "blurb": "Stemgedrag in de 12 provinciale staten — kies een provincie."},
-    "tweede-kamer": {"name": "Tweede Kamer", "scope_noun": None,
-                     "blurb": "Het landelijke parlement — moties, amendementen en wetsvoorstellen."},
-    "eerste-kamer": {"name": "Eerste Kamer", "scope_noun": None,
-                     "blurb": "De senaat — stemmingen over wetsvoorstellen en moties (op fractieniveau)."},
+    "tweede-kamer": {"name": "Tweede Kamer", "scope_noun": "periode",
+                     "blurb": "Het landelijke parlement — moties, amendementen en wetsvoorstellen, "
+                              "per Kamer sinds 2008."},
+    "eerste-kamer": {"name": "Eerste Kamer", "scope_noun": "periode",
+                     "blurb": "De senaat — stemmingen over wetsvoorstellen en moties (op fractieniveau), "
+                              "per Kamer sinds 2007."},
     "europees-parlement": {"name": "Europees Parlement", "scope_noun": "weergave",
-                           "blurb": "Het EU-parlement — per Europese fractie, of de Nederlandse afvaardiging."},
+                           "blurb": "Het EU-parlement — per Europese fractie of de Nederlandse "
+                                    "afvaardiging, sinds 2019."},
 }
 # Landing order: national (TK, EK) -> regional (provinces) -> EU (Europees Parlement).
 CATEGORY_ORDER = ["tweede-kamer", "eerste-kamer", "provinciale-staten", "europees-parlement"]
@@ -375,6 +443,20 @@ def classify(title):
             or "besluit" in low):
         return "besluit"
     return "overig"
+
+
+def term_bounds(p):
+    """(term_start, term_end) as dates; term_end is None for the current (open-ended) term.
+    A source without "term_end" keeps the old single-term behaviour (floor only)."""
+    ts = date(*p["term_start"])
+    te = date(*p["term_end"]) if p.get("term_end") else None
+    return ts, te
+
+
+def in_term(d, ts, te):
+    """True if date d falls in [ts, te): at/after the term start and, if bounded, before the next
+    term's start. Previous terms set te; the current term leaves it open."""
+    return d is not None and d >= ts and (te is None or d < te)
 
 
 # --- GemeenteOplossingen (GO) adapter ----------------------------------------
@@ -973,10 +1055,13 @@ def collect_tk(p):
     motie/amendement/wetsvoorstel, votes inlined. Self-contained per besluit (exact seat counts)."""
     base = p["base"].rstrip("/")
     public = p.get("public", base)
-    term_start = date(*p["term_start"])
+    term_start, term_end = term_bounds(p)
     term_iso = term_start.isoformat() + "T00:00:00Z"
+    # Bound both ends server-side: previous terms carry term_end (next Kamer's installation), the
+    # current term leaves it open. Datum is the plenary activity date the stemming belongs to.
+    upper = (" and Agendapunt/Activiteit/Datum lt " + term_end.isoformat() + "T00:00:00Z") if term_end else ""
     filt = ("startswith(BesluitSoort,'Stemmen') "
-            "and Agendapunt/Activiteit/Datum ge " + term_iso + " "
+            "and Agendapunt/Activiteit/Datum ge " + term_iso + upper + " "
             "and Stemming/any() "
             "and Zaak/any(z: z/Soort eq 'Motie' or z/Soort eq 'Amendement' or z/Soort eq 'Wetgeving')")
     expand = ("Stemming($select=ActorFractie,ActorNaam,Soort,FractieGrootte,Persoon_Id),"
@@ -1162,15 +1247,25 @@ def ek_next_url(base, html):
     return None
 
 
-def collect_ek(p):
-    """Eerste Kamer. Page through /stemmingen_per_vergaderdag (25/page, following the site's own
-    'eerdere stemmingen' link) back to term start, then resolve members to fracties and assemble the
-    faction-level matrix. Hoofdelijke (per-member) stemmingen are aggregated to the fractie."""
-    base = p["base"].rstrip("/")
-    term_start = date(*p["term_start"])
+_EK_CACHE = {}
+
+
+def ek_floor():
+    """Oldest EK term start in SOURCES — the crawl walks back to here once, then each term slices it."""
+    dts = [date(*s["term_start"]) for s in SOURCES if s.get("vendor") == "ek"]
+    return min(dts) if dts else date(2007, 6, 12)
+
+
+def ek_load(base):
+    """Crawl the whole 'stemmingen per vergaderdag' history once (down to the oldest EK term), cached
+    by base. ~25 stemmingen/page over the 'eerdere stemmingen' chain; reaching 2007 is a few hundred
+    pages, so we cache and let every EK term scope slice the same raw list."""
+    if base in _EK_CACHE:
+        return _EK_CACHE[base]
+    floor = ek_floor()
     url = base + "/stemmingen_per_vergaderdag?filter=alles"
     raw, seen_urls, pages = [], set(), 0
-    while url and url not in seen_urls and pages < 120:
+    while url and url not in seen_urls and pages < 500:
         seen_urls.add(url)
         html = try_text(url)
         if not html:
@@ -1180,12 +1275,26 @@ def collect_ek(p):
         for it in ek_parse_page(html, base):
             dd = date.fromisoformat(it["date"])
             oldest = dd if oldest is None or dd < oldest else oldest
-            if dd >= term_start:
-                raw.append(it)
-        if oldest and oldest < term_start:   # walked past the term -> stop
+            raw.append(it)
+        if oldest and oldest < floor:   # walked past the oldest term we need -> stop
             break
         url = ek_next_url(base, html)
         time.sleep(SLEEP)
+    _EK_CACHE[base] = raw
+    print(f"  EK history: {pages} page(s) crawled, {len(raw)} raw stemmingen down to ~{floor}")
+    return raw
+
+
+def collect_ek(p):
+    """Eerste Kamer. Page through /stemmingen_per_vergaderdag (25/page, following the site's own
+    'eerdere stemmingen' link) back to term start, then resolve members to fracties and assemble the
+    faction-level matrix. Hoofdelijke (per-member) stemmingen are aggregated to the fractie."""
+    base = p["base"].rstrip("/")
+    term_start, term_end = term_bounds(p)
+    # The full stemmingen history is crawled once (cached by base); each term scope just slices it —
+    # otherwise every EK term would re-walk hundreds of "eerdere stemmingen" pages every run.
+    raw = [it for it in ek_load(base)
+           if in_term(date.fromisoformat(it["date"]), term_start, term_end)]
     if not raw:
         return None
 
@@ -1248,7 +1357,7 @@ def collect_ek(p):
     by_type = {}
     for m in items:
         by_type[m["type"]] = by_type.get(m["type"], 0) + 1
-    print(f"  fetched {pages} page(s); {len(items)} stemmingen; {len(appear)} fracties; {by_type}")
+    print(f"  {len(items)} stemmingen in term; {len(appear)} fracties; {by_type}")
     return {"parties": [{"slug": s, "name": name_by_slug[s]} for s in order], "moties": items}
 
 
@@ -1298,14 +1407,19 @@ EP_NL_ORDER = ["GL-PvdA", "PVV", "VVD", "D66", "CDA", "BBB", "Volt", "PvdD", "SG
 _EP_CACHE = {}   # base -> {"metas": [...], "details": {id: detail}} — shared across the two EP scopes
 
 
-def ep_load(base, term_start):
-    """Fetch (and cache) the term's is_main votes + their details once. Both EP scopes (Europese
-    fracties / Nederlandse afvaardiging) run in the same process, so the second reuses the cache
-    instead of re-fetching ~545 details."""
+def ep_floor():
+    """Oldest EP term start in SOURCES — HowTheyVote only holds the 9th term onward (from 2019-07)."""
+    dts = [date(*s["term_start"]) for s in SOURCES if s.get("vendor") == "ep"]
+    return min(dts) if dts else date(2019, 7, 2)
+
+
+def ep_load(base, floor):
+    """Fetch (and cache) all is_main votes + their details down to `floor` once. All EP scopes (both
+    breakdowns × every term) run in the same process, so they reuse the cache; each term slices it."""
     if base in _EP_CACHE:
         return _EP_CACHE[base]["metas"], _EP_CACHE[base]["details"]
     metas, page = [], 1
-    while page <= 60:   # 1) stemming index: page newest-first until we cross the term boundary
+    while page <= 120:   # 1) stemming index: page newest-first until we cross the oldest term boundary
         data = try_json(f"{base}/api/votes?page_size=100&page={page}")
         results = data.get("results") if isinstance(data, dict) else None
         if not results:
@@ -1316,7 +1430,7 @@ def ep_load(base, term_start):
                 d = date.fromisoformat((r.get("timestamp") or "")[:10])
             except ValueError:
                 continue
-            if d < term_start:
+            if d < floor:
                 stop = True
                 continue
             metas.append(r)
@@ -1451,11 +1565,20 @@ def ep_assemble_nl(metas, details):
     return ep_finalize(items, appear, name_by_slug, seats, order_hint=EP_NL_ORDER, members=members)
 
 
+def _ep_date(r):
+    try:
+        return date.fromisoformat((r.get("timestamp") or "")[:10])
+    except ValueError:
+        return None
+
+
 def collect_ep(p):
-    """Europees Parlement. Two breakdowns of the same roll-call votes (term >= term_start): by
-    European political group (default) or by Dutch national party (breakout='nl'). The fetched vote
-    details are cached and shared between the two scopes, so the second adds no extra requests."""
-    metas, details = ep_load(p["base"].rstrip("/"), date(*p["term_start"]))
+    """Europees Parlement. Two breakdowns of the same roll-call votes, per term: by European political
+    group (default) or by Dutch national party (breakout='nl'). All details are fetched once down to
+    the oldest EP term and cached, so every term × breakdown reuses the cache with no extra requests."""
+    term_start, term_end = term_bounds(p)
+    metas_all, details = ep_load(p["base"].rstrip("/"), ep_floor())
+    metas = [r for r in metas_all if in_term(_ep_date(r), term_start, term_end)]
     if not metas:
         return None
     return ep_assemble_nl(metas, details) if p.get("breakout") == "nl" else ep_assemble_groups(metas, details)
@@ -1676,6 +1799,63 @@ def province_granularity(p):
 ADAPTERS = {"go": collect_go, "ibabs": collect_ibabs, "tk": collect_tk, "ek": collect_ek,
             "ep": collect_ep, "notubiz": collect_notubiz}
 
+# A scope with more stemmingen than this is written as per-year chunk files + a small manifest,
+# instead of one large JSON. Only the multi-year Tweede Kamer terms cross it. Wins: the browser
+# loads the newest year first and the rest in the background (fast first paint); each year is a
+# separately cacheable file, so a weekly re-run only rewrites the current year (no huge git churn).
+CHUNK_MIN = 5000
+
+
+def _year_chunks(fn):
+    """Existing per-year chunk files for a scope key (so a shrunk/unchunked scope can clean up)."""
+    return sorted(DATA_DIR.glob(fn + ".*.json"))
+
+
+def write_scope(key, out, compact):
+    """Write a scope's data. Small scopes -> one {key}.json (as before). Large scopes -> a manifest
+    {key}.json ({meta, parties, chunked:true, chunks:[{year,count,file}]}) + one {key}.{year}.json
+    per calendar year. Returns True if chunked."""
+    sep = (",", ":") if compact else None
+    indent = None if compact else 2
+
+    def dump(obj):
+        return json.dumps(obj, ensure_ascii=False, separators=sep, indent=indent)
+
+    moties = out["moties"]
+    if len(moties) <= CHUNK_MIN:
+        for stale in _year_chunks(key):   # drop chunk files if this scope used to be chunked
+            stale.unlink()
+        (DATA_DIR / f"{key}.json").write_text(dump(out), encoding="utf-8")
+        return False
+
+    by_year = {}
+    for m in moties:
+        by_year.setdefault((m["date"] or "0000")[:4], []).append(m)
+    keep = set()
+    chunks = []
+    for y in sorted(by_year, reverse=True):   # newest year first
+        fn = f"{key}.{y}.json"
+        keep.add(DATA_DIR / fn)
+        (DATA_DIR / fn).write_text(dump({"moties": by_year[y]}), encoding="utf-8")
+        chunks.append({"year": y, "count": len(by_year[y]), "file": fn})
+    for stale in _year_chunks(key):          # remove chunk files for years that vanished
+        if stale not in keep:
+            stale.unlink()
+    manifest = {"meta": out["meta"], "parties": out["parties"], "chunked": True, "chunks": chunks}
+    (DATA_DIR / f"{key}.json").write_text(dump(manifest), encoding="utf-8")
+    return True
+
+
+def scope_entry(p, available, chunked):
+    """One catalog scope row. termNote (cabinet nickname / period) drives the picker-card subtitle;
+    chunked tells the frontend to load per-year chunk files instead of one JSON."""
+    e = {"key": p["key"], "name": p["name"], "available": available, "style": p.get("style", {})}
+    if p.get("termNote"):
+        e["termNote"] = p["termNote"]
+    if chunked:
+        e["chunked"] = True
+    return e
+
 
 def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -1688,10 +1868,16 @@ def main():
     for p in SOURCES:
         catkey = p.get("category", "provinciale-staten")
         if only and p["key"] not in only:
-            available = (DATA_DIR / f"{p['key']}.json").exists()
+            existing = DATA_DIR / f"{p['key']}.json"
+            available = existing.exists()
+            chunked = False
+            if available:
+                try:
+                    chunked = bool(json.loads(existing.read_text(encoding="utf-8")).get("chunked"))
+                except (ValueError, OSError):
+                    chunked = False
             print(f"== {p['name']} == (skipped; reuse existing data: {available})")
-            scopes_by_cat.setdefault(catkey, []).append(
-                {"key": p["key"], "name": p["name"], "available": available, "style": p.get("style", {})})
+            scopes_by_cat.setdefault(catkey, []).append(scope_entry(p, available, chunked))
             if available and default is None:
                 default = {"category": catkey, "scope": p["key"]}
             continue
@@ -1718,25 +1904,27 @@ def main():
                     "note": p.get("note", ""),
                     "granularity": province_granularity(p),
                     "counts": {"moties": len(res["moties"]), "parties": len(res["parties"])},
+                    # Full type set, so a chunked scope's filter chips are complete before every
+                    # year-chunk has loaded (types are otherwise derived from the loaded moties).
+                    "types": sorted({m["type"] for m in res["moties"]}),
                 },
                 "parties": res["parties"],
                 "moties": res["moties"],
             }
-            # Large datasets (TK) write minified to keep the static file small.
-            dump = (json.dumps(out, ensure_ascii=False, separators=(",", ":")) if p.get("compact")
-                    else json.dumps(out, ensure_ascii=False, indent=2))
-            (DATA_DIR / f"{p['key']}.json").write_text(dump, encoding="utf-8")
+            # Large datasets (multi-year TK terms) are minified AND split into per-year chunk files;
+            # smaller scopes stay a single JSON. write_scope handles both and reports which it did.
+            chunked = write_scope(p["key"], out, p.get("compact"))
             by_type = {}
             for m in res["moties"]:
                 by_type[m["type"]] = by_type.get(m["type"], 0) + 1
-            print(f"  wrote {p['key']}.json: {len(res['moties'])} stemmingen, "
-                  f"{len(res['parties'])} fracties, {by_type}")
+            print(f"  wrote {p['key']}.json{' (chunked per year)' if chunked else ''}: "
+                  f"{len(res['moties'])} stemmingen, {len(res['parties'])} fracties, {by_type}")
         else:
+            chunked = False
             print("  (no data — marked unavailable)")
-        scopes_by_cat.setdefault(catkey, []).append(
-            # style travels in the index so the frontend can theme the header *before* the (large)
-            # data file finishes loading — avoids a flash of the previous/default colour.
-            {"key": p["key"], "name": p["name"], "available": available, "style": p.get("style", {})})
+        # style travels in the index so the frontend can theme the header *before* the (large) data
+        # file finishes loading — avoids a flash of the previous/default colour.
+        scopes_by_cat.setdefault(catkey, []).append(scope_entry(p, available, chunked))
         if available and default is None:
             default = {"category": catkey, "scope": p["key"]}
 

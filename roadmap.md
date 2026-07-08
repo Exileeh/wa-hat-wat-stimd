@@ -370,10 +370,37 @@ combined fractie's spelling from `ChristenUnie/SGP` to `ChristenUnie-SGP` in 202
 `Stemmen` on the item detail before concluding a province has no structured votes. Reliability:
 [coverage.md](coverage.md).
 
+### Phase 10 — Historische termijnen (Tweede/Eerste Kamer, EP)  ✅ DONE (2026-07-07)
+Extended the national/EU bodies **back through previous parliamentary terms** — chosen over the
+Provinciale-Staten previous cycle because the national sources are cleaner (3 stable APIs vs 12 vendors)
+and, crucially, **actually hold the coronaperiode as structured data** (the Notubiz PS provinces recorded
+zero structured votes during 2020, so a PS backfill would have a COVID hole). Now covers the coronawet /
+avondklok / toeslagenaffaire votes.
+- **Model:** one **scope per term** (reuses the category→scope picker as a "Kies een periode" term
+  picker). Config-only: `term_bounds(p)` = `[term_start, term_end)`; the current term leaves `term_end`
+  open, previous terms set it to the next term's installation. `_TK_TERMS`/`_EK_TERMS`/`_EP_TERMS` append
+  the previous-term SOURCES entries programmatically from each body's current entry. **22 SOURCES total.**
+- **Adapters:** TK adds one OData date bound; EK and EP were refactored to crawl/fetch their full history
+  **once** (cached by base) and slice per term — otherwise every term would re-crawl.
+- **What shipped:** TK **2008→now, all 6 previous terms, tier A** (~58 k stemmingen); EK **2019–2023 +
+  2015–2019** (tier B); EP **2019–2024** (tier A, Europese-fracties view). ~60 k extra stemmingen.
+- **Source limits found:** TK OData floor = **2008** (hard cliff); EK archive reaches only **~mid-2015**
+  (2011/2007 terms not served → dropped); EP floor = **2019-07** (HowTheyVote). EP **NL-afvaardiging is
+  current-term only** — the historical MEP→partij map isn't built, so we ship only the complete group
+  view for 2019–2024 (follow-up: build it from EP Open Data).
+- **Size solve (the real one, not "accept it"):** a 4-year TK term is ~14 MB. `write_scope` chunks any
+  scope > 5 000 stemmingen into **per-year files + a manifest**; the frontend loads the newest year first
+  (~0.8 MB first paint), streams the rest in the background, and adds a **"Periode" (jaar) filter** that
+  caps the rendered table while analyses use the whole loaded term. Weekly reruns only rewrite the current
+  year's file (no git churn). Verified end-to-end with Playwright. Reliability: [coverage.md](coverage.md).
+
 ## Decisions
 **Locked**
-- Period: **current term per body** — Provinciale Staten & Eerste Kamer 2023–2027, Europees Parlement
-  2024–2029, Tweede Kamer 2025–heden. (Each body's term boundary is set in its `SOURCES` entry.)
+- Period: **current term per body** for Provinciale Staten (2023–2027). For the national/EU bodies we now
+  keep **every past term** as a selectable scope (Phase 10): Tweede Kamer back to 2008, Eerste Kamer to
+  ~2015, Europees Parlement to 2019. Each term's boundary is `term_bounds(p)` in its `SOURCES` entry.
+  (PS previous cycle deliberately **not** pursued: 4 of 9 live PS provinces recorded no structured votes
+  during the coronaperiode, so a PS backfill would have a COVID hole — the national bodies don't.)
 - Stack: Python (collector). Frontend: dependency-light HTML/JS.
 - Body: Provinciale Staten plenair only (commissies don't hold the votes).
 - Source strategy: per-vendor adapters; OpenBesluitvorming only as cross-check/fallback.

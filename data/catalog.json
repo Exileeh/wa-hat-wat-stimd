@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T09:59:28+00:00",
+  "generated_at": "2026-07-07T13:28:09+00:00",
   "default": {
     "category": "provinciale-staten",
     "scope": "utrecht"
@@ -8,29 +8,115 @@
     {
       "key": "tweede-kamer",
       "name": "Tweede Kamer",
-      "scopeNoun": null,
-      "blurb": "Het landelijke parlement — moties, amendementen en wetsvoorstellen.",
+      "scopeNoun": "periode",
+      "blurb": "Het landelijke parlement — moties, amendementen en wetsvoorstellen, per Kamer sinds 2008.",
       "scopes": [
         {
           "key": "tweede-kamer",
-          "name": "Tweede Kamer",
+          "name": "2025–heden",
           "available": true,
           "style": {
             "accent": "#154273",
             "headerBg": "#0c1d33"
-          }
+          },
+          "termNote": "huidige Kamer"
+        },
+        {
+          "key": "tweede-kamer-2023",
+          "name": "2023–2025",
+          "available": true,
+          "style": {
+            "accent": "#154273",
+            "headerBg": "#0c1d33"
+          },
+          "termNote": "kabinet-Schoof",
+          "chunked": true
+        },
+        {
+          "key": "tweede-kamer-2021",
+          "name": "2021–2023",
+          "available": true,
+          "style": {
+            "accent": "#154273",
+            "headerBg": "#0c1d33"
+          },
+          "termNote": "Rutte IV",
+          "chunked": true
+        },
+        {
+          "key": "tweede-kamer-2017",
+          "name": "2017–2021",
+          "available": true,
+          "style": {
+            "accent": "#154273",
+            "headerBg": "#0c1d33"
+          },
+          "termNote": "Rutte III · coronaperiode",
+          "chunked": true
+        },
+        {
+          "key": "tweede-kamer-2012",
+          "name": "2012–2017",
+          "available": true,
+          "style": {
+            "accent": "#154273",
+            "headerBg": "#0c1d33"
+          },
+          "termNote": "Rutte II",
+          "chunked": true
+        },
+        {
+          "key": "tweede-kamer-2010",
+          "name": "2010–2012",
+          "available": true,
+          "style": {
+            "accent": "#154273",
+            "headerBg": "#0c1d33"
+          },
+          "termNote": "Rutte I",
+          "chunked": true
+        },
+        {
+          "key": "tweede-kamer-2008",
+          "name": "2006–2010",
+          "available": true,
+          "style": {
+            "accent": "#154273",
+            "headerBg": "#0c1d33"
+          },
+          "termNote": "Balkenende IV · vanaf 2008"
         }
       ]
     },
     {
       "key": "eerste-kamer",
       "name": "Eerste Kamer",
-      "scopeNoun": null,
-      "blurb": "De senaat — stemmingen over wetsvoorstellen en moties (op fractieniveau).",
+      "scopeNoun": "periode",
+      "blurb": "De senaat — stemmingen over wetsvoorstellen en moties (op fractieniveau), per Kamer sinds 2007.",
       "scopes": [
         {
           "key": "eerste-kamer",
-          "name": "Eerste Kamer",
+          "name": "2023–2027",
+          "available": true,
+          "style": {
+            "accent": "#00669a",
+            "headerBg": "#0a2e44"
+          },
+          "termNote": "huidige Kamer"
+        },
+        {
+          "key": "eerste-kamer-2019",
+          "name": "2019–2023",
+          "available": true,
+          "style": {
+            "accent": "#00669a",
+            "headerBg": "#0a2e44"
+          },
+          "termNote": "coronaperiode"
+        },
+        {
+          "key": "eerste-kamer-2015",
+          "name": "2015–2019",
           "available": true,
           "style": {
             "accent": "#00669a",
@@ -132,7 +218,7 @@
       "key": "europees-parlement",
       "name": "Europees Parlement",
       "scopeNoun": "weergave",
-      "blurb": "Het EU-parlement — per Europese fractie, of de Nederlandse afvaardiging.",
+      "blurb": "Het EU-parlement — per Europese fractie of de Nederlandse afvaardiging, sinds 2019.",
       "scopes": [
         {
           "key": "europees-parlement",
@@ -141,7 +227,8 @@
           "style": {
             "accent": "#003399",
             "headerBg": "#041f4a"
-          }
+          },
+          "termNote": "2024–2029"
         },
         {
           "key": "europees-parlement-nl",
@@ -150,7 +237,18 @@
           "style": {
             "accent": "#003399",
             "headerBg": "#041f4a"
-          }
+          },
+          "termNote": "2024–2029"
+        },
+        {
+          "key": "europees-parlement-2019",
+          "name": "Europese fracties",
+          "available": true,
+          "style": {
+            "accent": "#003399",
+            "headerBg": "#041f4a"
+          },
+          "termNote": "2019–2024"
         }
       ]
     }

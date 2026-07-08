@@ -26,7 +26,47 @@ the "things we DO have" companion to [provinces.md](provinces.md) (feasibility f
 | **Gelderland** | Prov. Staten | Notubiz | API + portal HTML parse | per **member** (counts) | motie, amendement, besluit, ordevoorstel | 429 | **aangenomen + verworpen** | **A — exact** |
 | **Overijssel** | Prov. Staten | Notubiz | API + portal HTML parse | per **member** (counts) | motie, amendement, besluit | 549 | **aangenomen + verworpen** | **A — exact** |
 
-(Counts as of the last refresh; the weekly Action keeps them current. TK = current term, 2025–heden.)
+(Counts as of the last refresh; the weekly Action keeps them current. The table shows the **current**
+term of each national/EU body; **previous terms** are live too — see *Historische termijnen* below.)
+
+## Historische termijnen (Tweede Kamer, Eerste Kamer, Europees Parlement)
+
+Each national/EU body now keeps **one scope per parliamentary term**, selectable in the frontend
+("Kies een periode"). The collector slices each body's full history by `term_bounds` = `[term_start,
+term_end)`; the current term leaves `term_end` open. This covers the coronaperiode (2020–2021) for all
+three bodies — the votes on the coronawet, avondklok, steunpakketten, toeslagenaffaire, etc.
+
+| Body | Termijn | Vendor | Items | Tier | Notes |
+|---|---|---|---|---|---|
+| **Tweede Kamer** | 2023–2025 (Schoof) | TK OData | 7 903 | A | |
+| **Tweede Kamer** | 2021–2023 (Rutte IV) | TK OData | 11 254 | A | |
+| **Tweede Kamer** | 2017–2021 (Rutte III · corona) | TK OData | 14 178 | A | |
+| **Tweede Kamer** | 2012–2017 (Rutte II) | TK OData | 13 826 | A | |
+| **Tweede Kamer** | 2010–2012 (Rutte I) | TK OData | 6 090 | A | |
+| **Tweede Kamer** | 2006–2010 (Balkenende IV) | TK OData | 4 561 | A | **vanaf 2008** — OData's roll-call floor (niets ervoor) |
+| **Eerste Kamer** | 2019–2023 (corona) | eerstekamer.nl | 638 | B | |
+| **Eerste Kamer** | 2015–2019 | eerstekamer.nl | 354 | B | |
+| **Europees Parlement** | 2019–2024 (corona) | HowTheyVote.eu | 1 807 | A | **Europese fracties** only — see NL-gap below |
+
+~60 000 extra stemmingen. Tiers match each body's current term (TK/EP tier A exact, EK tier B
+faction-level). **Source limits found while building this:**
+- **TK floor is 2008** — the OData `Stemming` data has a hard cliff; nothing is published before 2008
+  (so the 2006–2010 Kamer is covered only from 2008 on).
+- **EK reaches back to ~mid-2015 only** — the "stemmingen per vergaderdag" archive's *eerdere
+  stemmingen* chain ends there (probed: 145 pages), so the 2011 and 2007 EK terms aren't served as
+  data and aren't advertised.
+- **EP floor is 2019-07** — HowTheyVote only holds the 9th term onward; there is no pre-2019 EP data.
+- **EP Nederlandse afvaardiging is current-term only.** The by-national-party view needs a per-term
+  MEP→partij map, and `EP_NL_PARTY` covers only the 10th (current) term; 22 of the 9th-term NL MEPs
+  are unmapped. Rather than ship an *incomplete* NL breakdown for 2019–2024 we ship only the complete
+  **Europese-fracties** view for that term. (Follow-up: build the historical NL map from EP Open Data.)
+
+**Large terms are chunked.** A multi-year TK term is ~14 MB, which is too big to load as one file, so
+`write_scope` splits any scope > 5 000 stemmingen into **per-year files + a small manifest**
+(`{key}.{year}.json` + `{key}.json`). The frontend loads the newest year first (fast first paint,
+~0.8 MB), streams the rest in the background, and offers a **"Periode" (jaar) filter** that caps the
+rendered table to one year while the analyses still use the whole loaded term. Weekly reruns only
+rewrite the current year's file (no multi-MB git churn). Small scopes stay a single JSON as before.
 
 > **Provinciale Staten: 9/12 live** (Utrecht, Noord-Holland, Limburg, **Noord-Brabant**, Zuid-Holland,
 > Fryslân, Gelderland, Overijssel, **Drenthe**). The 4 Notubiz provinces above are **tier A** — the portal
@@ -104,14 +144,18 @@ How directly the published data maps to what we display, and how much we infer.
   outcome and we mirror it; on ~1 item in ~3,000 it disagrees with the seat tally (e.g. a motie
   marked *aangenomen* that tallies 71–79). We don't "correct" the source — the per-fractie positions
   are still shown verbatim. 75–75 ties recorded as *verworpen* are genuine, not errors.
-- **Term scope:** current Kamer only (votes on/after 2025-11-13, the first stemming after the Oct 2025
-  election). Old-composition votes cast before installation are excluded so fractie sizes stay consistent.
+- **Term scope:** one scope **per Kamer**, back to 2008 (OData's floor). Each is date-bounded to
+  `[installatie, installatie van de volgende Kamer)` so fractie sizes stay consistent within a term.
+  The current term is votes on/after 2025-11-13. See *Historische termijnen* above for the full list.
 - **Mid-term composition:** `ActorFractie` is the name *at vote time*. We merge the pure rename
   GroenLinks-PvdA → "Progressief Nederland" into one column; splinters (Groep Markuszower, Keijzer)
   are their own columns — accurate, if visually busier. `Persoon_Id`-level (hoofdelijke) votes aren't
   split out; we aggregate to the fractie.
-- **Volume:** ~2,945 stemmingen → the data file is ~3 MB (written minified) and the table renders
-  ~3k rows × ~18 columns. Watch frontend performance; revisit pagination/virtualization if it drags.
+- **Volume:** the current term is ~2,945 stemmingen (~3 MB minified, single file). The **previous
+  terms are much larger** — a 4-year term is ~14 k stemmingen / ~14 MB — so any scope > 5 000 items is
+  written as **per-year chunk files + a manifest** and the frontend loads the newest year first, streams
+  the rest, and caps the table via the "Periode" filter (see *Historische termijnen*). This is the
+  pagination/virtualization the single-file note used to flag.
 
 ### Europees Parlement — tier A (exact per-group counts)
 The unit is the **European political group** (EPP, S&D, PfE, ECR, Renew, Greens/EFA, The Left, ESN,
@@ -124,8 +168,10 @@ NI), not individual MEPs or Dutch MEPs only. Source: HowTheyVote.eu `stats.by_gr
    **`is_main`** (final) votes per file — amendment/procedural sub-votes are excluded.
 3. **Group at vote time.** `stats.by_group` reflects each MEP's group on the vote date, so a mid-term
    group switch is handled upstream — no inference on our side.
-4. **Term:** current (10th) EP, votes on/after 2024-07-16. (Differs from the TK and EK terms.) Includes
-   **verworpen** (47 of 545).
+4. **Term:** current (10th) EP, votes on/after 2024-07-16 (differs from the TK and EK terms), plus the
+   **9th term (2019–2024)** as a previous-period scope — *Europese fracties* view only (the NL-delegation
+   map is current-term only; see *Historische termijnen*). HowTheyVote's floor is 2019-07, so there is
+   no earlier EP data. Includes **verworpen** (47 of 545 in the current term).
 5. **Licence/attribution:** HowTheyVote.eu data is ODbL; `meta.license` credits HowTheyVote.eu + the
    European Parliament.
 6. **Two views (scopes).** *Europese fracties* (by Euro-group) and *Nederlandse afvaardiging* (the 31
@@ -152,8 +198,9 @@ sides are named, so nothing is inferred), but less than the tier-A sources (no s
    split). Member-level counts are not retained (faction-level by design).
 5. **Splinter fracties** (Fractie-Beukering, -Van de Sanden, -Visseren-Hamakers, -Walenkamp, -Kemperman,
    -Van Gasteren) appear as their own columns when named; one-member references ("het lid X") are merged
-   into the matching fractie. **Term:** current EK (installed 13 June 2023) — note this differs from the
-   TK term (2025–heden).
+   into the matching fractie. **Term:** one scope per EK, current (installed 13 June 2023) plus
+   **2019–2023** and **2015–2019**. The site's stemmingen archive only reaches ~mid-2015, so older EK
+   terms aren't served as data (see *Historische termijnen*). The EK term differs from the TK term.
 
 ### Utrecht — tier A
 - The dataset mirrors the GO stemgedrag module. The main residual risk is upstream: if a vote was
