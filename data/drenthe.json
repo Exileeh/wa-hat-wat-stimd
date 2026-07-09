@@ -3,7 +3,7 @@
     "province": "Drenthe",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-07-05T09:33:17+00:00",
+    "generated_at": "2026-07-09T09:54:47+00:00",
     "source": "https://www.drentsparlement.nl",
     "sourceName": "",
     "license": "Open data - Provincie Drenthe / Statengriffie (Drents Parlement)",
@@ -14,9 +14,15 @@
     "note": "",
     "granularity": "member",
     "counts": {
-      "moties": 443,
+      "moties": 445,
       "parties": 15
-    }
+    },
+    "types": [
+      "amendement",
+      "besluit",
+      "motie",
+      "overig"
+    ]
   },
   "parties": [
     {
@@ -1198,6 +1204,99 @@
       }
     },
     {
+      "id": 28853,
+      "documentId": 29846,
+      "meetingItemId": 9251,
+      "meetingId": 1399,
+      "date": "2026-07-01",
+      "title": "M 2026-44 Motie Aandacht voor psychische impact van het TLGD op boeren en hun gezinnen",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.drentsparlement.nl/vergaderingen/document/29846",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sterk-lokaal-drenthe": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 12,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "lijstpormes": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 31,
+        "disagree": 1
+      }
+    },
+    {
       "id": 28852,
       "documentId": 29845,
       "meetingItemId": 9251,
@@ -1928,6 +2027,99 @@
         "volt": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "lijstpormes": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 30,
+        "disagree": 8
+      }
+    },
+    {
+      "id": 28776,
+      "documentId": 29821,
+      "meetingItemId": 9252,
+      "meetingId": 1399,
+      "date": "2026-07-01",
+      "title": "M 2026-34 Motie Van A naar Beter",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.drentsparlement.nl/vergaderingen/document/29821",
+      "votes": {
+        "pvda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sterk-lokaal-drenthe": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 14,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
           "abstain": 0
         },
         "lijstpormes": {

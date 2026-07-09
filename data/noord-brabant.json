@@ -3,7 +3,7 @@
     "province": "Noord-Brabant",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-07-06T09:59:28+00:00",
+    "generated_at": "2026-07-09T10:48:41+00:00",
     "source": "https://noordbrabant.bestuurlijkeinformatie.nl",
     "sourceName": "",
     "license": "Open data - Provincie Noord-Brabant (iBabs publieksportaal)",
@@ -16,7 +16,11 @@
     "counts": {
       "moties": 628,
       "parties": 15
-    }
+    },
+    "types": [
+      "amendement",
+      "motie"
+    ]
   },
   "parties": [
     {

@@ -2,8 +2,8 @@
   "meta": {
     "province": "Europese fracties",
     "body": "Europees Parlement",
-    "term": "2024-2029",
-    "generated_at": "2026-07-02T09:56:54+00:00",
+    "term": "2024–2029",
+    "generated_at": "2026-07-09T11:05:14+00:00",
     "source": "https://howtheyvote.eu",
     "sourceName": "HowTheyVote.eu",
     "license": "Open data - HowTheyVote.eu (ODbL 1.0) op basis van hoofdelijke stemmingen (roll-call) van het Europees Parlement",
@@ -14,9 +14,16 @@
     "note": "Stemmen per Europese fractie met exacte aantallen (voor/tegen/onthouding), op basis van hoofdelijke stemmingen (roll-call). Alleen eindstemmingen; stemmingen bij handopsteken worden niet hoofdelijk geregistreerd. Bron: HowTheyVote.eu (ODbL), Europees Parlement.",
     "granularity": "member",
     "counts": {
-      "moties": 580,
+      "moties": 609,
       "parties": 9
-    }
+    },
+    "types": [
+      "begroting",
+      "initiatiefverslag",
+      "overig",
+      "resolutie",
+      "wetgeving"
+    ]
   },
   "parties": [
     {
@@ -57,6 +64,1746 @@
     }
   ],
   "moties": [
+    {
+      "id": 195638,
+      "date": "2026-07-08",
+      "title": "The impact of the 1974 Turkish invasion on Cypriot women and girls, and the crimes committed by Turkish forces and consequences on gender equality",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195638",
+      "votes": {
+        "epp": {
+          "agree": 162,
+          "disagree": 0,
+          "abstain": 4
+        },
+        "sd": {
+          "agree": 123,
+          "disagree": 0,
+          "abstain": 2
+        },
+        "pfe": {
+          "agree": 57,
+          "disagree": 10,
+          "abstain": 4
+        },
+        "ecr": {
+          "agree": 48,
+          "disagree": 1,
+          "abstain": 24
+        },
+        "renew": {
+          "agree": 73,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "green-efa": {
+          "agree": 49,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 40,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "ni": {
+          "agree": 20,
+          "disagree": 1,
+          "abstain": 5
+        },
+        "esn": {
+          "agree": 3,
+          "disagree": 20,
+          "abstain": 2
+        }
+      },
+      "totals": {
+        "agree": 575,
+        "disagree": 33
+      }
+    },
+    {
+      "id": 194919,
+      "date": "2026-07-08",
+      "title": "Protocol amending the Euro-Mediterranean Aviation Agreement between the European Community and its Member States, of the one part, and the Kingdom of Morocco, of the other part, to take account of the accession to the European Union of the Republic of Croatia",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/194919",
+      "votes": {
+        "epp": {
+          "agree": 172,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sd": {
+          "agree": 126,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 73,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 69,
+          "disagree": 0,
+          "abstain": 2
+        },
+        "renew": {
+          "agree": 74,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 49,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "gue-ngl": {
+          "agree": 15,
+          "disagree": 12,
+          "abstain": 14
+        },
+        "ni": {
+          "agree": 21,
+          "disagree": 4,
+          "abstain": 3
+        },
+        "esn": {
+          "agree": 26,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 625,
+        "disagree": 16
+      }
+    },
+    {
+      "id": 195341,
+      "date": "2026-07-08",
+      "title": "Objection pursuant to Rule 115(2) and (3): Genetically modified maize DP202216 x NK603 x DAS-40278-9 and its sub-combinations DP202216 x NK603, DP202216 x DAS-40278-9",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195341",
+      "votes": {
+        "epp": {
+          "agree": 53,
+          "disagree": 104,
+          "abstain": 2
+        },
+        "sd": {
+          "agree": 99,
+          "disagree": 8,
+          "abstain": 6
+        },
+        "pfe": {
+          "agree": 52,
+          "disagree": 11,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 55,
+          "disagree": 11,
+          "abstain": 2
+        },
+        "renew": {
+          "agree": 32,
+          "disagree": 33,
+          "abstain": 3
+        },
+        "green-efa": {
+          "agree": 45,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 40,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 20,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "esn": {
+          "agree": 21,
+          "disagree": 0,
+          "abstain": 1
+        }
+      },
+      "totals": {
+        "agree": 417,
+        "disagree": 167
+      }
+    },
+    {
+      "id": 195414,
+      "date": "2026-07-08",
+      "title": "Objection pursuant to Rule 115(2) and (3), and (4)(c): Lead in certain fishing tackle",
+      "type": "overig",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195414",
+      "votes": {
+        "epp": {
+          "agree": 26,
+          "disagree": 143,
+          "abstain": 1
+        },
+        "sd": {
+          "agree": 0,
+          "disagree": 126,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 74,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 69,
+          "disagree": 3,
+          "abstain": 2
+        },
+        "renew": {
+          "agree": 0,
+          "disagree": 71,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 0,
+          "disagree": 50,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 0,
+          "disagree": 39,
+          "abstain": 1
+        },
+        "ni": {
+          "agree": 15,
+          "disagree": 12,
+          "abstain": 1
+        },
+        "esn": {
+          "agree": 13,
+          "disagree": 11,
+          "abstain": 2
+        }
+      },
+      "totals": {
+        "agree": 197,
+        "disagree": 455
+      }
+    },
+    {
+      "id": 195543,
+      "date": "2026-07-08",
+      "title": "Objection pursuant to Rule 115(2) and (3) of the Rules of Procedures on the Commission Implementing Decision renewing the authorisation for the placing on the market of products containing, consisting of or produced from genetically modified maize NK603 × T25 pursuant to Regulation (EC) No 1829/2003 of the European Parliament and of the Council (D115002)",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195543",
+      "votes": {
+        "epp": {
+          "agree": 62,
+          "disagree": 112,
+          "abstain": 2
+        },
+        "sd": {
+          "agree": 111,
+          "disagree": 8,
+          "abstain": 5
+        },
+        "pfe": {
+          "agree": 59,
+          "disagree": 13,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 59,
+          "disagree": 14,
+          "abstain": 1
+        },
+        "renew": {
+          "agree": 30,
+          "disagree": 41,
+          "abstain": 3
+        },
+        "green-efa": {
+          "agree": 49,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 40,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 25,
+          "disagree": 1,
+          "abstain": 2
+        },
+        "esn": {
+          "agree": 25,
+          "disagree": 0,
+          "abstain": 1
+        }
+      },
+      "totals": {
+        "agree": 460,
+        "disagree": 189
+      }
+    },
+    {
+      "id": 195340,
+      "date": "2026-07-08",
+      "title": "Objection pursuant to Rule 115(2) and (3) of the Rules of Procedure to the draft Commission implementing Decision authorising the placing on the market of products containing, consisting of or produced from genetically modified soybean MON 87705 × MON 87708 × MON 89788 pursuant to Regulation (EC) No 1829/2003 of the European Parliament and of the Council",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195340",
+      "votes": {
+        "epp": {
+          "agree": 64,
+          "disagree": 109,
+          "abstain": 2
+        },
+        "sd": {
+          "agree": 110,
+          "disagree": 8,
+          "abstain": 6
+        },
+        "pfe": {
+          "agree": 58,
+          "disagree": 13,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 58,
+          "disagree": 11,
+          "abstain": 1
+        },
+        "renew": {
+          "agree": 37,
+          "disagree": 33,
+          "abstain": 4
+        },
+        "green-efa": {
+          "agree": 49,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 41,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 25,
+          "disagree": 1,
+          "abstain": 2
+        },
+        "esn": {
+          "agree": 24,
+          "disagree": 0,
+          "abstain": 1
+        }
+      },
+      "totals": {
+        "agree": 466,
+        "disagree": 175
+      }
+    },
+    {
+      "id": 194991,
+      "date": "2026-07-08",
+      "title": "Interim report in view of the consent procedure on the Political, Economic and Cooperation Strategic Partnership Agreement between the EU and Mexico",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/194991",
+      "votes": {
+        "epp": {
+          "agree": 171,
+          "disagree": 0,
+          "abstain": 4
+        },
+        "sd": {
+          "agree": 102,
+          "disagree": 1,
+          "abstain": 24
+        },
+        "pfe": {
+          "agree": 7,
+          "disagree": 66,
+          "abstain": 1
+        },
+        "ecr": {
+          "agree": 4,
+          "disagree": 28,
+          "abstain": 43
+        },
+        "renew": {
+          "agree": 74,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 41
+        },
+        "gue-ngl": {
+          "agree": 2,
+          "disagree": 38,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 6,
+          "disagree": 16,
+          "abstain": 6
+        },
+        "esn": {
+          "agree": 22,
+          "disagree": 3,
+          "abstain": 1
+        }
+      },
+      "totals": {
+        "agree": 388,
+        "disagree": 161
+      }
+    },
+    {
+      "id": 195415,
+      "date": "2026-07-08",
+      "title": "EU–Mexico Interim Agreement on Trade",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195415",
+      "votes": {
+        "epp": {
+          "agree": 167,
+          "disagree": 0,
+          "abstain": 6
+        },
+        "sd": {
+          "agree": 105,
+          "disagree": 15,
+          "abstain": 6
+        },
+        "pfe": {
+          "agree": 14,
+          "disagree": 23,
+          "abstain": 35
+        },
+        "ecr": {
+          "agree": 51,
+          "disagree": 25,
+          "abstain": 0
+        },
+        "renew": {
+          "agree": 73,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "green-efa": {
+          "agree": 33,
+          "disagree": 14,
+          "abstain": 3
+        },
+        "gue-ngl": {
+          "agree": 2,
+          "disagree": 34,
+          "abstain": 4
+        },
+        "ni": {
+          "agree": 7,
+          "disagree": 17,
+          "abstain": 4
+        },
+        "esn": {
+          "agree": 22,
+          "disagree": 3,
+          "abstain": 1
+        }
+      },
+      "totals": {
+        "agree": 474,
+        "disagree": 131
+      }
+    },
+    {
+      "id": 194904,
+      "date": "2026-07-08",
+      "title": "Conclusion, on behalf of the European Union, of the Council of Europe Convention on the protection of the environment through criminal law",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/194904",
+      "votes": {
+        "epp": {
+          "agree": 171,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "sd": {
+          "agree": 126,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 15,
+          "disagree": 54,
+          "abstain": 5
+        },
+        "ecr": {
+          "agree": 4,
+          "disagree": 15,
+          "abstain": 57
+        },
+        "renew": {
+          "agree": 74,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 50,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 40,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 19,
+          "disagree": 4,
+          "abstain": 5
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 25,
+          "abstain": 1
+        }
+      },
+      "totals": {
+        "agree": 499,
+        "disagree": 99
+      }
+    },
+    {
+      "id": 195361,
+      "date": "2026-07-08",
+      "title": "Commission Delegated Regulation amending Commission Delegated Regulation (EU) 2019/807 to introduce a trajectory to gradually decrease the contribution of high indirect land-use change-risk biofuels, bioliquids and biomass fuels to renewable energy targets",
+      "type": "overig",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195361",
+      "votes": {
+        "epp": {
+          "agree": 159,
+          "disagree": 14,
+          "abstain": 0
+        },
+        "sd": {
+          "agree": 27,
+          "disagree": 94,
+          "abstain": 2
+        },
+        "pfe": {
+          "agree": 72,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 76,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "renew": {
+          "agree": 14,
+          "disagree": 40,
+          "abstain": 19
+        },
+        "green-efa": {
+          "agree": 0,
+          "disagree": 48,
+          "abstain": 1
+        },
+        "gue-ngl": {
+          "agree": 0,
+          "disagree": 40,
+          "abstain": 1
+        },
+        "ni": {
+          "agree": 16,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "esn": {
+          "agree": 24,
+          "disagree": 0,
+          "abstain": 1
+        }
+      },
+      "totals": {
+        "agree": 388,
+        "disagree": 248
+      }
+    },
+    {
+      "id": 194918,
+      "date": "2026-07-08",
+      "title": "Agreement, in the form of an Exchange of Letters, between the European Union and the Kingdom of Morocco amending and supplementing the Agreement for scientific and technological cooperation between the European Union and the Kingdom of Morocco setting out the terms and conditions for the participation of the Kingdom of Morocco in the Partnership for Research and Innovation in the Mediterranean Area (PRIMA)",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/194918",
+      "votes": {
+        "epp": {
+          "agree": 172,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sd": {
+          "agree": 108,
+          "disagree": 0,
+          "abstain": 3
+        },
+        "pfe": {
+          "agree": 61,
+          "disagree": 5,
+          "abstain": 6
+        },
+        "ecr": {
+          "agree": 67,
+          "disagree": 4,
+          "abstain": 5
+        },
+        "renew": {
+          "agree": 72,
+          "disagree": 1,
+          "abstain": 1
+        },
+        "green-efa": {
+          "agree": 45,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 1,
+          "disagree": 20,
+          "abstain": 19
+        },
+        "ni": {
+          "agree": 21,
+          "disagree": 4,
+          "abstain": 3
+        },
+        "esn": {
+          "agree": 26,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 573,
+        "disagree": 35
+      }
+    },
+    {
+      "id": 195067,
+      "date": "2026-07-08",
+      "title": "2025 Commission report on Ukraine",
+      "type": "initiatiefverslag",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195067",
+      "votes": {
+        "epp": {
+          "agree": 163,
+          "disagree": 0,
+          "abstain": 4
+        },
+        "sd": {
+          "agree": 115,
+          "disagree": 4,
+          "abstain": 3
+        },
+        "pfe": {
+          "agree": 3,
+          "disagree": 57,
+          "abstain": 14
+        },
+        "ecr": {
+          "agree": 55,
+          "disagree": 11,
+          "abstain": 9
+        },
+        "renew": {
+          "agree": 71,
+          "disagree": 0,
+          "abstain": 3
+        },
+        "green-efa": {
+          "agree": 44,
+          "disagree": 0,
+          "abstain": 6
+        },
+        "gue-ngl": {
+          "agree": 6,
+          "disagree": 17,
+          "abstain": 17
+        },
+        "ni": {
+          "agree": 2,
+          "disagree": 23,
+          "abstain": 2
+        },
+        "esn": {
+          "agree": 1,
+          "disagree": 24,
+          "abstain": 1
+        }
+      },
+      "totals": {
+        "agree": 460,
+        "disagree": 136
+      }
+    },
+    {
+      "id": 194935,
+      "date": "2026-07-08",
+      "title": "2025 Commission report on Serbia",
+      "type": "initiatiefverslag",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/194935",
+      "votes": {
+        "epp": {
+          "agree": 163,
+          "disagree": 2,
+          "abstain": 8
+        },
+        "sd": {
+          "agree": 125,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 6,
+          "disagree": 62,
+          "abstain": 3
+        },
+        "ecr": {
+          "agree": 44,
+          "disagree": 5,
+          "abstain": 28
+        },
+        "renew": {
+          "agree": 71,
+          "disagree": 1,
+          "abstain": 2
+        },
+        "green-efa": {
+          "agree": 48,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 6,
+          "disagree": 3,
+          "abstain": 32
+        },
+        "ni": {
+          "agree": 4,
+          "disagree": 19,
+          "abstain": 4
+        },
+        "esn": {
+          "agree": 1,
+          "disagree": 23,
+          "abstain": 2
+        }
+      },
+      "totals": {
+        "agree": 468,
+        "disagree": 116
+      }
+    },
+    {
+      "id": 194917,
+      "date": "2026-07-08",
+      "title": "2025 Commission report on Moldova",
+      "type": "initiatiefverslag",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/194917",
+      "votes": {
+        "epp": {
+          "agree": 170,
+          "disagree": 1,
+          "abstain": 3
+        },
+        "sd": {
+          "agree": 126,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 7,
+          "disagree": 55,
+          "abstain": 11
+        },
+        "ecr": {
+          "agree": 66,
+          "disagree": 6,
+          "abstain": 4
+        },
+        "renew": {
+          "agree": 74,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 49,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 9,
+          "disagree": 11,
+          "abstain": 20
+        },
+        "ni": {
+          "agree": 3,
+          "disagree": 18,
+          "abstain": 7
+        },
+        "esn": {
+          "agree": 1,
+          "disagree": 24,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 505,
+        "disagree": 115
+      }
+    },
+    {
+      "id": 194993,
+      "date": "2026-07-07",
+      "title": "Temporary support and payment of advances regarding the increased fertiliser prices due to the Middle East crisis",
+      "type": "wetgeving",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/194993",
+      "votes": {
+        "epp": {
+          "agree": 170,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sd": {
+          "agree": 124,
+          "disagree": 0,
+          "abstain": 3
+        },
+        "pfe": {
+          "agree": 75,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 74,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "renew": {
+          "agree": 73,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "green-efa": {
+          "agree": 4,
+          "disagree": 40,
+          "abstain": 5
+        },
+        "gue-ngl": {
+          "agree": 10,
+          "disagree": 19,
+          "abstain": 2
+        },
+        "ni": {
+          "agree": 21,
+          "disagree": 1,
+          "abstain": 4
+        },
+        "esn": {
+          "agree": 25,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 576,
+        "disagree": 62
+      }
+    },
+    {
+      "id": 195338,
+      "date": "2026-07-07",
+      "title": "Temporary derogation from certain provisions of the ePrivacy Directive to combat online child sexual abuse",
+      "type": "wetgeving",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/195338",
+      "votes": {
+        "epp": {
+          "agree": 172,
+          "disagree": 1,
+          "abstain": 2
+        },
+        "sd": {
+          "agree": 80,
+          "disagree": 39,
+          "abstain": 5
+        },
+        "pfe": {
+          "agree": 34,
+          "disagree": 35,
+          "abstain": 1
+        },
+        "ecr": {
+          "agree": 17,
+          "disagree": 52,
+          "abstain": 2
+        },
+        "renew": {
+          "agree": 28,
+          "disagree": 46,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 0,
+          "disagree": 49,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 0,
+          "disagree": 29,
+          "abstain": 1
+        },
+        "ni": {
+          "agree": 0,
+          "disagree": 28,
+          "abstain": 0
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 25,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 331,
+        "disagree": 304
+      }
+    },
+    {
+      "id": 195006,
+      "date": "2026-07-07",
+      "title": "Recommendation on the changing geopolitical situation in East Asia and the need for closer cooperation with like-minded partners in the region",
+      "type": "initiatiefverslag",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/195006",
+      "votes": {
+        "epp": {
+          "agree": 176,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sd": {
+          "agree": 126,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "pfe": {
+          "agree": 38,
+          "disagree": 3,
+          "abstain": 34
+        },
+        "ecr": {
+          "agree": 69,
+          "disagree": 1,
+          "abstain": 4
+        },
+        "renew": {
+          "agree": 72,
+          "disagree": 1,
+          "abstain": 1
+        },
+        "green-efa": {
+          "agree": 50,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 1,
+          "disagree": 17,
+          "abstain": 12
+        },
+        "ni": {
+          "agree": 8,
+          "disagree": 15,
+          "abstain": 4
+        },
+        "esn": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 23
+        }
+      },
+      "totals": {
+        "agree": 542,
+        "disagree": 37
+      }
+    },
+    {
+      "id": 194879,
+      "date": "2026-07-07",
+      "title": "Mobilisation of the European Union Solidarity Fund: assistance to Romania, Cyprus and Spain with regard to natural disasters in 2025",
+      "type": "begroting",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/194879",
+      "votes": {
+        "epp": {
+          "agree": 173,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sd": {
+          "agree": 126,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 68,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 70,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "renew": {
+          "agree": 74,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 50,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 30,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 27,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "esn": {
+          "agree": 24,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 642,
+        "disagree": 13
+      }
+    },
+    {
+      "id": 194920,
+      "date": "2026-07-07",
+      "title": "Mobilisation of the European Globalisation Adjustment Fund: Application EGF/2026/000 TA 2026 - Technical assistance at the initiative of the Commission",
+      "type": "begroting",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/194920",
+      "votes": {
+        "epp": {
+          "agree": 174,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sd": {
+          "agree": 128,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 8,
+          "disagree": 11,
+          "abstain": 56
+        },
+        "ecr": {
+          "agree": 62,
+          "disagree": 9,
+          "abstain": 3
+        },
+        "renew": {
+          "agree": 67,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 50,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 30,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 13,
+          "disagree": 13,
+          "abstain": 2
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 24,
+          "abstain": 1
+        }
+      },
+      "totals": {
+        "agree": 532,
+        "disagree": 64
+      }
+    },
+    {
+      "id": 195010,
+      "date": "2026-07-07",
+      "title": "International road passenger transport services by coach and bus in the border regions: cabotage operations between Austria and Switzerland",
+      "type": "wetgeving",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/195010",
+      "votes": {
+        "epp": {
+          "agree": 175,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sd": {
+          "agree": 128,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 75,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 75,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "renew": {
+          "agree": 73,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 50,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 30,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 23,
+          "disagree": 3,
+          "abstain": 1
+        },
+        "esn": {
+          "agree": 25,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 654,
+        "disagree": 4
+      }
+    },
+    {
+      "id": 194870,
+      "date": "2026-07-07",
+      "title": "Implementation and delivery of the Sustainable Development Goals in view of the 2026 High-Level Political Forum",
+      "type": "initiatiefverslag",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/194870",
+      "votes": {
+        "epp": {
+          "agree": 124,
+          "disagree": 3,
+          "abstain": 39
+        },
+        "sd": {
+          "agree": 120,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 0,
+          "disagree": 74,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 0,
+          "disagree": 69,
+          "abstain": 1
+        },
+        "renew": {
+          "agree": 72,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 48,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 28
+        },
+        "ni": {
+          "agree": 7,
+          "disagree": 14,
+          "abstain": 6
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 25,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 374,
+        "disagree": 185
+      }
+    },
+    {
+      "id": 194951,
+      "date": "2026-07-07",
+      "title": "Financial activities of the European Investment Bank Group – annual report 2025",
+      "type": "initiatiefverslag",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/194951",
+      "votes": {
+        "epp": {
+          "agree": 167,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sd": {
+          "agree": 4,
+          "disagree": 120,
+          "abstain": 1
+        },
+        "pfe": {
+          "agree": 15,
+          "disagree": 41,
+          "abstain": 17
+        },
+        "ecr": {
+          "agree": 54,
+          "disagree": 11,
+          "abstain": 6
+        },
+        "renew": {
+          "agree": 70,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 2,
+          "disagree": 47,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 0,
+          "disagree": 23,
+          "abstain": 7
+        },
+        "ni": {
+          "agree": 4,
+          "disagree": 15,
+          "abstain": 8
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 23,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 316,
+        "disagree": 281
+      }
+    },
+    {
+      "id": 194890,
+      "date": "2026-07-07",
+      "title": "Draft amending budget No 1/2026: entering the surplus of the financial year 2025",
+      "type": "begroting",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/194890",
+      "votes": {
+        "epp": {
+          "agree": 169,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "sd": {
+          "agree": 119,
+          "disagree": 3,
+          "abstain": 6
+        },
+        "pfe": {
+          "agree": 7,
+          "disagree": 47,
+          "abstain": 21
+        },
+        "ecr": {
+          "agree": 57,
+          "disagree": 6,
+          "abstain": 12
+        },
+        "renew": {
+          "agree": 67,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 50,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 17,
+          "disagree": 3,
+          "abstain": 11
+        },
+        "ni": {
+          "agree": 6,
+          "disagree": 11,
+          "abstain": 9
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 25,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 492,
+        "disagree": 101
+      }
+    },
+    {
+      "id": 195275,
+      "date": "2026-07-07",
+      "title": "Digital assets – challenges for the competitiveness and integrity of the European Union’s financial system",
+      "type": "initiatiefverslag",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/195275",
+      "votes": {
+        "epp": {
+          "agree": 159,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sd": {
+          "agree": 106,
+          "disagree": 0,
+          "abstain": 12
+        },
+        "pfe": {
+          "agree": 7,
+          "disagree": 14,
+          "abstain": 50
+        },
+        "ecr": {
+          "agree": 42,
+          "disagree": 5,
+          "abstain": 19
+        },
+        "renew": {
+          "agree": 67,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 46
+        },
+        "gue-ngl": {
+          "agree": 0,
+          "disagree": 27,
+          "abstain": 3
+        },
+        "ni": {
+          "agree": 8,
+          "disagree": 15,
+          "abstain": 4
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 23,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 390,
+        "disagree": 86
+      }
+    },
+    {
+      "id": 194881,
+      "date": "2026-07-07",
+      "title": "Coordination of social security systems",
+      "type": "wetgeving",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/194881",
+      "votes": {
+        "epp": {
+          "agree": 135,
+          "disagree": 22,
+          "abstain": 19
+        },
+        "sd": {
+          "agree": 123,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 42,
+          "disagree": 20,
+          "abstain": 13
+        },
+        "ecr": {
+          "agree": 43,
+          "disagree": 30,
+          "abstain": 2
+        },
+        "renew": {
+          "agree": 65,
+          "disagree": 8,
+          "abstain": 1
+        },
+        "green-efa": {
+          "agree": 47,
+          "disagree": 0,
+          "abstain": 3
+        },
+        "gue-ngl": {
+          "agree": 31,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 21,
+          "disagree": 3,
+          "abstain": 4
+        },
+        "esn": {
+          "agree": 4,
+          "disagree": 2,
+          "abstain": 19
+        }
+      },
+      "totals": {
+        "agree": 511,
+        "disagree": 87
+      }
+    },
+    {
+      "id": 194903,
+      "date": "2026-07-07",
+      "title": "Competition policy – annual report 2025",
+      "type": "initiatiefverslag",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/194903",
+      "votes": {
+        "epp": {
+          "agree": 174,
+          "disagree": 0,
+          "abstain": 2
+        },
+        "sd": {
+          "agree": 126,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 8,
+          "disagree": 18,
+          "abstain": 49
+        },
+        "ecr": {
+          "agree": 44,
+          "disagree": 5,
+          "abstain": 24
+        },
+        "renew": {
+          "agree": 74,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 50,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 18,
+          "disagree": 9,
+          "abstain": 4
+        },
+        "ni": {
+          "agree": 7,
+          "disagree": 5,
+          "abstain": 16
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 24,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 501,
+        "disagree": 61
+      }
+    },
+    {
+      "id": 195007,
+      "date": "2026-07-07",
+      "title": "Air passenger rights",
+      "type": "wetgeving",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/195007",
+      "votes": {
+        "epp": {
+          "agree": 176,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sd": {
+          "agree": 128,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 74,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 68,
+          "disagree": 5,
+          "abstain": 1
+        },
+        "renew": {
+          "agree": 74,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 50,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 31,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 23,
+          "disagree": 4,
+          "abstain": 1
+        },
+        "esn": {
+          "agree": 22,
+          "disagree": 2,
+          "abstain": 1
+        }
+      },
+      "totals": {
+        "agree": 646,
+        "disagree": 12
+      }
+    },
+    {
+      "id": 194877,
+      "date": "2026-07-07",
+      "title": "A new strategy for media literacy and digital learning",
+      "type": "initiatiefverslag",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/194877",
+      "votes": {
+        "epp": {
+          "agree": 169,
+          "disagree": 0,
+          "abstain": 4
+        },
+        "sd": {
+          "agree": 127,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 0,
+          "disagree": 58,
+          "abstain": 17
+        },
+        "ecr": {
+          "agree": 0,
+          "disagree": 29,
+          "abstain": 41
+        },
+        "renew": {
+          "agree": 71,
+          "disagree": 0,
+          "abstain": 3
+        },
+        "green-efa": {
+          "agree": 49,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "gue-ngl": {
+          "agree": 29,
+          "disagree": 0,
+          "abstain": 2
+        },
+        "ni": {
+          "agree": 2,
+          "disagree": 16,
+          "abstain": 10
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 25,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 447,
+        "disagree": 128
+      }
+    },
+    {
+      "id": 194927,
+      "date": "2026-07-07",
+      "title": "A coherent tax framework for the EU's financial sector",
+      "type": "initiatiefverslag",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/194927",
+      "votes": {
+        "epp": {
+          "agree": 157,
+          "disagree": 10,
+          "abstain": 7
+        },
+        "sd": {
+          "agree": 123,
+          "disagree": 0,
+          "abstain": 4
+        },
+        "pfe": {
+          "agree": 12,
+          "disagree": 62,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 0,
+          "disagree": 41,
+          "abstain": 32
+        },
+        "renew": {
+          "agree": 74,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 49,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 2,
+          "disagree": 4,
+          "abstain": 25
+        },
+        "ni": {
+          "agree": 1,
+          "disagree": 10,
+          "abstain": 17
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 25,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 418,
+        "disagree": 152
+      }
+    },
     {
       "id": 194546,
       "date": "2026-06-18",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-08T05:30:01+00:00",
+  "generated_at": "2026-07-09T11:17:30+00:00",
   "default": {
     "category": "provinciale-staten",
     "scope": "utrecht"
@@ -179,7 +179,7 @@
         {
           "key": "zuid-holland",
           "name": "Zuid-Holland",
-          "available": true,
+          "available": false,
           "style": {
             "accent": "#a07400",
             "headerBg": "#221900"
@@ -188,7 +188,7 @@
         {
           "key": "fryslan",
           "name": "Fryslân",
-          "available": true,
+          "available": false,
           "style": {
             "accent": "#c8102e",
             "headerBg": "#2a0a0c"
@@ -197,7 +197,7 @@
         {
           "key": "gelderland",
           "name": "Gelderland",
-          "available": true,
+          "available": false,
           "style": {
             "accent": "#0d5eaf",
             "headerBg": "#08203d"
@@ -206,7 +206,7 @@
         {
           "key": "overijssel",
           "name": "Overijssel",
-          "available": true,
+          "available": false,
           "style": {
             "accent": "#147ab3",
             "headerBg": "#0a2a3d"

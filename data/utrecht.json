@@ -3,7 +3,7 @@
     "province": "Utrecht",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-07-02T09:24:44+00:00",
+    "generated_at": "2026-07-09T09:51:50+00:00",
     "source": "https://www.stateninformatie.provincie-utrecht.nl",
     "sourceName": "",
     "license": "Open data - Provincie Utrecht / Statengriffie",
@@ -14,9 +14,15 @@
     "note": "",
     "granularity": "member",
     "counts": {
-      "moties": 566,
+      "moties": 610,
       "parties": 16
-    }
+    },
+    "types": [
+      "amendement",
+      "besluit",
+      "motie",
+      "ordevoorstel"
+    ]
   },
   "parties": [
     {
@@ -85,6 +91,3878 @@
     }
   ],
   "moties": [
+    {
+      "id": 29035,
+      "documentId": 65284,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "Statenvoorstel Kadernota 2027-2030 (besluit)",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65284",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 31,
+        "disagree": 15
+      }
+    },
+    {
+      "id": 29030,
+      "documentId": 65285,
+      "meetingItemId": 25353,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "SV Zienswijze Ontwerpbegroting 2027 GO HWL (besluit)",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65285",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 46,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 29016,
+      "documentId": 65257,
+      "meetingItemId": 25407,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "Motie van treurnis afschot wolf, ingediend door Partij voor de Dieren, UtrechtNu! & SP",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65257",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 8,
+        "disagree": 37
+      }
+    },
+    {
+      "id": 29028,
+      "documentId": 65097,
+      "meetingItemId": 25357,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-89 Geef lijn 127 een eerlijke kans, ingediend door UtrechtNu! e.a",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65097",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 41,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 29027,
+      "documentId": 65096,
+      "meetingItemId": 25357,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-88 Geef lijn 122 een eerlijke kans, ingediend door UtrechtNu! e.a",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65096",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 41,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 29026,
+      "documentId": 65163,
+      "meetingItemId": 25384,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-87 Stikstofplannen kabinet, ingediend door Forum voor Democratie & 50PLUS",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65163",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 14,
+        "disagree": 32
+      }
+    },
+    {
+      "id": 29025,
+      "documentId": 65099,
+      "meetingItemId": 25356,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-86 Bescherm het meest kwetsbare, ingediend door Partij voor de Dieren",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65099",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 25,
+        "disagree": 19
+      }
+    },
+    {
+      "id": 29067,
+      "documentId": 65216,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-85 Ondernemers in het Binnenveld, ingediend door SGP e.a.",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65216",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 27,
+        "disagree": 19
+      }
+    },
+    {
+      "id": 29066,
+      "documentId": 65198,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-84 Benut Groen Gas, ingediend door SGP e.a.",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65198",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 28
+      }
+    },
+    {
+      "id": 29065,
+      "documentId": 65168,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-83 Veilige rotonde Donderberg, ingediend door SGP e.a.",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65168",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 43,
+        "disagree": 3
+      }
+    },
+    {
+      "id": 29064,
+      "documentId": 65165,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-82 Dorpendeals met lange adem, ingediend door SGP e.a.",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65165",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 38,
+        "disagree": 8
+      }
+    },
+    {
+      "id": 29063,
+      "documentId": 65268,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-81a KRW doelen haal je samen, ingediend door SGP e.a.",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65268",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 43,
+        "disagree": 3
+      }
+    },
+    {
+      "id": 29062,
+      "documentId": 65191,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-80 Grip op grond, ingediend door PvdA e.a.",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65191",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 31,
+        "disagree": 15
+      }
+    },
+    {
+      "id": 29061,
+      "documentId": 65152,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-79 Jaarlijkse verdieping MIP Mobiliteit, ingediend door Volt",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65152",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 5,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 2,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 32,
+        "disagree": 14
+      }
+    },
+    {
+      "id": 29060,
+      "documentId": 65142,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-78 Start-ups hebben de toekomst in en voor Utrecht, ingediend door Volt, D66 & 50PLUS",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65142",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 25,
+        "disagree": 21
+      }
+    },
+    {
+      "id": 29059,
+      "documentId": 65185,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-77 Natuurbeheer niet in de kou, ingediend door Volt e.a.",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65185",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 42,
+        "disagree": 4
+      }
+    },
+    {
+      "id": 29058,
+      "documentId": 65136,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-76 Europese tech hubs in Utrecht, ingediend door Volt & 50PLUS",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65136",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 15,
+        "disagree": 31
+      }
+    },
+    {
+      "id": 29057,
+      "documentId": 65282,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-75a Versterken van Europese digitale autonomie in Utrecht, ingediend door Volt e.a.",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65282",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 42,
+        "disagree": 4
+      }
+    },
+    {
+      "id": 29056,
+      "documentId": 65145,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-74 Europa zichtbaar in Utrecht, ingediend door Volt, D66 & 50PLUS",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65145",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 25,
+        "disagree": 21
+      }
+    },
+    {
+      "id": 29055,
+      "documentId": 65203,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-72 Samen Sterk op één net, ingediend door CDA & PvdA",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65203",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 45,
+        "disagree": 1
+      }
+    },
+    {
+      "id": 29054,
+      "documentId": 65205,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-71 Schipper kan ik blijven overvaren, ingediend door CDA & SGP",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65205",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 24,
+        "disagree": 22
+      }
+    },
+    {
+      "id": 29053,
+      "documentId": 65202,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-70 De Drie G’s van Woudenberg, ingediend door CDA, GroenLinks & SGP",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65202",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 30,
+        "disagree": 16
+      }
+    },
+    {
+      "id": 29052,
+      "documentId": 65280,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-68a Vrijwilligers maken de provincie Utrecht sterker en mooier, ingediend door D66",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65280",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 40,
+        "disagree": 6
+      }
+    },
+    {
+      "id": 29051,
+      "documentId": 65200,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-67 Het Provinciehuis als koelteplek, ingediend door D66, GroenLinks & Volt",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65200",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 31,
+        "disagree": 15
+      }
+    },
+    {
+      "id": 29050,
+      "documentId": 65258,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-66 Meer ruimte voor groene, gezonde en klimaatbestendige steden en dorpen, ingediend door D66 e.a.",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65258",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 44,
+        "disagree": 2
+      }
+    },
+    {
+      "id": 29049,
+      "documentId": 65141,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-64 Repareer Circulair, ingediend door Partij voor de Dieren",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65141",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 7,
+        "disagree": 39
+      }
+    },
+    {
+      "id": 29048,
+      "documentId": 65161,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-62 Provinciaal Licht op de Bisschopsweg, ingediend door VVD e.a.",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65161",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 43,
+        "disagree": 3
+      }
+    },
+    {
+      "id": 29047,
+      "documentId": 65254,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-61 Verkenning Pilot Veilige Fietsroutes, ingediend door VVD",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65254",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 20,
+        "disagree": 26
+      }
+    },
+    {
+      "id": 29046,
+      "documentId": 65194,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-60 Structurele inzet natuurbrandpreventie voor behoud en laten floreren Utrechtse Heuvelrug, ingediend door VVD e.a.",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65194",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 46,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 29045,
+      "documentId": 65279,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-59a Kansen pakken met Kansenmakersteam, ingediend door VVD e.a.",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65279",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 38,
+        "disagree": 8
+      }
+    },
+    {
+      "id": 29044,
+      "documentId": 65283,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-58a Onderzoek inzet AI bij ambtelijke capaciteitsknelpunten, ingediend door VVD e.a.",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65283",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 29,
+        "disagree": 17
+      }
+    },
+    {
+      "id": 29043,
+      "documentId": 65213,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-57 Kernenergie begint met kennis, ingediend door UtrechtNu! e.a.",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65213",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 14,
+        "disagree": 32
+      }
+    },
+    {
+      "id": 29042,
+      "documentId": 65211,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-56 Van volgen naar voorbereiden: Utrechtse routekaart kernenergie, ingediend door UtrechtNu! e.a.",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65211",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 14,
+        "disagree": 32
+      }
+    },
+    {
+      "id": 29041,
+      "documentId": 65210,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-54 Woningbouw en bedrijvigheid voorop bij schaarse netcapaciteit, ingediend door UtrechtNu! en 50PLUS",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65210",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 14,
+        "disagree": 32
+      }
+    },
+    {
+      "id": 29040,
+      "documentId": 65277,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-53a Maak netcongestie inzichtelijk, ingediend door UtrechtNu! en 50PLUS",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65277",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 46,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 29039,
+      "documentId": 65190,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-51 Niet alleen woorden, maar ook gebaren, ingediend door GroenLinks e.a.",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65190",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 46,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 29038,
+      "documentId": 65186,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-50 Meerjarig kasstroomoverzicht Merwedelijn en niet-OV investeringen, ingediend door BBB, SP & 50PLUS",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65186",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 28
+      }
+    },
+    {
+      "id": 29037,
+      "documentId": 65171,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-49 Jonge boeren award, ingediend door BBB, Volt & 50PLUS",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65171",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 39,
+        "disagree": 7
+      }
+    },
+    {
+      "id": 29036,
+      "documentId": 65281,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "M26-47a Financiële gevolgen van het UPLG volledig in beeld, ingediend door BBB & 50PLUS",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65281",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 22,
+        "disagree": 24
+      }
+    },
+    {
+      "id": 29029,
+      "documentId": 65197,
+      "meetingItemId": 25353,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "A26-35 Duurzaam financieel beleid Hollandse Waterlinies, ingediend door SGP, VVD & BBB",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65197",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 34,
+        "disagree": 12
+      }
+    },
+    {
+      "id": 29034,
+      "documentId": 65166,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "A26-34 Vaste formatie netcongestie, ingediend door SGP, ChristenUnie & 50PLUS",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65166",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 26,
+        "disagree": 20
+      }
+    },
+    {
+      "id": 29033,
+      "documentId": 65167,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "A26-33 Samenwerking is geen leefbaarheid, ingediend door SGP e.a.",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65167",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 27,
+        "disagree": 19
+      }
+    },
+    {
+      "id": 29032,
+      "documentId": 65204,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "A26-32 Van vliegende start naar vaste toekomst, ingediend door D66 e.a.",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65204",
+      "votes": {
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 45,
+        "disagree": 1
+      }
+    },
+    {
+      "id": 29031,
+      "documentId": 65170,
+      "meetingItemId": 25161,
+      "meetingId": 11134,
+      "date": "2026-07-08",
+      "title": "A26-31 Afwegingskader bovenlokale civieltechnische kunstwerken, ingediend door BBB, ChristenUnie & 50PLUS",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.stateninformatie.provincie-utrecht.nl/vergaderingen/document/65170",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "utrechtnu": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 16,
+        "disagree": 30
+      }
+    },
     {
       "id": 28178,
       "documentId": 64821,
