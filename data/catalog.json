@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-07-09T11:17:30+00:00",
+  "generated_at": "2026-07-16T09:35:25+00:00",
   "default": {
     "category": "provinciale-staten",
-    "scope": "utrecht"
+    "scope": "drenthe"
   },
   "categories": [
     {
@@ -134,7 +134,7 @@
         {
           "key": "utrecht",
           "name": "Utrecht",
-          "available": true,
+          "available": false,
           "style": {
             "accent": "#EC0000",
             "headerBg": "#1b1b1b"
