@@ -3,7 +3,7 @@
     "province": "Limburg",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-08-06T09:31:56+00:00",
+    "generated_at": "2026-08-13T08:22:28+00:00",
     "source": "https://limburg.bestuurlijkeinformatie.nl",
     "sourceName": "",
     "license": "Open data - Provincie Limburg (iBabs publieksportaal)",
@@ -96,7 +96,7 @@
       "type": "motie",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/320488ff-6246-4cd0-99c4-b86dba53cca1",
+      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/8ac77fc0-b830-4e1b-b4eb-a0242ea0357f",
       "votes": {
         "bbb": {
           "agree": 9,
@@ -396,7 +396,7 @@
       "type": "motie",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/d8a197fa-aa36-4367-89a3-6c890e20bd83",
+      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/55a08579-8392-452d-a1c5-57b37abc7fc2",
       "votes": {
         "cda": {
           "agree": 5,
@@ -9846,7 +9846,7 @@
       "type": "motie",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/2da673bd-f012-4ab6-83dc-2fd45b72aba1",
+      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/4ff32600-f17b-4472-afd9-0c47c6c3e872",
       "votes": {
         "cda": {
           "agree": 5,
