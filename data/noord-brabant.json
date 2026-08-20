@@ -3,7 +3,7 @@
     "province": "Noord-Brabant",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-08-13T09:20:11+00:00",
+    "generated_at": "2026-08-20T07:50:07+00:00",
     "source": "https://noordbrabant.bestuurlijkeinformatie.nl",
     "sourceName": "",
     "license": "Open data - Provincie Noord-Brabant (iBabs publieksportaal)",
@@ -14,7 +14,7 @@
     "note": "Stemmen zijn per fractie met aantallen geregistreerd (aangenomen én verworpen). Moties/amendementen zonder hoofdelijke stemming zijn niet opgenomen.",
     "granularity": "member",
     "counts": {
-      "moties": 628,
+      "moties": 633,
       "parties": 15
     },
     "types": [
@@ -85,6 +85,546 @@
     }
   ],
   "moties": [
+    {
+      "id": 1623,
+      "date": "2026-08-14",
+      "title": "M105-2026 Herstel fouten",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://noordbrabant.bestuurlijkeinformatie.nl/Reports/Item/1d5aba7b-15b2-474e-bb37-6cda84119aac",
+      "votes": {
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie-sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "lokaal-brabant": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 7,
+        "disagree": 8
+      }
+    },
+    {
+      "id": 1622,
+      "date": "2026-08-14",
+      "title": "M104-2026 Eerst serieus overleg met de vijf pluimveehouders en rapportage aan Provinciale Staten",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://noordbrabant.bestuurlijkeinformatie.nl/Reports/Item/e51103b7-1b65-402a-b7f1-4c51e23714ad",
+      "votes": {
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie-sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "lokaal-brabant": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 7,
+        "disagree": 8
+      }
+    },
+    {
+      "id": 1621,
+      "date": "2026-08-14",
+      "title": "M103-2026 Geen noodzaak",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://noordbrabant.bestuurlijkeinformatie.nl/Reports/Item/2dc6e1e2-728e-40c4-b103-acebb7bd52e4",
+      "votes": {
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie-sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "lokaal-brabant": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 6,
+        "disagree": 9
+      }
+    },
+    {
+      "id": 1620,
+      "date": "2026-08-14",
+      "title": "M102-2026 Motie van Wantrouwen",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://noordbrabant.bestuurlijkeinformatie.nl/Reports/Item/3ad5ecb8-5bba-46ea-9251-d430c1b95217",
+      "votes": {
+        "bbb": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie-sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "lokaal-brabant": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 5,
+        "disagree": 10
+      }
+    },
+    {
+      "id": 1619,
+      "date": "2026-08-14",
+      "title": "M101-2026 Een rechtvaardige behandeling van de pluimveehouders",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://noordbrabant.bestuurlijkeinformatie.nl/Reports/Item/003aa82f-8884-477c-bad4-cad2aea1bb9f",
+      "votes": {
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie-sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "lokaal-brabant": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 6,
+        "disagree": 9
+      }
+    },
+    {
+      "id": 1618,
+      "date": "2026-08-14",
+      "title": "M100-2026 Samen kijken wat mogelijk is",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://noordbrabant.bestuurlijkeinformatie.nl/Reports/Item/2d261975-c657-4cc3-824c-3031a4c5758e",
+      "votes": {
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "lokaal-brabant": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "christenunie-sgp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 9,
+        "disagree": 6
+      }
+    },
     {
       "id": 1615,
       "date": "2026-07-03",
@@ -8583,96 +9123,6 @@
       "totals": {
         "agree": 12,
         "disagree": 3
-      }
-    },
-    {
-      "id": 10000222,
-      "date": "2026-04-10",
-      "title": "A13-2026 Perspectiefnota OV gelden",
-      "type": "amendement",
-      "result": "rejected",
-      "resultLabel": "Verworpen",
-      "source": "https://noordbrabant.bestuurlijkeinformatie.nl/Reports/Item/095cb4f9-6255-4b8b-ac42-fd7d1dfd88cb",
-      "votes": {
-        "bbb": {
-          "agree": 9,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "cda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "christenunie-sgp": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "fvd": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "ja21": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvdd": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "50plus": {
-          "agree": 0,
-          "disagree": 1,
-          "abstain": 0
-        },
-        "d66": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
-        "groenlinks": {
-          "agree": 0,
-          "disagree": 5,
-          "abstain": 0
-        },
-        "lokaal-brabant": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
-        "pvv": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
-        "sp": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
-        "volt": {
-          "agree": 0,
-          "disagree": 1,
-          "abstain": 0
-        },
-        "vvd": {
-          "agree": 0,
-          "disagree": 9,
-          "abstain": 0
-        }
-      },
-      "totals": {
-        "agree": 6,
-        "disagree": 9
       }
     },
     {

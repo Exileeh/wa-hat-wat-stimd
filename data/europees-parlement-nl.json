@@ -3,7 +3,7 @@
     "province": "Nederlandse afvaardiging",
     "body": "Europees Parlement",
     "term": "2024–2029",
-    "generated_at": "2026-08-13T09:35:02+00:00",
+    "generated_at": "2026-08-20T08:03:33+00:00",
     "source": "https://howtheyvote.eu",
     "sourceName": "HowTheyVote.eu",
     "license": "Open data - HowTheyVote.eu (ODbL 1.0) op basis van hoofdelijke stemmingen (roll-call) van het Europees Parlement",
@@ -14,7 +14,7 @@
     "note": "De 31 Nederlandse Europarlementariërs, gegroepeerd per Nederlandse partij, met exacte aantallen (voor/tegen/onthouding). Alleen hoofdelijke eindstemmingen. Bron: HowTheyVote.eu (ODbL) + Europees Parlement Open Data (fractie-indeling).",
     "granularity": "member",
     "counts": {
-      "moties": 110,
+      "moties": 100,
       "parties": 10
     },
     "types": [
@@ -6267,16 +6267,16 @@
       }
     },
     {
-      "id": 180948,
-      "date": "2025-11-13",
-      "title": "Certain corporate sustainability reporting and due diligence requirements",
+      "id": 174273,
+      "date": "2025-04-01",
+      "title": "Macro-financial assistance to Egypt",
       "type": "wetgeving",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/180948",
+      "source": "https://howtheyvote.eu/votes/174273",
       "votes": {
         "vvd": {
-          "agree": 3,
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -6286,8 +6286,8 @@
           "abstain": 0
         },
         "pvv": {
-          "agree": 4,
-          "disagree": 0,
+          "agree": 0,
+          "disagree": 6,
           "abstain": 0
         },
         "gl-pvda": {
@@ -6296,8 +6296,8 @@
           "abstain": 0
         },
         "d66": {
-          "agree": 0,
-          "disagree": 3,
+          "agree": 3,
+          "disagree": 0,
           "abstain": 0
         },
         "nsc": {
@@ -6323,20 +6323,20 @@
       },
       "totals": {
         "agree": 14,
-        "disagree": 13
+        "disagree": 16
       }
     },
     {
-      "id": 180245,
-      "date": "2025-10-22",
-      "title": "Polarisation and increased repression in Serbia, one year after the Novi Sad tragedy",
-      "type": "resolutie",
+      "id": 171703,
+      "date": "2025-02-11",
+      "title": "Conclusion of an agreement between the European Union and the government of the People's Republic of Bangladesh on certain aspects of air services",
+      "type": "wetgeving",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/180245",
+      "source": "https://howtheyvote.eu/votes/171703",
       "votes": {
         "vvd": {
-          "agree": 2,
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -6346,69 +6346,9 @@
           "abstain": 0
         },
         "pvv": {
-          "agree": 0,
-          "disagree": 0,
-          "abstain": 6
-        },
-        "gl-pvda": {
-          "agree": 8,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "d66": {
           "agree": 3,
           "disagree": 0,
           "abstain": 0
-        },
-        "nsc": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "sgp": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "bbb": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "volt": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        }
-      },
-      "totals": {
-        "agree": 22,
-        "disagree": 0
-      }
-    },
-    {
-      "id": 179770,
-      "date": "2025-10-09",
-      "title": "United response to recent Russian violations of the EU Member States’ airspace and critical infrastructure",
-      "type": "resolutie",
-      "result": "accepted",
-      "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/179770",
-      "votes": {
-        "vvd": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "cda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvv": {
-          "agree": 0,
-          "disagree": 0,
-          "abstain": 5
         },
         "gl-pvda": {
           "agree": 7,
@@ -6425,6 +6365,11 @@
           "disagree": 0,
           "abstain": 0
         },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
         "sgp": {
           "agree": 1,
           "disagree": 0,
@@ -6442,138 +6387,18 @@
         }
       },
       "totals": {
-        "agree": 21,
+        "agree": 27,
         "disagree": 0
       }
     },
     {
-      "id": 178988,
-      "date": "2025-09-11",
-      "title": "Detention of EU citizens in the occupied areas of Cyprus",
+      "id": 170765,
+      "date": "2024-11-28",
+      "title": "Recommendation on smoke- and aerosol-free environments",
       "type": "resolutie",
-      "result": "accepted",
-      "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/178988",
-      "votes": {
-        "vvd": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "cda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvv": {
-          "agree": 5,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "gl-pvda": {
-          "agree": 7,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "d66": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "nsc": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "sgp": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "bbb": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "volt": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        }
-      },
-      "totals": {
-        "agree": 26,
-        "disagree": 0
-      }
-    },
-    {
-      "id": 178384,
-      "date": "2025-09-09",
-      "title": "Public procurement",
-      "type": "initiatiefverslag",
-      "result": "accepted",
-      "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/178384",
-      "votes": {
-        "vvd": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "cda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvv": {
-          "agree": 5,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "gl-pvda": {
-          "agree": 6,
-          "disagree": 0,
-          "abstain": 1
-        },
-        "d66": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "nsc": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "sgp": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "bbb": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "volt": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        }
-      },
-      "totals": {
-        "agree": 26,
-        "disagree": 0
-      }
-    },
-    {
-      "id": 178008,
-      "date": "2025-07-09",
-      "title": "Objection pursuant to Rule 115(2) and (3): Deforestation Regulation - list of countries presenting a low or high risk",
-      "type": "resolutie",
-      "result": "accepted",
-      "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/178008",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://howtheyvote.eu/votes/170765",
       "votes": {
         "vvd": {
           "agree": 0,
@@ -6581,28 +6406,28 @@
           "abstain": 0
         },
         "cda": {
-          "agree": 3,
+          "agree": 2,
           "disagree": 0,
           "abstain": 0
         },
         "pvv": {
-          "agree": 6,
-          "disagree": 0,
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         },
         "gl-pvda": {
           "agree": 0,
-          "disagree": 8,
+          "disagree": 7,
           "abstain": 0
         },
         "d66": {
           "agree": 0,
-          "disagree": 3,
+          "disagree": 2,
           "abstain": 0
         },
         "nsc": {
-          "agree": 1,
-          "disagree": 0,
+          "agree": 0,
+          "disagree": 1,
           "abstain": 0
         },
         "sgp": {
@@ -6611,8 +6436,8 @@
           "abstain": 0
         },
         "bbb": {
-          "agree": 2,
-          "disagree": 0,
+          "agree": 0,
+          "disagree": 2,
           "abstain": 0
         },
         "volt": {
@@ -6622,448 +6447,18 @@
         }
       },
       "totals": {
-        "agree": 13,
-        "disagree": 17
+        "agree": 3,
+        "disagree": 22
       }
     },
     {
-      "id": 177135,
-      "date": "2025-06-18",
-      "title": "2023 and 2024 reports on Montenegro",
-      "type": "initiatiefverslag",
-      "result": "accepted",
-      "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/177135",
-      "votes": {
-        "vvd": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "cda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvv": {
-          "agree": 0,
-          "disagree": 5,
-          "abstain": 0
-        },
-        "gl-pvda": {
-          "agree": 8,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "d66": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "nsc": {
-          "agree": 0,
-          "disagree": 0,
-          "abstain": 1
-        },
-        "sgp": {
-          "agree": 0,
-          "disagree": 0,
-          "abstain": 1
-        },
-        "bbb": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "volt": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        }
-      },
-      "totals": {
-        "agree": 20,
-        "disagree": 5
-      }
-    },
-    {
-      "id": 175594,
-      "date": "2025-05-08",
-      "title": "Competition policy – annual report 2024",
-      "type": "initiatiefverslag",
-      "result": "accepted",
-      "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/175594",
-      "votes": {
-        "vvd": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "cda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvv": {
-          "agree": 0,
-          "disagree": 5,
-          "abstain": 0
-        },
-        "gl-pvda": {
-          "agree": 8,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "d66": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "nsc": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "sgp": {
-          "agree": 0,
-          "disagree": 0,
-          "abstain": 1
-        },
-        "bbb": {
-          "agree": 0,
-          "disagree": 0,
-          "abstain": 2
-        },
-        "volt": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        }
-      },
-      "totals": {
-        "agree": 21,
-        "disagree": 5
-      }
-    },
-    {
-      "id": 175211,
-      "date": "2025-05-07",
-      "title": "Discharge 2023: Joint Undertakings",
-      "type": "overig",
-      "result": "accepted",
-      "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/175211",
-      "votes": {
-        "vvd": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "cda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvv": {
-          "agree": 0,
-          "disagree": 0,
-          "abstain": 6
-        },
-        "gl-pvda": {
-          "agree": 8,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "d66": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "nsc": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "sgp": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "bbb": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "volt": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        }
-      },
-      "totals": {
-        "agree": 24,
-        "disagree": 0
-      }
-    },
-    {
-      "id": 174875,
-      "date": "2025-04-03",
-      "title": "Estimates of revenue and expenditure for the financial year 2026 – Section I – European Parliament",
-      "type": "begroting",
-      "result": "accepted",
-      "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/174875",
-      "votes": {
-        "vvd": {
-          "agree": 0,
-          "disagree": 0,
-          "abstain": 4
-        },
-        "cda": {
-          "agree": 0,
-          "disagree": 0,
-          "abstain": 3
-        },
-        "pvv": {
-          "agree": 0,
-          "disagree": 6,
-          "abstain": 0
-        },
-        "gl-pvda": {
-          "agree": 8,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "d66": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "nsc": {
-          "agree": 0,
-          "disagree": 0,
-          "abstain": 1
-        },
-        "sgp": {
-          "agree": 0,
-          "disagree": 1,
-          "abstain": 0
-        },
-        "bbb": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "volt": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        }
-      },
-      "totals": {
-        "agree": 15,
-        "disagree": 7
-      }
-    },
-    {
-      "id": 174288,
-      "date": "2025-04-01",
-      "title": "Amending Directives (EU) 2022/2464 and (EU) 2024/1760 as regards the dates from which Member States are to apply certain corporate sustainability reporting and due diligence requirements",
-      "type": "overig",
-      "result": "accepted",
-      "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/174288",
-      "votes": {
-        "vvd": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "cda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvv": {
-          "agree": 6,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "gl-pvda": {
-          "agree": 0,
-          "disagree": 8,
-          "abstain": 0
-        },
-        "d66": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "nsc": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "sgp": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "bbb": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "volt": {
-          "agree": 0,
-          "disagree": 2,
-          "abstain": 0
-        }
-      },
-      "totals": {
-        "agree": 20,
-        "disagree": 10
-      }
-    },
-    {
-      "id": 171705,
-      "date": "2025-02-11",
-      "title": "Renewal of the Agreement on cooperation in science and technology between the European Community and Ukraine",
-      "type": "wetgeving",
-      "result": "accepted",
-      "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/171705",
-      "votes": {
-        "vvd": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "cda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvv": {
-          "agree": 5,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "gl-pvda": {
-          "agree": 8,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "d66": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "nsc": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvdd": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "sgp": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "bbb": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "volt": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        }
-      },
-      "totals": {
-        "agree": 30,
-        "disagree": 0
-      }
-    },
-    {
-      "id": 171280,
-      "date": "2024-12-18",
-      "title": "Setting up a Special Committee on the Housing Crisis in the European Union, and defining its responsibilities, numerical strength and term of office",
-      "type": "overig",
-      "result": "accepted",
-      "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/171280",
-      "votes": {
-        "vvd": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "cda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvv": {
-          "agree": 0,
-          "disagree": 5,
-          "abstain": 0
-        },
-        "gl-pvda": {
-          "agree": 8,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "d66": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "nsc": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvdd": {
-          "agree": 0,
-          "disagree": 1,
-          "abstain": 0
-        },
-        "sgp": {
-          "agree": 0,
-          "disagree": 1,
-          "abstain": 0
-        },
-        "bbb": {
-          "agree": 0,
-          "disagree": 0,
-          "abstain": 2
-        },
-        "volt": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        }
-      },
-      "totals": {
-        "agree": 21,
-        "disagree": 7
-      }
-    },
-    {
-      "id": 170627,
+      "id": 170636,
       "date": "2024-11-26",
-      "title": "Objection pursuant to Rule 115(2) and (3): Genetically modified maize MON 89034 × 1507 × MON 88017 × 59122 and eight of its sub-combinations",
+      "title": "Objection pursuant to Rule 115(2) and (3): Genetically modified maize DP23211",
       "type": "resolutie",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/170627",
+      "source": "https://howtheyvote.eu/votes/170636",
       "votes": {
         "vvd": {
           "agree": 0,
