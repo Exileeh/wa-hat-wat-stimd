@@ -3,7 +3,7 @@
     "province": "Europese fracties",
     "body": "Europees Parlement",
     "term": "2024–2029",
-    "generated_at": "2026-08-20T08:03:33+00:00",
+    "generated_at": "2026-08-27T19:23:36+00:00",
     "source": "https://howtheyvote.eu",
     "sourceName": "HowTheyVote.eu",
     "license": "Open data - HowTheyVote.eu (ODbL 1.0) op basis van hoofdelijke stemmingen (roll-call) van het Europees Parlement",
@@ -14,7 +14,7 @@
     "note": "Stemmen per Europese fractie met exacte aantallen (voor/tegen/onthouding), op basis van hoofdelijke stemmingen (roll-call). Alleen eindstemmingen; stemmingen bij handopsteken worden niet hoofdelijk geregistreerd. Bron: HowTheyVote.eu (ODbL), Europees Parlement.",
     "granularity": "member",
     "counts": {
-      "moties": 100,
+      "moties": 107,
       "parties": 9
     },
     "types": [
@@ -5765,303 +5765,723 @@
       }
     },
     {
-      "id": 174273,
-      "date": "2025-04-01",
+      "id": 178281,
+      "date": "2025-09-10",
+      "title": "Role of cohesion policy investment in resolving the current housing crisis",
+      "type": "initiatiefverslag",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/178281",
+      "votes": {
+        "epp": {
+          "agree": 125,
+          "disagree": 41,
+          "abstain": 11
+        },
+        "sd": {
+          "agree": 123,
+          "disagree": 0,
+          "abstain": 6
+        },
+        "pfe": {
+          "agree": 8,
+          "disagree": 52,
+          "abstain": 21
+        },
+        "ecr": {
+          "agree": 58,
+          "disagree": 13,
+          "abstain": 2
+        },
+        "renew": {
+          "agree": 53,
+          "disagree": 5,
+          "abstain": 9
+        },
+        "green-efa": {
+          "agree": 48,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 35,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "ni": {
+          "agree": 12,
+          "disagree": 6,
+          "abstain": 12
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 25,
+          "abstain": 1
+        }
+      },
+      "totals": {
+        "agree": 462,
+        "disagree": 142
+      }
+    },
+    {
+      "id": 178424,
+      "date": "2025-09-09",
+      "title": "EU-Kyrgyz Republic Enhanced Partnership and Cooperation Agreement (Resolution)",
+      "type": "wetgeving",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/178424",
+      "votes": {
+        "epp": {
+          "agree": 173,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "sd": {
+          "agree": 123,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 0,
+          "disagree": 10,
+          "abstain": 72
+        },
+        "ecr": {
+          "agree": 11,
+          "disagree": 4,
+          "abstain": 53
+        },
+        "renew": {
+          "agree": 65,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 48,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 27
+        },
+        "ni": {
+          "agree": 6,
+          "disagree": 10,
+          "abstain": 13
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 23,
+          "abstain": 2
+        }
+      },
+      "totals": {
+        "agree": 434,
+        "disagree": 49
+      }
+    },
+    {
+      "id": 178066,
+      "date": "2025-07-09",
+      "title": "Objection pursuant to Rule 114(3): amending Delegated Regulation (EU) 2016/1675 to add certain countries to the list of high-risk third countries, and to remove other countries from that list",
+      "type": "overig",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://howtheyvote.eu/votes/178066",
+      "votes": {
+        "epp": {
+          "agree": 24,
+          "disagree": 153,
+          "abstain": 1
+        },
+        "sd": {
+          "agree": 2,
+          "disagree": 125,
+          "abstain": 1
+        },
+        "pfe": {
+          "agree": 7,
+          "disagree": 64,
+          "abstain": 11
+        },
+        "ecr": {
+          "agree": 23,
+          "disagree": 55,
+          "abstain": 0
+        },
+        "renew": {
+          "agree": 2,
+          "disagree": 71,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 48,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 43,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 3,
+          "disagree": 14,
+          "abstain": 10
+        },
+        "esn": {
+          "agree": 1,
+          "disagree": 22,
+          "abstain": 4
+        }
+      },
+      "totals": {
+        "agree": 153,
+        "disagree": 506
+      }
+    },
+    {
+      "id": 177337,
+      "date": "2025-06-18",
       "title": "Macro-financial assistance to Egypt",
       "type": "wetgeving",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/174273",
+      "source": "https://howtheyvote.eu/votes/177337",
       "votes": {
         "epp": {
-          "agree": 175,
-          "disagree": 1,
-          "abstain": 0
-        },
-        "sd": {
-          "agree": 46,
-          "disagree": 59,
-          "abstain": 20
-        },
-        "pfe": {
-          "agree": 58,
-          "disagree": 21,
-          "abstain": 0
-        },
-        "ecr": {
-          "agree": 73,
-          "disagree": 6,
-          "abstain": 0
-        },
-        "renew": {
-          "agree": 71,
+          "agree": 151,
           "disagree": 0,
           "abstain": 0
         },
+        "sd": {
+          "agree": 59,
+          "disagree": 22,
+          "abstain": 21
+        },
+        "pfe": {
+          "agree": 46,
+          "disagree": 24,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 59,
+          "disagree": 3,
+          "abstain": 2
+        },
+        "renew": {
+          "agree": 50,
+          "disagree": 6,
+          "abstain": 5
+        },
         "green-efa": {
           "agree": 0,
-          "disagree": 48,
-          "abstain": 4
+          "disagree": 37,
+          "abstain": 1
         },
         "gue-ngl": {
-          "agree": 3,
-          "disagree": 39,
-          "abstain": 0
+          "agree": 1,
+          "disagree": 33,
+          "abstain": 2
         },
         "ni": {
           "agree": 6,
-          "disagree": 6,
-          "abstain": 13
+          "disagree": 5,
+          "abstain": 14
         },
         "esn": {
-          "agree": 20,
+          "agree": 14,
           "disagree": 2,
-          "abstain": 3
+          "abstain": 4
         }
       },
       "totals": {
-        "agree": 452,
-        "disagree": 182
+        "agree": 386,
+        "disagree": 132
       }
     },
     {
-      "id": 171703,
-      "date": "2025-02-11",
-      "title": "Conclusion of an agreement between the European Union and the government of the People's Republic of Bangladesh on certain aspects of air services",
-      "type": "wetgeving",
+      "id": 176241,
+      "date": "2025-05-08",
+      "title": "The protection status of the wolf (Canis lupus)",
+      "type": "overig",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/171703",
+      "source": "https://howtheyvote.eu/votes/176241",
       "votes": {
         "epp": {
-          "agree": 160,
-          "disagree": 0,
-          "abstain": 0
+          "agree": 115,
+          "disagree": 16,
+          "abstain": 12
         },
         "sd": {
-          "agree": 110,
-          "disagree": 0,
-          "abstain": 0
+          "agree": 41,
+          "disagree": 54,
+          "abstain": 12
         },
         "pfe": {
-          "agree": 59,
-          "disagree": 1,
-          "abstain": 2
-        },
-        "ecr": {
-          "agree": 65,
-          "disagree": 2,
-          "abstain": 0
-        },
-        "renew": {
-          "agree": 66,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "green-efa": {
-          "agree": 51,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "gue-ngl": {
-          "agree": 33,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "ni": {
-          "agree": 15,
+          "agree": 71,
           "disagree": 2,
           "abstain": 1
-        },
-        "esn": {
-          "agree": 3,
-          "disagree": 12,
-          "abstain": 0
-        }
-      },
-      "totals": {
-        "agree": 562,
-        "disagree": 17
-      }
-    },
-    {
-      "id": 170765,
-      "date": "2024-11-28",
-      "title": "Recommendation on smoke- and aerosol-free environments",
-      "type": "resolutie",
-      "result": "rejected",
-      "resultLabel": "Verworpen",
-      "source": "https://howtheyvote.eu/votes/170765",
-      "votes": {
-        "epp": {
-          "agree": 87,
-          "disagree": 41,
-          "abstain": 8
-        },
-        "sd": {
-          "agree": 0,
-          "disagree": 107,
-          "abstain": 1
-        },
-        "pfe": {
-          "agree": 4,
-          "disagree": 59,
-          "abstain": 1
-        },
-        "ecr": {
-          "agree": 3,
-          "disagree": 56,
-          "abstain": 3
-        },
-        "renew": {
-          "agree": 23,
-          "disagree": 28,
-          "abstain": 8
-        },
-        "green-efa": {
-          "agree": 2,
-          "disagree": 47,
-          "abstain": 0
-        },
-        "gue-ngl": {
-          "agree": 25,
-          "disagree": 6,
-          "abstain": 1
-        },
-        "ni": {
-          "agree": 7,
-          "disagree": 14,
-          "abstain": 2
-        },
-        "esn": {
-          "agree": 1,
-          "disagree": 20,
-          "abstain": 2
-        }
-      },
-      "totals": {
-        "agree": 152,
-        "disagree": 378
-      }
-    },
-    {
-      "id": 170636,
-      "date": "2024-11-26",
-      "title": "Objection pursuant to Rule 115(2) and (3): Genetically modified maize DP23211",
-      "type": "resolutie",
-      "result": "accepted",
-      "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/170636",
-      "votes": {
-        "epp": {
-          "agree": 57,
-          "disagree": 103,
-          "abstain": 10
-        },
-        "sd": {
-          "agree": 116,
-          "disagree": 3,
-          "abstain": 1
-        },
-        "pfe": {
-          "agree": 70,
-          "disagree": 13,
-          "abstain": 0
         },
         "ecr": {
           "agree": 61,
-          "disagree": 13,
-          "abstain": 0
-        },
-        "renew": {
-          "agree": 34,
-          "disagree": 34,
-          "abstain": 2
-        },
-        "green-efa": {
-          "agree": 51,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "gue-ngl": {
-          "agree": 42,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "ni": {
-          "agree": 22,
           "disagree": 0,
           "abstain": 4
         },
+        "renew": {
+          "agree": 49,
+          "disagree": 14,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 0,
+          "disagree": 43,
+          "abstain": 5
+        },
+        "gue-ngl": {
+          "agree": 0,
+          "disagree": 29,
+          "abstain": 1
+        },
+        "ni": {
+          "agree": 12,
+          "disagree": 4,
+          "abstain": 2
+        },
         "esn": {
-          "agree": 21,
+          "agree": 22,
           "disagree": 0,
           "abstain": 0
         }
       },
       "totals": {
-        "agree": 474,
-        "disagree": 166
+        "agree": 371,
+        "disagree": 162
       }
     },
     {
-      "id": 169808,
-      "date": "2024-10-09",
-      "title": "The democratic backsliding and threats to political pluralism in Georgia",
+      "id": 175675,
+      "date": "2025-05-07",
+      "title": "Discharge 2023: EU general budget – Court of Justice of the European Union",
+      "type": "overig",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/175675",
+      "votes": {
+        "epp": {
+          "agree": 173,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sd": {
+          "agree": 128,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 0,
+          "disagree": 63,
+          "abstain": 19
+        },
+        "ecr": {
+          "agree": 64,
+          "disagree": 7,
+          "abstain": 5
+        },
+        "renew": {
+          "agree": 68,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 48,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 40,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "ni": {
+          "agree": 20,
+          "disagree": 5,
+          "abstain": 1
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 22,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 541,
+        "disagree": 97
+      }
+    },
+    {
+      "id": 173687,
+      "date": "2025-04-02",
+      "title": "Protocol on the Implementation of the Fisheries Partnership Agreement between the European Community and the Republic of Guinea-Bissau (2024-2029)",
+      "type": "wetgeving",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/173687",
+      "votes": {
+        "epp": {
+          "agree": 178,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sd": {
+          "agree": 129,
+          "disagree": 1,
+          "abstain": 2
+        },
+        "pfe": {
+          "agree": 53,
+          "disagree": 27,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 71,
+          "disagree": 5,
+          "abstain": 2
+        },
+        "renew": {
+          "agree": 72,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 48
+        },
+        "gue-ngl": {
+          "agree": 7,
+          "disagree": 37,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 7,
+          "disagree": 10,
+          "abstain": 7
+        },
+        "esn": {
+          "agree": 1,
+          "disagree": 21,
+          "abstain": 2
+        }
+      },
+      "totals": {
+        "agree": 518,
+        "disagree": 104
+      }
+    },
+    {
+      "id": 172867,
+      "date": "2025-03-12",
+      "title": "White paper on the future of European defence",
       "type": "resolutie",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://howtheyvote.eu/votes/169808",
+      "source": "https://howtheyvote.eu/votes/172867",
       "votes": {
         "epp": {
-          "agree": 162,
+          "agree": 158,
+          "disagree": 3,
+          "abstain": 7
+        },
+        "sd": {
+          "agree": 114,
+          "disagree": 3,
+          "abstain": 13
+        },
+        "pfe": {
+          "agree": 0,
+          "disagree": 80,
+          "abstain": 2
+        },
+        "ecr": {
+          "agree": 39,
+          "disagree": 25,
+          "abstain": 9
+        },
+        "renew": {
+          "agree": 65,
+          "disagree": 1,
+          "abstain": 4
+        },
+        "green-efa": {
+          "agree": 40,
+          "disagree": 8,
+          "abstain": 3
+        },
+        "gue-ngl": {
+          "agree": 1,
+          "disagree": 40,
+          "abstain": 3
+        },
+        "ni": {
+          "agree": 2,
+          "disagree": 24,
+          "abstain": 2
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 20,
+          "abstain": 3
+        }
+      },
+      "totals": {
+        "agree": 419,
+        "disagree": 204
+      }
+    },
+    {
+      "id": 171157,
+      "date": "2024-12-19",
+      "title": "Recommendation to the Council on the EU priorities for the 69th session of the UN Commission on the Status of Women",
+      "type": "initiatiefverslag",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/171157",
+      "votes": {
+        "epp": {
+          "agree": 73,
+          "disagree": 21,
+          "abstain": 29
+        },
+        "sd": {
+          "agree": 99,
           "disagree": 0,
+          "abstain": 3
+        },
+        "pfe": {
+          "agree": 0,
+          "disagree": 55,
+          "abstain": 6
+        },
+        "ecr": {
+          "agree": 2,
+          "disagree": 61,
+          "abstain": 0
+        },
+        "renew": {
+          "agree": 59,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "green-efa": {
+          "agree": 43,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 38,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 8,
+          "disagree": 5,
+          "abstain": 7
+        },
+        "esn": {
+          "agree": 0,
+          "disagree": 21,
+          "abstain": 1
+        }
+      },
+      "totals": {
+        "agree": 322,
+        "disagree": 163
+      }
+    },
+    {
+      "id": 170917,
+      "date": "2024-11-28",
+      "title": "Reinforcing EU’s unwavering support to Ukraine against Russia’s war of aggression and the increasing military cooperation between North Korea and Russia",
+      "type": "resolutie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/170917",
+      "votes": {
+        "epp": {
+          "agree": 134,
+          "disagree": 0,
+          "abstain": 10
+        },
+        "sd": {
+          "agree": 92,
+          "disagree": 6,
+          "abstain": 7
+        },
+        "pfe": {
+          "agree": 0,
+          "disagree": 51,
+          "abstain": 17
+        },
+        "ecr": {
+          "agree": 52,
+          "disagree": 5,
+          "abstain": 6
+        },
+        "renew": {
+          "agree": 60,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "green-efa": {
+          "agree": 44,
+          "disagree": 3,
+          "abstain": 4
+        },
+        "gue-ngl": {
+          "agree": 5,
+          "disagree": 29,
           "abstain": 5
+        },
+        "ni": {
+          "agree": 2,
+          "disagree": 22,
+          "abstain": 0
+        },
+        "esn": {
+          "agree": 1,
+          "disagree": 19,
+          "abstain": 2
+        }
+      },
+      "totals": {
+        "agree": 390,
+        "disagree": 135
+      }
+    },
+    {
+      "id": 170382,
+      "date": "2024-11-14",
+      "title": "Electronic value added tax exemption certificate",
+      "type": "overig",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/170382",
+      "votes": {
+        "epp": {
+          "agree": 168,
+          "disagree": 0,
+          "abstain": 0
         },
         "sd": {
           "agree": 120,
           "disagree": 0,
-          "abstain": 2
+          "abstain": 0
         },
         "pfe": {
-          "agree": 11,
-          "disagree": 17,
-          "abstain": 52
+          "agree": 75,
+          "disagree": 5,
+          "abstain": 1
         },
         "ecr": {
-          "agree": 58,
-          "disagree": 2,
-          "abstain": 9
+          "agree": 65,
+          "disagree": 0,
+          "abstain": 1
         },
         "renew": {
-          "agree": 73,
+          "agree": 72,
           "disagree": 0,
           "abstain": 1
         },
         "green-efa": {
-          "agree": 50,
+          "agree": 49,
           "disagree": 0,
-          "abstain": 1
+          "abstain": 0
         },
         "gue-ngl": {
-          "agree": 16,
-          "disagree": 14,
-          "abstain": 11
-        },
-        "ni": {
-          "agree": 5,
-          "disagree": 20,
+          "agree": 38,
+          "disagree": 1,
           "abstain": 3
         },
+        "ni": {
+          "agree": 16,
+          "disagree": 4,
+          "abstain": 4
+        },
         "esn": {
-          "agree": 0,
-          "disagree": 20,
-          "abstain": 2
+          "agree": 18,
+          "disagree": 0,
+          "abstain": 1
         }
       },
       "totals": {
-        "agree": 495,
-        "disagree": 73
+        "agree": 621,
+        "disagree": 10
+      }
+    },
+    {
+      "id": 169418,
+      "date": "2024-09-18",
+      "title": "Objection pursuant to Rule 115(2) and (3), and Rule 115(4)(c): Maximum residue levels for carbendazim and thiophanate-methyl",
+      "type": "overig",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://howtheyvote.eu/votes/169418",
+      "votes": {
+        "epp": {
+          "agree": 63,
+          "disagree": 105,
+          "abstain": 7
+        },
+        "sd": {
+          "agree": 126,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pfe": {
+          "agree": 78,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ecr": {
+          "agree": 68,
+          "disagree": 1,
+          "abstain": 5
+        },
+        "renew": {
+          "agree": 51,
+          "disagree": 19,
+          "abstain": 3
+        },
+        "green-efa": {
+          "agree": 50,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gue-ngl": {
+          "agree": 44,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ni": {
+          "agree": 27,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "esn": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 12
+        }
+      },
+      "totals": {
+        "agree": 516,
+        "disagree": 129
       }
     }
   ]

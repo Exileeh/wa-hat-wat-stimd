@@ -3,7 +3,7 @@
     "province": "Noord-Brabant",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-08-20T07:50:07+00:00",
+    "generated_at": "2026-08-27T19:09:24+00:00",
     "source": "https://noordbrabant.bestuurlijkeinformatie.nl",
     "sourceName": "",
     "license": "Open data - Provincie Noord-Brabant (iBabs publieksportaal)",
@@ -14,7 +14,7 @@
     "note": "Stemmen zijn per fractie met aantallen geregistreerd (aangenomen én verworpen). Moties/amendementen zonder hoofdelijke stemming zijn niet opgenomen.",
     "granularity": "member",
     "counts": {
-      "moties": 633,
+      "moties": 634,
       "parties": 15
     },
     "types": [
@@ -9123,6 +9123,96 @@
       "totals": {
         "agree": 12,
         "disagree": 3
+      }
+    },
+    {
+      "id": 10000222,
+      "date": "2026-04-10",
+      "title": "A13-2026 Perspectiefnota OV gelden",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://noordbrabant.bestuurlijkeinformatie.nl/Reports/Item/095cb4f9-6255-4b8b-ac42-fd7d1dfd88cb",
+      "votes": {
+        "bbb": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie-sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "lokaal-brabant": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 6,
+        "disagree": 9
       }
     },
     {
