@@ -21,7 +21,13 @@ jobs:
         with:
           python-version: "3.12"
 
+      # collect.py exits 1 when a live scope loses data (a source broke, or started returning a
+      # fraction of its votes). We do NOT want that to skip the commit below: the scopes that DID
+      # refresh should still land, and the broken one keeps its previous data file either way.
+      # So: record the outcome here, commit, then fail the job at the end.
       - name: Run collector
+        id: collect
+        continue-on-error: true
         run: python collector/collect.py
 
       - name: Commit updated data
@@ -35,3 +41,12 @@ jobs:
             git commit -m "chore: refresh voting data"
             git push
           fi
+
+      # Turns a silent degradation into a red run — which is what actually sends the notification
+      # e-mail. Between 2026-06 and 2026-09 five provinces vanished from the site while this
+      # workflow reported success every week; see coverage.md § Status van de bronnen.
+      - name: Fail if a source lost data
+        if: steps.collect.outcome == 'failure'
+        run: |
+          echo "::error title=Source regression::A source lost data this run. See the collector log above (search for REGRESSION) and coverage.md § Status van de bronnen."
+          exit 1

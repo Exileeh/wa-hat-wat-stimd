@@ -8,6 +8,33 @@ the "things we DO have" companion to [provinces.md](provinces.md) (feasibility f
 > but one is read from exact per-member counts and another is *inferred* from parsed free text.
 > The column below says which.
 
+## Status van de bronnen
+
+"Live" in the table below means *we have a working adapter and a dataset*. Whether the source still
+answers is a separate question, and one that bit us: between 2026-06 and 2026-09 three sources broke
+without anyone noticing, because the collector caught every failure, marked the scope
+`available: false`, and still exited 0 — so the weekly Action stayed green while five of the nine
+provinces quietly disappeared from the site. Fixed 2026-09-04 (see below).
+
+| Source | Status | Since | Cause |
+|---|---|---|---|
+| **Utrecht** (GO) | ⚠️ **stale, frozen** | 2026-07-16 run | The portal's `/Samenstelling/{fractie}/votings` route now answers HTTP 200 with an **Anubis** anti-bot interstitial instead of JSON. `/api/v2/*` is unaffected, but there is no `/api/v2/votings`. Ask pending → [outreach.md §4](outreach.md). |
+| **Zuid-Holland, Fryslân, Gelderland, Overijssel** (Notubiz) | ⚠️ **CI-only failure** | first bot run, 2026-06-18 | `api.notubiz.nl` returns nothing to GitHub-hosted runners; the exact same call works from a normal connection. Never once succeeded in CI — the June data was committed from a local run. Refreshing them needs a local run (or a non-datacenter runner) until we know the cause. |
+| **Europees Parlement** (HowTheyVote.eu) | ✅ fixed 2026-09-04 | broke 2026-07-23 | The API began rate-limiting; the 8-worker detail fetch got throttled and `ep_assemble_*` silently dropped every vote whose detail was missing. The 2024–2029 scope shrank from 614 stemmingen to **95**, and 2019–2024 from 1807 to **130**, without ever being marked unavailable. Now: retry on 429/5xx with Retry-After, 4 workers, and a sequential repair pass. |
+
+**How this is caught now.** `collect.py` records why requests failed (HTTP status, or "anti-bot
+interstitial, not JSON"), and compares each scope against what the last good run produced
+(`previous_state()`). If a live scope returns nothing — or loses more than `max(5, 2%)` of its
+stemmingen (`lost_data()`) — the collector:
+
+1. **keeps the previous data file** rather than overwriting or hiding it, so the scope stays on the
+   site with its real "bijgewerkt" date visible instead of vanishing;
+2. prints a `REGRESSION:` line naming the scope and the failed requests;
+3. **exits 1**, so the weekly Action fails and GitHub emails about it.
+
+That last point is the actual fix. Everything else was already visible in the logs — nobody was
+reading them, because nothing ever asked them to.
+
 ## Coverage table
 
 | Scope | Category | Vendor | Method | Granularity | Item types | Items | Scope of items | Reliability |

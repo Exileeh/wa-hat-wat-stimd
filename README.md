@@ -11,19 +11,23 @@ besluiten. Per stemming zie je in één tabel of elke fractie **Voor (V, groen)*
 provincies: welke provincie; bij het Europees Parlement: per Europese fractie of de Nederlandse afvaardiging).
 
 **Nu live (vier categorieën):**
-- **Tweede Kamer** (OData open data, periode 2025–heden) — exacte zetelaantallen per fractie,
-  inclusief *verworpen*; moties, amendementen én wetsvoorstellen. Tier A.
-- **Eerste Kamer** (eerstekamer.nl, 2023–2027) — op fractieniveau (V/T, beide zijden vermeld),
-  inclusief *verworpen*; hamerstukken niet opgenomen. Tier B.
-- **Provinciale Staten** (3/12): **Utrecht** (GemeenteOplossingen, exacte aantallen per lid),
-  **Limburg** (iBabs, exacte aantallen per lid, incl. *verworpen*), **Noord-Holland** (iBabs,
-  fractieniveau, alleen aangenomen).
-- **Europees Parlement** (HowTheyVote.eu, 2024–2029) — exacte aantallen per Europese fractie, incl.
-  *verworpen*. Twee weergaven: **Europese fracties** en de **Nederlandse afvaardiging** (de 31 NL-leden
-  per Nederlandse partij). Tier A.
+- **Tweede Kamer** (OData open data, één scope per Kamer, terug tot 2008) — exacte zetelaantallen
+  per fractie, inclusief *verworpen*; moties, amendementen én wetsvoorstellen. Tier A.
+- **Eerste Kamer** (eerstekamer.nl, één scope per Kamer, terug tot 2015) — op fractieniveau (V/T,
+  beide zijden vermeld), inclusief *verworpen*; hamerstukken niet opgenomen. Tier B.
+- **Provinciale Staten** (9/12) — **Utrecht** en **Drenthe** (GemeenteOplossingen), **Limburg**,
+  **Noord-Brabant** en **Noord-Holland** (iBabs), **Zuid-Holland**, **Fryslân**, **Gelderland** en
+  **Overijssel** (Notubiz). Alle tier A (exacte aantallen per lid) behalve Noord-Holland, dat op
+  fractieniveau publiceert en alleen aangenomen moties/amendementen.
+- **Europees Parlement** (HowTheyVote.eu) — exacte aantallen per Europese fractie, incl.
+  *verworpen*, voor de 10e (2024–2029) en 9e (2019–2024) zittingsperiode. Twee weergaven:
+  **Europese fracties** en de **Nederlandse afvaardiging** (de 31 NL-leden per Nederlandse partij).
+  Tier A.
 
-De collector is multi-vendor / multi-categorie (een adapter per platform: GO / iBabs / Tweede Kamer
-OData / Eerste Kamer HTML / HowTheyVote). Hoe betrouwbaar elke bron is, staat in [coverage.md](coverage.md).
+De collector is multi-vendor / multi-categorie (een adapter per platform: GO / iBabs / Notubiz /
+Tweede Kamer OData / Eerste Kamer HTML / HowTheyVote). Hoe betrouwbaar elke bron is, staat in
+[coverage.md](coverage.md); of een bron het op dit moment ook echt doet, staat in
+[coverage.md#status](coverage.md#status-van-de-bronnen).
 
 Naast de tabel: filters (type, partij, zoeken, uitslag, "alleen omstreden"), vastpinnen,
 **CSV-download** van de selectie, en drie analyses (popups): **Overeenkomst** (overeenkomstmatrix
@@ -39,7 +43,7 @@ collector (Python)  ->  data/<scope>.json  ->  statische site  ->  GitHub Pages
 
 - **Geen server, geen database.** De data is een gegenereerd JSON-bestand dat de site inleest.
 - De `collector/` heeft een **adapter per platform** (GemeenteOplossingen / iBabs / Tweede Kamer
-  OData / Eerste Kamer HTML / HowTheyVote; Notubiz volgt). Hij normaliseert alles naar één schema,
+  OData / Eerste Kamer HTML / HowTheyVote / Notubiz). Hij normaliseert alles naar één schema,
   schrijft een dataset per scope en een `data/catalog.json` die de scopes per categorie (Tweede Kamer
   / Eerste Kamer / Provinciale Staten / Europees Parlement) indexeert.
 - De frontend leest `catalog.json` en bouwt daarmee de startpagina (kies categorie → scope). De

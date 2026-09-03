@@ -383,28 +383,64 @@ def http(url, data=None, ctype=None):
         return r.read().decode("utf-8", "replace")
 
 
+# Why this scope's requests failed, so a run that collects nothing names its own cause instead of
+# printing a bare "no data". Cleared per scope by main(); summarised next to that scope's result.
+_HTTP_LOG = {}
+
+
+def note_failure(kind):
+    _HTTP_LOG[kind] = _HTTP_LOG.get(kind, 0) + 1
+
+
+def http_log_summary():
+    """One-line breakdown of this scope's failed requests ("" when every request succeeded)."""
+    return ", ".join(f"{k} x{v}" for k, v in sorted(_HTTP_LOG.items(), key=lambda kv: -kv[1]))
+
+
+# Statuses worth waiting out rather than dropping the request: rate limiting and short-lived server
+# trouble. HowTheyVote.eu began rate-limiting in July 2026; without this every throttled detail
+# fetch silently became a dropped stemming, and the EP scopes lost ~90% of their votes.
+RETRY_STATUS = {429, 500, 502, 503, 504}
+
+
 def fetch(url, data=None, ctype=None, tries=3):
-    """http() with retries on transient errors. Returns the body, or None on a 4xx/5xx or after
-    `tries` failed attempts. A 30s read timeout over hundreds of pages is normal for a weekly
-    run, so retry the non-HTTP failures (timeouts, dropped connections) instead of crashing."""
+    """http() with retries on transient errors. Returns the body, or None on a permanent 4xx or
+    after `tries` failed attempts. A 30s read timeout over hundreds of pages is normal for a weekly
+    run, so retry the non-HTTP failures (timeouts, dropped connections) instead of crashing;
+    RETRY_STATUS responses are retried too, honouring Retry-After when the server sends one."""
     for attempt in range(tries):
         try:
             return http(url, data=data, ctype=ctype)
-        except urllib.error.HTTPError:
-            return None   # 4xx/5xx — not worth retrying for our purposes
-        except OSError:   # URLError, TimeoutError, dropped connections, …
+        except urllib.error.HTTPError as e:
+            if e.code not in RETRY_STATUS or attempt + 1 == tries:
+                note_failure(f"HTTP {e.code}")
+                return None
+            try:
+                wait = min(float(e.headers.get("Retry-After") or 0), 30.0)
+            except (TypeError, ValueError):
+                wait = 0.0
+            time.sleep(max(wait, 2.0 * (attempt + 1)))
+        except OSError as e:   # URLError, TimeoutError, dropped connections, …
             if attempt + 1 == tries:
+                note_failure(type(e).__name__)
                 return None
             time.sleep(1.5 * (attempt + 1))
     return None
 
 
 def try_json(url):
-    """GET + JSON parse; None on any network/HTTP/JSON failure."""
+    """GET + JSON parse; None on any network/HTTP/JSON failure. A 200 that is not JSON is worth
+    naming separately: that is how an anti-bot interstitial (Anubis, a WAF challenge, a login
+    redirect) arrives — the request "succeeds" but the data is gone. Utrecht's GO portal started
+    answering its votings route this way in July 2026, which read as a bare "no data" for weeks."""
     txt = fetch(url)
+    if txt is None:
+        return None
     try:
-        return json.loads(txt) if txt is not None else None
+        return json.loads(txt)
     except json.JSONDecodeError:
+        note_failure("anti-bot interstitial, not JSON" if "anubis" in txt[:2000].lower()
+                     else "HTTP 200 but not JSON")
         return None
 
 
@@ -1397,6 +1433,8 @@ EP_NL_PARTY = {
     "130881": "PVV", "197782": "GL-PvdA", "256998": "PVV", "256970": "D66", "256978": "Volt",
     "125325": "BBB", "256996": "PVV", "218347": "GL-PvdA", "197772": "GL-PvdA", "256981": "PVV",
     "276060": "CDA",
+    "278815": "GL-PvdA",   # Ufuk Kâhya — sits with Greens/EFA; joined mid-term, so he is absent from
+                           # the delegation list the map was first built from (WARN caught him 2026-07).
     # Former MEPs who voted earlier this term before being replaced (not in the current-MEP list):
     "197778": "CDA",   # Tom Berendsen
     "256991": "PVV",   # Sebastiaan Stöteler
@@ -1424,6 +1462,10 @@ EP_NL_PARTY_T9 = {
 }
 EP_NL_ORDER_T9 = ["PvdA", "VVD", "CDA", "GroenLinks", "FvD", "D66", "JA21", "CU", "PvdD", "SGP"]
 
+# NL MEPs deliberately left out of the maps above (no national-party column applies), so the
+# "not in the NL map" warning stays a signal about MEPs we genuinely still owe a mapping.
+EP_NL_EXCLUDE = {"204733"}   # Dorien Rookmaker — sat as an independent for most of the 9th term
+
 
 def ep_nl_config(term_start):
     """The NL delegation's MEP→partij map + column order for a term. HowTheyVote MEP ids are stable,
@@ -1432,6 +1474,7 @@ def ep_nl_config(term_start):
     return (EP_NL_PARTY_T9, EP_NL_ORDER_T9) if term_start.year <= 2019 else (EP_NL_PARTY, EP_NL_ORDER)
 
 _EP_CACHE = {}   # base -> {"metas": [...], "details": {id: detail}} — shared across the two EP scopes
+EP_WORKERS = 4   # concurrent detail fetches; 8 tripped HowTheyVote.eu's rate limiter (see ep_load)
 
 
 def ep_floor():
@@ -1465,14 +1508,29 @@ def ep_load(base, floor):
             break
         page += 1
         time.sleep(SLEEP)
-    # 2) details: the API is ~1.5s/request, so 545 sequential calls take ~15 min; a small thread pool
-    #    keeps wall-time and load reasonable (~8 concurrent against a CDN-backed API).
+    # 2) details: the API is ~1.5s/request, so thousands of sequential calls take hours; a small
+    #    thread pool keeps wall-time and load reasonable. Kept deliberately modest — the API began
+    #    rate-limiting in July 2026, and a throttled request costs a whole stemming.
     def _detail(r):
         return r["id"], try_json(f"{base}/api/votes/{r['id']}")
     details = {}
-    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as ex:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=EP_WORKERS) as ex:
         for vid, det in ex.map(_detail, metas):
             details[vid] = det
+    # ep_assemble_* skips a vote whose detail is missing, so a throttled run used to write a
+    # plausible-looking but near-empty dataset. Retry the gaps sequentially and slowly — one at a
+    # time is what the limiter is asking for.
+    missing = [r for r in metas if not details.get(r["id"])]
+    if missing:
+        print(f"  {len(missing)}/{len(metas)} detail(s) missing after the pool — sequential retry")
+        for r in missing:
+            det = try_json(f"{base}/api/votes/{r['id']}")
+            if det:
+                details[r["id"]] = det
+            time.sleep(SLEEP)
+    got = sum(1 for r in metas if details.get(r["id"]))
+    failures = http_log_summary()
+    print(f"  EP details: {got}/{len(metas)} fetched" + (f"; failed requests: {failures}" if failures else ""))
     _EP_CACHE[base] = {"metas": metas, "details": details}
     return metas, details
 
@@ -1560,7 +1618,8 @@ def ep_assemble_nl(metas, details, nl_map, order_hint):
                 continue
             party = nl_map.get(str(m.get("id")))
             if not party:
-                unknown[str(m.get("id"))] = m.get("full_name") or ""
+                if str(m.get("id")) not in EP_NL_EXCLUDE:
+                    unknown[str(m.get("id"))] = m.get("full_name") or ""
                 continue
             t = tally.setdefault(party, {"agree": 0, "disagree": 0, "abstain": 0, "n": 0})
             pos = mv.get("position")
@@ -1887,12 +1946,46 @@ def scope_entry(p, available, chunked):
     return e
 
 
+def previous_state():
+    """What the last good run left behind: {scope key: (available, stemmingen, chunked)}. The guard
+    in main() compares against this, so a source that breaks — or quietly starts returning a
+    fraction of its votes — fails the run instead of shrinking the site in silence."""
+    avail = {}
+    try:
+        cat = json.loads((DATA_DIR / "catalog.json").read_text(encoding="utf-8"))
+        for c in cat.get("categories", []):
+            for sc in c.get("scopes", []):
+                avail[sc["key"]] = bool(sc.get("available"))
+    except (OSError, ValueError, KeyError):
+        pass
+    state = {}
+    for p in SOURCES:
+        n, chunked = 0, False
+        try:
+            j = json.loads((DATA_DIR / f"{p['key']}.json").read_text(encoding="utf-8"))
+            chunked = bool(j.get("chunked"))
+            n = sum(c["count"] for c in j["chunks"]) if chunked else len(j.get("moties", []))
+        except (OSError, ValueError, KeyError):
+            pass
+        state[p["key"]] = (avail.get(p["key"], False), n, chunked)
+    return state
+
+
+def lost_data(prev_n, n):
+    """True when a run lost more than a rounding error's worth of stemmingen. Sources do drop the
+    odd item (a griffie corrects or withdraws one, an iBabs detail page times out), so allow a small
+    absolute/relative slack — a broken adapter or a throttled API loses far more than that."""
+    return n < prev_n - max(5, int(prev_n * 0.02))
+
+
 def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     # ONLY=key1,key2 re-collects just those scopes and reuses the existing data file (availability +
     # style) for the rest — fast iteration without re-fetching/overwriting the other scopes. The
     # weekly Action runs with no ONLY, so it does the full refresh.
     only = {k.strip() for k in os.environ.get("ONLY", "").split(",") if k.strip()}
+    prev = previous_state()
+    problems = []        # scopes that lost data this run -> printed as a block, and exit code 1
     scopes_by_cat = {}   # category key -> list of {key, name, available}
     default = None
     for p in SOURCES:
@@ -1912,14 +2005,31 @@ def main():
                 default = {"category": catkey, "scope": p["key"]}
             continue
         print(f"== {p['name']} ({p['vendor']}) ==")
+        _HTTP_LOG.clear()
         adapter = ADAPTERS.get(p["vendor"])
         res = None
         if adapter:
             try:
                 res = adapter(p)
             except Exception as e:
-                print(f"  ERROR: {e}")
-        available = bool(res and res["moties"])
+                print(f"  ERROR: {type(e).__name__}: {e}")
+        prev_avail, prev_n, prev_chunked = prev.get(p["key"], (False, 0, False))
+        n = len(res["moties"]) if res and res.get("moties") else 0
+        failures = http_log_summary()
+        note = f"; failed requests: {failures}" if failures else ""
+        # Guard: never let a broken or throttled source quietly delete or shrink a live scope. Keep
+        # the last good data file — the frontend shows its "bijgewerkt" date, so stale data stays
+        # visible rather than vanishing — and fail the run so the Action actually reports it.
+        if prev_avail and (n == 0 or lost_data(prev_n, n)):
+            why = "no data at all" if n == 0 else f"{n} stemmingen, was {prev_n}"
+            print(f"  REGRESSION: {why}{note}")
+            print(f"  keeping the existing {p['key']}.json from the last good run (not overwritten)")
+            problems.append(f"{p['name']} ({p['key']}, {p['vendor']}): {why}{note}")
+            scopes_by_cat.setdefault(catkey, []).append(scope_entry(p, True, prev_chunked))
+            if default is None:
+                default = {"category": catkey, "scope": p["key"]}
+            continue
+        available = n > 0
         if available:
             out = {
                 "meta": {
@@ -1948,10 +2058,12 @@ def main():
             for m in res["moties"]:
                 by_type[m["type"]] = by_type.get(m["type"], 0) + 1
             print(f"  wrote {p['key']}.json{' (chunked per year)' if chunked else ''}: "
-                  f"{len(res['moties'])} stemmingen, {len(res['parties'])} fracties, {by_type}")
+                  f"{len(res['moties'])} stemmingen, {len(res['parties'])} fracties, {by_type}{note}")
         else:
             chunked = False
-            print("  (no data — marked unavailable)")
+            # Not a regression: this scope had no data last run either (a source we have not
+            # unlocked yet). Still say why, so "never worked" stays distinguishable from "blocked".
+            print(f"  (no data — marked unavailable){note}")
         # style travels in the index so the frontend can theme the header *before* the (large) data
         # file finishes loading — avoids a flash of the previous/default colour.
         scopes_by_cat.setdefault(catkey, []).append(scope_entry(p, available, chunked))
@@ -1973,6 +2085,16 @@ def main():
         ensure_ascii=False, indent=2), encoding="utf-8")
     avail = [s["key"] for c in categories for s in c["scopes"] if s["available"]]
     print(f"\nWrote catalog.json: categories = {[c['key'] for c in categories]}; available = {avail}")
+
+    if problems:
+        print("\n" + "=" * 78)
+        print(f"FAILED: {len(problems)} scope(s) lost data this run. The site keeps serving"
+              f" the previous data for them, but these sources need attention:\n")
+        for line in problems:
+            print(f"  - {line}")
+        print("=" * 78)
+        return 1
+    return 0
 
 
 if __name__ == "__main__":

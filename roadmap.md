@@ -1,6 +1,22 @@
 # Roadmap — "Wie heeft wat gestemd?" (multi-province voting overview)
 
 > ## ▶ NEXT (resume here)
+> **⚠️ FIRST: source health (audited 2026-09-04).** Three sources broke silently between June and
+> September — the collector caught every failure, flipped the scope to `available: false`, and still
+> exited 0, so the weekly Action stayed **green** while **5 of 9 provinces vanished from the site** and
+> the EP scopes quietly lost ~90% of their votes. Detail + the new guard: [coverage.md](coverage.md)
+> § Status van de bronnen.
+> - **✅ Fixed** — the collector now logs *why* requests fail, keeps the last good data file instead of
+>   hiding a scope, and **exits 1** when a live scope loses data (so GitHub emails about it).
+> - **✅ Fixed** — EP rate limiting (retry on 429/5xx honouring Retry-After, 4 workers, sequential
+>   repair pass). Restored to full coverage.
+> - **⏳ Utrecht — mail sent 2026-09-04**, awaiting reply ([outreach.md §4](outreach.md)). Its GO
+>   portal put the votings route behind an **Anubis** anti-bot interstitial. Nudge ~18 September if
+>   silent. Until it is resolved Utrecht shows its 2026-07-09 data, with that date visible on the site.
+> - **▶ TODO — Notubiz in CI.** `api.notubiz.nl` answers a normal connection fine but returns nothing
+>   to GitHub-hosted runners, and has never worked in CI. The next failing run will now print the actual
+>   HTTP status — read that first, then decide (ask Notubiz / self-hosted runner / proxy).
+>
 > **TARGET — LOCKED (2026-06-12): four categories — ✅ ALL FOUR NOW LIVE (2026-06-13).** The site covers
 > four legislative bodies (landing order: national → regional → EU):
 > 1. **Tweede Kamer** — ✅ LIVE (Phase 4). ~2,945 stemmingen (groeit wekelijks), OData, per-fractie seat counts incl. verworpen. Tier A.

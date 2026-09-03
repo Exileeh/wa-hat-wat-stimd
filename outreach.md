@@ -239,3 +239,75 @@ province before concluding "no structured votes".
 > **Note (superseded):** the old fallback plan — parse the verbatim notulen (member-name roll-call) and map
 > member → fractie via NB's **Ledenlijst PS** report — is no longer needed now that the `Stemmen` field
 > gives the same tier A directly. Kept for reference only.
+
+---
+
+## 4. Statengriffie Utrecht — votings-route achter een anti-bot-scherm (Anubis)
+> **✅ Sent 2026-09-04.** Awaiting reply. Regression, not a new province: Utrecht was tier A from day
+> one and went dark between the **2026-07-09** and **2026-07-16** runs.
+> **Follow-up:** if silent by **~18 September** (≈2 weeks), send the nudge below. Timing is decent —
+> the zomerreces is over, so the griffie is back at work; unlike the Groningen/Zeeland mails this one
+> did not land in an empty office.
+>
+> _Reminder draft (reply on the original thread, keeping the first mail quoted below):_
+> > Beste Statengriffie,
+> >
+> > Op 4 september stuurde ik onderstaand bericht over het stemgedrag in Stateninformatie, dat sinds
+> > half juli niet meer als open data op te halen is. Zou u kunnen laten weten of dit bij u of bij
+> > GemeenteOplossingen opgepakt kan worden, of mij naar de juiste persoon kunnen verwijzen?
+> > Alvast dank!
+> >
+> > Met vriendelijke groet, [naam]
+
+**Unlocks:** restores **Utrecht** (610 stemmingen, tier A, exact per-member counts).
+**Why:** `GET /Samenstelling/{fractie}/votings` used to return the per-fractie stemgedrag as JSON.
+Since ~mid-July 2026 it answers HTTP 200 with an **Anubis 1.25.0** proof-of-work interstitial
+(`<script id="anubis_version">"1.25.0"</script>`) instead. The `/api/v2/*` endpoints are **not**
+behind it (`/api/v2/groups` and `/api/v2/meetings` still return JSON), but there is no
+`/api/v2/votings` route — probed 2026-09-04, it 400s as an unknown resource. So the votes exist only
+behind the wall. Anubis is a blanket anti-AI-crawler measure; open-data reuse is collateral, which is
+what makes the ask small.
+
+**To:** `statengriffie@provincie-utrecht.nl` (✅ **sent 2026-09-04** — watch for a bounce; this address
+was never independently verified, and the equivalent guesses bounced for Flevoland and Drenthe)
+**Onderwerp:** Stemgedrag Stateninformatie niet meer als open data op te halen
+
+> Beste Statengriffie,
+>
+> Ik beheer een open, non-commercieel overzicht van het stemgedrag **per fractie** in de
+> Provinciale Staten. Provincie Utrecht was daarin vanaf het begin de eerste provincie: dankzij de
+> open data van Stateninformatie staan de Utrechtse stemmingen erin met exacte aantallen per fractie.
+>
+> Sinds half juli lukt het ophalen van die gegevens niet meer. De pagina
+> `https://www.stateninformatie.provincie-utrecht.nl/Samenstelling/{fractie}/votings`
+> gaf altijd JSON terug met het stemgedrag, maar levert nu een anti-bot-controlescherm (Anubis) in
+> plaats van de data. De endpoints onder `/api/v2/` (bijvoorbeeld `/api/v2/groups` en
+> `/api/v2/meetings`) werken wél gewoon — alleen de votings-route zit achter dat scherm.
+>
+> Ik ga ervan uit dat die maatregel bedoeld is tegen AI-crawlers die websites overbelasten, en niet
+> tegen hergebruik van open data. Mijn verzoek is dan ook klein; zou één van deze twee kunnen:
+>
+> 1. de user-agent van mijn collector uitzonderen in het Anubis-beleid:
+>    `wie-stemde-wat collector (open-data overview; contact via GitHub)`
+> 2. óf het stemgedrag ook via `/api/v2/` beschikbaar maken — dat deel staat immers niet achter het scherm.
+>
+> Het gaat om weinig verkeer: één keer per week ongeveer tachtig verzoeken in totaal, netjes
+> gespreid. Dat is minder belasting dan één gemiddelde bezoeker.
+>
+> Het project is open en non-commercieel; u kunt het hier bekijken:
+> – Website: https://carefulcamel61097.github.io/wie-stemde-wat/
+> – Broncode: https://github.com/carefulCamel61097/wie-stemde-wat
+>
+> Wellicht ten overvloede: het gaat om dezelfde software (GemeenteOplossingen) als bij het Drents
+> Parlement. Daar bleek een vergelijkbare vraag met één instelling bij de leverancier opgelost;
+> mogelijk is dat hier ook zo.
+>
+> Op dit moment toont de site de Utrechtse gegevens nog wel, maar met de stand van 9 juli 2026 — die
+> loopt dus steeds verder achter. Ik hoor graag of dit mogelijk is.
+>
+> Met vriendelijke groet,
+> [naam]
+
+> **Tip:** de concrete URL plus "de `/api/v2/`-endpoints werken wél" is het nuttigste deel van de
+> mail — daarmee kan de griffie het één-op-één doorzetten naar GemeenteOplossingen zonder zelf te
+> hoeven uitzoeken wat er stuk is. Vul je eigen naam in bij `[naam]`.
