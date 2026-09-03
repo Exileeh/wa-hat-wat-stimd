@@ -42,6 +42,11 @@
   .lead{margin:0 0 6px;color:#d7d7db}
   .src{font-size:12.5px;color:#a9a9b1}
   .src a{color:#d9d9df;text-decoration:underline}
+  /* Shown when a scope is serving data the collector can no longer refresh. "bijgewerkt
+     <datum>" on its own does not tell a visitor that a date is a fault rather than a
+     quiet month, and on an open-data site that is the wrong side to err on. */
+  .staleNote{margin:9px 0 0;padding:7px 10px;font-size:12.5px;line-height:1.45;max-width:70ch;
+    color:#ffe6a8;background:rgba(255,193,7,.13);border-left:3px solid #ffc107;border-radius:0 6px 6px 0}
 
   .controls{display:flex;flex-direction:column;gap:9px;padding:11px 22px;border-bottom:1px solid var(--line);background:var(--surface-2);position:sticky;top:0;z-index:10}
   .controls-row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:flex-end}
@@ -266,6 +271,7 @@
   <h1>Wie stemde wat<span class="q">?</span></h1>
   <p class="lead" id="appLead">Stemgedrag per partij — <b>Voor</b> of <b>Tegen</b> per stemming.</p>
   <p class="src" id="src"></p>
+  <p class="staleNote" id="staleNote" hidden></p>
 </header>
 
 <div class="controls">
@@ -568,6 +574,13 @@ async function openScope(cat, scope){
   $("#helpSource").innerHTML = `Open data van de <a href="${DATA.meta.source}" target="_blank" rel="noopener">${srcName}</a>, periode ${esc(DATA.meta.term)}, wekelijks bijgewerkt.`
     + (DATA.meta.note ? ` ${esc(DATA.meta.note)}` : "");
   $("#helpBody1").textContent = `Per stemming — een motie, amendement of besluit in de ${DATA.meta.body} — zie je hoe elke fractie stemde.`;
+
+  // knownIssue is set by the collector only while this scope is serving data it could not refresh,
+  // and disappears on its own once the source works again — so this needs no separate upkeep.
+  const issue = SCOPE && SCOPE.knownIssue;
+  $("#staleNote").hidden = !issue;
+  if(issue) $("#staleNote").innerHTML = `⚠️ ${esc(issue)} `
+    + `<b>Laatste verversing: ${esc(DATA.meta.generated_at.slice(0,10))}.</b>`;
 
   // Faction-level data stores votes as 1/0, so "ruwe getallen" would show a meaningless "1-0".
   const faction = DATA.meta.granularity === "fractie";

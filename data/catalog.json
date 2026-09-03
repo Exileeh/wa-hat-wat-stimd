@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T17:58:15+00:00",
+  "generated_at": "2026-09-03T18:15:13+00:00",
   "default": {
     "category": "provinciale-staten",
     "scope": "utrecht"
@@ -138,7 +138,8 @@
           "style": {
             "accent": "#EC0000",
             "headerBg": "#1b1b1b"
-          }
+          },
+          "knownIssue": "De bron levert het stemgedrag sinds half juli 2026 niet meer als open data (anti-bot-scherm op het Statenportaal). De Statengriffie is gevraagd dit te herstellen; tot die tijd staat hieronder de laatste stand."
         },
         {
           "key": "drenthe",

@@ -35,6 +35,22 @@ stemmingen (`lost_data()`) — the collector:
 That last point is the actual fix. Everything else was already visible in the logs — nobody was
 reading them, because nothing ever asked them to.
 
+**Acknowledged breakages.** A source we already know about carries a `known_issue` note in its
+`SOURCES` entry. It still prints its failure and still keeps its last good data, but it does **not**
+turn the run red — otherwise the workflow would be red every week for the same five scopes, and a
+permanently red workflow trains you to ignore it, which is the failure above wearing a different
+hat. Red therefore means *something new broke*. Two things keep an acknowledgement from rotting:
+
+- **A staleness ceiling.** Past `STALE_AFTER_DAYS` (45) the scope goes red anyway, acknowledged or
+  not. An acknowledgement buys time, not silence.
+- **It is visible to visitors.** The note travels into `catalog.json` as `knownIssue` and the page
+  shows it above the table — "bijgewerkt 9 juli 2026" on its own does not tell someone that a date
+  is a fault rather than a quiet month, and on an open-data site that is the wrong side to err on.
+
+The marker is only written while a scope is actually serving data the collector could not refresh,
+so it clears itself the moment the source works again (and the run prints a reminder to delete the
+now-pointless `known_issue` key).
+
 ## Coverage table
 
 | Scope | Category | Vendor | Method | Granularity | Item types | Items | Scope of items | Reliability |

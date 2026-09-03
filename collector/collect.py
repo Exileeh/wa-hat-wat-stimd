@@ -40,6 +40,9 @@ SOURCES = [
         "key": "utrecht",
         "name": "Utrecht",
         "vendor": "go",
+        "known_issue": "De bron levert het stemgedrag sinds half juli 2026 niet meer als open "
+                       "data (anti-bot-scherm op het Statenportaal). De Statengriffie is gevraagd "
+                       "dit te herstellen; tot die tijd staat hieronder de laatste stand.",
         "base": "https://www.stateninformatie.provincie-utrecht.nl",
         "term_start": (2023, 3, 29),   # PS election 29 March 2023
         "term_label": "2023-2027",
@@ -125,6 +128,8 @@ SOURCES = [
         # page carries the per-fractie breakdown with EXACT member counts -> tier A. Reference province
         # for the vendor; the others differ only in organisation_id / gremium_id / slug.
         "key": "zuid-holland",
+        "known_issue": "Deze provincie wordt op dit moment niet automatisch ververst: de bron "
+                       "blokkeert de wekelijkse verversing. Hieronder staat de laatste stand.",
         "name": "Zuid-Holland",
         "vendor": "notubiz",
         "organisation_id": 3868,
@@ -142,6 +147,8 @@ SOURCES = [
     },
     {
         "key": "fryslan",
+        "known_issue": "Deze provincie wordt op dit moment niet automatisch ververst: de bron "
+                       "blokkeert de wekelijkse verversing. Hieronder staat de laatste stand.",
         "name": "Fryslân",
         "vendor": "notubiz",
         "organisation_id": 822,
@@ -159,6 +166,8 @@ SOURCES = [
     },
     {
         "key": "gelderland",
+        "known_issue": "Deze provincie wordt op dit moment niet automatisch ververst: de bron "
+                       "blokkeert de wekelijkse verversing. Hieronder staat de laatste stand.",
         "name": "Gelderland",
         "vendor": "notubiz",
         "organisation_id": 1769,
@@ -176,6 +185,8 @@ SOURCES = [
     },
     {
         "key": "overijssel",
+        "known_issue": "Deze provincie wordt op dit moment niet automatisch ververst: de bron "
+                       "blokkeert de wekelijkse verversing. Hieronder staat de laatste stand.",
         "name": "Overijssel",
         "vendor": "notubiz",
         "organisation_id": 1750,
@@ -1935,14 +1946,19 @@ def write_scope(key, out, compact):
     return True
 
 
-def scope_entry(p, available, chunked):
+def scope_entry(p, available, chunked, known_issue=None):
     """One catalog scope row. termNote (cabinet nickname / period) drives the picker-card subtitle;
-    chunked tells the frontend to load per-year chunk files instead of one JSON."""
+    chunked tells the frontend to load per-year chunk files instead of one JSON; knownIssue is set
+    only while this scope is actually serving stale data, and the frontend shows it to visitors —
+    "bijgewerkt <datum>" alone does not tell someone that a date is a fault rather than a quiet
+    month. It disappears by itself the moment the source collects normally again."""
     e = {"key": p["key"], "name": p["name"], "available": available, "style": p.get("style", {})}
     if p.get("termNote"):
         e["termNote"] = p["termNote"]
     if chunked:
         e["chunked"] = True
+    if known_issue:
+        e["knownIssue"] = known_issue
     return e
 
 
@@ -1960,15 +1976,31 @@ def previous_state():
         pass
     state = {}
     for p in SOURCES:
-        n, chunked = 0, False
+        n, chunked, gen = 0, False, None
         try:
             j = json.loads((DATA_DIR / f"{p['key']}.json").read_text(encoding="utf-8"))
             chunked = bool(j.get("chunked"))
             n = sum(c["count"] for c in j["chunks"]) if chunked else len(j.get("moties", []))
+            gen = (j.get("meta") or {}).get("generated_at")
         except (OSError, ValueError, KeyError):
             pass
-        state[p["key"]] = (avail.get(p["key"], False), n, chunked)
+        state[p["key"]] = {"available": avail.get(p["key"], False), "n": n,
+                           "chunked": chunked, "generated_at": gen}
     return state
+
+
+def data_age_days(generated_at):
+    """How stale the scope's last good data is, in days (None when we cannot tell)."""
+    try:
+        return (datetime.now(timezone.utc) - datetime.fromisoformat(generated_at)).days
+    except (TypeError, ValueError):
+        return None
+
+
+# An acknowledged breakage (a `known_issue` source) does not turn the weekly run red — otherwise a
+# permanently red workflow trains you to ignore it, which is the failure we just fixed wearing a
+# different hat. But it must not rot silently either: past this many days the scope goes red anyway.
+STALE_AFTER_DAYS = 45
 
 
 def lost_data(prev_n, n):
@@ -2013,22 +2045,38 @@ def main():
                 res = adapter(p)
             except Exception as e:
                 print(f"  ERROR: {type(e).__name__}: {e}")
-        prev_avail, prev_n, prev_chunked = prev.get(p["key"], (False, 0, False))
+        prev_s = prev.get(p["key"], {})
+        prev_avail, prev_n = prev_s.get("available", False), prev_s.get("n", 0)
+        prev_chunked = prev_s.get("chunked", False)
         n = len(res["moties"]) if res and res.get("moties") else 0
         failures = http_log_summary()
         note = f"; failed requests: {failures}" if failures else ""
         # Guard: never let a broken or throttled source quietly delete or shrink a live scope. Keep
-        # the last good data file — the frontend shows its "bijgewerkt" date, so stale data stays
-        # visible rather than vanishing — and fail the run so the Action actually reports it.
+        # the last good data file — the scope stays on the site, carrying its "bijgewerkt" date and
+        # (below) a notice saying the data is not being refreshed — and fail the run so the Action
+        # reports it. A source we have already acknowledged (`known_issue`) does not re-fail every
+        # week, so red keeps meaning "something NEW broke" — until it passes STALE_AFTER_DAYS.
         if prev_avail and (n == 0 or lost_data(prev_n, n)):
             why = "no data at all" if n == 0 else f"{n} stemmingen, was {prev_n}"
-            print(f"  REGRESSION: {why}{note}")
+            age = data_age_days(prev_s.get("generated_at"))
+            acknowledged = bool(p.get("known_issue")) and (age is None or age <= STALE_AFTER_DAYS)
+            if acknowledged:
+                print(f"  KNOWN ISSUE ({age}d stale): {why}{note}")
+            else:
+                if p.get("known_issue"):
+                    why += f"; acknowledged, but the last good data is now {age} days old"
+                print(f"  REGRESSION: {why}{note}")
+                problems.append(f"{p['name']} ({p['key']}, {p['vendor']}): {why}{note}")
             print(f"  keeping the existing {p['key']}.json from the last good run (not overwritten)")
-            problems.append(f"{p['name']} ({p['key']}, {p['vendor']}): {why}{note}")
-            scopes_by_cat.setdefault(catkey, []).append(scope_entry(p, True, prev_chunked))
+            scopes_by_cat.setdefault(catkey, []).append(
+                scope_entry(p, True, prev_chunked, known_issue=p.get("known_issue")))
             if default is None:
                 default = {"category": catkey, "scope": p["key"]}
             continue
+        if p.get("known_issue") and n:
+            # It collected fine: the acknowledgement is stale, and so is the notice on the page.
+            print(f"  NOTE: this source has a known_issue set but collected normally "
+                  f"({n} stemmingen) — remove known_issue from its SOURCES entry.")
         available = n > 0
         if available:
             out = {
