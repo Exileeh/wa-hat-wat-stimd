@@ -3,7 +3,7 @@
     "province": "Zuid-Holland",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-06-15T16:17:09+00:00",
+    "generated_at": "2026-09-03T17:29:29+00:00",
     "source": "https://pzh.notubiz.nl",
     "sourceName": "",
     "license": "Open data - Provincie Zuid-Holland (Notubiz vergaderportaal)",
@@ -14,9 +14,15 @@
     "note": "Stemmen zijn hoofdelijk (per lid) geregistreerd en hier per fractie met exacte aantallen samengevat (aangenomen én verworpen). Agendapunten zonder hoofdelijke stemming (bijv. bij acclamatie) en leden die niet deelnamen, staan niet in de telling.",
     "granularity": "member",
     "counts": {
-      "moties": 1062,
+      "moties": 1141,
       "parties": 21
-    }
+    },
+    "types": [
+      "amendement",
+      "besluit",
+      "motie",
+      "overig"
+    ]
   },
   "parties": [
     {
@@ -84,12 +90,12 @@
       "name": "Groep HvZH"
     },
     {
-      "slug": "groep-doe-stoer",
-      "name": "Groep Doe STOER"
-    },
-    {
       "slug": "jou-zh",
       "name": "JOU ZH"
+    },
+    {
+      "slug": "groep-doe-stoer",
+      "name": "Groep Doe STOER"
     },
     {
       "slug": "groep-svzh",
@@ -105,6 +111,7496 @@
     }
   ],
   "moties": [
+    {
+      "id": 10521873,
+      "date": "2026-09-02",
+      "title": "motie 2136 - Kaijser (Groep SvZH) - bestuurlijke continuïteit met zes gedeputeerden",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1519665",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-doe-stoer": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 10,
+        "disagree": 35
+      }
+    },
+    {
+      "id": 10427037,
+      "date": "2026-07-08",
+      "title": "motie 2135 - Broersma (SP) - veerdienst Maassluis-Rozenburg zelf in beheer nemen",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 17,
+        "disagree": 32
+      }
+    },
+    {
+      "id": 10426953,
+      "date": "2026-07-08",
+      "title": "motie 2134 - Beukering (Groep HvZH) - bakfietsbelasting",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 2,
+        "disagree": 50
+      }
+    },
+    {
+      "id": 10426952,
+      "date": "2026-07-08",
+      "title": "motie 2133 - Beeloo (Volt) - een plek om af te koelen",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 8,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 50,
+        "disagree": 2
+      }
+    },
+    {
+      "id": 10426950,
+      "date": "2026-07-08",
+      "title": "motie 2132 - Vd Hoeven (PRO) - invulling geven aan het regenboogprovincieschap door structurele kennisuitwisseling",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "vvd": {
+          "agree": 7,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 31,
+        "disagree": 21
+      }
+    },
+    {
+      "id": 10426949,
+      "date": "2026-07-08",
+      "title": "motie 2131 - Vonk (PvdD) - seveso bedrijf op bedrijfsterrein Zijlhoek-De Woerd ongewenst",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 47,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 10426948,
+      "date": "2026-07-08",
+      "title": "motie 2130 - Vonk (PvdD) -  Zuinig met ruimte en nutsvoorzieningen",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 16,
+        "disagree": 36
+      }
+    },
+    {
+      "id": 10426939,
+      "date": "2026-07-08",
+      "title": "motie 2129 - Looij (BBB) - betrek de visser",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 22,
+        "disagree": 30
+      }
+    },
+    {
+      "id": 10426936,
+      "date": "2026-07-08",
+      "title": "motie 2128 - Veldhuijzen (BBB) - leertafels als versneller van de gebiedsaanpak",
+      "type": "motie",
+      "result": "tie",
+      "resultLabel": "Staken van stemmen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 26,
+        "disagree": 26
+      }
+    },
+    {
+      "id": 10426924,
+      "date": "2026-07-08",
+      "title": "motie 2127 - Van Vugt (JA21) - schrap de 65+ korting niet",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 24,
+        "disagree": 28
+      }
+    },
+    {
+      "id": 10426917,
+      "date": "2026-07-08",
+      "title": "motie 2126 -Negash (PRO) - TFA hoort niet in ons water",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 38,
+        "disagree": 14
+      }
+    },
+    {
+      "id": 10426916,
+      "date": "2026-07-08",
+      "title": "motie 2125 - Maat (PRO) - dakloosheid bestrijden in ZH",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 49,
+        "disagree": 3
+      }
+    },
+    {
+      "id": 10426911,
+      "date": "2026-07-08",
+      "title": "motie 2124 - Lamers (PRO) - vakmanschap voor de economie van morgen",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 47,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 10425004,
+      "date": "2026-07-08",
+      "title": "motie 2123 - Westdijk (FvD) - boeren zijn geen rekenmodel",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 11,
+        "disagree": 41
+      }
+    },
+    {
+      "id": 10424970,
+      "date": "2026-07-08",
+      "title": "motie 2121 - Kaijser (Groep SvZH) - vrijwillig pfas-bloedonderzoek voor inwoners van ZH",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 17,
+        "disagree": 35
+      }
+    },
+    {
+      "id": 10424963,
+      "date": "2026-07-08",
+      "title": "motie 2120 - Kaijser (groep SvZH) - eerst evalueren, daarna uitbreiden",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 13,
+        "disagree": 39
+      }
+    },
+    {
+      "id": 10424937,
+      "date": "2026-07-08",
+      "title": "motie 2119 - Kaijser (Groep SvZH) - stimuleren onderhoud aan toegankelijkheidsvoorzieningen",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 34,
+        "disagree": 18
+      }
+    },
+    {
+      "id": 10424929,
+      "date": "2026-07-08",
+      "title": "motie 2117 - Fernald (Groep Doe STOER) - pleeback",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 0,
+        "disagree": 52
+      }
+    },
+    {
+      "id": 10424927,
+      "date": "2026-07-08",
+      "title": "motie 2116 - Fernald (Groep Doe STOER) - motie Deelder Wat maak 't uit joh",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 0,
+        "disagree": 52
+      }
+    },
+    {
+      "id": 10424917,
+      "date": "2026-07-08",
+      "title": "motie 2115 - Beeloo (Volt) - ZH kiest voor digitale soevereniteit",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 28,
+        "disagree": 24
+      }
+    },
+    {
+      "id": 10424907,
+      "date": "2026-07-08",
+      "title": "motie 2112 - Beeloo (Volt)  onbenutte groeikansen",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 30,
+        "disagree": 22
+      }
+    },
+    {
+      "id": 10424906,
+      "date": "2026-07-08",
+      "title": "motie 2111 - Beeloo (Volt) - iedereen aan tafel",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 34
+      }
+    },
+    {
+      "id": 10424904,
+      "date": "2026-07-08",
+      "title": "motie 2110 - Beeloo (Volt) - geen gaswinning Papekop",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 20,
+        "disagree": 32
+      }
+    },
+    {
+      "id": 10424890,
+      "date": "2026-07-08",
+      "title": "motie 2108 - Verkoelen (JOU) - natuurvriendelijke oevers tegen rivierkreeften en voor waterkwaliteit",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 49,
+        "disagree": 3
+      }
+    },
+    {
+      "id": 10424889,
+      "date": "2026-07-08",
+      "title": "motie 2107 - Verkoelen (JOU) - small modular reactors serieus meenemen",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 29,
+        "disagree": 23
+      }
+    },
+    {
+      "id": 10424888,
+      "date": "2026-07-08",
+      "title": "motie 2106 - Verkoelen (JOU) - de basis op orde",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 19,
+        "disagree": 33
+      }
+    },
+    {
+      "id": 10424868,
+      "date": "2026-07-08",
+      "title": "motie 2105 - Verkoelen (JOU) - straatjes en wijken erbij",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 12,
+        "disagree": 40
+      }
+    },
+    {
+      "id": 10424850,
+      "date": "2026-07-08",
+      "title": "motie 2103 - Kegel (FvD) - eerlijke afweging over kernenergie",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 12,
+        "disagree": 40
+      }
+    },
+    {
+      "id": 10424848,
+      "date": "2026-07-08",
+      "title": "motie 2102 - Kegel (FvD) - inventarisatie bestemmingsreserves",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 1,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 23,
+        "disagree": 29
+      }
+    },
+    {
+      "id": 10424842,
+      "date": "2026-07-08",
+      "title": "motie 2101 - Hoogendam (SP) - publieke campagne PFAS",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 27,
+        "disagree": 25
+      }
+    },
+    {
+      "id": 10424382,
+      "date": "2026-07-08",
+      "title": "motie 2100 - Van Woerden (CU) - een koele plek voor iedereen: koelteplekken in ZH",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 27,
+        "disagree": 25
+      }
+    },
+    {
+      "id": 10424370,
+      "date": "2026-07-08",
+      "title": "motie 2099 - Datema (CU) - maak werk van grip op arbeidsmigratie",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 40,
+        "disagree": 12
+      }
+    },
+    {
+      "id": 10424367,
+      "date": "2026-07-08",
+      "title": "motie 2098 - Datema (CU) - woningbouwontwikkeling op de locatie in 't Oog meenemen in voorbereiding startnotitie",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 15,
+        "disagree": 37
+      }
+    },
+    {
+      "id": 10424399,
+      "date": "2026-07-08",
+      "title": "motie 2095 - Vd Breevaart (SGP) - kansen woningcorporatie in ZH",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 34
+      }
+    },
+    {
+      "id": 10424362,
+      "date": "2026-07-08",
+      "title": "motie 2094 - De Jager (SGP) - ondernemers niet de dupe van oplopende kosten faunabeheer",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 34,
+        "disagree": 18
+      }
+    },
+    {
+      "id": 10424350,
+      "date": "2026-07-08",
+      "title": "motie 2093 - De Jager (SGP) - raam realistisch",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 24,
+        "disagree": 28
+      }
+    },
+    {
+      "id": 10424344,
+      "date": "2026-07-08",
+      "title": "motie 2092 - De Jager (SGP) - structurele zekerheid voor recreatie gebieden",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 21,
+        "disagree": 31
+      }
+    },
+    {
+      "id": 10424296,
+      "date": "2026-07-08",
+      "title": "motie 2090 - Rogier (CDA) - verbetering bereikbaarheid ten tijde van afsluiting Papendrechtsebrug",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 33,
+        "disagree": 19
+      }
+    },
+    {
+      "id": 10424293,
+      "date": "2026-07-08",
+      "title": "motie 2089 - Veerman (CDA) - aanpak huisvesting werkende en studerende jongeren",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 50,
+        "disagree": 2
+      }
+    },
+    {
+      "id": 10424292,
+      "date": "2026-07-08",
+      "title": "motie 2088 - Veerman (CDA) - ZH voorop bij oprichting Nederlands Agentschap voor Disruptieve innovatie",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 40,
+        "disagree": 12
+      }
+    },
+    {
+      "id": 10424268,
+      "date": "2026-07-08",
+      "title": "motie 2087 - Both-Verhoeven (CDA) - erfbeplanting",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 39,
+        "disagree": 13
+      }
+    },
+    {
+      "id": 10424265,
+      "date": "2026-07-08",
+      "title": "motie 2086  - Van Viegen (PvdD) - klimaattoets bij provinciale investeringen",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 9,
+        "disagree": 43
+      }
+    },
+    {
+      "id": 10424263,
+      "date": "2026-07-08",
+      "title": "motie 2085 - Van Viegen (PvdD) - bevorderen schuilmogelijkheden en schaduw weidedieren bij extreme weersomstandigheden",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 32,
+        "disagree": 20
+      }
+    },
+    {
+      "id": 10426945,
+      "date": "2026-07-08",
+      "title": "motie 2084 gewijzigd - De Bes (JA21) - financiële en juridische risicoanalyse mogelijke externe werking NNN-gebieden",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 22,
+        "disagree": 30
+      }
+    },
+    {
+      "id": 10424190,
+      "date": "2026-07-08",
+      "title": "motie 2083 - Looij (BBB) - effectief en verantwoord faunabeheer door inzet van geluidsdempers",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 17,
+        "disagree": 35
+      }
+    },
+    {
+      "id": 10424188,
+      "date": "2026-07-08",
+      "title": "motie 2082 - Merks (BBB) - toekomstperspectief jonge boeren, tuinders en vissers",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 34,
+        "disagree": 18
+      }
+    },
+    {
+      "id": 10426944,
+      "date": "2026-07-08",
+      "title": "motie 2081 gewijzigd - Oosterom (BBB) - iedere verhuizing zorgt voor een herbezinning van mobiliteitsbehoefte",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 34
+      }
+    },
+    {
+      "id": 10424176,
+      "date": "2026-07-08",
+      "title": "motie 2080 - Looij (BBB) - Zuid-Holland kiest voor veiligheid",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 19,
+        "disagree": 33
+      }
+    },
+    {
+      "id": 10424166,
+      "date": "2026-07-08",
+      "title": "motie 2079 - Looij (BBB) - voedselbossen; tijd voor de balans",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 35,
+        "disagree": 17
+      }
+    },
+    {
+      "id": 10426941,
+      "date": "2026-07-08",
+      "title": "motie 2078 gewijzigd - Oosterom (BBB) - vriendelijke verkeerslichten",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 36,
+        "disagree": 15
+      }
+    },
+    {
+      "id": 10424139,
+      "date": "2026-07-08",
+      "title": "motie 2077 - Looij (BBB) - samen sterk tegen de Aziatische hoornaar",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 35,
+        "disagree": 17
+      }
+    },
+    {
+      "id": 10424077,
+      "date": "2026-07-08",
+      "title": "motie 2076 - Wilson (JA21) - opcenten, terug naar de burger",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 11,
+        "disagree": 41
+      }
+    },
+    {
+      "id": 10424038,
+      "date": "2026-07-08",
+      "title": "motie 2075 - Wilson (JA21) - koppeling P&C stukken met beleidsmonitor",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 23,
+        "disagree": 29
+      }
+    },
+    {
+      "id": 10424032,
+      "date": "2026-07-08",
+      "title": "motie 2074 - De Bes (JA21) - behoud  van cultuurhistorisch waardevolle agrarische landschappen",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 1,
+          "disagree": 8,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 25,
+        "disagree": 27
+      }
+    },
+    {
+      "id": 10426954,
+      "date": "2026-07-08",
+      "title": "motie 2073 gew. - De Bes (JA21) - natuurdoelen realiseren met landbouw als aanvullend instrument binnen",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 46,
+        "disagree": 6
+      }
+    },
+    {
+      "id": 10423838,
+      "date": "2026-07-08",
+      "title": "motie 2071 - Van Engel (VVD) - Staten stimuleren doorstart Yes Delft Students",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 43,
+        "disagree": 9
+      }
+    },
+    {
+      "id": 10425256,
+      "date": "2026-07-08",
+      "title": "motie 2070 - Van der Graaf (PVV) - betalen om te bezoeken, die subsidieverstrekking  moeten we opdoeken",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 20,
+        "disagree": 32
+      }
+    },
+    {
+      "id": 10423635,
+      "date": "2026-07-08",
+      "title": "motie 2068 - Neijenhuis (D66) - geen blinde vlekken in beleid",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 36,
+        "disagree": 16
+      }
+    },
+    {
+      "id": 10423627,
+      "date": "2026-07-08",
+      "title": "motie 2067 - Lalta (D66) - provinciale woonhub: slimmer gebruik van de bestaande woningvoorraad",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 19,
+        "disagree": 32
+      }
+    },
+    {
+      "id": 10427034,
+      "date": "2026-07-08",
+      "title": "amendement 1100 - Westdijk (FvD) - versnellen van kernenergie in de energiemix",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 19,
+        "disagree": 31
+      }
+    },
+    {
+      "id": 10426921,
+      "date": "2026-07-08",
+      "title": "amendement 1099 - Van Vugt (JA21) - houden aan de landelijke prioriteringskaders",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 9,
+        "disagree": 43
+      }
+    },
+    {
+      "id": 10426910,
+      "date": "2026-07-08",
+      "title": "amendement 1098 -Maat (PRO) - pilot gratis bibliotheeklidmaatschap voor minima",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 42,
+        "disagree": 10
+      }
+    },
+    {
+      "id": 10426874,
+      "date": "2026-07-08",
+      "title": "amendement 1097 - Neijenhuis (D66) - kleine beetjes helpen ook voor klimaatadaptatie",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 31,
+        "disagree": 21
+      }
+    },
+    {
+      "id": 10424834,
+      "date": "2026-07-08",
+      "title": "amendement 1095 - Datema (CU) - investeren in optimaal gebruik en hergebruik van grondstoffen",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 22,
+        "disagree": 30
+      }
+    },
+    {
+      "id": 10424335,
+      "date": "2026-07-08",
+      "title": "amendement 1093 - De Jager (SGP) - erratum onderdeel besluitvorming Voorjaarsnota",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 52,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 10424329,
+      "date": "2026-07-08",
+      "title": "amendement 1092 - De Jager (SGP ) - erratum onderdeel besluitvorming kadernota",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 52,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 10424314,
+      "date": "2026-07-08",
+      "title": "amendement 1091 - De Jager (SGP) - ondernemers niet de dupe van oplopende kosten faunabeheer",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 34,
+        "disagree": 18
+      }
+    },
+    {
+      "id": 10424321,
+      "date": "2026-07-08",
+      "title": "amendement 1090 - Nootenboom (CDA) - steun aan Nieuwe Kerk Delft",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 44,
+        "disagree": 8
+      }
+    },
+    {
+      "id": 10424283,
+      "date": "2026-07-08",
+      "title": "amendement 1089 - Vonk (PvdD) - geen reservering infrastructuur ZIjlhoek-De Woerd",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 8,
+        "disagree": 44
+      }
+    },
+    {
+      "id": 10424000,
+      "date": "2026-07-08",
+      "title": "amendement 1088 - De Bes (JA21) - provinciaal natuurherstel- en compensatiefonds agrarische ondernemers",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 15,
+        "disagree": 37
+      }
+    },
+    {
+      "id": 10423993,
+      "date": "2026-07-08",
+      "title": "amendement 1087 - De Bes (JA21) - versnellen en bundelen van de aanpak van invasieve exoten",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 34
+      }
+    },
+    {
+      "id": 10426906,
+      "date": "2026-07-08",
+      "title": "amendement 1086 gew - Atezema (VVD) - succes wasplaatsen belonen",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 47,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 10425007,
+      "date": "2026-07-08",
+      "title": "amendement 1085 gewijzigd - ZIlverentant (VVD) - minder hinder A20 Giessenbruggen, goed voorbeeld doet goed volgen",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 44,
+        "disagree": 8
+      }
+    },
+    {
+      "id": 10423633,
+      "date": "2026-07-08",
+      "title": "amendement 1084 - Neijenhuis (D66) - structurele middelen klimaatadaptie",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 34
+      }
+    },
+    {
+      "id": 10423625,
+      "date": "2026-07-08",
+      "title": "amendement 1083 - Lalta (D66) - bewezen effectief: voortetten en verbreden van de aanjaagfunctie",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 33,
+        "disagree": 19
+      }
+    },
+    {
+      "id": 10423630,
+      "date": "2026-07-08",
+      "title": "amendement 1082 - Lalta (D66) - structureel versterken beleidsdoel 6-1 wonen",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 9,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 12,
+        "disagree": 40
+      }
+    },
+    {
+      "id": 10414976,
+      "date": "2026-07-08",
+      "title": "Stemming SV Voorjaarsnota 2026 (7838)",
+      "type": "overig",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 43,
+        "disagree": 9
+      }
+    },
+    {
+      "id": 10414978,
+      "date": "2026-07-08",
+      "title": "Stemming SV Kadernota 2027-2030 (7839)",
+      "type": "overig",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-svzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 40,
+        "disagree": 12
+      }
+    },
+    {
+      "id": 10427032,
+      "date": "2026-07-08",
+      "title": "SV 7641 Geactualiseerde Lange Termijn Agenda Omgevingsbeleid Lente 2026",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://pzh.notubiz.nl/vergadering/1386277",
+      "votes": {
+        "bbb": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groep-hvzh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "jou-zh": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 42,
+        "disagree": 8
+      }
+    },
     {
       "id": 10319420,
       "date": "2026-06-10",

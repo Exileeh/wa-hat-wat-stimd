@@ -3,7 +3,7 @@
     "province": "Gelderland",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-06-15T16:23:06+00:00",
+    "generated_at": "2026-09-03T17:33:24+00:00",
     "source": "https://gelderland.notubiz.nl",
     "sourceName": "",
     "license": "Open data - Provincie Gelderland (Notubiz vergaderportaal)",
@@ -14,9 +14,16 @@
     "note": "Stemmen zijn hoofdelijk (per lid) geregistreerd en hier per fractie met exacte aantallen samengevat (aangenomen én verworpen). Agendapunten zonder hoofdelijke stemming (bijv. bij acclamatie) en leden die niet deelnamen, staan niet in de telling.",
     "granularity": "member",
     "counts": {
-      "moties": 429,
+      "moties": 459,
       "parties": 17
-    }
+    },
+    "types": [
+      "amendement",
+      "besluit",
+      "motie",
+      "ordevoorstel",
+      "overig"
+    ]
   },
   "parties": [
     {
@@ -68,12 +75,12 @@
       "name": "SP"
     },
     {
-      "slug": "fvd",
-      "name": "FVD"
-    },
-    {
       "slug": "pvv",
       "name": "PVV"
+    },
+    {
+      "slug": "fvd",
+      "name": "FVD"
     },
     {
       "slug": "50plus",
@@ -89,6 +96,2551 @@
     }
   ],
   "moties": [
+    {
+      "id": 10423631,
+      "date": "2026-07-08",
+      "title": "PS2026-506: besluit Kadernota 2027",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 12,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 43,
+        "disagree": 9
+      }
+    },
+    {
+      "id": 10423846,
+      "date": "2026-07-08",
+      "title": "PS2026-499: besluit Continuering bijdrage OnePlanet",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 12,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 47,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 10423676,
+      "date": "2026-07-08",
+      "title": "PS2026-497: besluit Voorjaarsnota 2026",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 12,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 47,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 10421261,
+      "date": "2026-07-08",
+      "title": "PS2026-455: besluit Initiatiefvoorstel Vaststelling en afrekening fractievergoeding 2025",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 12,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 47,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 10421262,
+      "date": "2026-07-08",
+      "title": "PS2026-441: besluit Ontwerpbegroting Rekenkamer Oost-Nederland 2027",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 12,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 47,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 10427009,
+      "date": "2026-07-08",
+      "title": "26M70 Zorgvuldige informatievoorziening aan Provinciale Staten",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 11,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 15,
+        "disagree": 34
+      }
+    },
+    {
+      "id": 10427007,
+      "date": "2026-07-08",
+      "title": "26M69 Géén laagvliegroutes boven Gelderland",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 11,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 36,
+        "disagree": 14
+      }
+    },
+    {
+      "id": 10426978,
+      "date": "2026-07-08",
+      "title": "26M68 Een eerlijke bijdrage in de uitvoering van de Natuurherstelverordening’",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 11,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 32,
+        "disagree": 18
+      }
+    },
+    {
+      "id": 10426977,
+      "date": "2026-07-08",
+      "title": "26M67 Niet wachten maar voorbereiden",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 11,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 33,
+        "disagree": 16
+      }
+    },
+    {
+      "id": 10425295,
+      "date": "2026-07-08",
+      "title": "26M66 Nooit meer fascisme",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 3,
+        "disagree": 49
+      }
+    },
+    {
+      "id": 10425294,
+      "date": "2026-07-08",
+      "title": "26M65 Gratis OV voor mensen met een minimum inkomen in Gelderland",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 5,
+        "disagree": 47
+      }
+    },
+    {
+      "id": 10425293,
+      "date": "2026-07-08",
+      "title": "26M64 Onderzoek initiatieven gratis bibliotheekabonnement minima in heel Gelderland",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 20,
+        "disagree": 32
+      }
+    },
+    {
+      "id": 10425291,
+      "date": "2026-07-08",
+      "title": "26M63 Pilotproject Gelderse financiering onrendabele top honderd sociale huurwoningen",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 3,
+        "disagree": 49
+      }
+    },
+    {
+      "id": 10425290,
+      "date": "2026-07-08",
+      "title": "26M62 Terugkeer nachtbussen in heel Gelderland onderzoeken",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 4,
+        "disagree": 48
+      }
+    },
+    {
+      "id": 10425003,
+      "date": "2026-07-08",
+      "title": "26M61 KRW doelen zijn niet vrijblijvend",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 3,
+        "disagree": 49
+      }
+    },
+    {
+      "id": 10424905,
+      "date": "2026-07-08",
+      "title": "26M60 Maak tempo met energieproductie",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 16,
+        "disagree": 36
+      }
+    },
+    {
+      "id": 10424297,
+      "date": "2026-07-08",
+      "title": "26M59 Prioriteit voor meer energie-onafhankelijkheid",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 15,
+        "disagree": 37
+      }
+    },
+    {
+      "id": 10424289,
+      "date": "2026-07-08",
+      "title": "26M57 Bouwen voor de Gelderlanders van vandaag én morgen",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 12,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 30,
+        "disagree": 22
+      }
+    },
+    {
+      "id": 10424285,
+      "date": "2026-07-08",
+      "title": "26M56 Gelderland bereikbaar 2040 van onderhoud naar vooruitgang",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 12,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 37,
+        "disagree": 15
+      }
+    },
+    {
+      "id": 10423976,
+      "date": "2026-07-08",
+      "title": "26M55 Subsidie voor Batterijopslag bij Maatschappelijke Instellingen",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 12,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 46,
+        "disagree": 6
+      }
+    },
+    {
+      "id": 10423959,
+      "date": "2026-07-08",
+      "title": "26M54 Nu doorpakken op het Gelders Museum",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 12,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 49,
+        "disagree": 3
+      }
+    },
+    {
+      "id": 10422202,
+      "date": "2026-07-08",
+      "title": "26M52 Ruimte voor menselijke maat in het OV",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 12,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 52,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 10422200,
+      "date": "2026-07-08",
+      "title": "26M51 De belangrijkste haltes éérst",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 12,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 34,
+        "disagree": 18
+      }
+    },
+    {
+      "id": 10425190,
+      "date": "2026-07-08",
+      "title": "26A17 Indexatie wegenbelasting op nul",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 6,
+        "disagree": 46
+      }
+    },
+    {
+      "id": 10425061,
+      "date": "2026-07-08",
+      "title": "26A16 Gebruik de kracht van de samenleving",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 3,
+        "disagree": 49
+      }
+    },
+    {
+      "id": 10422141,
+      "date": "2026-07-08",
+      "title": "26A15 Randvoorwaarden stellen aan extra miljoenen OnePlanet",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 5,
+        "disagree": 47
+      }
+    },
+    {
+      "id": 10422140,
+      "date": "2026-07-08",
+      "title": "26A14 OnePlanet verdient meer",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 10,
+        "disagree": 42
+      }
+    },
+    {
+      "id": 10422139,
+      "date": "2026-07-08",
+      "title": "26A13 Meer budget voor echte maatschappelijke impact",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 2,
+        "disagree": 50
+      }
+    },
+    {
+      "id": 10422128,
+      "date": "2026-07-08",
+      "title": "26A12 Voldoende budget voor toegankelijke bushaltes",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 12,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 50,
+        "disagree": 2
+      }
+    },
+    {
+      "id": 10422126,
+      "date": "2026-07-08",
+      "title": "26A10 Geen geld naar onhoudbare subsidies in de veehouderij",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://gelderland.notubiz.nl/vergadering/1398043",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 3,
+        "disagree": 49
+      }
+    },
     {
       "id": 10308985,
       "date": "2026-06-03",

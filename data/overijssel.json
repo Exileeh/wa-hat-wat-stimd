@@ -3,7 +3,7 @@
     "province": "Overijssel",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-06-15T16:28:37+00:00",
+    "generated_at": "2026-09-03T17:35:08+00:00",
     "source": "https://overijssel.notubiz.nl",
     "sourceName": "",
     "license": "Open data - Provincie Overijssel (Notubiz vergaderportaal)",
@@ -14,9 +14,15 @@
     "note": "Stemmen zijn hoofdelijk (per lid) geregistreerd en hier per fractie met exacte aantallen samengevat (aangenomen én verworpen). Agendapunten zonder hoofdelijke stemming (bijv. bij acclamatie) en leden die niet deelnamen, staan niet in de telling.",
     "granularity": "member",
     "counts": {
-      "moties": 549,
+      "moties": 591,
       "parties": 16
-    }
+    },
+    "types": [
+      "amendement",
+      "besluit",
+      "motie",
+      "ordevoorstel"
+    ]
   },
   "parties": [
     {
@@ -85,6 +91,3996 @@
     }
   ],
   "moties": [
+    {
+      "id": 10410531,
+      "date": "2026-07-02",
+      "title": "STATENVOORSTEL Toekomstige exploitatie Twente Airport",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 41,
+        "disagree": 4
+      }
+    },
+    {
+      "id": 10410881,
+      "date": "2026-07-02",
+      "title": "STATENVOORSTEL Plan van Aanpak 500 jaar Overijssel, incl. investeringsvoorstel",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 38,
+        "disagree": 6
+      }
+    },
+    {
+      "id": 10448415,
+      "date": "2026-07-02",
+      "title": "STATENVOORSTEL Perspectiefnota 2027",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 40,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 10410597,
+      "date": "2026-07-02",
+      "title": "MOTIE VREEMD PS26-MV18 Gelijke bescherming voor alle inwoners rondom Kanaal Almelo-De Haandrik (OV e.a.)",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 6,
+        "disagree": 38
+      }
+    },
+    {
+      "id": 10410595,
+      "date": "2026-07-02",
+      "title": "MOTIE VREEMD PS26-MV17 Bewaken van het verbindende karakter van door de provincie ondersteunde Bevrijdingsfestivals (JA21)",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 6,
+        "disagree": 38
+      }
+    },
+    {
+      "id": 10410594,
+      "date": "2026-07-02",
+      "title": "MOTIE VREEMD PS26-MV16 Vermindering aantal gedeputeerden (D66 e.a.) versie 2",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 26
+      }
+    },
+    {
+      "id": 10448664,
+      "date": "2026-07-02",
+      "title": "MOTIE VR. PS26-MV18 Gelijke bescherming voor alle inwoners rondom Kanaal Almelo-De Haandrik (OV e.a.)",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 6,
+        "disagree": 38
+      }
+    },
+    {
+      "id": 10448661,
+      "date": "2026-07-02",
+      "title": "MOTIE VR. PS26-MV17 Bewaken van het verbindende karakter van door de provincie ondersteunde Bevrijdingsfestivals (JA21)",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 6,
+        "disagree": 38
+      }
+    },
+    {
+      "id": 10448659,
+      "date": "2026-07-02",
+      "title": "MOTIE VR. PS26-MV16 Vermindering aantal gedeputeerden (D66 e.a.) versie 2",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 26
+      }
+    },
+    {
+      "id": 10410918,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M82 Stroomaansluitingen als voorwaarde (D66 e.a.)",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 8,
+        "disagree": 36
+      }
+    },
+    {
+      "id": 10410873,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M78 Reactie Overijssel op stikstofbrief minister Van Essen (FVD)",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 15,
+        "disagree": 29
+      }
+    },
+    {
+      "id": 10410872,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M77 Eerst inzicht, dan uitvoering – gevolgen stikstofpakket voor Overijssel (PVV)",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 19,
+        "disagree": 25
+      }
+    },
+    {
+      "id": 10451651,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M74 Investeren in gebieden met gebiedspecifieke opgaven (PvdD)",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 25,
+        "disagree": 20
+      }
+    },
+    {
+      "id": 10451649,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M73 Faunamaatregelen voor versterken biodiversiteit (PvdD)",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 30,
+        "disagree": 15
+      }
+    },
+    {
+      "id": 10451646,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M72 Hulp voor in het wild levende dieren in nood (PvdD e.a.)",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 10,
+        "disagree": 35
+      }
+    },
+    {
+      "id": 10451631,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M70 Wat waterdiertjes ons vertellen (CDA e.a.)",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 2,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 33,
+        "disagree": 12
+      }
+    },
+    {
+      "id": 10451618,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M68 Vloedbeltverbinding in zorgvuldigheid (CDA e.a.)",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 38,
+        "disagree": 7
+      }
+    },
+    {
+      "id": 10451615,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M65 Agro-ecosysteem weerbaarheid en zekerheid (BBB e.a.)",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 31,
+        "disagree": 14
+      }
+    },
+    {
+      "id": 10451610,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M64 Ken je (Europese) buren! (Volt e.a.)",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 34,
+        "disagree": 11
+      }
+    },
+    {
+      "id": 10451609,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M63 Cultuur voor iedereen (PvdA e.a.)",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 33,
+        "disagree": 12
+      }
+    },
+    {
+      "id": 10451608,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M62 Maatschappelijke meerwaarde kleinere cultuur en evenementen initiatieven (CDA e.a.)",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 34,
+        "disagree": 11
+      }
+    },
+    {
+      "id": 10451495,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M60 Vrije Ruimte (CU e.a.)",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 32,
+        "disagree": 13
+      }
+    },
+    {
+      "id": 10451493,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M59 Laat de kiezer beslissen (FVD)",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 5,
+        "disagree": 40
+      }
+    },
+    {
+      "id": 10451490,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M57 Financieel beeld (JA21)",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 28,
+        "disagree": 17
+      }
+    },
+    {
+      "id": 10451488,
+      "date": "2026-07-02",
+      "title": "MOTIE PS26-M56 Efficiënte overheid (BBB) versie 2",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 21,
+        "disagree": 24
+      }
+    },
+    {
+      "id": 10410516,
+      "date": "2026-07-02",
+      "title": "INITIATIEFVOORSTEL Meertaligheid in de provincie Overijssel",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 40,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 10410520,
+      "date": "2026-07-02",
+      "title": "INITIATIEFVOORSTEL Groen gas als dwingende systeemoplossing",
+      "type": "besluit",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 7,
+        "disagree": 38
+      }
+    },
+    {
+      "id": 10410880,
+      "date": "2026-07-02",
+      "title": "AMENDEMENT PS26-A70 500 jaar Overijssel: van ons allemaal (FVD)",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 5,
+        "disagree": 39
+      }
+    },
+    {
+      "id": 10410877,
+      "date": "2026-07-02",
+      "title": "AMENDEMENT PS26-A69 Minder programmalijnen voor 500 jaar Overijssel (JA21 e.a.)",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 1,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 9,
+        "disagree": 35
+      }
+    },
+    {
+      "id": 10451485,
+      "date": "2026-07-02",
+      "title": "AMENDEMENT PS26-A68 Eerst de belastingbetaler dan de begrotingssystematiek (JA21 e.a.) versie 2",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 7,
+        "disagree": 38
+      }
+    },
+    {
+      "id": 10451617,
+      "date": "2026-07-02",
+      "title": "AMENDEMENT PS26-A66 Geen Vloedbeltverbinding in de P-nota (JA21 e.a.)",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 7,
+        "disagree": 38
+      }
+    },
+    {
+      "id": 10451607,
+      "date": "2026-07-02",
+      "title": "AMENDEMENT PS26-A65 Geschiedenis en identiteit centraal (JA21 e.a.) |",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 7,
+        "disagree": 38
+      }
+    },
+    {
+      "id": 10451483,
+      "date": "2026-07-02",
+      "title": "AMENDEMENT PS26-A64 Geen opcenten Motorrijtuigenbelasting (PVV e.a.)",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 8,
+        "disagree": 37
+      }
+    },
+    {
+      "id": 10451479,
+      "date": "2026-07-02",
+      "title": "AMENDEMENT PS26-A62 Van wensdenken naar onderhoud (FVD)",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 5,
+        "disagree": 40
+      }
+    },
+    {
+      "id": 10410533,
+      "date": "2026-07-02",
+      "title": "AMENDEMENT PS26-A61 Twente Airport (GL e.a.)",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 35,
+        "disagree": 10
+      }
+    },
+    {
+      "id": 10410521,
+      "date": "2026-07-02",
+      "title": "AMENDEMENT PS26-A60 Amendement op initiatiefvoorstel PS26- 000273 (OV)",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 7,
+        "disagree": 38
+      }
+    },
+    {
+      "id": 10448354,
+      "date": "2026-07-02",
+      "title": "AMENDEMENT PS26-A59 Nederlandse Gebarentaal in Overijssel (SGP e.a.)",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394729",
+      "votes": {
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 30,
+        "disagree": 15
+      }
+    },
+    {
+      "id": 10401427,
+      "date": "2026-07-01",
+      "title": "Statenvoorstel Verlenging contract accountant 2027",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394727",
+      "votes": {
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 42,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 10401426,
+      "date": "2026-07-01",
+      "title": "Statenvoorstel Verantwoording fractiebudget 2025",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394727",
+      "votes": {
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 42,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 10401435,
+      "date": "2026-07-01",
+      "title": "Statenvoorstel Monitor 2026-I",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394727",
+      "votes": {
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 45,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 10401432,
+      "date": "2026-07-01",
+      "title": "Statenvoorstel Investeringsvoorstel leefbaarheidsregeling Kanaal Almelo-De Haandrik",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394727",
+      "votes": {
+        "bbb": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 45,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 10402295,
+      "date": "2026-07-01",
+      "title": "Ordevoorstel van Statenlid Hoogveld om 19. 'Stikstofbrief kabinet' te verplaatsen en bespreken voorafgaand aan 8. 'Initiatiefvoorstel Meertaligheid in de provincie Overijssel'",
+      "type": "ordevoorstel",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://overijssel.notubiz.nl/vergadering/1394727",
+      "votes": {
+        "christenunie": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ov": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pbo": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 10,
+        "disagree": 32
+      }
+    },
     {
       "id": 10314362,
       "date": "2026-06-03",
