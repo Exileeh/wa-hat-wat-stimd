@@ -3,7 +3,7 @@
     "province": "Limburg",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-08-27T18:16:31+00:00",
+    "generated_at": "2026-09-03T11:41:16+00:00",
     "source": "https://limburg.bestuurlijkeinformatie.nl",
     "sourceName": "",
     "license": "Open data - Provincie Limburg (iBabs publieksportaal)",
@@ -14,7 +14,7 @@
     "note": "Stemmen zijn per fractie met aantallen geregistreerd (aangenomen én verworpen). Moties/amendementen zonder hoofdelijke stemming zijn niet opgenomen.",
     "granularity": "member",
     "counts": {
-      "moties": 356,
+      "moties": 355,
       "parties": 16
     },
     "types": [
@@ -2866,7 +2866,7 @@
       "type": "motie",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/8788d7dc-37d9-40d9-bf9f-4412375b1fba",
+      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/dd367280-60a7-44f5-823e-118bb556ada7",
       "votes": {
         "50plus": {
           "agree": 1,
@@ -3136,7 +3136,7 @@
       "type": "motie",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/fd2372f1-eac6-4272-b732-21c35e6ddead",
+      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/b103108a-2d27-411a-808b-b46cd09c653d",
       "votes": {
         "50plus": {
           "agree": 1,
@@ -4306,7 +4306,7 @@
       "type": "motie",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/323e0389-65e9-4267-af3f-b1c7fbaf513d",
+      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/34358748-c45e-4491-a226-a25d27b1d3b2",
       "votes": {
         "50plus": {
           "agree": 1,
@@ -5846,7 +5846,7 @@
       "type": "motie",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/1fc39de8-57f1-43f6-9efb-de1f5caaa3ae",
+      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/fc7f4731-47ee-4c2d-a8d0-799f77e0c7ff",
       "votes": {
         "bbb": {
           "agree": 9,
@@ -6256,7 +6256,7 @@
       "type": "motie",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/3fa31a19-1abc-46a7-b28b-9f98d9f7c274",
+      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/20abbc8f-f4ab-47c0-9a64-89b8ea195709",
       "votes": {
         "bbb": {
           "agree": 9,
@@ -9036,7 +9036,7 @@
       "type": "motie",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/bf1431bb-8978-4e37-a98e-07351195d292",
+      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/19ab23d9-fc35-4031-8643-f87fab485363",
       "votes": {
         "50plus": {
           "agree": 1,
@@ -10651,7 +10651,7 @@
       "type": "motie",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/246f8a59-5d0c-4e7a-9709-8aee62939bd6",
+      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/49abeb60-2984-4058-a5dd-3067d594b9c8",
       "votes": {
         "50plus": {
           "agree": 1,
@@ -10736,7 +10736,7 @@
       "type": "motie",
       "result": "accepted",
       "resultLabel": "Aangenomen",
-      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/831550c3-5184-460a-bc1f-c0e61263e1ce",
+      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/55647cc2-b79c-4693-ae20-9e5d92376811",
       "votes": {
         "50plus": {
           "agree": 1,
@@ -16312,96 +16312,6 @@
       "totals": {
         "agree": 6,
         "disagree": 9
-      }
-    },
-    {
-      "id": 3143,
-      "date": "2024-11-01",
-      "title": "Motie 3143 Loomans c.s. inzake Vergroot de Limburgse voedselzekerheid.",
-      "type": "motie",
-      "result": "rejected",
-      "resultLabel": "Verworpen",
-      "source": "https://limburg.bestuurlijkeinformatie.nl/Reports/Item/94d8cf2f-9e3d-4e26-9708-6057f264d409",
-      "votes": {
-        "50plus": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "cda": {
-          "agree": 5,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "groenlinks": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "horizon": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "oos-limburg": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvdd": {
-          "agree": 1,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "pvda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "sp": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
-        "bbb": {
-          "agree": 0,
-          "disagree": 9,
-          "abstain": 0
-        },
-        "d66": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
-        "fvd": {
-          "agree": 0,
-          "disagree": 1,
-          "abstain": 0
-        },
-        "ja21": {
-          "agree": 0,
-          "disagree": 1,
-          "abstain": 0
-        },
-        "lokaal-limburg": {
-          "agree": 0,
-          "disagree": 1,
-          "abstain": 0
-        },
-        "pvv": {
-          "agree": 0,
-          "disagree": 6,
-          "abstain": 0
-        },
-        "vvd": {
-          "agree": 0,
-          "disagree": 5,
-          "abstain": 0
-        }
-      },
-      "totals": {
-        "agree": 8,
-        "disagree": 7
       }
     },
     {
