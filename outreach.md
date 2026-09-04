@@ -243,21 +243,21 @@ province before concluding "no structured votes".
 ---
 
 ## 4. Statengriffie Utrecht — votings-route achter een anti-bot-scherm (Anubis)
-> **✅ Sent 2026-09-04.** Awaiting reply. Regression, not a new province: Utrecht was tier A from day
-> one and went dark between the **2026-07-09** and **2026-07-16** runs.
-> **Follow-up:** if silent by **~18 September** (≈2 weeks), send the nudge below. Timing is decent —
-> the zomerreces is over, so the griffie is back at work; unlike the Groningen/Zeeland mails this one
-> did not land in an empty office.
+> **✅ RESOLVED 2026-09-05 — fastest turnaround yet (≈1 day).** Mailed 2026-09-04 19:44; Meike Kievits
+> (Informatieadviseur, Statengriffie PS Utrecht) replied 21:23 the next evening: GemeenteOplossingen
+> deployed a "botstopper" this summer against cyberattacks, which also caught legitimate interest.
+> Four minutes later, a second mail: **the vendor had already added an exception for our User-Agent.**
+> Verified the same evening — `/Samenstelling/{fractie}/votings` returns JSON again, Utrecht recollected
+> to 610 stemmingen, `known_issue` marker removed.
 >
-> _Reminder draft (reply on the original thread, keeping the first mail quoted below):_
-> > Beste Statengriffie,
-> >
-> > Op 4 september stuurde ik onderstaand bericht over het stemgedrag in Stateninformatie, dat sinds
-> > half juli niet meer als open data op te halen is. Zou u kunnen laten weten of dit bij u of bij
-> > GemeenteOplossingen opgepakt kan worden, of mij naar de juiste persoon kunnen verwijzen?
-> > Alvast dank!
-> >
-> > Met vriendelijke groet, [naam]
+> She also noted **no stemmingen have taken place since 9 July**; the next Statenvergadering is
+> **30 September 2026**. That independently confirms the dataset was never incomplete — 610 items both
+> before and after the outage — only unable to refresh.
+>
+> **What worked (reuse this):** name the exact URL, state what still works (`/api/v2/*`), offer two
+> concrete fixes rather than a problem, and quantify the load (≈80 requests/week). The griffie
+> forwarded it to the vendor essentially verbatim. Naming the **User-Agent string** in the mail is what
+> made the exception a copy-paste job.
 
 **Unlocks:** restores **Utrecht** (610 stemmingen, tier A, exact per-member counts).
 **Why:** `GET /Samenstelling/{fractie}/votings` used to return the per-fractie stemgedrag as JSON.
@@ -268,8 +268,8 @@ behind it (`/api/v2/groups` and `/api/v2/meetings` still return JSON), but there
 behind the wall. Anubis is a blanket anti-AI-crawler measure; open-data reuse is collateral, which is
 what makes the ask small.
 
-**To:** `statengriffie@provincie-utrecht.nl` (✅ **sent 2026-09-04** — watch for a bounce; this address
-was never independently verified, and the equivalent guesses bounced for Flevoland and Drenthe)
+**To:** `statengriffie@provincie-utrecht.nl` (✅ **correct** — no bounce, replied within a day. Unlike
+Flevoland/Drenthe, the `statengriffie@` form *is* right for Utrecht.)
 **Onderwerp:** Stemgedrag Stateninformatie niet meer als open data op te halen
 
 > Beste Statengriffie,

@@ -10,9 +10,10 @@
 >   hiding a scope, and **exits 1** when a live scope loses data (so GitHub emails about it).
 > - **✅ Fixed** — EP rate limiting (retry on 429/5xx honouring Retry-After, 4 workers, sequential
 >   repair pass). Restored to full coverage.
-> - **⏳ Utrecht — mail sent 2026-09-04**, awaiting reply ([outreach.md §4](outreach.md)). Its GO
->   portal put the votings route behind an **Anubis** anti-bot interstitial. Nudge ~18 September if
->   silent. Until it is resolved Utrecht shows its 2026-07-09 data, with that date visible on the site.
+> - **✅ Utrecht — RESOLVED 2026-09-05.** Its GO portal had put the votings route behind an **Anubis**
+>   anti-bot wall; the griffie forwarded the ask and GemeenteOplossingen added a User-Agent exception
+>   within a day ([outreach.md §4](outreach.md)). Back to 610 stemmingen, `known_issue` cleared.
+>   Per the griffie there were **no stemmingen between 9 July and 30 September**, so nothing was missed.
 > - **▶ TODO — Notubiz in CI.** `api.notubiz.nl` answers a normal connection fine but returns nothing
 >   to GitHub-hosted runners, and has never worked in CI. The next failing run will now print the actual
 >   HTTP status — read that first, then decide (ask Notubiz / self-hosted runner / proxy).

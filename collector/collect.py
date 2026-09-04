@@ -40,9 +40,6 @@ SOURCES = [
         "key": "utrecht",
         "name": "Utrecht",
         "vendor": "go",
-        "known_issue": "De bron levert het stemgedrag sinds half juli 2026 niet meer als open "
-                       "data (anti-bot-scherm op het Statenportaal). De Statengriffie is gevraagd "
-                       "dit te herstellen; tot die tijd staat hieronder de laatste stand.",
         "base": "https://www.stateninformatie.provincie-utrecht.nl",
         "term_start": (2023, 3, 29),   # PS election 29 March 2023
         "term_label": "2023-2027",
@@ -536,6 +533,10 @@ def collect_go(p):
     # The per-fractie votings page lives under a portal-specific path segment. Utrecht (and the GO
     # default) exposes it at /Samenstelling/{slug}/votings; Drenthe's install routes it via
     # /Leden/{slug}/votings (confirmed by GemeenteOplossingen, 2026-06-30). Same JSON either way.
+    # 2026-07/09: Utrecht's portal briefly answered this route with an Anubis anti-bot interstitial
+    # (HTTP 200, HTML) instead of JSON, which read as "no data" for eight weeks. GemeenteOplossingen
+    # added an exception for our User-Agent on 2026-09-04. If it ever returns HTML again, try_json
+    # now names it ("anti-bot interstitial, not JSON") rather than failing silently.
     vpath = p.get("votings_path", "Samenstelling")
     moties = {}
     parties_with_data = {}

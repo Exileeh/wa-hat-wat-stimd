@@ -18,7 +18,7 @@ provinces quietly disappeared from the site. Fixed 2026-09-04 (see below).
 
 | Source | Status | Since | Cause |
 |---|---|---|---|
-| **Utrecht** (GO) | ⚠️ **stale, frozen** | 2026-07-16 run | The portal's `/Samenstelling/{fractie}/votings` route now answers HTTP 200 with an **Anubis** anti-bot interstitial instead of JSON. `/api/v2/*` is unaffected, but there is no `/api/v2/votings`. Ask pending → [outreach.md §4](outreach.md). |
+| **Utrecht** (GO) | ✅ fixed 2026-09-05 | broke 2026-07-16 run | The portal's `/Samenstelling/{fractie}/votings` route answered HTTP 200 with an **Anubis** anti-bot interstitial instead of JSON (a vendor-wide "botstopper" rolled out that summer, not aimed at us). The griffie forwarded the ask and GemeenteOplossingen added an exception for the collector's User-Agent within a day — see [outreach.md §4](outreach.md). No stemmingen took place during the outage, so no data was lost. |
 | **Zuid-Holland, Fryslân, Gelderland, Overijssel** (Notubiz) | ⚠️ **CI-only failure** | first bot run, 2026-06-18 | `api.notubiz.nl` returns nothing to GitHub-hosted runners; the exact same call works from a normal connection. Never once succeeded in CI — the June data was committed from a local run. Refreshing them needs a local run (or a non-datacenter runner) until we know the cause. |
 | **Europees Parlement** (HowTheyVote.eu) | ✅ fixed 2026-09-04 | broke 2026-07-23 | The API began rate-limiting; the 8-worker detail fetch got throttled and `ep_assemble_*` silently dropped every vote whose detail was missing. The 2024–2029 scope shrank from 614 stemmingen to **95**, and 2019–2024 from 1807 to **130**, without ever being marked unavailable. Now: retry on 429/5xx with Retry-After, 4 workers, and a sequential repair pass. |
 
