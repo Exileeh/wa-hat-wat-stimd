@@ -3,7 +3,7 @@
     "province": "Drenthe",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-09-03T11:01:11+00:00",
+    "generated_at": "2026-09-10T11:05:06+00:00",
     "source": "https://www.drentsparlement.nl",
     "sourceName": "",
     "license": "Open data - Provincie Drenthe / Statengriffie (Drents Parlement)",
@@ -14,7 +14,7 @@
     "note": "",
     "granularity": "member",
     "counts": {
-      "moties": 445,
+      "moties": 451,
       "parties": 15
     },
     "types": [
@@ -87,6 +87,564 @@
     }
   ],
   "moties": [
+    {
+      "id": 29303,
+      "documentId": 29982,
+      "meetingItemId": 9395,
+      "meetingId": 1417,
+      "date": "2026-09-09",
+      "title": "Statenstuk 2026-55 Bestuurlijke continuïteit",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.drentsparlement.nl/vergaderingen/document/29982",
+      "votes": {
+        "pvda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sterk-lokaal-drenthe": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 12,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "lijstpormes": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 23,
+        "disagree": 14
+      }
+    },
+    {
+      "id": 29311,
+      "documentId": 30014,
+      "meetingItemId": 9395,
+      "meetingId": 1417,
+      "date": "2026-09-09",
+      "title": "M 2026-46 Motie van wantrouwen Stikstofbeleid zonder mandaat",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.drentsparlement.nl/vergaderingen/document/30014",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sterk-lokaal-drenthe": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "lijstpormes": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 16,
+        "disagree": 22
+      }
+    },
+    {
+      "id": 29310,
+      "documentId": 30013,
+      "meetingItemId": 9395,
+      "meetingId": 1417,
+      "date": "2026-09-09",
+      "title": "M 2026-45 Motie van wantrouwen Geen mandaat, geen college",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.drentsparlement.nl/vergaderingen/document/30013",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sterk-lokaal-drenthe": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "lijstpormes": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 14,
+        "disagree": 24
+      }
+    },
+    {
+      "id": 29306,
+      "documentId": 30003,
+      "meetingItemId": 9395,
+      "meetingId": 1417,
+      "date": "2026-09-09",
+      "title": "A 2026-28 Amendement Besturen zonder blanco cheque",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.drentsparlement.nl/vergaderingen/document/30003",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sterk-lokaal-drenthe": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "lijstpormes": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 16,
+        "disagree": 22
+      }
+    },
+    {
+      "id": 29305,
+      "documentId": 29998,
+      "meetingItemId": 9395,
+      "meetingId": 1417,
+      "date": "2026-09-09",
+      "title": "A 2026-27 Amendement toevoegen Gedeputeerde voor het Drentse platteland",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.drentsparlement.nl/vergaderingen/document/29998",
+      "votes": {
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sterk-lokaal-drenthe": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "lijstpormes": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 16,
+        "disagree": 22
+      }
+    },
+    {
+      "id": 29322,
+      "documentId": 30016,
+      "meetingItemId": 9395,
+      "meetingId": 1417,
+      "date": "2026-09-09",
+      "title": "A 2026-26 Amendement opschorten behandeling Omgevingsvisie",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.drentsparlement.nl/vergaderingen/document/30016",
+      "votes": {
+        "pvda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sterk-lokaal-drenthe": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "partij-voor-de-dieren": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "forum-voor-democratie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "lijstpormes": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 38,
+        "disagree": 0
+      }
+    },
     {
       "id": 28784,
       "documentId": 29732,

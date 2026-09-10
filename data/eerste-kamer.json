@@ -3,7 +3,7 @@
     "province": "2023–2027",
     "body": "Eerste Kamer",
     "term": "2023–2027",
-    "generated_at": "2026-09-03T12:34:38+00:00",
+    "generated_at": "2026-09-10T12:01:12+00:00",
     "source": "https://www.eerstekamer.nl",
     "sourceName": "",
     "license": "Open data - Eerste Kamer der Staten-Generaal (eerstekamer.nl)",
@@ -14,7 +14,7 @@
     "note": "Stemmen zijn op fractieniveau geregistreerd (voor/tegen, zonder zetelaantallen): de Eerste Kamer stemt meestal bij zitten en opstaan. Beide zijden worden expliciet vermeld (niets afgeleid). Hamerstukken (zonder stemming aangenomen) zijn niet opgenomen.",
     "granularity": "fractie",
     "counts": {
-      "moties": 517,
+      "moties": 519,
       "parties": 32
     },
     "types": [
@@ -154,6 +154,236 @@
     }
   ],
   "moties": [
+    {
+      "id": 279547428981048,
+      "date": "2026-09-08",
+      "title": "Voorstel-Rosenmöller tot wijziging Reglement van Orde in verband met introduceren meer flexibiliteit in naamgeving van fracties van fuserende politieke groeperingen (CLXXVII)",
+      "type": "overig",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://www.eerstekamer.nl/verslagdeel/20260908/voorstel_rosenmoller_tot_wijziging",
+      "votes": {
+        "bbb": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "opnl": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fractie-van-de-sanden": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fractie-visseren-hamakers": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fractie-walenkamp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fractie-beukering": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fractie-van-gasteren": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 2
+      }
+    },
+    {
+      "id": 221862309574151,
+      "date": "2026-09-08",
+      "title": "Voorstel-Rosenmöller tot wijziging Reglement van Orde in verband met introduceren meer flexibiliteit in naamgeving van fracties van fuserende politieke groeperingen (CLXXVII)",
+      "type": "overig",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://www.eerstekamer.nl/verslagdeel/20260908/voorstel_rosenmoller_tot_wijziging",
+      "votes": {
+        "pvv": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fractie-van-gasteren": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "groenlinks-pvda": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "opnl": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fractie-van-de-sanden": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fractie-visseren-hamakers": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "50plus": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fractie-walenkamp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fractie-beukering": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 3,
+        "disagree": 17
+      }
+    },
     {
       "id": 41338769279601,
       "date": "2026-07-07",
@@ -2116,7 +2346,7 @@
       "type": "motie",
       "result": "rejected",
       "resultLabel": "Verworpen",
-      "source": "https://www.eerstekamer.nl/verslagdeel/20260707/moties_wet_werkelijk_rendement_box",
+      "source": "https://www.eerstekamer.nl/verslagdeel/20260707/motie_wet_werkelijk_rendement_box",
       "votes": {
         "50plus": {
           "agree": 1,

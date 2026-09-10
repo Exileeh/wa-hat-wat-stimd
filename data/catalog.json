@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-04T23:30:19+00:00",
+  "generated_at": "2026-09-10T12:38:35+00:00",
   "default": {
     "category": "provinciale-staten",
     "scope": "utrecht"
@@ -183,7 +183,8 @@
           "style": {
             "accent": "#a07400",
             "headerBg": "#221900"
-          }
+          },
+          "knownIssue": "Deze provincie wordt op dit moment niet automatisch ververst: de bron blokkeert de wekelijkse verversing. Hieronder staat de laatste stand."
         },
         {
           "key": "fryslan",
@@ -192,7 +193,8 @@
           "style": {
             "accent": "#c8102e",
             "headerBg": "#2a0a0c"
-          }
+          },
+          "knownIssue": "Deze provincie wordt op dit moment niet automatisch ververst: de bron blokkeert de wekelijkse verversing. Hieronder staat de laatste stand."
         },
         {
           "key": "gelderland",
@@ -201,7 +203,8 @@
           "style": {
             "accent": "#0d5eaf",
             "headerBg": "#08203d"
-          }
+          },
+          "knownIssue": "Deze provincie wordt op dit moment niet automatisch ververst: de bron blokkeert de wekelijkse verversing. Hieronder staat de laatste stand."
         },
         {
           "key": "overijssel",
@@ -210,7 +213,8 @@
           "style": {
             "accent": "#147ab3",
             "headerBg": "#0a2a3d"
-          }
+          },
+          "knownIssue": "Deze provincie wordt op dit moment niet automatisch ververst: de bron blokkeert de wekelijkse verversing. Hieronder staat de laatste stand."
         }
       ]
     },
