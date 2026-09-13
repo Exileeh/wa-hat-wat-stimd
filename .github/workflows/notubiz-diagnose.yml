@@ -14,41 +14,49 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Runner identity
+      - continue-on-error: true
+        name: Runner identity
         run: |
           echo "Runner public IPv4: $(curl -4 -s --max-time 10 https://api.ipify.org || echo unknown)"
           echo "Runner region hint: ${RUNNER_OS} / $(curl -s --max-time 5 -H Metadata:true 'http://169.254.169.254/metadata/instance/compute/location?api-version=2021-02-01&format=text' || echo unknown)"
 
-      - name: DNS
+      - continue-on-error: true
+        name: DNS
         run: |
           for h in api.notubiz.nl pzh.notubiz.nl howtheyvote.eu; do
             echo "== $h"; getent ahosts "$h" || echo "  DNS FAILED"
           done
 
-      - name: Control request (a host that works from CI)
+      - continue-on-error: true
+        name: Control request (a host that works from CI)
         run: curl -sS -o /dev/null -w "howtheyvote.eu -> HTTP %{http_code} in %{time_total}s\n" --connect-timeout 10 --max-time 20 https://howtheyvote.eu/api/votes?page_size=1 || true
 
-      - name: api.notubiz.nl, verbose (IPv4)
+      - continue-on-error: true
+        name: api.notubiz.nl, verbose (IPv4)
         run: |
           curl -4 -v --connect-timeout 10 --max-time 25 \
             -A "wie-stemde-wat collector (open-data overview; contact via GitHub)" \
             "https://api.notubiz.nl/events?organisation_id=3868&date_from=2026-09-01+00%3A00%3A00&date_to=2026-09-10+23%3A59%3A59&page=1&format=json&version=1.21" \
             -o body.txt 2>&1 | grep -vE '^[<>] (Accept|Host|Cache|Expires|Pragma|Vary|X-XSS)' || true
-          echo "--- exit/body ---"; wc -c body.txt 2>/dev/null; head -c 300 body.txt 2>/dev/null; echo
+          echo "--- body ---"; head -c 300 body.txt 2>/dev/null || echo "(no body)"; echo
 
-      - name: api.notubiz.nl, IPv6
+      - continue-on-error: true
+        name: api.notubiz.nl, IPv6
         run: curl -6 -sS -o /dev/null -w "IPv6 -> HTTP %{http_code}\n" --connect-timeout 10 --max-time 20 https://api.notubiz.nl/ || true
 
-      - name: pzh.notubiz.nl portal (same vendor, different host)
+      - continue-on-error: true
+        name: pzh.notubiz.nl portal (same vendor, different host)
         run: curl -4 -sS -o /dev/null -w "pzh.notubiz.nl -> HTTP %{http_code} in %{time_total}s\n" --connect-timeout 10 --max-time 20 https://pzh.notubiz.nl/ || true
 
-      - name: Plain TCP connect to 443 (no TLS)
+      - continue-on-error: true
+        name: Plain TCP connect to 443 (no TLS)
         run: |
           ip=$(getent ahostsv4 api.notubiz.nl | awk 'NR==1{print $1}')
           echo "api.notubiz.nl -> $ip"
           timeout 12 bash -c "echo > /dev/tcp/$ip/443" && echo "TCP 443: connected" || echo "TCP 443: FAILED (refused/dropped/timeout)"
 
-      - name: Python urllib, exactly like the collector
+      - continue-on-error: true
+        name: Python urllib, exactly like the collector
         run: |
           python3 - <<'PY'
           import urllib.request, urllib.error
