@@ -430,7 +430,10 @@ def fetch(url, data=None, ctype=None, tries=3):
             time.sleep(max(wait, 2.0 * (attempt + 1)))
         except OSError as e:   # URLError, TimeoutError, dropped connections, …
             if attempt + 1 == tries:
-                note_failure(type(e).__name__)
+                # A URLError's type name alone says nothing; its reason is what separates "timed out"
+                # from "Connection refused" or a DNS failure (the Notubiz CI question hinged on it).
+                reason = getattr(e, "reason", None)
+                note_failure(f"{type(e).__name__} ({reason})" if reason else type(e).__name__)
                 return None
             time.sleep(1.5 * (attempt + 1))
     return None
