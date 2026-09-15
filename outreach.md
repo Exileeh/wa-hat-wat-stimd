@@ -315,19 +315,21 @@ Flevoland/Drenthe, the `statengriffie@` form *is* right for Utrecht.)
 ---
 
 ## 5. Notubiz — openbare API niet bereikbaar vanuit cloudomgeving (CI)
-> **✅ Sent 2026-09-15.** Awaiting reply. Sent to the same Notubiz contact as the June token thread (§1).
-> **Follow-up:** if silent by **~29 September** (≈2 weeks), send the nudge below. Keep the deadline in
-> mind: the four provinces' `known_issue` grace ends **~18 October** (45 days after the 2026-09-03/04
-> local refresh). After that the weekly run goes red again. Until then, refresh them with a local run.
+> **✅ ANSWERED — closed (reply received by 2026-09-15).** Maarten Lierop (NotuBiz Nederland B.V., Product
+> owner Bestuurlijke Besluitvorming & Security): requests can be blocked for several reasons, including the
+> sending servers' location, or IP addresses blacklisted after earlier suspicious traffic "by you or others".
+> His first guess is the **GEO-IP block**: **"Hierop maken wij geen uitzonderingen. U kunt de requests dan
+> wel uitvoeren van Nederlandse servers."**
 >
-> _Reminder draft (reply on the original thread, keeping the first mail quoted below):_
-> > Beste Notubiz,
-> >
-> > Op 15 september stuurde ik onderstaande vraag over de bereikbaarheid van api.notubiz.nl en het
-> > publieksportaal vanuit een cloudomgeving. Zou u kunnen laten weten of hier een mogelijkheid voor is,
-> > of mij naar de juiste persoon kunnen verwijzen? Alvast dank!
-> >
-> > Met vriendelijke groet, Thabiso Epema
+> **Checked the same day:** his guess is only partly right. From the maintainer's home connection in
+> **Thailand** (3BB, AS45758, no VPN or proxy) both `api.notubiz.nl` (HTTP 200) and the portal (HTTP 200)
+> work. So it is not "Netherlands only"; it blocks some countries (the US runners), datacenter networks,
+> or both. We did not tell Notubiz that; it would only invite a tighter rule.
+>
+> **Outcome:** no exception is possible, so the four provinces are refreshed weekly **from the home
+> PC** by a Windows scheduled task (`collector/refresh-notubiz.ps1`; see coverage.md § Status van de
+> bronnen). Fallback if the PC is off too often: a small **Dutch** server, which Notubiz itself
+> suggested. Test a datacenter IP first (hourly billing), because of the blacklist remark.
 
 **Unlocks:** automatic weekly refresh for **Zuid-Holland, Fryslân, Gelderland, Overijssel**. The data is
 already live, but it only refreshes via a manual local run.

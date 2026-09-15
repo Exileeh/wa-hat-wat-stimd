@@ -2005,6 +2005,11 @@ def data_age_days(generated_at):
 # permanently red workflow trains you to ignore it, which is the failure we just fixed wearing a
 # different hat. But it must not rot silently either: past this many days the scope goes red anyway.
 STALE_AFTER_DAYS = 45
+# Visitors see a known_issue notice only once the data is genuinely old. The Notubiz provinces are
+# refreshed from a home connection (collector/refresh-notubiz.ps1), so CI failing to reach them is
+# the normal state and says nothing about freshness: without this, all four showed "niet ververst"
+# on days-old data.
+NOTICE_AFTER_DAYS = 14
 
 
 def lost_data(prev_n, n):
@@ -2072,12 +2077,13 @@ def main():
                 print(f"  REGRESSION: {why}{note}")
                 problems.append(f"{p['name']} ({p['key']}, {p['vendor']}): {why}{note}")
             print(f"  keeping the existing {p['key']}.json from the last good run (not overwritten)")
+            notice = p.get("known_issue") if (age is None or age > NOTICE_AFTER_DAYS) else None
             scopes_by_cat.setdefault(catkey, []).append(
-                scope_entry(p, True, prev_chunked, known_issue=p.get("known_issue")))
+                scope_entry(p, True, prev_chunked, known_issue=notice))
             if default is None:
                 default = {"category": catkey, "scope": p["key"]}
             continue
-        if p.get("known_issue") and n:
+        if p.get("known_issue") and n and not only:   # an ONLY run is the local refresher, not a recovery
             # It collected fine: the acknowledgement is stale, and so is the notice on the page.
             print(f"  NOTE: this source has a known_issue set but collected normally "
                   f"({n} stemmingen) — remove known_issue from its SOURCES entry.")
