@@ -10,6 +10,9 @@
 # If this stops working, nothing breaks silently: after 45 days the GitHub run goes red.
 
 $ErrorActionPreference = 'Continue'
+# Python prints UTF-8 (PYTHONUTF8 below); without this Windows PowerShell decodes it with the console's
+# code page and the log shows mojibake for dashes and accents.
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $Provinces = @('zuid-holland', 'fryslan', 'gelderland', 'overijssel')
 $Repo      = Split-Path -Parent $PSScriptRoot
 $Python    = 'C:\Users\Thabi\AppData\Local\Programs\Python\Python313\python.exe'
