@@ -311,3 +311,72 @@ Flevoland/Drenthe, the `statengriffie@` form *is* right for Utrecht.)
 > **Tip:** de concrete URL plus "de `/api/v2/`-endpoints werken wél" is het nuttigste deel van de
 > mail — daarmee kan de griffie het één-op-één doorzetten naar GemeenteOplossingen zonder zelf te
 > hoeven uitzoeken wat er stuk is. Vul je eigen naam in bij `[naam]`.
+
+---
+
+## 5. Notubiz — openbare API niet bereikbaar vanuit cloudomgeving (CI)
+> **✅ Sent 2026-09-15.** Awaiting reply. Sent to the same Notubiz contact as the June token thread (§1).
+> **Follow-up:** if silent by **~29 September** (≈2 weeks), send the nudge below. Keep the deadline in
+> mind: the four provinces' `known_issue` grace ends **~18 October** (45 days after the 2026-09-03/04
+> local refresh). After that the weekly run goes red again. Until then, refresh them with a local run.
+>
+> _Reminder draft (reply on the original thread, keeping the first mail quoted below):_
+> > Beste Notubiz,
+> >
+> > Op 15 september stuurde ik onderstaande vraag over de bereikbaarheid van api.notubiz.nl en het
+> > publieksportaal vanuit een cloudomgeving. Zou u kunnen laten weten of hier een mogelijkheid voor is,
+> > of mij naar de juiste persoon kunnen verwijzen? Alvast dank!
+> >
+> > Met vriendelijke groet, Thabiso Epema
+
+**Unlocks:** automatic weekly refresh for **Zuid-Holland, Fryslân, Gelderland, Overijssel**. The data is
+already live, but it only refreshes via a manual local run.
+**Why:** diagnosed 2026-09-13 from two GitHub runners (Azure eastus 20.83.175.21, westus 52.159.245.146).
+DNS and a control host are fine, but **TCP to `api.notubiz.nl:443` (195.20.144.5) times out**. That is a
+silent firewall drop before any HTTP happens, so **a User-Agent exception (the Utrecht fix, §4) cannot
+work here**. The Cloudflare-fronted portal `pzh.notubiz.nl` returns **HTTP 403**. Every run from the
+maintainer's own connection in **Thailand** succeeded, so a geo-block outside NL/EU is unlikely. Filtering
+of cloud/datacenter traffic fits the evidence better. So the mail *asks* about their policy rather than
+proposing a fix.
+
+**To:** Notubiz (same contact as §1, `info@notubiz.nl`)
+**Onderwerp:** Openbare API niet bereikbaar vanuit cloudomgeving (open-data hergebruik)
+
+> Beste Notubiz,
+>
+> In juni heb ik contact met u gehad over een API-token voor open stemdata van de Provinciale Staten.
+> Dank nogmaals voor uw reactie. Een token bleek uiteindelijk niet nodig: via de openbare API en het
+> publieksportaal kon ik het stemgedrag per fractie voor **Zuid-Holland, Fryslân, Gelderland en
+> Overijssel** opnemen in een open, non-commercieel overzicht:
+> – Website: https://carefulcamel61097.github.io/wie-stemde-wat/
+> – Broncode: https://github.com/carefulCamel61097/wie-stemde-wat
+>
+> Ik loop nu tegen één probleem aan. De gegevens worden wekelijks automatisch ververst via GitHub
+> Actions, dat draait op cloudservers van Microsoft Azure. Vanaf die servers zijn uw systemen niet
+> bereikbaar:
+>
+> - `api.notubiz.nl` (195.20.144.5): de verbinding op poort 443 krijgt geen antwoord en loopt na
+>   10 seconden in een time-out. DNS en andere websites werken daar wel.
+> - `pzh.notubiz.nl`: geeft een HTTP 403.
+>
+> Vanaf een gewone internetverbinding werken precies dezelfde verzoeken zonder problemen. Ik neem aan dat
+> dit een beveiligingsmaatregel is tegen verkeer uit datacenters en niet specifiek bedoeld tegen hergebruik
+> van openbare gegevens. Daarom twee vragen:
+>
+> 1. Klopt het dat verkeer vanuit cloudomgevingen bewust wordt tegengehouden?
+> 2. Is er een manier waarop uw openbare API en portaal automatisch vanuit zo'n omgeving gebruikt kunnen
+>    worden? Bijvoorbeeld via een uitzondering, een aanbevolen route of voorwaarden waaraan ik me moet
+>    houden.
+>
+> Het gaat om beperkt verkeer: één keer per week circa 350 verzoeken in totaal, met pauzes ertussen. Ik kan
+> dat desgewenst verder terugbrengen tot alleen nieuwe vergaderingen. De collector identificeert zich met
+> de user-agent `wie-stemde-wat collector (open-data overview; contact via GitHub)`.
+>
+> Alvast hartelijk dank voor het meedenken.
+>
+> Met vriendelijke groet,
+> Thabiso Epema
+
+> **If they offer "only new meetings":** `notubiz_events` currently re-pages the whole term every week.
+> Limiting `date_from` to the last few weeks and merging into the existing JSON would cut it to a few
+> dozen requests. The 350 figure = ~12 events pages + (41+45+43+37 meetings) × 2.

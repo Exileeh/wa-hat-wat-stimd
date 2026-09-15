@@ -14,9 +14,10 @@
 >   anti-bot wall; the griffie forwarded the ask and GemeenteOplossingen added a User-Agent exception
 >   within a day ([outreach.md §4](outreach.md)). Back to 610 stemmingen, `known_issue` cleared.
 >   Per the griffie there were **no stemmingen between 9 July and 30 September**, so nothing was missed.
-> - **▶ TODO — Notubiz in CI.** `api.notubiz.nl` answers a normal connection fine but returns nothing
->   to GitHub-hosted runners, and has never worked in CI. The next failing run will now print the actual
->   HTTP status — read that first, then decide (ask Notubiz / self-hosted runner / proxy).
+> - **⏳ Notubiz in CI — mail sent 2026-09-15** ([outreach.md §5](outreach.md)). Diagnosed 2026-09-13:
+>   from GitHub runners TCP to `api.notubiz.nl:443` is silently dropped and the portal gives 403. That
+>   points to datacenter filtering, not geo (runs from Thailand work). A UA exception cannot fix it.
+>   Nudge ~29 Sep. Grace (`known_issue`) ends ~18 Oct; refresh the 4 provinces locally until then.
 >
 > **TARGET — LOCKED (2026-06-12): four categories — ✅ ALL FOUR NOW LIVE (2026-06-13).** The site covers
 > four legislative bodies (landing order: national → regional → EU):
