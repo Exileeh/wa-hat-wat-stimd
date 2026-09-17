@@ -8,7 +8,7 @@
 <meta name="keywords" content="stemgedrag, provinciale staten, fryslân, friesland, provinsjale steaten, moasje, moties, amendementen, stemmingen, open data, transparantie, politiek">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://lucsmits5-afk.github.io/wa-hat-wat-stimd/">
-<meta name="theme-color" content="#2a0a0c">
+<meta name="theme-color" content="#c8102e">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:site_name" content="Wa hat wat stimd?">
@@ -20,73 +20,102 @@
 <meta name="twitter:description" content="Zie per partij hoe er gestemd is in de Provinciale Staten van Fryslân — per stemming Voor of Tegen, op basis van open data.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="app.css">
 </head>
 <body>
+<!-- Inline SVG-iconen (sprite); gebruikt via <svg class="ico"><use href="#i-…"/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16V10M12 16V5M17 16v-3"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M4 12h16M12 4v16"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
+  <symbol id="i-compare" viewBox="0 0 24 24"><path d="M4 8h13M14 5l3 3-3 3M20 16H7M10 13l-3 3 3 3"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M8 11l4 4 4-4M5 19h14"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h5M10 17h5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 17v5"/><path d="M9 3h6l-1 6 3 3H7l3-3z"/></symbol>
+</svg>
+
 <div id="app">
 <header class="top">
-  <button id="helpBtn" class="helpbtn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg> Uitleg</button>
-  <h1>Wa hat wat stimd<span class="q">?</span></h1>
-  <p class="lead" id="appLead">Stemgedrag per partij in de <b>Provinciale Staten van Fryslân</b> — <b>Voor</b> of <b>Tegen</b> per stemming.</p>
+  <div class="top-row">
+    <div class="brand">
+      <h1>Wa hat wat stimd<span class="q">?</span></h1>
+      <p class="lead" id="appLead">Stemgedrag per partij in de <b>Provinciale Staten van Fryslân</b> — <b>Voor</b> of <b>Tegen</b> per stemming.</p>
+    </div>
+    <button id="helpBtn" class="helpbtn"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg>Uitleg</button>
+  </div>
   <p class="src" id="src"></p>
   <p class="staleNote" id="staleNote" hidden></p>
   <p class="liveNote" id="liveNote" hidden></p>
+  <nav class="views" aria-label="Weergaven">
+    <span class="view-tab on" aria-current="page">Tabel</span>
+    <button id="statsBtn" class="view-tab"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Statistieken</button>
+    <button id="matrixBtn" class="view-tab"><svg class="ico" aria-hidden="true"><use href="#i-grid"/></svg>Overeenkomst</button>
+    <button id="profileBtn" class="view-tab"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg>Partijprofiel</button>
+    <button id="compareBtn" class="view-tab"><svg class="ico" aria-hidden="true"><use href="#i-compare"/></svg>Vergelijken</button>
+  </nav>
 </header>
 
 <div class="controls">
   <div class="controls-row">
-    <label class="field">Zoek
+    <label class="field field-search">
+      <span class="lbl">Zoek</span>
+      <svg class="ico ico-search" aria-hidden="true"><use href="#i-search"/></svg>
       <input type="search" id="search" placeholder="Zoek op onderwerp of indiener…">
     </label>
-    <label class="field">Partijen
-      <details class="parties"><summary id="psummary">Alle partijen</summary>
+    <label class="field">
+      <span class="lbl">Partijen</span>
+      <details class="parties pop"><summary id="psummary">Alle partijen</summary>
         <div class="ppanel">
           <div class="pp-actions"><button id="pAll">Alle</button><button id="pNone">Geen</button></div>
           <div id="pList"></div>
         </div>
       </details>
     </label>
-    <label class="field">Uitslag
+    <label class="field">
+      <span class="lbl">Uitslag</span>
       <select id="result">
         <option value="all">Alle</option>
         <option value="accepted">Aangenomen</option>
         <option value="rejected">Verworpen</option>
       </select>
     </label>
-    <label class="field">Sorteer
+    <label class="field">
+      <span class="lbl">Sorteer</span>
       <select id="sort">
         <option value="date-desc">Nieuwste eerst</option>
         <option value="date-asc">Oudste eerst</option>
         <option value="result">Op uitslag</option>
       </select>
     </label>
-  </div>
-  <div class="controls-row controls-row-2">
-    <div class="toggles">
-      <span class="tog"><label><input type="checkbox" id="controversial"> Alleen omstreden</label><span class="help-q" title="Toon alleen stemmingen waarbij de partijen niet allemaal hetzelfde stemden">?</span></span>
-      <label><input type="checkbox" id="onlyPinned"> Alleen vastgepind</label>
-      <span class="tog" id="rawToggle"><label><input type="checkbox" id="raw"> Ruwe getallen</label><span class="help-q" title="Toon de aantallen (bijv. 6-0) in plaats van V/T">?</span></span>
+    <div class="field field-types">
+      <span class="lbl">Type</span>
+      <span class="chips small" id="typeChips"></span>
     </div>
-    <div class="actions">
-      <button id="statsBtn" class="bigbtn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M6 16l4-5 4 3 4-7"/></svg> Statistieken</button>
-      <button id="matrixBtn" class="bigbtn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 12h16M12 4v16"/></svg> Overeenkomst</button>
-      <button id="profileBtn" class="bigbtn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> Partijprofiel</button>
-      <button id="compareBtn" class="bigbtn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg> Vergelijken</button>
+    <div class="tb-right">
+      <details class="view pop">
+        <summary class="viewbtn"><svg class="ico" aria-hidden="true"><use href="#i-sliders"/></svg>Weergave</summary>
+        <div class="vpanel">
+          <div class="toggles">
+            <span class="tog"><label><input type="checkbox" id="controversial"> Alleen omstreden</label><span class="help-q" title="Toon alleen stemmingen waarbij de partijen niet allemaal hetzelfde stemden">?</span></span>
+            <label><input type="checkbox" id="onlyPinned"> Alleen vastgepind</label>
+            <span class="tog" id="rawToggle"><label><input type="checkbox" id="raw"> Ruwe getallen</label><span class="help-q" title="Toon de aantallen (bijv. 6-0) in plaats van V/T">?</span></span>
+          </div>
+          <div class="vpanel-actions">
+            <button id="csvBtn" class="csvbtn" title="Download de getoonde stemmingen als CSV-bestand"><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg>CSV downloaden</button>
+            <button id="legendBtn" class="csvbtn" title="Uitleg van de kleuren"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg>Kleuren</button>
+          </div>
+        </div>
+      </details>
     </div>
   </div>
 </div>
 
 <div class="wrap">
-  <div class="tbl-toolbar">
-    <span class="tbl-toolbar-title">Stemmingen</span>
-    <span class="chips small" id="typeChips"></span>
-    <span class="tb-right">
-      <span class="count" id="count"></span>
-      <button id="csvBtn" class="csvbtn" title="Download de getoonde stemmingen als CSV-bestand"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> CSV</button>
-      <button id="legendBtn" class="iconbtn" title="Uitleg van de kleuren" aria-label="Uitleg van de kleuren"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></button>
-    </span>
-  </div>
+  <p class="count" id="count"></p>
   <div id="pinnedBlock"></div>
   <div id="mainBlock"></div>
 </div>
@@ -95,8 +124,8 @@
 
 <div class="modal" id="statsModal" hidden>
   <div class="modal-card wide">
-    <div class="modal-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M6 16l4-5 4 3 4-7"/></svg> Statistieken</h2>
-      <button class="modal-close" data-close="statsModal" title="Sluiten">&times;</button></div>
+    <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Statistieken</h2>
+      <button class="modal-close" data-close="statsModal" title="Sluiten" aria-label="Sluiten">&times;</button></div>
     <p class="modal-sub">Overzicht van alle stemmingen in deze Statenperiode: hoeveel er zijn, wie indient, wie wint en hoe omstreden ze zijn.</p>
     <div class="modal-controls"><span class="mc-label">Tel mee:</span><span class="chips" id="statsTypes"></span></div>
     <div class="stat-grid" id="statsKpis"></div>
@@ -111,22 +140,22 @@
 
 <div class="modal" id="matrixModal" hidden>
   <div class="modal-card">
-    <div class="modal-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 12h16M12 4v16"/></svg> Partij-overeenkomst</h2>
-      <button class="modal-close" data-close="matrixModal" title="Sluiten">&times;</button></div>
+    <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-grid"/></svg>Partij-overeenkomst</h2>
+      <button class="modal-close" data-close="matrixModal" title="Sluiten" aria-label="Sluiten">&times;</button></div>
     <p class="modal-sub">Percentage van de stemmingen waarin twee partijen hetzelfde stemden
       (voor / tegen / onthouden), over stemmingen waarbij beide aanwezig waren. Partijen die
       vaak hetzelfde stemmen staan bij elkaar.</p>
     <div class="matrix-controls"><span class="mc-label">Tel mee:</span><span class="chips" id="matrixTypes"></span></div>
     <div id="matrixBody"></div>
     <div class="matrix-legend"><span>weinig overeenkomst</span><span class="bar"></span><span>veel overeenkomst</span>
-      <span style="margin-left:14px"><span class="vbadge" style="background:#ecebe6;color:#a8a59d;font-style:italic">%</span> te weinig gezamenlijke stemmingen</span></div>
+      <span style="margin-left:14px"><span class="vbadge" style="background:#eeece6;color:#77746c;font-style:italic">%</span> te weinig gezamenlijke stemmingen</span></div>
   </div>
 </div>
 
 <div class="modal" id="profileModal" hidden>
   <div class="modal-card">
-    <div class="modal-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> Partijprofiel</h2>
-      <button class="modal-close" data-close="profileModal" title="Sluiten">&times;</button></div>
+    <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg>Partijprofiel</h2>
+      <button class="modal-close" data-close="profileModal" title="Sluiten" aria-label="Sluiten">&times;</button></div>
     <p class="modal-sub">Hoe vaak een partij aan de winnende kant stond, en de stemmingen waarbij ze als enige tegen de rest in stemde.</p>
     <div class="modal-controls">
       <label class="field">Partij: <select id="profileParty"></select></label>
@@ -138,8 +167,8 @@
 
 <div class="modal" id="compareModal" hidden>
   <div class="modal-card">
-    <div class="modal-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg> Vergelijk partijen</h2>
-      <button class="modal-close" data-close="compareModal" title="Sluiten">&times;</button></div>
+    <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-compare"/></svg>Vergelijk partijen</h2>
+      <button class="modal-close" data-close="compareModal" title="Sluiten" aria-label="Sluiten">&times;</button></div>
     <p class="modal-sub">Kies twee partijen om te zien op welke stemmingen ze verschillend stemden.</p>
     <div class="modal-controls">
       <label class="field">Partij A: <select id="cmpA"></select></label>
@@ -152,8 +181,8 @@
 
 <div class="modal" id="helpModal" hidden>
   <div class="modal-card">
-    <div class="modal-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg> Hoe werkt deze site?</h2>
-      <button class="modal-close" data-close="helpModal" title="Sluiten">&times;</button></div>
+    <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg>Hoe werkt deze site?</h2>
+      <button class="modal-close" data-close="helpModal" title="Sluiten" aria-label="Sluiten">&times;</button></div>
     <div class="help">
       <h3 class="section">Wat is dit?</h3>
       <p id="helpBody1">Per stemming &mdash; een moasje (motie), amendemint (amendement) of besluit in de Provinciale
@@ -170,14 +199,14 @@
         <li><span class="vbadge voor splitdot">V</span> stip = de fractie stemde niet unaniem</li>
       </ul>
       <p>Beweeg met de muis over een cel voor de exacte aantallen voor/tegen. Klik op
-        <span class="doclink">&#128196; Moasje</span> om het ingediende document (pdf) te openen en op &#8599;
+        <span class="doclink"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg>Moasje</span> om het ingediende document (pdf) te openen en op &#8599;
         voor de vergadering op het Statenportaal.</p>
 
       <h3 class="section">Filteren &amp; pinnen</h3>
       <p>Filter op type, toon of verberg partijen, zoek op onderwerp of indiener, en sorteer.
         Toon desgewenst alleen aangenomen/verworpen of <i>omstreden</i> stemmingen (waarbij partijen
         het oneens waren). Met <b>Ruwe getallen</b> zie je bijv. 6&ndash;0 in plaats van V/T.
-        Klik op &#128204; om een stemming vast te pinnen en bovenaan te vergelijken.</p>
+        Klik op de speld v&oacute;&oacute;r een titel om een stemming vast te pinnen en bovenaan te vergelijken.</p>
 
       <h3 class="section">De vier analyses</h3>
       <ul class="help-list">
@@ -203,7 +232,7 @@
 <div class="modal" id="legendModal" hidden>
   <div class="modal-card" style="max-width:440px">
     <div class="modal-head"><h2>Kleuren in de tabel</h2>
-      <button class="modal-close" data-close="legendModal" title="Sluiten">&times;</button></div>
+      <button class="modal-close" data-close="legendModal" title="Sluiten" aria-label="Sluiten">&times;</button></div>
     <ul class="legenda">
       <li><span class="vbadge voor">V</span> Voor</li>
       <li><span class="vbadge tegen">T</span> Tegen</li>

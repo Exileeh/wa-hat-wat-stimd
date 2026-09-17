@@ -6,6 +6,12 @@
 
 ---
 
+> **Status 2026-09-17:** het herontwerp uit Claude Design is geïntegreerd (commit "style: herontwerp").
+> De huidige structuur staat in `index.html`: header met `nav.views` (tabs), één sticky filterrij met
+> een `details.view.pop` "Weergave"-popover (toggles, CSV, kleuren), `p.count` boven de tabel, en een
+> inline SVG-sprite (`#i-…`) voor iconen. De anatomie hieronder beschrijft de *oorspronkelijke* opzet
+> en dient alleen nog als referentie voor een volgende ontwerpronde.
+
 ## Wat het is
 
 **Wa hat wat stimd?** is een statische, open-data website die per stemming in de **Provinciale

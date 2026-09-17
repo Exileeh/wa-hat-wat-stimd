@@ -31,8 +31,9 @@ const pLabel = slug => ABBR[slug] || pName(slug);
 
 // Source (meeting page) + document (Moasje PDF) links, used in the table and the popup lists.
 const srcLink = m => m.source ? ` <a class="ext" href="${esc(m.source)}" target="_blank" rel="noopener" title="Bekijk de vergadering op het Notubiz-portaal">&#8599;</a>` : "";
+const ICO = id => `<svg class="ico" aria-hidden="true"><use href="#${id}"/></svg>`;
 const docLink = m => m.document
-  ? `<a class="doclink" href="${esc(m.document)}" target="_blank" rel="noopener" title="${esc(m.documentTitle || "Open het document")} (PDF)">&#128196; ${DOC_LABEL[m.type] || "Document"}</a>`
+  ? `<a class="doclink" href="${esc(m.document)}" target="_blank" rel="noopener" title="${esc(m.documentTitle || "Open het document")} (PDF)">${ICO("i-doc")}${DOC_LABEL[m.type] || "Document"}</a>`
   : "";
 const indienersText = m => (m.indieners && m.indieners.length) ? m.indieners.map(pLabel).join(", ") : "";
 
@@ -57,7 +58,6 @@ async function init(){
 
 function applyTheme(style){
   document.documentElement.style.setProperty("--accent", style.accent || "#c8102e");
-  document.documentElement.style.setProperty("--header-bg", style.headerBg || "#2a0a0c");
 }
 
 function renderHeader(){
@@ -75,13 +75,13 @@ function renderHeader(){
 }
 
 function setupGlobalHandlers(){
+  // Popovers (partijen, weergave) close on a click outside or Escape.
   document.addEventListener("click", e => {
-    const d = document.querySelector("details.parties");
-    if(d && d.open && !d.contains(e.target)) d.open = false;
+    document.querySelectorAll("details.pop[open]").forEach(d => { if(!d.contains(e.target)) d.open = false; });
   });
   document.addEventListener("keydown", e => {
     if(e.key === "Escape"){
-      const d = document.querySelector("details.parties"); if(d) d.open = false;
+      document.querySelectorAll("details.pop[open]").forEach(d => d.open = false);
       document.querySelectorAll(".modal").forEach(mo => mo.hidden = true);
     }
   });
@@ -513,7 +513,7 @@ function rowHTML(m, vps){
   const live = m.live ? `<span class="badge-live" title="Live opgehaald van Notubiz — nog niet in de dagelijkse snapshot">live</span>` : "";
   const ind = indienersText(m);
   const first = `<td class="onderwerp"><div class="ond-row">
-      <button class="pin${pinned?" on":""}" data-id="${m.id}" title="${pinned?"Losmaken":"Vastpinnen"}">&#128204;</button>
+      <button class="pin${pinned?" on":""}" data-id="${m.id}" title="${pinned?"Losmaken":"Vastpinnen"}" aria-label="${pinned?"Losmaken":"Vastpinnen"}">${ICO("i-pin")}</button>
       <div><div class="titel">${esc(m.title)}${srcLink(m)}${live}</div>
       <div class="meta"><span>${m.date}</span><span class="type t-${m.type}">${TYPE_LABEL[m.type]||m.type}</span>${res}${docLink(m)}${ind?`<span class="indieners" title="Indieners">${esc(ind)}</span>`:""}</div></div>
     </div></td>`;
@@ -533,8 +533,11 @@ function render(){
   const mainRows = state.onlyPinned ? [] : sortRows(all.filter(m=>!state.pinned.has(m.id)));
 
   $("#pinnedBlock").innerHTML = pinnedRows.length
-    ? `<div class="tbl-title">&#128204; Vastgepind (${pinnedRows.length})</div>${tableHTML(pinnedRows, vps)}`
+    ? `<div class="tbl-title">${ICO("i-pin")} Vastgepind (${pinnedRows.length})</div>${tableHTML(pinnedRows, vps)}`
     : "";
+  // Badge on the "Weergave" popover: how many view toggles are active.
+  const vb = document.querySelector("summary.viewbtn");
+  if(vb) vb.dataset.n = [state.controversial, state.onlyPinned, state.raw].filter(Boolean).length;
   $("#mainBlock").innerHTML = state.onlyPinned
     ? (pinnedRows.length?"":`<div class="empty">Nog niets vastgepind.</div>`)
     : tableHTML(mainRows, vps);
