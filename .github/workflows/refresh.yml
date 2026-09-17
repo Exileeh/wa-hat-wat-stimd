@@ -1,11 +1,17 @@
-name: Refresh voting data
+name: Ververs stemdata Fryslân
 
-# Wekelijks de stemdata verversen + handmatig te starten.
-# De Statenvergadering (met de stemmingen) is vrijwel altijd op woensdag, dus we
-# verversen donderdagochtend — de dag erna — zodat nieuwe stemmingen snel meegenomen worden.
+# Dagelijks de stemdata verversen + handmatig te starten (Actions -> Run workflow).
+#
+# Let op: api.notubiz.nl blokkeert GitHub's cloudservers (geo-/datacenterfilter, geen
+# uitzonderingen). Vanaf `ubuntu-latest` logt de collector dan "KNOWN ISSUE ... Network is
+# unreachable", houdt het bestaande databestand en eindigt groen. De site laadt nieuwere
+# stemmingen live bij in de browser. Wil je wél dagelijks verversen, registreer dan een
+# self-hosted runner op een Nederlandse machine en zet de repository variable RUNNER op zijn
+# label (Settings -> Secrets and variables -> Actions -> Variables), bijv. `self-hosted`.
+# Zie docs/notubiz.md.
 on:
   schedule:
-    - cron: "0 6 * * 4"   # elke donderdag 06:00 UTC (~08:00 NL)
+    - cron: "0 6 * * *"   # dagelijks 06:00 UTC (~08:00 NL)
   workflow_dispatch: {}
 
 permissions:
@@ -13,7 +19,7 @@ permissions:
 
 jobs:
   collect:
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.RUNNER || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@v6
 
@@ -21,32 +27,32 @@ jobs:
         with:
           python-version: "3.12"
 
-      # collect.py exits 1 when a live scope loses data (a source broke, or started returning a
-      # fraction of its votes). We do NOT want that to skip the commit below: the scopes that DID
-      # refresh should still land, and the broken one keeps its previous data file either way.
-      # So: record the outcome here, commit, then fail the job at the end.
+      # collect.py exits 1 when the source lost data (REGRESSION) or has been unreachable for
+      # longer than 45 days. We still want the commit step to run, so: record the outcome here,
+      # commit whatever did refresh, then fail the job at the end.
       - name: Run collector
         id: collect
         continue-on-error: true
+        shell: bash
         run: python collector/collect.py
 
       - name: Commit updated data
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/
+          git add data/fryslan.json data/roles.json
           if git diff --staged --quiet; then
             echo "No changes."
           else
-            git commit -m "chore: refresh voting data"
+            git commit -m "chore: ververs stemdata Fryslân"
             git push
           fi
 
-      # Turns a silent degradation into a red run — which is what actually sends the notification
-      # e-mail. Between 2026-06 and 2026-09 five provinces vanished from the site while this
-      # workflow reported success every week; see coverage.md § Status van de bronnen.
-      - name: Fail if a source lost data
+      # A silent degradation must become a red run — that is what sends the notification e-mail.
+      - name: Fail if the source lost data
         if: steps.collect.outcome == 'failure'
+        shell: bash
         run: |
-          echo "::error title=Source regression::A source lost data this run. See the collector log above (search for REGRESSION) and coverage.md § Status van de bronnen."
+          echo "::error title=Source regression::The collector lost data or the data is stale. See the collector log above (search for REGRESSION / KNOWN ISSUE) and docs/notubiz.md."
           exit 1

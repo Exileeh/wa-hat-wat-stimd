@@ -1,398 +1,102 @@
 #!/usr/bin/env python3
 """
-Collector — Provinciale Staten voting overview.
+Collector — Provinciale Staten van Fryslân ("Wa hat wat stimd?").
 
-Pulls per-party voting records per scope, unions them into one motie list, and writes a
-normalized data/<scope>.json that the static site reads, plus a data/catalog.json index that
-groups scopes by category (Tweede Kamer / Provinciale Staten) for the "pick category -> scope" UX.
+Pulls every hoofdelijke stemming of the plenary Provinsjale Steaten from Notubiz, aggregates the
+per-member votes to exact per-fractie counts, joins each stemming to its Moasje/Amendemint document
+and its indieners, and writes two static files the site reads:
 
-Multi-vendor / multi-category: each entry in SOURCES names a `vendor`, dispatched to an adapter
-in ADAPTERS (go = GemeenteOplossingen, ibabs, tk = Tweede Kamer OData). Each entry also names a
-`category` (legislative body): "provinciale-staten" (the provinces) or "tweede-kamer". The site is
-organized as categories -> scopes; main() writes one data/<key>.json per scope plus a
-data/catalog.json index grouping scopes by category. See ../provinces.md and ../data-sources.md.
+  data/fryslan.json   {meta, parties, moties}   — the snapshot the page loads first
+  data/roles.json     {roles: {role_id: slug}}  — lets the browser aggregate NEW meetings live
+                                                  straight from api.notubiz.nl (CORS is open there)
 
-Zero dependencies (stdlib only) so GitHub Actions needs no install step.
-See ../data-sources.md for the reverse-engineered GO endpoints.
+Three public Notubiz surfaces, no token (see ../docs/notubiz.md):
+  1. events API    GET api.notubiz.nl/events?organisation_id=&date_from=&date_to=&page=&version=1.21
+                   -> meetings; keep gremium.id == the plenary gremium with agenda_item_count > 0.
+  2. votings API   GET api.notubiz.nl/agenda_items/votings?meeting_id=&version=1.21
+                   -> per stemming: id, title, voting_type, voting_result, per-MEMBER votes (role_id).
+  3. portal HTML   https://fryslan.notubiz.nl/vergadering/<mid>
+                   -> per stemming (<div id="chart_<id>">, id == votings API `id`) each fractie with
+                      its members tagged <li class="in_favor|against">. Names are used in memory only
+                      (to learn role_id -> fractie) and never written: the dataset is party-level.
+  4. module items  GET api.notubiz.nl/modules/6/items?organisation_id=  (the "Moasjes en amendeminten"
+                   module) -> per motion: title, PDF document, agenda item, indienende partijen.
+     parties       GET api.notubiz.nl/organisations/<id>/parties -> party id -> name.
+
+Zero dependencies (stdlib only), so GitHub Actions needs no install step.
+
+NOTE: api.notubiz.nl silently drops connections from GitHub's cloud runners (geo/datacenter
+filtering, no exceptions — 2026-09). From a Dutch connection everything works. When a run cannot
+reach the source it keeps the previous data file, prints KNOWN ISSUE and exits 0; only a NEW
+problem, or data older than STALE_AFTER_DAYS, turns the run red.
 """
 
-import concurrent.futures
-import hashlib
 import json
-import os
 import re
 import sys
 import time
-import urllib.request
+import unicodedata
 import urllib.error
 import urllib.parse
-from datetime import datetime, date, timezone
+import urllib.request
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+DATA_FILE = DATA_DIR / "fryslan.json"
+ROLES_FILE = DATA_DIR / "roles.json"
 
-# --- Source registry ----------------------------------------------------------
-# Each entry: key, name, vendor, category, base, term_start (y,m,d), term_label, style, license.
-# `category` defaults to "provinciale-staten"; the Tweede Kamer entry sets "tweede-kamer".
-# Add a source here once its vendor adapter exists (see ../provinces.md + ../data-sources.md).
-SOURCES = [
-    {
-        "key": "utrecht",
-        "name": "Utrecht",
-        "vendor": "go",
-        "base": "https://www.stateninformatie.provincie-utrecht.nl",
-        "term_start": (2023, 3, 29),   # PS election 29 March 2023
-        "term_label": "2023-2027",
-        "style": {"accent": "#EC0000", "headerBg": "#1b1b1b"},
-        "license": "Open data - Provincie Utrecht / Statengriffie",
-    },
-    {
-        "key": "drenthe",
-        "name": "Drenthe",
-        "vendor": "go",
-        "base": "https://www.drentsparlement.nl",
-        # Same GemeenteOplossingen stack as Utrecht, but this install routes the per-fractie
-        # votings page via /Leden/{slug}/votings instead of /Samenstelling/... The Statengriffie
-        # had GO enable/locate the stemgedrag data after outreach (bevestigd 2026-06-30).
-        "votings_path": "Leden",
-        "term_start": (2023, 3, 29),   # PS election 29 March 2023
-        "term_label": "2023-2027",
-        "style": {"accent": "#76b82a", "headerBg": "#16321a"},   # Drenthe huisstijlgroen
-        "license": "Open data - Provincie Drenthe / Statengriffie (Drents Parlement)",
-    },
-    {
-        "key": "noord-holland",
-        "name": "Noord-Holland",
-        "vendor": "ibabs",
-        "base": "https://noordholland.bestuurlijkeinformatie.nl",
-        # One or more iBabs reports (GET /Reports lists them). These registers track *adopted*
-        # items only; verworpen moties/amendementen aren't published here in structured form.
-        "reports": [
-            {"guid": "84a8ac43-1424-48a9-8a1a-0c0bbcdfd8ed", "type": "motie"},
-            {"guid": "95a2053b-5dd6-4aa4-9e60-fdf5158fc48f", "type": "amendement"},
-        ],
-        "term_start": (2023, 3, 29),   # PS election 15 March 2023
-        "term_label": "2023-2027",
-        "style": {"accent": "#2891e0", "headerBg": "#0e2438"},   # NH portal huisstijl blue
-        "license": "Open data - Provincie Noord-Holland (iBabs publieksportaal)",
-        # iBabs scope: these registers list adopted items only, and votes are recorded per
-        # fractie (not per member), so "ruwe getallen" show 1–0 rather than seat counts.
-        "note": "De bron (iBabs-registers) bevat alleen aangenomen moties en amendementen; "
-                "stemmen zijn op fractieniveau geregistreerd, dus zonder exacte aantallen per fractie.",
-    },
-    {
-        "key": "limburg",
-        "name": "Limburg",
-        "vendor": "ibabs",
-        "votes": "stemmen",   # structured per-fractie member counts (not NH's free text)
-        "base": "https://limburg.bestuurlijkeinformatie.nl",
-        "reports": [
-            {"guid": "0493fdd4-4d92-45b7-9645-64a5cb38e1dd", "type": "motie"},
-            {"guid": "34a4e0ce-064b-4457-9acb-8e89a2a93019", "type": "amendement"},
-        ],
-        "term_start": (2023, 3, 29),
-        "term_label": "2023-2027",
-        "style": {"accent": "#0059a2", "headerBg": "#0a2540"},   # Limburg portal huisstijl blue
-        "license": "Open data - Provincie Limburg (iBabs publieksportaal)",
-        # Richer than NH: includes verworpen moties/amendementen and exact per-fractie counts. Moties
-        # zonder hoofdelijke stemming (bij acclamatie) hebben geen telling en worden overgeslagen.
-        "note": "Stemmen zijn per fractie met aantallen geregistreerd (aangenomen én verworpen). "
-                "Moties/amendementen zonder hoofdelijke stemming zijn niet opgenomen.",
-    },
-    {
-        "key": "noord-brabant",
-        "name": "Noord-Brabant",
-        "vendor": "ibabs",
-        "votes": "stemmen",   # same structured "Stemmen" block as Limburg (per-fractie counts)
-        "base": "https://noordbrabant.bestuurlijkeinformatie.nl",
-        # The Statengriffie confirmed (Emma Beers, 2026-07-06) the hoofdelijke stemmingen are
-        # already in the portal: the motie/amendement detail carries the same "Stemmen" field
-        # (vote-summary-legend-in-favour/-against) as Limburg -> config-only, tier A. No lobby needed.
-        "reports": [
-            {"guid": "376cf779-9567-4cf0-ab50-8a7d938e02f4", "type": "motie"},
-            {"guid": "0b5f0bd5-960c-4a01-b250-339749f40292", "type": "amendement"},
-        ],
-        "term_start": (2023, 3, 29),   # PS election 15 March 2023
-        "term_label": "2023-2027",
-        "style": {"accent": "#cd1319", "headerBg": "#2b0a0c"},   # Noord-Brabant huisstijlrood
-        "license": "Open data - Provincie Noord-Brabant (iBabs publieksportaal)",
-        "note": "Stemmen zijn per fractie met aantallen geregistreerd (aangenomen én verworpen). "
-                "Moties/amendementen zonder hoofdelijke stemming zijn niet opgenomen.",
-    },
-    {
-        # Notubiz province. No token needed (data-sources.md §11): the public events + votings API
-        # (version=1.21) discovers meetings + per-stemming metadata, and the public portal vergadering
-        # page carries the per-fractie breakdown with EXACT member counts -> tier A. Reference province
-        # for the vendor; the others differ only in organisation_id / gremium_id / slug.
-        "key": "zuid-holland",
-        "known_issue": "Deze provincie wordt op dit moment niet automatisch ververst: de bron "
-                       "blokkeert de wekelijkse verversing. Hieronder staat de laatste stand.",
-        "name": "Zuid-Holland",
-        "vendor": "notubiz",
-        "organisation_id": 3868,
-        "gremium_id": 11157,           # the plenary "Provinciale Staten" gremium (commissies excluded)
-        "slug": "pzh",                 # portal host: pzh.notubiz.nl
-        "base": "https://api.notubiz.nl",
-        "public": "https://pzh.notubiz.nl",   # the "Bron:" link points to the portal vergadering page
-        "term_start": (2023, 3, 29),   # PS election 15 March 2023, geïnstalleerd 29 March
-        "term_label": "2023-2027",
-        "style": {"accent": "#a07400", "headerBg": "#221900"},   # Zuid-Holland huisstijl goud/geel
-        "license": "Open data - Provincie Zuid-Holland (Notubiz vergaderportaal)",
-        "note": "Stemmen zijn hoofdelijk (per lid) geregistreerd en hier per fractie met exacte "
-                "aantallen samengevat (aangenomen én verworpen). Agendapunten zonder hoofdelijke "
-                "stemming (bijv. bij acclamatie) en leden die niet deelnamen, staan niet in de telling.",
-    },
-    {
-        "key": "fryslan",
-        "known_issue": "Deze provincie wordt op dit moment niet automatisch ververst: de bron "
-                       "blokkeert de wekelijkse verversing. Hieronder staat de laatste stand.",
-        "name": "Fryslân",
-        "vendor": "notubiz",
-        "organisation_id": 822,
-        "gremium_id": 430,             # "Provinsjale Steaten" (Fries) = the plenary gremium
-        "slug": "fryslan",
-        "base": "https://api.notubiz.nl",
-        "public": "https://fryslan.notubiz.nl",
-        "term_start": (2023, 3, 29),
-        "term_label": "2023-2027",
-        "style": {"accent": "#c8102e", "headerBg": "#2a0a0c"},   # Frysk read (pompeblêd-rood)
-        "license": "Open data - Provincie Fryslân (Notubiz vergaderportaal)",
-        "note": "Stemmen zijn hoofdelijk (per lid) geregistreerd en hier per fractie met exacte "
-                "aantallen samengevat (aangenomen én verworpen). Agendapunten zonder hoofdelijke "
-                "stemming (bijv. bij acclamatie) en leden die niet deelnamen, staan niet in de telling.",
-    },
-    {
-        "key": "gelderland",
-        "known_issue": "Deze provincie wordt op dit moment niet automatisch ververst: de bron "
-                       "blokkeert de wekelijkse verversing. Hieronder staat de laatste stand.",
-        "name": "Gelderland",
-        "vendor": "notubiz",
-        "organisation_id": 1769,
-        "gremium_id": 2437,
-        "slug": "gelderland",
-        "base": "https://api.notubiz.nl",
-        "public": "https://gelderland.notubiz.nl",
-        "term_start": (2023, 3, 29),
-        "term_label": "2023-2027",
-        "style": {"accent": "#0d5eaf", "headerBg": "#08203d"},   # Gelderland huisstijl blauw
-        "license": "Open data - Provincie Gelderland (Notubiz vergaderportaal)",
-        "note": "Stemmen zijn hoofdelijk (per lid) geregistreerd en hier per fractie met exacte "
-                "aantallen samengevat (aangenomen én verworpen). Agendapunten zonder hoofdelijke "
-                "stemming (bijv. bij acclamatie) en leden die niet deelnamen, staan niet in de telling.",
-    },
-    {
-        "key": "overijssel",
-        "known_issue": "Deze provincie wordt op dit moment niet automatisch ververst: de bron "
-                       "blokkeert de wekelijkse verversing. Hieronder staat de laatste stand.",
-        "name": "Overijssel",
-        "vendor": "notubiz",
-        "organisation_id": 1750,
-        "gremium_id": 2229,
-        "slug": "overijssel",
-        "base": "https://api.notubiz.nl",
-        "public": "https://overijssel.notubiz.nl",
-        "term_start": (2023, 3, 29),
-        "term_label": "2023-2027",
-        "style": {"accent": "#147ab3", "headerBg": "#0a2a3d"},   # Overijssel huisstijl blauw
-        "license": "Open data - Provincie Overijssel (Notubiz vergaderportaal)",
-        "note": "Stemmen zijn hoofdelijk (per lid) geregistreerd en hier per fractie met exacte "
-                "aantallen samengevat (aangenomen én verworpen). Agendapunten zonder hoofdelijke "
-                "stemming (bijv. bij acclamatie) en leden die niet deelnamen, staan niet in de telling.",
-    },
-    {
-        # A second *category* (not a province): the national parliament. Clean OData v4 API with
-        # per-fractie votes incl. seat counts -> tier A. See data-sources.md §8.
-        "key": "tweede-kamer",
-        "name": "2025–heden",
-        "termNote": "huidige Kamer",
-        "vendor": "tk",
-        "category": "tweede-kamer",
-        "body": "Tweede Kamer",
-        "base": "https://gegevensmagazijn.tweedekamer.nl/OData/v4/2.0",
-        "public": "https://www.tweedekamer.nl",   # human-facing site (per-item: /zoeken?qry={nummer})
-        # Current term = Kamer installed after the 29 Oct 2025 election (constituerende verg. 12 Nov;
-        # first stemming 13 Nov). Date-gating here drops old-composition votes cast before installation.
-        # Previous Kamers (back to 2008, the OData floor) are appended below via _TK_TERMS.
-        "term_start": (2025, 11, 13),
-        "term_label": "2025–heden",
-        "style": {"accent": "#154273", "headerBg": "#0c1d33"},   # Rijkshuisstijl blue
-        "license": "Open data - Tweede Kamer der Staten-Generaal (opendata.tweedekamer.nl)",
-        "compact": True,   # ~3k stemmingen -> write minified JSON to keep the file ~3 MB
-        "note": "Stemmen zijn per fractie met zetelaantallen geregistreerd (aangenomen én verworpen). "
-                "Alleen stemmingen met een hoofdelijke of fractiegewijze telling; zaken die zonder "
-                "stemming zijn afgedaan, aangehouden of ingetrokken zijn niet opgenomen.",
-    },
-    {
-        # The Senate (revising chamber). Separate body, separate system — no machine API; the
-        # per-fractie voor/tegen lists are parsed from the HTML "stemmingen per vergaderdag" pages.
-        # Faction-level V/T, no seat counts -> tier B, but BOTH sides are named (nothing inferred).
-        # See data-sources.md §9.
-        "key": "eerste-kamer",
-        "name": "2023–2027",
-        "termNote": "huidige Kamer",
-        "vendor": "ek",
-        "category": "eerste-kamer",
-        "body": "Eerste Kamer",
-        "base": "https://www.eerstekamer.nl",
-        # Current EK installed 13 June 2023 (elected by the March 2023 Provinciale Staten). Note: the
-        # EK term (2023-2027) differs from the TK term (2025-heden) — different election cycles.
-        # Previous Kamers (back to 2007) are appended below via _EK_TERMS; the site's full stemmingen
-        # history is crawled once (ek_load) and each term slices it.
-        "term_start": (2023, 6, 13),
-        "term_label": "2023–2027",
-        "style": {"accent": "#00669a", "headerBg": "#0a2e44"},   # EK huisstijl blue
-        "license": "Open data - Eerste Kamer der Staten-Generaal (eerstekamer.nl)",
-        "note": "Stemmen zijn op fractieniveau geregistreerd (voor/tegen, zonder zetelaantallen): de "
-                "Eerste Kamer stemt meestal bij zitten en opstaan. Beide zijden worden expliciet "
-                "vermeld (niets afgeleid). Hamerstukken (zonder stemming aangenomen) zijn niet opgenomen.",
-    },
-    {
-        # The EU's elected chamber. Votes presented by EUROPEAN POLITICAL GROUP (not Dutch MEPs only).
-        # Source: HowTheyVote.eu compiles the EP's roll-call open data and exposes per-group MEP counts
-        # (stats.by_group) -> exact tallies, tier A. See data-sources.md §10. ODbL license.
-        "key": "europees-parlement",
-        "name": "Europese fracties",
-        "termNote": "2024–2029",
-        "vendor": "ep",
-        "category": "europees-parlement",
-        "body": "Europees Parlement",
-        "base": "https://howtheyvote.eu",
-        # Current (10th) term: first sitting after the June 2024 election. (Differs again from TK/EK.)
-        # The previous (9th) term 2019–2024 is appended below via _EP_TERMS — HowTheyVote's floor.
-        "term_start": (2024, 7, 16),
-        "term_label": "2024–2029",
-        "style": {"accent": "#003399", "headerBg": "#041f4a"},   # EU flag blue
-        "sourceName": "HowTheyVote.eu",   # ODbL attribution — the "Bron:" link points here, not the EP
-        "license": "Open data - HowTheyVote.eu (ODbL 1.0) op basis van hoofdelijke stemmingen "
-                   "(roll-call) van het Europees Parlement",
-        "note": "Stemmen per Europese fractie met exacte aantallen (voor/tegen/onthouding), op basis "
-                "van hoofdelijke stemmingen (roll-call). Alleen eindstemmingen; stemmingen bij "
-                "handopsteken worden niet hoofdelijk geregistreerd. Bron: HowTheyVote.eu (ODbL), "
-                "Europees Parlement.",
-    },
-    {
-        # Second view of the same EP votes: the Dutch delegation, grouped by NATIONAL party (PVV,
-        # GL-PvdA, VVD, …) instead of by European group. Shares ep_load's cached details (no extra
-        # fetch). Columns carry a `members` roster (the MEP names) for the frontend.
-        "key": "europees-parlement-nl",
-        "name": "Nederlandse afvaardiging",
-        "termNote": "2024–2029",
-        "vendor": "ep",
-        "breakout": "nl",
-        "category": "europees-parlement",
-        "body": "Europees Parlement",
-        "base": "https://howtheyvote.eu",
-        "term_start": (2024, 7, 16),
-        "term_label": "2024–2029",
-        "style": {"accent": "#003399", "headerBg": "#041f4a"},
-        "sourceName": "HowTheyVote.eu",
-        "license": "Open data - HowTheyVote.eu (ODbL 1.0) op basis van hoofdelijke stemmingen "
-                   "(roll-call) van het Europees Parlement",
-        "note": "De 31 Nederlandse Europarlementariërs, gegroepeerd per Nederlandse partij, met "
-                "exacte aantallen (voor/tegen/onthouding). Alleen hoofdelijke eindstemmingen. "
-                "Bron: HowTheyVote.eu (ODbL) + Europees Parlement Open Data (fractie-indeling).",
-    },
-]
-
-# --- Previous terms (config-only) --------------------------------------------------------------
-# Each national/EU body keeps ONE scope per parliamentary term. The adapters slice a body's full
-# history by term_bounds(p) = [term_start, term_end); the current term (defined above) leaves
-# term_end open. Previous terms are appended here to avoid repeating the shared per-body fields.
-# term_start/term_end are (installation of this Kamer, installation of the NEXT Kamer).
-
-# Tweede Kamer — OData holds roll-call votes back to 2008 (hard floor; nothing before). One scope
-# per Kamer between elections. The 2006–2010 Kamer is only covered from 2008 onward.
-_TK_TERMS = [
-    # (key suffix, term_start,       term_end,         label,        subtitle)
-    ("2023", (2023, 12, 6), (2025, 11, 13), "2023–2025", "kabinet-Schoof"),
-    ("2021", (2021, 3, 31), (2023, 12, 6),  "2021–2023", "Rutte IV"),
-    ("2017", (2017, 3, 23), (2021, 3, 31),  "2017–2021", "Rutte III · coronaperiode"),
-    ("2012", (2012, 9, 20), (2017, 3, 23),  "2012–2017", "Rutte II"),
-    ("2010", (2010, 6, 17), (2012, 9, 20),  "2010–2012", "Rutte I"),
-    ("2008", (2008, 1, 1),  (2010, 6, 17),  "2006–2010", "Balkenende IV · vanaf 2008"),
-]
-# Eerste Kamer — the site's "stemmingen per vergaderdag" archive. The "eerdere stemmingen" chain
-# only reaches back to ~mid-2015 (probed: 145 pages, then the chain ends), so older EK terms simply
-# aren't served as data — we advertise only what's reachable (2015 onward).
-_EK_TERMS = [
-    ("2019", (2019, 6, 11), (2023, 6, 13), "2019–2023", "coronaperiode"),
-    ("2015", (2015, 6,  9), (2019, 6, 11), "2015–2019", None),
-]
-# Europees Parlement — HowTheyVote's floor is the 9th term (2019-07). Both breakdowns per term.
-_EP_TERMS = [
-    ("2019", (2019, 7, 2), (2024, 7, 16), "2019–2024", "coronaperiode"),
-]
-
-_SHARED = ("vendor", "category", "body", "base", "public", "style", "license", "compact", "note",
-           "breakout", "sourceName")
-
-
-def _derive_terms():
-    """Append previous-term scopes derived from each body's current-term entry (defined above)."""
-    def base_of(key):
-        return next(s for s in SOURCES if s["key"] == key)
-    for key, terms in (("tweede-kamer", _TK_TERMS), ("eerste-kamer", _EK_TERMS)):
-        cur = base_of(key)
-        for suf, ts, te, label, sub in terms:
-            e = {k: cur[k] for k in _SHARED if k in cur}
-            e.update({"key": f"{key}-{suf}", "name": label, "termNote": sub,
-                      "term_start": ts, "term_end": te, "term_label": label})
-            SOURCES.append(e)
-    # EP previous terms: both breakdowns (group + NL delegation). The NL view uses a term-specific
-    # MEP→partij map (ep_nl_config); the 9th-term map (EP_NL_PARTY_T9) is built from EP Open Data.
-    for cur_key in ("europees-parlement", "europees-parlement-nl"):
-        cur = base_of(cur_key)
-        for suf, ts, te, label, _sub in _EP_TERMS:
-            e = {k: cur[k] for k in _SHARED if k in cur}
-            e.update({"key": f"{cur_key}-{suf}", "name": cur["name"], "termNote": label,
-                      "term_start": ts, "term_end": te, "term_label": label})
-            SOURCES.append(e)
-
-
-_derive_terms()
-
-# Categories (legislative bodies) -> how the frontend labels the "pick category -> pick scope" UX.
-# scope_noun is the word for one scope ("provincie"); None when the category is a single body (TK).
-CATEGORY_META = {
-    "provinciale-staten": {"name": "Provinciale Staten", "scope_noun": "provincie",
-                           "blurb": "Stemgedrag in de 12 provinciale staten — kies een provincie."},
-    "tweede-kamer": {"name": "Tweede Kamer", "scope_noun": "periode",
-                     "blurb": "Het landelijke parlement — moties, amendementen en wetsvoorstellen, "
-                              "per Kamer sinds 2008."},
-    "eerste-kamer": {"name": "Eerste Kamer", "scope_noun": "periode",
-                     "blurb": "De senaat — stemmingen over wetsvoorstellen en moties (op fractieniveau), "
-                              "per Kamer sinds 2007."},
-    "europees-parlement": {"name": "Europees Parlement", "scope_noun": "weergave",
-                           "blurb": "Het EU-parlement — per Europese fractie of de Nederlandse "
-                                    "afvaardiging, sinds 2019."},
+SOURCE = {
+    "key": "fryslan",
+    "name": "Fryslân",
+    "body": "Provinciale Staten",
+    "organisation_id": 822,
+    "gremium_id": 430,             # "Provinsjale Steaten" = the plenary gremium (commissies excluded)
+    "module_id": 6,                # "Moties" module, on the portal "Moasjes en amendeminten"
+    "slug": "fryslan",             # portal host: fryslan.notubiz.nl
+    "public": "https://fryslan.notubiz.nl",
+    "term_start": (2023, 3, 29),   # PS election 15 March 2023, geïnstalleerd 29 March
+    "term_label": "2023-2027",
+    "style": {"accent": "#c8102e", "headerBg": "#2a0a0c"},   # Frysk read (pompeblêd-rood)
+    "license": "Open data - Provincie Fryslân (Notubiz vergaderportaal)",
+    "note": "Stemmen zijn hoofdelijk (per lid) geregistreerd en hier per fractie met exacte "
+            "aantallen samengevat (aangenomen én verworpen). Agendapunten zonder hoofdelijke "
+            "stemming (bijv. bij acclamatie) en leden die niet deelnamen, staan niet in de telling.",
+    # Shown on the page only once the snapshot is older than NOTICE_AFTER_DAYS.
+    "known_issue": "De dagelijkse verversing kon de bron een tijd niet bereiken (Notubiz blokkeert "
+                   "cloudservers). Hieronder staat de laatste stand; nieuwere stemmingen worden "
+                   "waar mogelijk live bijgeladen.",
 }
-# Landing order: national (TK, EK) -> regional (provinces) -> EU (Europees Parlement).
-CATEGORY_ORDER = ["tweede-kamer", "eerste-kamer", "provinciale-staten", "europees-parlement"]
 
-# Bodies that are type "Fractie" in the GO API but are not voting parties.
-NOT_A_PARTY = {"Gedeputeerde Staten"}
+NOTUBIZ_API = "https://api.notubiz.nl"
+API_VERSION = "1.21"   # mandatory: other versions silently reject every parameter
+
+# Merge spelling variants into one column (the portal writes "Partij voor de Dieren" where the
+# stemmingen use "PvdD"). Fracties that genuinely existed separately are NOT merged.
+NOTUBIZ_ALIASES = {
+    "Partij voor de Dieren": "PvdD",
+}
+# Labels that are not a real fractie (the absence of one) -> not a voting column.
+NOTUBIZ_SKIP = {"Geen partij", "Gedeputeerde Staten"}
 
 HEADERS = {
-    "User-Agent": "wie-stemde-wat collector (open-data overview; contact via GitHub)",
+    "User-Agent": "wa-hat-wat-stimd collector (open-data overview; contact via GitHub)",
     "Accept": "application/json",
     "X-Requested-With": "XMLHttpRequest",
 }
 SLEEP = 0.3  # be polite between requests
 
 
-def http(url, data=None, ctype=None):
-    """GET, or POST when `data` (a form string) is given. Returns the decoded body."""
-    headers = dict(HEADERS)
-    if ctype:
-        headers["Content-Type"] = ctype
-    body = data.encode("utf-8") if isinstance(data, str) else data
-    req = urllib.request.Request(url, data=body, headers=headers)
+# --- HTTP ---------------------------------------------------------------------------------------
+
+def http(url):
+    req = urllib.request.Request(url, headers=HEADERS)
     with urllib.request.urlopen(req, timeout=30) as r:
         return r.read().decode("utf-8", "replace")
 
 
-# Why this scope's requests failed, so a run that collects nothing names its own cause instead of
-# printing a bare "no data". Cleared per scope by main(); summarised next to that scope's result.
+# Why requests failed, so a run that collects nothing names its own cause ("Network is
+# unreachable" = blocked runner) instead of printing a bare "no data".
 _HTTP_LOG = {}
 
 
@@ -401,24 +105,17 @@ def note_failure(kind):
 
 
 def http_log_summary():
-    """One-line breakdown of this scope's failed requests ("" when every request succeeded)."""
     return ", ".join(f"{k} x{v}" for k, v in sorted(_HTTP_LOG.items(), key=lambda kv: -kv[1]))
 
 
-# Statuses worth waiting out rather than dropping the request: rate limiting and short-lived server
-# trouble. HowTheyVote.eu began rate-limiting in July 2026; without this every throttled detail
-# fetch silently became a dropped stemming, and the EP scopes lost ~90% of their votes.
 RETRY_STATUS = {429, 500, 502, 503, 504}
 
 
-def fetch(url, data=None, ctype=None, tries=3):
-    """http() with retries on transient errors. Returns the body, or None on a permanent 4xx or
-    after `tries` failed attempts. A 30s read timeout over hundreds of pages is normal for a weekly
-    run, so retry the non-HTTP failures (timeouts, dropped connections) instead of crashing;
-    RETRY_STATUS responses are retried too, honouring Retry-After when the server sends one."""
+def fetch(url, tries=3):
+    """GET with retries on transient errors; None on a permanent 4xx or after `tries` failures."""
     for attempt in range(tries):
         try:
-            return http(url, data=data, ctype=ctype)
+            return http(url)
         except urllib.error.HTTPError as e:
             if e.code not in RETRY_STATUS or attempt + 1 == tries:
                 note_failure(f"HTTP {e.code}")
@@ -430,8 +127,6 @@ def fetch(url, data=None, ctype=None, tries=3):
             time.sleep(max(wait, 2.0 * (attempt + 1)))
         except OSError as e:   # URLError, TimeoutError, dropped connections, …
             if attempt + 1 == tries:
-                # A URLError's type name alone says nothing; its reason is what separates "timed out"
-                # from "Connection refused" or a DNS failure (the Notubiz CI question hinged on it).
                 reason = getattr(e, "reason", None)
                 note_failure(f"{type(e).__name__} ({reason})" if reason else type(e).__name__)
                 return None
@@ -440,1289 +135,66 @@ def fetch(url, data=None, ctype=None, tries=3):
 
 
 def try_json(url):
-    """GET + JSON parse; None on any network/HTTP/JSON failure. A 200 that is not JSON is worth
-    naming separately: that is how an anti-bot interstitial (Anubis, a WAF challenge, a login
-    redirect) arrives — the request "succeeds" but the data is gone. Utrecht's GO portal started
-    answering its votings route this way in July 2026, which read as a bare "no data" for weeks."""
     txt = fetch(url)
     if txt is None:
         return None
     try:
         return json.loads(txt)
     except json.JSONDecodeError:
-        note_failure("anti-bot interstitial, not JSON" if "anubis" in txt[:2000].lower()
-                     else "HTTP 200 but not JSON")
+        note_failure("HTTP 200 but not JSON")
         return None
 
 
 def try_text(url):
-    """GET returning text (HTML), tolerant of network/HTTP errors."""
     return fetch(url)
 
 
-def post_json(url, body):
-    """POST a form body and parse the JSON response; None on failure."""
-    txt = fetch(url, data=body, ctype="application/x-www-form-urlencoded")
-    try:
-        return json.loads(txt) if txt is not None else None
-    except json.JSONDecodeError:
-        return None
+def api(path, **params):
+    params.update(format="json", version=API_VERSION)
+    return f"{NOTUBIZ_API}/{path}?{urllib.parse.urlencode(params)}"
 
+
+# --- Helpers ------------------------------------------------------------------------------------
 
 def slugify(name):
+    """Party slug (column key). Kept byte-identical to the original site so pinned ids and
+    external links stay valid: accents are dropped ("Fryslân" -> "frysln")."""
     s = name.lower()
-    s = re.sub(r"[^a-z0-9\s-]", "", s)   # drop punctuation (e.g. "UtrechtNu!" -> "utrechtnu")
+    s = re.sub(r"[^a-z0-9\s-]", "", s)
     s = re.sub(r"\s+", "-", s.strip())
     return s
 
 
-def classify(title):
-    """Two naming schemes exist: word form ("Motie 97", "Amendement 19") and code form
-    ("M26-40a", "A26-12"). Handle both."""
-    low = title.strip().lower()
-    if "ordevoorstel" in low or "orde voorstel" in low:
-        return "ordevoorstel"
-    if "amendement" in low or re.match(r"^a\s*\d", low):
-        return "amendement"
-    if "motie" in low or re.match(r"^m\s*\d", low):
-        return "motie"
-    if (low.startswith("sv") or "statenstuk" in low or "statenvoorstel" in low
-            or "besluit" in low):
-        return "besluit"
-    return "overig"
+def party_slug(name):
+    name = NOTUBIZ_ALIASES.get(name, name)
+    return None if name in NOTUBIZ_SKIP else slugify(name)
 
 
-def term_bounds(p):
-    """(term_start, term_end) as dates; term_end is None for the current (open-ended) term.
-    A source without "term_end" keeps the old single-term behaviour (floor only)."""
-    ts = date(*p["term_start"])
-    te = date(*p["term_end"]) if p.get("term_end") else None
-    return ts, te
+def norm_text(s):
+    """Lower-case ASCII, punctuation stripped — for fuzzy title matching."""
+    s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9 ]+", " ", s.lower())
 
 
-def in_term(d, ts, te):
-    """True if date d falls in [ts, te): at/after the term start and, if bounded, before the next
-    term's start. Previous terms set te; the current term leaves it open."""
-    return d is not None and d >= ts and (te is None or d < te)
+def title_tokens(s):
+    return {t for t in norm_text(s).split() if len(t) > 2}
 
 
-# --- GemeenteOplossingen (GO) adapter ----------------------------------------
-def collect_go(p):
-    """Return {parties, moties} for a GO province, or None if it has no votes endpoint."""
-    base = p["base"].rstrip("/")
-    api = base + "/api/v2"
-    term_start = date(*p["term_start"])
-    mcache = {}
+TITLE_NUMBER = re.compile(
+    r"^\s*(?:moasje|moasie|amendemint|motie|amendement)\s*(?:frjemd|fremd)?\s*\(?(?:\d+-[MA]-)?0*(\d+)\)?",
+    re.I)
 
-    def meeting_date(mid):
-        if mid in mcache:
-            return mcache[mid]
-        d = None
-        data = try_json(f"{api}/meetings/{mid}")
-        if data and data.get("result", {}).get("meeting"):
-            d = data["result"]["meeting"].get("date")
-        mcache[mid] = d
-        time.sleep(SLEEP)
-        return d
 
-    gdata = try_json(f"{api}/groups?limit=100")
-    if not gdata or "result" not in gdata:
-        return None
-    parties = [{"name": g["name"], "slug": slugify(g["name"]), "sortOrder": g.get("sortOrder", 999)}
-               for g in gdata["result"]["groups"]
-               if g.get("type") == "Fractie" and g["name"] not in NOT_A_PARTY]
-    print(f"  candidate parties: {len(parties)}")
-
-    # The per-fractie votings page lives under a portal-specific path segment. Utrecht (and the GO
-    # default) exposes it at /Samenstelling/{slug}/votings; Drenthe's install routes it via
-    # /Leden/{slug}/votings (confirmed by GemeenteOplossingen, 2026-06-30). Same JSON either way.
-    # 2026-07/09: Utrecht's portal briefly answered this route with an Anubis anti-bot interstitial
-    # (HTTP 200, HTML) instead of JSON, which read as "no data" for eight weeks. GemeenteOplossingen
-    # added an exception for our User-Agent on 2026-09-04. If it ever returns HTML again, try_json
-    # now names it ("anti-bot interstitial, not JSON") rather than failing silently.
-    vpath = p.get("votings_path", "Samenstelling")
-    moties = {}
-    parties_with_data = {}
-    for party in parties:
-        data = try_json(f"{base}/{vpath}/{party['slug']}/votings")
-        time.sleep(SLEEP)
-        items_by_year = data.get("items") if data else None
-        if not isinstance(items_by_year, dict):   # empty result is [] not {}, or 404
-            continue
-        kept = 0
-        for year, items in items_by_year.items():
-            if int(year) < term_start.year:
-                continue
-            for it in items:
-                mid = it["meetingId"]
-                mdate = meeting_date(mid) or it.get("updatedAt", {}).get("date", "")[:10]
-                try:
-                    d = datetime.strptime(mdate[:10], "%Y-%m-%d").date()
-                except ValueError:
-                    continue
-                if d < term_start:
-                    continue
-                vid = it["votingId"]
-                if vid not in moties:
-                    moties[vid] = {
-                        "id": vid,
-                        "documentId": it.get("documentId"),
-                        "meetingItemId": it.get("meetingItemId"),
-                        "meetingId": mid,
-                        "date": mdate[:10],
-                        "title": it["description"],
-                        "type": classify(it["description"]),
-                        "result": (it.get("voteResult") or {}).get("name"),
-                        "resultLabel": (it.get("voteResult") or {}).get("label"),
-                        # Human-facing page (301-redirects to the pretty agenda-item URL).
-                        "source": (f"{base}/vergaderingen/document/{it['documentId']}" if it.get("documentId")
-                                   else f"{base}/vergaderingen/agendapunt/{it['meetingItemId']}" if it.get("meetingItemId")
-                                   else f"{base}/vergaderingen/{mid}"),
-                        "votes": {},
-                    }
-                vc = (it.get("voteResult") or {}).get("voteCounts", {})
-                moties[vid]["votes"][party["slug"]] = {
-                    "agree": vc.get("agree", 0),
-                    "disagree": vc.get("disagree", 0),
-                    "abstain": vc.get("abstain", 0),
-                }
-                kept += 1
-        if kept:
-            parties_with_data[party["slug"]] = party
-
-    motie_list = sorted(moties.values(), key=lambda m: (m["date"], m["title"]), reverse=True)
-    for m in motie_list:
-        m["totals"] = {"agree": sum(v["agree"] for v in m["votes"].values()),
-                       "disagree": sum(v["disagree"] for v in m["votes"].values())}
-    columns = sorted(parties_with_data.values(), key=lambda x: x["sortOrder"])
-    return {"parties": [{"slug": x["slug"], "name": x["name"]} for x in columns], "moties": motie_list}
-
-
-# --- iBabs adapter ------------------------------------------------------------
-# The iBabs publieksportaal ({prov}.bestuurlijkeinformatie.nl) is an ASP.NET SPA with a
-# DataTables "Moties" report. Per-fractie votes are recoverable without auth (data-sources.md §7):
-#   POST /Reports/GetReportData/{guid}  -> clean JSON motie list (DT_RowId, motienummer, ...)
-#   GET  /Reports/Item/{DT_RowId}       -> server-rendered HTML; the "Stemverhouding" field
-#                                          holds the per-fractie outcome as FREE TEXT, e.g.
-#       "Tegen: VVD /BBB /JA21. Voor: overige fracties (Fractie De Weerdt afwezig)."
-# Granularity is faction-level only (no member counts) -> store agree/disagree as 1/0; the
-# frontend's "ruwe getallen"/split-vote features degrade gracefully for iBabs provinces.
-#
-# Parsing strategy: the losing side is usually named and the winning side is "overige fracties"
-# (= everyone else). To expand "overige fracties" we need the term's party universe; we build it
-# data-driven (pass 1: collect every explicitly-named fractie across all in-term moties), then
-# resolve each motie (pass 2). Composition changes per term, so we term-scope first via "Datum PS".
-
-# Normalize fractie spellings to one canonical display name. Keys are lowercased; multi-word
-# keys let the greedy tokenizer split space-separated lists ("PVV FvD") without breaking
-# multi-word party names ("Fractie De Weerdt"). Unknown tokens pass through verbatim, so the
-# adapter also works for the other iBabs provinces (Limburg, Noord-Brabant, Zeeland).
-IBABS_ALIASES = {
-    "gl": "GroenLinks", "groenlinks": "GroenLinks", "groen links": "GroenLinks",
-    "pvda": "PvdA", "partij van de arbeid": "PvdA",
-    "pvdd": "PvdD", "partij voor de dieren": "PvdD",
-    "cu": "ChristenUnie", "christenunie": "ChristenUnie", "christen unie": "ChristenUnie",
-    # NB records the combined fractie under two spellings over time (slash until 2025, hyphen from
-    # 2026); both are the same group -> one canonical column.
-    "christenunie/sgp": "ChristenUnie-SGP", "christenunie-sgp": "ChristenUnie-SGP",
-    "cu-sgp": "ChristenUnie-SGP", "cu/sgp": "ChristenUnie-SGP",
-    "cda": "CDA", "d66": "D66", "vvd": "VVD", "bbb": "BBB", "sp": "SP",
-    "pvv": "PVV", "ja21": "JA21", "ja 21": "JA21", "volt": "Volt",
-    "fvd": "FvD", "forum voor democratie": "FvD",
-    "50plus": "50PLUS", "50 plus": "50PLUS", "denk": "DENK", "sgp": "SGP",
-    "fractie de weerdt": "Fractie De Weerdt", "de weerdt": "Fractie De Weerdt",
-}
-# A whole side phrased as these means "everyone present" (no opposing side).
-IBABS_ALL = ("unaniem", "alle fracties", "alle partijen")
-# Filler words to skip when splitting a space-separated list (label words / stopwords).
-IBABS_SKIP = {"fractie", "fracties", "frct.", "frc.", "frct", "frc", "de", "en", "het"}
-
-
-def ibabs_canon(token):
-    """Canonical display name for one fractie token, or None if empty."""
-    t = re.sub(r"\s+", " ", token or "").strip().strip(".,;:").strip()
-    if not t or t.isdigit() or len(t) < 2:   # drop vote-count numerals / stray single chars
-        return None
-    low = t.lower()
-    if low in IBABS_ALIASES:
-        return IBABS_ALIASES[low]
-    # strip a leading "fractie"/"frct." label (e.g. "fractie FvD" -> "FvD")
-    m = re.match(r"(?:fracties?|frct\.?|frc\.?)\s+(.+)$", t, re.I)
-    if m and m.group(1).strip().lower() != low:
-        return ibabs_canon(m.group(1))
-    return t
-
-
-def ibabs_greedy(text):
-    """Tokenize a space-separated side ("PVV FvD") into canonical names, longest-alias-first
-    so multi-word names stay intact."""
-    words = text.split()
-    out, i = [], 0
-    while i < len(words):
-        hit = False
-        for L in range(min(4, len(words) - i), 0, -1):
-            cand = " ".join(words[i:i + L]).lower().strip(".,;:")
-            if cand in IBABS_ALIASES:
-                out.append(IBABS_ALIASES[cand]); i += L; hit = True; break
-        if not hit:
-            if words[i].lower().strip(".,;:") in IBABS_SKIP:
-                i += 1; continue
-            c = ibabs_canon(words[i])
-            if c:
-                out.append(c)
-            i += 1
-    return out
-
-
-def ibabs_parties(text):
-    """Parse one side's fractie list. Separators vary (',', '/', ' / ', ' en ', or just space)."""
-    text = re.sub(r"\s+", " ", text or "").strip(" .")
-    if not text:
-        return []
-    if "/" in text or "," in text:
-        chunks = text.replace("/", ",").split(",")
-        return [c for c in (ibabs_canon(x) for x in chunks) if c]
-    if re.search(r"\sen\s", text, re.I):
-        return [c for c in (ibabs_canon(x) for x in re.split(r"\sen\s", text, flags=re.I)) if c]
-    return ibabs_greedy(text)
-
-
-def ibabs_parse(raw):
-    """Parse a Stemverhouding string into (voor_spec, tegen_spec, afwezig_set, split_set), or
-    None when there is no usable vote (withdrawn/postponed/blank). Each *_spec is one of:
-      ("list", {names}) | ("rest", None) | ("all", None) | None.
-    The free text is messy: labels sometimes glue to a preceding name ("PvdAVoor:") and a
-    "Verdeeld gestemd:" clause marks fracties that split their own vote."""
-    t = re.sub(r"\s+", " ", raw or "").strip()
-    if not t or t.lower() in ("nvt", "n.v.t.", "aangehouden", "aangehouden.", "vervallen", "ingetrokken"):
-        return None
-    # Un-glue labels stuck to a preceding word: "SPVerdeeld gestemd:" / "PvdAVoor:".
-    t = re.sub(r"(?i)(?<=\w)(verdeeld\s+gestemd\s*:)", r" \1", t)
-    t = re.sub(r"(?i)(?<=[A-Za-z])(voor|tegen|afwezig)\s*:", r" \1:", t)
-
-    afwezig, split_set = set(), set()
-
-    def grab_parens(s):
-        # "(Fractie De Weerdt afwezig)" / "(CU-SGP/Boer afwezig)" -> absent fracties
-        for m in re.finditer(r"\(([^)]*)\)", s):
-            inner = m.group(1)
-            if "afwezig" in inner.lower():
-                for p in ibabs_parties(re.sub(r"afwezig", "", inner, flags=re.I)):
-                    afwezig.add(p)
-        return re.sub(r"\([^)]*\)", " ", s)
-
-    t = grab_parens(t)
-    labels = list(re.finditer(r"(?i)\b(voor|tegen|afwezig|verdeeld(?:\s+gestemd)?)\s*:", t))
-    if not labels:
-        if any(w in t.lower() for w in IBABS_ALL):
-            return (("all", None), None, afwezig, split_set)
-        return None
-
-    voor_spec = tegen_spec = None
-    for i, m in enumerate(labels):
-        key = m.group(1).lower()
-        end = labels[i + 1].start() if i + 1 < len(labels) else len(t)
-        seg = t[m.end():end].strip(" .")
-        seglow = seg.lower()
-        if key == "afwezig":
-            afwezig.update(ibabs_parties(seg))
-            continue
-        if key.startswith("verdeeld"):   # fracties that split their own vote
-            split_set.update(ibabs_parties(seg))
-            continue
-        if any(w in seglow for w in IBABS_ALL):
-            spec = ("all", None)
-        elif "overige" in seglow:
-            spec = ("rest", None)
-        else:
-            spec = ("list", set(ibabs_parties(seg)))
-        if key == "voor":
-            voor_spec = spec
-        else:
-            tegen_spec = spec
-    return (voor_spec, tegen_spec, afwezig, split_set)
-
-
-def ibabs_resolve(voor_spec, tegen_spec, afwezig, split, universe):
-    """Turn the parsed specs into concrete (voor_set, tegen_set, split_set), expanding "overige
-    fracties" / "unaniem" against the term's party universe minus absentees and split voters."""
-    split = split - afwezig
-    present = universe - afwezig - split
-    listed = lambda s: set(s[1]) if s and s[0] == "list" else set()
-    voor, tegen = listed(voor_spec), listed(tegen_spec)
-    if voor_spec and voor_spec[0] == "all":
-        voor = present - tegen
-    if tegen_spec and tegen_spec[0] == "all":
-        tegen = present - voor
-    if voor_spec and voor_spec[0] == "rest":
-        voor = present - tegen
-    if tegen_spec and tegen_spec[0] == "rest":
-        tegen = present - voor
-    voor -= afwezig | split
-    tegen -= afwezig | split
-    voor -= tegen   # a party can't be on both sides
-    return voor, tegen, split
-
-
-def ibabs_date(s):
-    m = re.match(r"(\d{1,2})-(\d{1,2})-(\d{4})", (s or "").strip())
-    if not m:
-        return None
-    dd, mm, yy = map(int, m.groups())
-    try:
-        return date(yy, mm, dd)
-    except ValueError:
-        return None
-
-
-def ibabs_field(html, label):
-    """Pull a <dt>Label</dt><dd>VALUE</dd> pair out of the detail page; tags stripped."""
-    m = re.search(r"<dt[^>]*>\s*" + re.escape(label) + r"\s*</dt>\s*<dd[^>]*>(.*?)</dd>", html, re.S)
-    if not m:
-        return None
-    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", m.group(1))).strip()
-
-
-def ibabs_id(r):
-    """Stable numeric id (the frontend coerces dataset ids with +; GUIDs would become NaN)."""
-    ident = str(r.get("identity") or "").strip()
-    if ident.isdigit():
-        return int(ident)
-    return int(r["DT_RowId"].replace("-", "")[:12], 16)
-
-
-def ibabs_result(status):
-    s = (status or "").lower()
-    if s.startswith("aangenomen"):
-        return "accepted"
-    if s.startswith("verworpen"):
-        return "rejected"
-    return s or None
-
-
-def ibabs_status_from_bijlage(html):
-    """Reports without a Status field (Amendementen) encode the outcome in the attachment
-    filename, e.g. "A8-2026 AANGENOMEN Volt PvdD …". Return the matched keyword, or ""."""
-    bij = ibabs_field(html, "Bijlage") or ""
-    m = re.search(r"\b(AANGENOMEN|VERWORPEN|INGETROKKEN|AANGEHOUDEN|VERVALLEN|VERDAAGD)\b", bij, re.I)
-    return m.group(1).capitalize() if m else ""
-
-
-def ibabs_title(r):
-    title = (r.get("title") or "").strip()
-    num = (r.get("motienummer") or "").strip()
-    if num and num.lower() not in title.lower():
-        return f"{num} — {title}" if title else num
-    return title
-
-
-def _list_year(r):
-    """Best 4-digit year from a list row's date-ish fields (schema varies per portal)."""
-    for k in ("ingediendindatum", "datum", "registrationdate"):
-        m = re.search(r"(?:19|20)\d{2}", str(r.get(k, "") or ""))
-        if m:
-            return int(m.group(0))
-    return 0
-
-
-def ibabs_fetch(p):
-    """Common iBabs fetch: for every report, pull the DataTables list + each in-term detail page.
-    Returns [(row, date, html, type, id_base)] with row['status'] resolved (list / detail field /
-    attachment filename). Each report gets its own id_base since `identity` restarts per report."""
-    base = p["base"].rstrip("/")
-    reports = p.get("reports") or [{"guid": p["report"], "type": "motie"}]
-    term_start = date(*p["term_start"])
-    raw, skipped = [], 0
-    for ri, rep in enumerate(reports):
-        id_base = ri * 10_000_000
-        listing = post_json(f"{base}/Reports/GetReportData/{rep['guid']}", "draw=1&start=0&length=2000")
-        rows = listing.get("data") if isinstance(listing, dict) else None
-        if not rows:
-            print(f"  {rep['type']}: report {rep['guid']} unreachable/empty — skipped")
-            continue
-        # Pre-filter by year to skip pre-term detail pages; the exact term cut is on the item's own
-        # date below (a 1-year margin covers items indiened just before the term).
-        cand = [r for r in rows if _list_year(r) >= term_start.year - 1]
-        kept = 0
-        for r in cand:
-            html = try_text(f"{base}/Reports/Item/{r['DT_RowId']}")
-            time.sleep(SLEEP)
-            if not html:
-                skipped += 1
-                continue
-            # Date label varies per portal: NH "Datum PS", Limburg list "datum" / detail "Datum".
-            d = ibabs_date(ibabs_field(html, "Datum PS") or r.get("datum")
-                           or ibabs_field(html, "Datum") or r.get("ingediendindatum"))
-            if not d or d < term_start:
-                continue
-            if not (r.get("status") or "").strip():
-                r["status"] = ibabs_field(html, "Status") or ibabs_status_from_bijlage(html)
-            raw.append((r, d, html, rep["type"], id_base))
-            kept += 1
-        print(f"  {rep['type']}: {len(rows)} rows, {len(cand)} candidates, {kept} in-term")
-    if skipped:
-        print(f"  WARN: {skipped} detail page(s) failed to fetch")
-    return raw
-
-
-def ibabs_item(base, r, d, rtype, id_base, votes):
-    status = (r.get("status") or "").strip()
-    return {
-        "id": ibabs_id(r) + id_base,
-        "date": d.isoformat(),
-        "title": ibabs_title(r),
-        "type": rtype,
-        "result": ibabs_result(status),
-        "resultLabel": status or None,
-        "source": f"{base}/Reports/Item/{r['DT_RowId']}",
-        "votes": votes,
-    }
-
-
-def ibabs_finalize(items, appear, name_by_slug):
-    """Shared tail: per-item totals, newest-first sort, party columns ordered by activity."""
-    items.sort(key=lambda m: (m["date"], m["title"]), reverse=True)
-    for m in items:
-        m["totals"] = {"agree": sum(1 for v in m["votes"].values() if v["agree"] > v["disagree"]),
-                       "disagree": sum(1 for v in m["votes"].values() if v["disagree"] > v["agree"])}
-    order = sorted(appear, key=lambda s: (-appear[s], name_by_slug[s].lower()))
-    by_type = {}
-    for m in items:
-        by_type[m["type"]] = by_type.get(m["type"], 0) + 1
-    print(f"  items with votes: {len(items)} {by_type}; fracties: {len(appear)}")
-    return {"parties": [{"slug": s, "name": name_by_slug[s]} for s in order], "moties": items}
-
-
-def collect_ibabs(p):
-    """iBabs province. Two vote formats (set per province via "votes"):
-    - "stemverhouding" (default, Noord-Holland): free-text, faction-level, "overige fracties" inferred.
-    - "stemmen" (Limburg): structured per-fractie member counts — exact, with real split votes."""
-    raw = ibabs_fetch(p)
-    if not raw:
-        return None
-    return (ibabs_assemble_stemmen if p.get("votes") == "stemmen"
-            else ibabs_assemble_stemverhouding)(p, raw)
-
-
-def ibabs_assemble_stemverhouding(p, raw):
-    """NH free-text "Stemverhouding". Two passes: build the term party universe (+ a first_seen gate
-    for mid-term splinters), then resolve each item's "overige fracties" against the fracties that
-    already existed on its date."""
-    base = p["base"].rstrip("/")
-    term_start = date(*p["term_start"])
-    parsed = [(r, d, ibabs_parse(ibabs_field(html, "Stemverhouding")), rtype, id_base)
-              for (r, d, html, rtype, id_base) in raw]
-
-    universe, first_seen = set(), {}
-
-    def mark(party, d):
-        if party and (party not in first_seen or d < first_seen[party]):
-            first_seen[party] = d
-
-    for r, d, spec, rtype, id_base in parsed:
-        if not spec:
-            continue
-        voor_spec, tegen_spec, afwezig, split = spec
-        explicit = set(afwezig) | set(split)
-        for s in (voor_spec, tegen_spec):
-            if s and s[0] == "list":
-                explicit |= s[1]
-        universe |= explicit
-        for party in explicit | set(ibabs_parties(r.get("fracties", ""))):
-            mark(party, d)
-
-    items, appear, name_by_slug = [], {}, {}
-    for r, d, spec, rtype, id_base in parsed:
-        if not spec:
-            continue
-        present = {q for q in universe if first_seen.get(q, term_start) <= d}
-        voor, tegen, split = ibabs_resolve(*spec, present)
-        if not voor and not tegen and not split:
-            continue
-        votes = {}
-        # split (= "verdeeld gestemd") -> agree==disagree, rendered as "O" + split dot.
-        for party, agree, disagree in ([(x, 1, 0) for x in voor] + [(x, 0, 1) for x in tegen]
-                                       + [(x, 1, 1) for x in split]):
-            slug = slugify(party)
-            name_by_slug[slug] = party
-            votes[slug] = {"agree": agree, "disagree": disagree, "abstain": 0}
-            appear[slug] = appear.get(slug, 0) + 1
-        items.append(ibabs_item(base, r, d, rtype, id_base, votes))
-    return ibabs_finalize(items, appear, name_by_slug)
-
-
-def ibabs_assemble_stemmen(p, raw):
-    """Limburg "Stemmen": structured per-fractie member counts for the voor and tegen sides.
-    Self-contained (nothing inferred); a fractie on both sides is a real split (agree>0, disagree>0)."""
-    base = p["base"].rstrip("/")
-    items, appear, name_by_slug = [], {}, {}
-    for r, d, html, rtype, id_base in raw:
-        votes = ibabs_parse_stemmen(html, name_by_slug)
-        if not votes:
-            continue
-        for slug in votes:
-            appear[slug] = appear.get(slug, 0) + 1
-        items.append(ibabs_item(base, r, d, rtype, id_base, votes))
-    return ibabs_finalize(items, appear, name_by_slug)
-
-
-# Limburg "Stemmen" markup: <div class="vote-summary-legend-{in-favour|against}"> … <div
-# class="text">Fractie (Statenleden) (N), …</div>. A fractie on both sides = a split vote.
-def ibabs_parse_stemmen(html, name_by_slug):
-    m = re.search(r"<dt[^>]*>\s*Stemmen\s*</dt>\s*<dd[^>]*>(.*?)</dd>", html, re.S)
-    if not m:
-        return {}
-    block = m.group(1)
-    votes = {}
-
-    def side(css, key):
-        sm = re.search(r'vote-summary-legend-' + css + r'\b.*?<div class="text">(.*?)</div>', block, re.S)
-        if not sm:
-            return
-        text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", sm.group(1))).strip()
-        for name, cnt in ibabs_stemmen_items(text):
-            slug = slugify(name)
-            name_by_slug.setdefault(slug, name)
-            votes.setdefault(slug, {"agree": 0, "disagree": 0, "abstain": 0})[key] += cnt
-
-    side("in-favour", "agree")
-    side("against", "disagree")
-    return votes
-
-
-def ibabs_stemmen_items(text):
-    """"50PLUS (Statenlid) (1), CDA (Statenleden) (4), Horizon (1)" -> [(canon_name, count)].
-    Fractie names contain no commas in this summary, so a plain comma split is safe."""
-    out = []
-    for chunk in text.split(","):
-        chunk = chunk.strip()
-        m = re.match(r"^(.*?)\s*(?:\((?:Statenlid|Statenleden)\)\s*)?\((\d+)\)\s*$", chunk)
-        if m:
-            name = ibabs_canon(m.group(1))
-            if name:
-                out.append((name, int(m.group(2))))
-    return out
-
-
-# --- Tweede Kamer (OData) adapter ---------------------------------------------
-# The Tweede Kamer publishes an OData v4 API (gegevensmagazijn.tweedekamer.nl). The vote chain is
-# Stemming -> Besluit -> Zaak (the motie/amendement/wetsvoorstel) + Agendapunt -> Activiteit (date).
-# $expand inlines the children and nested navigation is filterable, so one paged query (250/page,
-# follow @odata.nextLink) pulls everything. Votes are per fractie WITH seat counts (FractieGrootte)
-# -> exact tallies, tier A. See data-sources.md §8 for the full reverse-engineering notes.
-
-# Stemming.ActorFractie is the fractie name AT vote time, so a mid-term rename yields two names for
-# one group. Merge a pure rename into a single column (GroenLinks-PvdA was renamed "Progressief
-# Nederland" on 2026-06-09; most of the term it was GL-PvdA, so keep that as the display name).
-# GroenLinks-PvdA was renamed "Progressief Nederland" (afkorting "PRO") on 2026-06-09; most of the
-# term it voted as GroenLinks-PvdA, so merge both spellings into one column under that name.
-TK_ALIASES = {"Progressief Nederland": "GroenLinks-PvdA", "PRO": "GroenLinks-PvdA"}
-TK_TYPE = {"Motie": "motie", "Amendement": "amendement", "Wetgeving": "wetsvoorstel"}
-
-
-def tk_result(besluitsoort):
-    """Map BesluitSoort -> (result, label). Check 'niet aangenomen'/'verworpen' before 'aangenomen'
-    (the former contains the latter as a substring)."""
-    s = (besluitsoort or "").lower()
-    if "niet aangenomen" in s or "verworpen" in s:
-        return "rejected", "Verworpen"
-    if "gestaakt" in s:
-        return "tie", "Staken van stemmen"
-    if "aangenomen" in s or "goedgekeurd" in s or "vastgesteld" in s:
-        return "accepted", "Aangenomen"
-    return None, (besluitsoort or None)
-
-
-def tk_pick_zaak(zaken):
-    """A besluit can link to several Zaken; pick the most table-worthy one (motie > amendement >
-    wetsvoorstel) and ignore the rest (covering documents, etc.)."""
-    ranked = [(("Motie", "Amendement", "Wetgeving").index(z["Soort"]), z)
-              for z in zaken if z.get("Soort") in TK_TYPE]
-    if not ranked:
-        return None
-    return min(ranked, key=lambda x: x[0])[1]
-
-
-def tk_item(public, b, name_by_slug, seats):
-    """Build one normalized stemming dict from a Besluit (with expanded Stemming/Zaak/Agendapunt),
-    or None if it isn't a usable per-fractie vote on a motie/amendement/wetsvoorstel."""
-    z = tk_pick_zaak(b.get("Zaak") or [])
-    if not z:
-        return None
-    rtype = TK_TYPE.get(z.get("Soort"))
-    if not rtype:
-        return None
-    act = (b.get("Agendapunt") or {}).get("Activiteit") or {}
-    dt = (act.get("Datum") or "")[:10]
-    if not re.match(r"\d{4}-\d{2}-\d{2}$", dt):
-        return None
-    # Group this besluit's Stemming rows per fractie. Three shapes occur:
-    #   - block vote: one row, Persoon_Id null, FractieGrootte = full fractie size.
-    #   - hoofdelijke stemming: one row PER MEMBER (Persoon_Id set), each carrying the fractie size.
-    #   - block + aantekening: a block row plus a few per-member rows for members who deviated.
-    # One rule covers all three: each per-member row counts as 1 seat for that member's vote; a block
-    # row contributes its FractieGrootte MINUS the fractie's individually-recorded members (so a
-    # deviator isn't counted in both the block and their own row). Sums to seats present, never inflated.
-    KEY = {"Voor": "agree", "Tegen": "disagree"}
-    by_fr = {}
-    for s in b.get("Stemming") or []:
-        fr = (s.get("ActorFractie") or s.get("ActorNaam") or "").strip()
-        fr = TK_ALIASES.get(fr, fr)
-        if fr:
-            by_fr.setdefault(fr, []).append(s)
-    votes = {}
-    for fr, rows in by_fr.items():
-        slug = slugify(fr)
-        name_by_slug.setdefault(slug, fr)
-        size = max((r.get("FractieGrootte") or 0) for r in rows)
-        seats[slug] = max(seats.get(slug, 0), size)
-        v = votes.setdefault(slug, {"agree": 0, "disagree": 0, "abstain": 0})
-        members = [r for r in rows if r.get("Persoon_Id")]
-        for r in members:                                   # individual (deviating/hoofdelijke) votes
-            v[KEY.get(r.get("Soort"), "abstain")] += 1
-        for r in rows:                                      # block rows, minus the members already counted
-            if r.get("Persoon_Id"):
-                continue
-            v[KEY.get(r.get("Soort"), "abstain")] += max((r.get("FractieGrootte") or 0) - len(members), 0)
-    if not any(v["agree"] or v["disagree"] for v in votes.values()):
-        return None   # roll-call with no actual voor/tegen (shouldn't happen, but guard)
-    result, label = tk_result(b.get("BesluitSoort"))
-    nummer = (z.get("Nummer") or "").strip()
-    title = (z.get("Onderwerp") or z.get("Titel") or "").strip()
-    return {
-        "id": int(b["Id"].replace("-", "")[:12], 16),   # GUID -> stable int (frontend coerces +id)
-        "date": dt,
-        "title": title,
-        "type": rtype,
-        "result": result,
-        "resultLabel": label,
-        "source": (public.rstrip("/") + "/zoeken?qry=" + urllib.parse.quote(nummer)) if nummer else public,
-        "votes": votes,
-    }
-
-
-def collect_tk(p):
-    """Tweede Kamer. One paged OData query (with $expand) pulls every in-term roll-call besluit on a
-    motie/amendement/wetsvoorstel, votes inlined. Self-contained per besluit (exact seat counts)."""
-    base = p["base"].rstrip("/")
-    public = p.get("public", base)
-    term_start, term_end = term_bounds(p)
-    term_iso = term_start.isoformat() + "T00:00:00Z"
-    # Bound both ends server-side: previous terms carry term_end (next Kamer's installation), the
-    # current term leaves it open. Datum is the plenary activity date the stemming belongs to.
-    upper = (" and Agendapunt/Activiteit/Datum lt " + term_end.isoformat() + "T00:00:00Z") if term_end else ""
-    filt = ("startswith(BesluitSoort,'Stemmen') "
-            "and Agendapunt/Activiteit/Datum ge " + term_iso + upper + " "
-            "and Stemming/any() "
-            "and Zaak/any(z: z/Soort eq 'Motie' or z/Soort eq 'Amendement' or z/Soort eq 'Wetgeving')")
-    expand = ("Stemming($select=ActorFractie,ActorNaam,Soort,FractieGrootte,Persoon_Id),"
-              "Zaak($select=Nummer,Soort,Onderwerp,Titel),"
-              "Agendapunt($expand=Activiteit($select=Datum))")
-    qs = urllib.parse.urlencode(
-        {"$filter": filt, "$expand": expand, "$select": "Id,BesluitSoort,BesluitTekst",
-         "$orderby": "GewijzigdOp desc", "$format": "json"},
-        quote_via=urllib.parse.quote)
-    url = base + "/Besluit?" + qs
-
-    items, appear, name_by_slug, seats, seen = [], {}, {}, {}, set()
-    pages = 0
-    while url:
-        data = try_json(url)
-        if not data:
-            break
-        for b in data.get("value", []):
-            it = tk_item(public, b, name_by_slug, seats)
-            if not it or it["id"] in seen:
-                continue
-            seen.add(it["id"])
-            items.append(it)
-            for slug in it["votes"]:
-                appear[slug] = appear.get(slug, 0) + 1
-        pages += 1
-        url = data.get("@odata.nextLink")
-        time.sleep(SLEEP)
-    print(f"  fetched {pages} page(s); {len(items)} stemmingen; {len(appear)} fracties")
-    if not items:
-        return None
-
-    items.sort(key=lambda m: (m["date"], m["title"]), reverse=True)
-    for m in items:
-        m["totals"] = {"agree": sum(v["agree"] for v in m["votes"].values()),
-                       "disagree": sum(v["disagree"] for v in m["votes"].values())}
-    # Columns ordered by current fractie size (biggest first), then activity, then name.
-    order = sorted(appear, key=lambda s: (-seats.get(s, 0), -appear[s], name_by_slug[s].lower()))
-    by_type = {}
-    for m in items:
-        by_type[m["type"]] = by_type.get(m["type"], 0) + 1
-    print(f"  types: {by_type}")
-    return {"parties": [{"slug": s, "name": name_by_slug[s]} for s in order], "moties": items}
-
-
-# --- Eerste Kamer (HTML) adapter ----------------------------------------------
-# The Eerste Kamer has NO machine API (no OData/opendata host) — see data-sources.md §9. But the
-# "stemmingen per vergaderdag" pages embed, per stemming, the structured per-fractie breakdown:
-#   <strong>voor:</strong> A, B en C<br /><strong>tegen:</strong> D en E<br />
-# Both sides are named (no "overige fracties" inference, unlike NH), but there are no seat counts
-# (the EK votes bij zitten en opstaan) -> faction-level V/T, tier B. Pages are 25 stemmingen each;
-# we follow the "eerdere stemmingen" link back to term start. Hamerstukken (passed without a vote;
-# only an optional "aantekening gevraagd") carry no voor/tegen and are skipped.
-EK_MONTHS = {"januari": 1, "februari": 2, "maart": 3, "april": 4, "mei": 5, "juni": 6,
-             "juli": 7, "augustus": 8, "september": 9, "oktober": 10, "november": 11, "december": 12}
-
-
-def ek_date(s):
-    m = re.search(r"(\d{1,2})\s+([a-z]+)\s+(\d{4})", (s or "").lower())
-    if not m:
-        return None
-    mon = EK_MONTHS.get(m.group(2))
-    if not mon:
-        return None
-    try:
-        return date(int(m.group(3)), mon, int(m.group(1)))
-    except ValueError:
-        return None
-
-
-def ek_parties(text):
-    """Split a 'A, B, C en D' fractie list into display names. Names are already canonical on the
-    EK site (e.g. 'GroenLinks-PvdA', 'Fractie-Van de Sanden', '50PLUS') — no alias map needed."""
-    text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", text or "")).strip(" .")
-    if not text:
-        return []
-    text = re.sub(r"\s+en\s+", ", ", text)   # the last separator is " en " -> normalize to comma
-    return [c.strip(" .") for c in text.split(",") if c.strip(" .")]
-
-
-def ek_side(block, label):
-    """Fracties listed after a <strong>{label}:</strong> tag, up to the next <br>/<strong>."""
-    m = re.search(r"<strong>\s*" + label + r"\s*:\s*</strong>(.*?)(?:<br|<strong|$)", block, re.I | re.S)
-    return ek_parties(m.group(1)) if m else []
-
-
-def ek_type(title, dossier_href):
-    low = (title or "").lower()
-    if "/wetsvoorstel/" in (dossier_href or ""):
-        return "wetsvoorstel"
-    if "motie" in low:
-        return "motie"
-    return "overig"
-
-
-def ek_result(type_result):
-    tr = (type_result or "").lower()
-    if "verworpen" in tr:
-        return "rejected", "Verworpen"
-    if "gestaakt" in tr or "staken" in tr:
-        return "tie", "Staken van stemmen"
-    if "aangenomen" in tr or "aanvaard" in tr:
-        return "accepted", "Aangenomen"
-    return None, (type_result or None)
-
-
-def ek_normkey(fr):
-    """Normalize a fractie name for matching: drop a leading 'Fractie-' and all spaces/hyphens.
-    So the fractie-level 'Fractie-Van de Sanden' and the member-paren form 'Van de Sanden' map to
-    one key ('vandesanden'); 'GroenLinks-PvdA' -> 'groenlinkspvda'; 'PVV' -> 'pvv'."""
-    return re.sub(r"[\s\-]", "", re.sub(r"^fractie[-\s]+", "", fr.strip().lower()))
-
-
-def ek_member_fractie(tok):
-    """Map a member/person reference to its fractie name, or None for a plain fractie token.
-    Two member forms occur: a *hoofdelijke* stemming lists 'Mei Li Vos (GroenLinks-PvdA)' (the
-    fractie is in parentheses), and a one-member fractie is sometimes written 'het lid Eric
-    Kemperman' (drop the first name -> the surname, which matches 'Fractie-Kemperman')."""
-    m = re.match(r"^.*\S\s*\(([^()]+)\)\s*$", tok)
-    if m:
-        return m.group(1).strip()
-    m = re.match(r"^(?:het lid|de leden|de heer|mevrouw|mevr\.?|dhr\.?)\s+(.+)$", tok, re.I)
-    if m:
-        parts = m.group(1).split()
-        return " ".join(parts[1:]) if len(parts) > 1 else parts[0]   # drop the first name
-    return None
-
-
-def ek_parse_item(chunk, d, base):
-    """One stemming <li> -> a raw dict (votes resolved later), or None for hamerstukken / no
-    breakdown. Keeps the voor/tegen token lists verbatim (they may be fracties OR members)."""
-    if d is None:
-        return None
-    mt = re.search(r'<div class="opsomtekst">(.*?)(?:<br|<ul)', chunk, re.S)
-    dossier = re.search(r'href="(/(?:wetsvoorstel|kamerstukdossier)/[^"]+)"', chunk)
-    title = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", mt.group(1) if mt else "")).strip()
-    title = re.sub(r"\(\s+", "(", re.sub(r"\s+\)", ")", title))
-    mr = re.search(r'js-expandmore.*?<a href="([^"]+)">\s*(.*?)\s*</a>', chunk, re.S)
-    mb = re.search(r'js-to_expand[^>]*>(.*?)</div>', chunk, re.S)
-    block = mb.group(1) if mb else ""
-    voor, tegen = ek_side(block, "voor"), ek_side(block, "tegen")
-    if not voor and not tegen:
-        return None   # hamerstuk / aantekening-only / no recorded vote -> skip
-    return {
-        "date": d.isoformat(),
-        "title": title,
-        "dossier_href": dossier.group(1) if dossier else None,
-        "type_result": re.sub(r"\s+", " ", mr.group(2)).strip() if mr else "",
-        "verslag_href": mr.group(1) if mr else None,
-        "voor": voor,
-        "tegen": tegen,
-    }
-
-
-def ek_parse_page(html, base):
-    """Parse one 'per vergaderdag' page into raw items: walk day-headers and stemming <li>s in
-    document order, carrying the current date forward."""
-    body = re.sub(r"<(script|style)[^>]*>.*?</\1>", "", html, flags=re.S)
-    token = re.compile(
-        r'<h2>\s*<a id="p\d+"></a>(.*?)</h2>'
-        r'|<li class="opsomitem met_image image_breed">(.*?)'
-        r'(?=<li class="opsomitem met_image image_breed">|</ul>)', re.S)
-    cur_date, items = None, []
-    for m in token.finditer(body):
-        if m.group(1) is not None:
-            cur_date = ek_date(re.sub(r"<[^>]+>", " ", m.group(1)))
-        else:
-            it = ek_parse_item(m.group(2), cur_date, base)
-            if it:
-                items.append(it)
-    return items
-
-
-def ek_next_url(base, html):
-    """The site's own 'eerdere stemmingen' (older) pagination link. Pick it by anchor TEXT — a
-    'recentere stemmingen' (newer) link with the same start_006 param appears from page 2 on, and
-    grabbing the wrong one makes the walk oscillate."""
-    for href, txt in re.findall(
-            r'<a[^>]+href="(/stemmingen_per_vergaderdag\?filter=alles[^"]*start_006[^"]*)"[^>]*>(.*?)</a>',
-            html, re.S):
-        if "eerdere" in re.sub(r"<[^>]+>", "", txt).lower():
-            return base + href.replace("&#38;", "&").replace("&amp;", "&")
-    return None
-
-
-_EK_CACHE = {}
-
-
-def ek_floor():
-    """Oldest EK term start in SOURCES — the crawl walks back to here once, then each term slices it."""
-    dts = [date(*s["term_start"]) for s in SOURCES if s.get("vendor") == "ek"]
-    return min(dts) if dts else date(2007, 6, 12)
-
-
-def ek_load(base):
-    """Crawl the whole 'stemmingen per vergaderdag' history once (down to the oldest EK term), cached
-    by base. ~25 stemmingen/page over the 'eerdere stemmingen' chain; reaching 2007 is a few hundred
-    pages, so we cache and let every EK term scope slice the same raw list."""
-    if base in _EK_CACHE:
-        return _EK_CACHE[base]
-    floor = ek_floor()
-    url = base + "/stemmingen_per_vergaderdag?filter=alles"
-    raw, seen_urls, pages = [], set(), 0
-    while url and url not in seen_urls and pages < 500:
-        seen_urls.add(url)
-        html = try_text(url)
-        if not html:
-            break
-        pages += 1
-        oldest = None
-        for it in ek_parse_page(html, base):
-            dd = date.fromisoformat(it["date"])
-            oldest = dd if oldest is None or dd < oldest else oldest
-            raw.append(it)
-        if oldest and oldest < floor:   # walked past the oldest term we need -> stop
-            break
-        url = ek_next_url(base, html)
-        time.sleep(SLEEP)
-    _EK_CACHE[base] = raw
-    print(f"  EK history: {pages} page(s) crawled, {len(raw)} raw stemmingen down to ~{floor}")
-    return raw
-
-
-def collect_ek(p):
-    """Eerste Kamer. Page through /stemmingen_per_vergaderdag (25/page, following the site's own
-    'eerdere stemmingen' link) back to term start, then resolve members to fracties and assemble the
-    faction-level matrix. Hoofdelijke (per-member) stemmingen are aggregated to the fractie."""
-    base = p["base"].rstrip("/")
-    term_start, term_end = term_bounds(p)
-    # The full stemmingen history is crawled once (cached by base); each term scope just slices it —
-    # otherwise every EK term would re-walk hundreds of "eerdere stemmingen" pages every run.
-    raw = [it for it in ek_load(base)
-           if in_term(date.fromisoformat(it["date"]), term_start, term_end)]
-    if not raw:
-        return None
-
-    # Build the canonical fractie registry from fractie-level (non-member) tokens, then resolve
-    # every token — member tokens via their parenthetical fractie — to one canonical display name.
-    canon = {}
-    for it in raw:
-        for tok in it["voor"] + it["tegen"]:
-            if ek_member_fractie(tok):
-                continue
-            k = ek_normkey(tok)
-            if k not in canon or len(tok) > len(canon[k]):
-                canon[k] = tok
-
-    def resolve(tok):
-        fr = ek_member_fractie(tok) or tok
-        return canon.get(ek_normkey(fr), fr)
-
-    by_id, name_by_slug, appear = {}, {}, {}
-    for it in raw:
-        sides = {}
-        for tok in it["voor"]:
-            sides.setdefault(resolve(tok), set()).add("voor")
-        for tok in it["tegen"]:
-            sides.setdefault(resolve(tok), set()).add("tegen")
-        if not sides:
-            continue
-        votes = {}
-        for disp, s in sides.items():
-            slug = slugify(disp)
-            name_by_slug.setdefault(slug, disp)
-            # A fractie whose members split on a hoofdelijke vote lands on both sides -> real split.
-            votes[slug] = {"agree": int("voor" in s), "disagree": int("tegen" in s), "abstain": 0}
-        result, label = ek_result(it["type_result"])
-        vk = lambda side: ",".join(sorted(slugify(d) for d, s in sides.items() if side in s))
-        key = f'{it["date"]}|{it["title"]}|{vk("voor")}|{vk("tegen")}'
-        iid = int(hashlib.sha1(key.encode("utf-8")).hexdigest()[:12], 16)
-        if iid in by_id:
-            continue
-        by_id[iid] = {
-            "id": iid,
-            "date": it["date"],
-            "title": it["title"],
-            "type": ek_type(it["title"], it["dossier_href"]),
-            "result": result,
-            "resultLabel": label,
-            "source": base + it["verslag_href"] if it["verslag_href"] else base,
-            "votes": votes,
-        }
-
-    items = list(by_id.values())
-    for it in items:
-        for slug in it["votes"]:
-            appear[slug] = appear.get(slug, 0) + 1
-    items.sort(key=lambda m: (m["date"], m["title"]), reverse=True)
-    for m in items:
-        m["totals"] = {"agree": sum(1 for v in m["votes"].values() if v["agree"] > v["disagree"]),
-                       "disagree": sum(1 for v in m["votes"].values() if v["disagree"] > v["agree"])}
-    order = sorted(appear, key=lambda s: (-appear[s], name_by_slug[s].lower()))
-    by_type = {}
-    for m in items:
-        by_type[m["type"]] = by_type.get(m["type"], 0) + 1
-    print(f"  {len(items)} stemmingen in term; {len(appear)} fracties; {by_type}")
-    return {"parties": [{"slug": s, "name": name_by_slug[s]} for s in order], "moties": items}
-
-
-# --- Europees Parlement (HowTheyVote.eu API) adapter --------------------------
-# HowTheyVote.eu compiles the EP's roll-call open data into a clean JSON API. The unit is the
-# EUROPEAN POLITICAL GROUP: GET /api/votes/{id} -> stats.by_group gives exact per-group MEP counts
-# (FOR/AGAINST/ABSTENTION/DID_NOT_VOTE) -> our {agree,disagree,abstain}, tier A. The /api/votes list
-# is is_main (final) votes only, newest first, across the 9th+10th terms -> date-filter to the current
-# term. See data-sources.md §10. License: ODbL (attribution + share-alike).
-#
-# Display names + stable slugs per group code (the API `label` is occasionally mojibaked, so we map
-# explicitly). Slug = code lowercased with '_' -> '-' (independent of the display name).
-EP_GROUPS = {
-    "EPP": "EPP", "SD": "S&D", "RENEW": "Renew", "GREEN_EFA": "Greens/EFA", "ECR": "ECR",
-    "PFE": "PfE", "GUE_NGL": "The Left", "ESN": "ESN", "NI": "Niet-fractiegebonden",
-}
-EP_TYPE = {"COD": "wetgeving", "NLE": "wetgeving", "APP": "wetgeving", "SYN": "wetgeving",
-           "INI": "initiatiefverslag", "INL": "initiatiefverslag",
-           "RSP": "resolutie", "BUD": "begroting", "BUI": "begroting"}
-
-
-def ep_group(code, label):
-    name = EP_GROUPS.get(code) or label or code
-    slug = (code or slugify(name)).lower().replace("_", "-")
-    return slug, name
-
-
-# Dutch MEP (HowTheyVote/EP id) -> national party, for the "Nederlandse afvaardiging" breakout.
-# Resolved once from the EP Open Data Portal (each MEP's NATIONAL_POLITICAL_GROUP membership ->
-# corporate-body label); the 10th-term NL delegation is 31 MEPs. The collector WARNS on any NL MEP
-# id not in this map (e.g. a mid-term replacement) so it can be topped up. See data-sources.md §10.
-EP_NL_PARTY = {
-    "125023": "PvdD", "256990": "Volt", "257438": "VVD", "103246": "PVV", "197780": "VVD",
-    "96725": "GL-PvdA", "197773": "SGP", "256976": "D66", "257437": "GL-PvdA", "97399": "NSC",
-    "96940": "D66", "256968": "CDA", "257003": "VVD", "95074": "CDA", "256983": "BBB",
-    "197870": "GL-PvdA", "5392": "GL-PvdA", "197781": "VVD", "192254": "PVV", "91636": "GL-PvdA",
-    "130881": "PVV", "197782": "GL-PvdA", "256998": "PVV", "256970": "D66", "256978": "Volt",
-    "125325": "BBB", "256996": "PVV", "218347": "GL-PvdA", "197772": "GL-PvdA", "256981": "PVV",
-    "276060": "CDA",
-    "278815": "GL-PvdA",   # Ufuk Kâhya — sits with Greens/EFA; joined mid-term, so he is absent from
-                           # the delegation list the map was first built from (WARN caught him 2026-07).
-    # Former MEPs who voted earlier this term before being replaced (not in the current-MEP list):
-    "197778": "CDA",   # Tom Berendsen
-    "256991": "PVV",   # Sebastiaan Stöteler
-}
-# Column order for the NL breakout: by 2024 EP-election seats (the adapter falls back to activity).
-EP_NL_ORDER = ["GL-PvdA", "PVV", "VVD", "D66", "CDA", "BBB", "Volt", "PvdD", "SGP", "NSC"]
-
-# Same map for the 9th term (2019–2024). Resolved from EP Open Data (`/meps/{id}` -> the MEP's
-# NATIONAL_POLITICAL_GROUP membership overlapping the term; longest-overlapping party wins for the
-# handful who switched mid-term). NB: GroenLinks and PvdA are SEPARATE here (they had distinct EP
-# delegations until the 10th-term "GL-PvdA" merger). Excluded: Dorien Rookmaker (204733) — elected FvD,
-# left in 2021 and sat as a non-party independent ("MDD") for most of the term, so no party column.
-EP_NL_PARTY_T9 = {
-    "197778": "CDA", "95074": "CDA", "4560": "CDA", "253043": "CDA", "125030": "CDA", "38398": "CDA",
-    "247709": "CU", "96809": "CU",
-    "28266": "D66", "197868": "D66",
-    "125025": "FvD", "97133": "FvD",
-    "96725": "GroenLinks", "197772": "GroenLinks", "197870": "GroenLinks",
-    "218349": "JA21", "197776": "JA21", "197709": "JA21",
-    "197782": "PvdA", "125021": "PvdA", "218347": "PvdA", "125020": "PvdA", "197756": "PvdA",
-    "5392": "PvdA", "37229": "PvdA",
-    "125023": "PvdD",
-    "197773": "SGP",
-    "197781": "VVD", "197780": "VVD", "58789": "VVD", "190519": "VVD", "229519": "VVD", "197869": "VVD",
-}
-EP_NL_ORDER_T9 = ["PvdA", "VVD", "CDA", "GroenLinks", "FvD", "D66", "JA21", "CU", "PvdD", "SGP"]
-
-# NL MEPs deliberately left out of the maps above (no national-party column applies), so the
-# "not in the NL map" warning stays a signal about MEPs we genuinely still owe a mapping.
-EP_NL_EXCLUDE = {"204733"}   # Dorien Rookmaker — sat as an independent for most of the 9th term
-
-
-def ep_nl_config(term_start):
-    """The NL delegation's MEP→partij map + column order for a term. HowTheyVote MEP ids are stable,
-    but a person's national party can differ per term (e.g. GroenLinks in the 9th term, "GL-PvdA" in
-    the 10th), so the map is term-specific."""
-    return (EP_NL_PARTY_T9, EP_NL_ORDER_T9) if term_start.year <= 2019 else (EP_NL_PARTY, EP_NL_ORDER)
-
-_EP_CACHE = {}   # base -> {"metas": [...], "details": {id: detail}} — shared across the two EP scopes
-EP_WORKERS = 4   # concurrent detail fetches; 8 tripped HowTheyVote.eu's rate limiter (see ep_load)
-
-
-def ep_floor():
-    """Oldest EP term start in SOURCES — HowTheyVote only holds the 9th term onward (from 2019-07)."""
-    dts = [date(*s["term_start"]) for s in SOURCES if s.get("vendor") == "ep"]
-    return min(dts) if dts else date(2019, 7, 2)
-
-
-def ep_load(base, floor):
-    """Fetch (and cache) all is_main votes + their details down to `floor` once. All EP scopes (both
-    breakdowns × every term) run in the same process, so they reuse the cache; each term slices it."""
-    if base in _EP_CACHE:
-        return _EP_CACHE[base]["metas"], _EP_CACHE[base]["details"]
-    metas, page = [], 1
-    while page <= 120:   # 1) stemming index: page newest-first until we cross the oldest term boundary
-        data = try_json(f"{base}/api/votes?page_size=100&page={page}")
-        results = data.get("results") if isinstance(data, dict) else None
-        if not results:
-            break
-        stop = False
-        for r in results:
-            try:
-                d = date.fromisoformat((r.get("timestamp") or "")[:10])
-            except ValueError:
-                continue
-            if d < floor:
-                stop = True
-                continue
-            metas.append(r)
-        if stop or not data.get("has_next"):
-            break
-        page += 1
-        time.sleep(SLEEP)
-    # 2) details: the API is ~1.5s/request, so thousands of sequential calls take hours; a small
-    #    thread pool keeps wall-time and load reasonable. Kept deliberately modest — the API began
-    #    rate-limiting in July 2026, and a throttled request costs a whole stemming.
-    def _detail(r):
-        return r["id"], try_json(f"{base}/api/votes/{r['id']}")
-    details = {}
-    with concurrent.futures.ThreadPoolExecutor(max_workers=EP_WORKERS) as ex:
-        for vid, det in ex.map(_detail, metas):
-            details[vid] = det
-    # ep_assemble_* skips a vote whose detail is missing, so a throttled run used to write a
-    # plausible-looking but near-empty dataset. Retry the gaps sequentially and slowly — one at a
-    # time is what the limiter is asking for.
-    missing = [r for r in metas if not details.get(r["id"])]
-    if missing:
-        print(f"  {len(missing)}/{len(metas)} detail(s) missing after the pool — sequential retry")
-        for r in missing:
-            det = try_json(f"{base}/api/votes/{r['id']}")
-            if det:
-                details[r["id"]] = det
-            time.sleep(SLEEP)
-    got = sum(1 for r in metas if details.get(r["id"]))
-    failures = http_log_summary()
-    print(f"  EP details: {got}/{len(metas)} fetched" + (f"; failed requests: {failures}" if failures else ""))
-    _EP_CACHE[base] = {"metas": metas, "details": details}
-    return metas, details
-
-
-def ep_item(r, det, votes):
-    """One normalized stemming dict, shared by both EP breakdowns (same vote metadata)."""
-    proc = det.get("procedure") or {}
-    res = (r.get("result") or "").upper()
-    result = "accepted" if res == "ADOPTED" else "rejected" if res == "REJECTED" else None
-    return {
-        "id": int(r["id"]),
-        "date": (r.get("timestamp") or "")[:10],
-        "title": r.get("display_title") or proc.get("title") or "",
-        "type": EP_TYPE.get((proc.get("type") or "").upper(), "overig"),
-        "result": result,
-        "resultLabel": "Aangenomen" if result == "accepted" else "Verworpen" if result == "rejected" else (r.get("result") or None),
-        "source": f"https://howtheyvote.eu/votes/{r['id']}",
-        "votes": votes,
-    }
-
-
-def ep_finalize(items, appear, name_by_slug, seats, order_hint=None, members=None):
-    """Shared tail: per-item totals, newest-first sort, column order, optional MEP rosters."""
-    if not items:
-        return None
-    items.sort(key=lambda m: (m["date"], m["title"]), reverse=True)
-    for m in items:
-        m["totals"] = {"agree": sum(v["agree"] for v in m["votes"].values()),
-                       "disagree": sum(v["disagree"] for v in m["votes"].values())}
-
-    def rank(s):
-        hint = order_hint.index(name_by_slug[s]) if order_hint and name_by_slug[s] in order_hint else 99
-        return (hint, -seats.get(s, 0), -appear.get(s, 0), name_by_slug[s].lower())
-    parties = []
-    for s in sorted(appear, key=rank):
-        party = {"slug": s, "name": name_by_slug[s]}
-        if members and members.get(s):
-            party["members"] = sorted(members[s])
-        parties.append(party)
-    by_type = {}
-    for m in items:
-        by_type[m["type"]] = by_type.get(m["type"], 0) + 1
-    print(f"  kept {len(items)} stemmingen; {len(appear)} fracties; {by_type}")
-    return {"parties": parties, "moties": items}
-
-
-def ep_assemble_groups(metas, details):
-    """Default view: per European political group, from stats.by_group (exact MEP counts)."""
-    items, appear, name_by_slug, seats = [], {}, {}, {}
-    for r in metas:
-        det = details.get(r["id"])
-        if not det:
-            continue
-        votes = {}
-        for gb in ((det.get("stats") or {}).get("by_group") or []):
-            g, st = gb.get("group") or {}, gb.get("stats") or {}
-            agree, disagree, abstain = st.get("FOR", 0), st.get("AGAINST", 0), st.get("ABSTENTION", 0)
-            if not (agree or disagree or abstain):   # whole group did not vote -> afwezig (blank)
-                continue
-            slug, name = ep_group(g.get("code"), g.get("short_label") or g.get("label"))
-            name_by_slug[slug] = name
-            votes[slug] = {"agree": agree, "disagree": disagree, "abstain": abstain}
-            seats[slug] = max(seats.get(slug, 0), agree + disagree + abstain + st.get("DID_NOT_VOTE", 0))
-        if not votes:
-            continue
-        items.append(ep_item(r, det, votes))
-        for slug in votes:
-            appear[slug] = appear.get(slug, 0) + 1
-    return ep_finalize(items, appear, name_by_slug, seats)
-
-
-def ep_assemble_nl(metas, details, nl_map, order_hint):
-    """Dutch-delegation view: group the NL MEPs (member_votes, country NLD) by national party
-    (nl_map) -> exact per-party MEP counts. Same vote set as the group view; carries MEP rosters."""
-    items, appear, name_by_slug, seats, members = [], {}, {}, {}, {}
-    unknown = {}
-    for r in metas:
-        det = details.get(r["id"])
-        if not det:
-            continue
-        tally, roster = {}, {}
-        for mv in (det.get("member_votes") or []):
-            m = mv.get("member") or {}
-            if (m.get("country") or {}).get("code") != "NLD":
-                continue
-            party = nl_map.get(str(m.get("id")))
-            if not party:
-                if str(m.get("id")) not in EP_NL_EXCLUDE:
-                    unknown[str(m.get("id"))] = m.get("full_name") or ""
-                continue
-            t = tally.setdefault(party, {"agree": 0, "disagree": 0, "abstain": 0, "n": 0})
-            pos = mv.get("position")
-            if pos == "FOR":
-                t["agree"] += 1
-            elif pos == "AGAINST":
-                t["disagree"] += 1
-            elif pos == "ABSTENTION":
-                t["abstain"] += 1
-            t["n"] += 1   # all NL members of the party (incl. did-not-vote) -> party size for ordering
-            roster.setdefault(party, set()).add(m.get("full_name") or "")
-        votes = {}
-        for party, t in tally.items():
-            if not (t["agree"] or t["disagree"] or t["abstain"]):
-                continue   # party present but all did-not-vote -> afwezig (blank)
-            slug = slugify(party)
-            name_by_slug[slug] = party
-            votes[slug] = {"agree": t["agree"], "disagree": t["disagree"], "abstain": t["abstain"]}
-            seats[slug] = max(seats.get(slug, 0), t["n"])
-            members.setdefault(slug, set()).update(roster.get(party, ()))
-        if not votes:
-            continue
-        items.append(ep_item(r, det, votes))
-        for slug in votes:
-            appear[slug] = appear.get(slug, 0) + 1
-    if unknown:
-        print(f"  WARN: {len(unknown)} NL MEP(s) not in the NL map (update it): "
-              + ", ".join(f"{k} {v}" for k, v in list(unknown.items())[:8]))
-    return ep_finalize(items, appear, name_by_slug, seats, order_hint=order_hint, members=members)
-
-
-def _ep_date(r):
-    try:
-        return date.fromisoformat((r.get("timestamp") or "")[:10])
-    except ValueError:
-        return None
-
-
-def collect_ep(p):
-    """Europees Parlement. Two breakdowns of the same roll-call votes, per term: by European political
-    group (default) or by Dutch national party (breakout='nl'). All details are fetched once down to
-    the oldest EP term and cached, so every term × breakdown reuses the cache with no extra requests."""
-    term_start, term_end = term_bounds(p)
-    metas_all, details = ep_load(p["base"].rstrip("/"), ep_floor())
-    metas = [r for r in metas_all if in_term(_ep_date(r), term_start, term_end)]
-    if not metas:
-        return None
-    if p.get("breakout") == "nl":
-        nl_map, nl_order = ep_nl_config(term_start)
-        return ep_assemble_nl(metas, details, nl_map, nl_order)
-    return ep_assemble_groups(metas, details)
-
-
-# --- Notubiz adapter ----------------------------------------------------------
-# Notubiz powers 5 PS provinces. No token is needed (data-sources.md §11). Three public surfaces:
-#   1. events API   GET api.notubiz.nl/events?organisation_id=&date_from=&date_to=&page=&version=1.21
-#                   -> meetings; filter gremium.id to the plenary "Provinciale Staten" gremium and
-#                      agenda_item_count>0. (version=1.21 is mandatory; date_* = "YYYY-MM-DD HH:MM:SS".)
-#   2. votings API  GET api.notubiz.nl/agenda_items/votings?meeting_id=&version=1.21
-#                   -> per stemming: id, title, voting_result, and per-MEMBER votes (role_id only).
-#   3. portal HTML  https://<slug>.notubiz.nl/vergadering/<mid>
-#                   -> per stemming a <div id="chart_<id>"> + a votes_parties block listing each fractie
-#                      with its members tagged <li class="in_favor|against">. chart_<id> == the votings
-#                      API `id` (NOT voting_id), so the HTML blocks join to the API votings 1:1.
-# The role_id -> fractie join is auth-walled, but the portal already names the fractie + members, so we
-# don't need it. We use the API for discovery + metadata (title/result) and the portal for the exact
-# per-fractie counts (members aggregated to the fractie) -> granularity "member", tier A.
-NOTUBIZ_API = "https://api.notubiz.nl"
-
-# Merge spelling variants / pure mid-term renames into one column (the portal occasionally writes a
-# fractie's full name where it elsewhere uses the abbreviation, and a renamed fractie keeps voting as
-# the same group). Early-term fracties that genuinely existed separately before a merger (e.g. ZH's
-# GroenLinks + PvdA before they fused into GroenLinks-PvdA) are NOT merged — they cast separate votes.
-NOTUBIZ_ALIASES = {
-    "PRO": "GroenLinks-PvdA",          # Zuid-Holland: GroenLinks-PvdA renamed itself "PRO" mid-term
-    "Partij voor de Dieren": "PvdD",   # Zuid-Holland: full name vs abbreviation -> one column
-}
-# Labels that are not a real fractie (the absence of one) -> not a voting column. "Geen partij" is
-# how the portal tags a member mid-afsplitsing who has no fractie yet (Overijssel, één lid, één dag).
-NOTUBIZ_SKIP = {"Geen partij", "Gedeputeerde Staten"}
+def title_number(title):
+    """The motion number embedded in a title: "Moasje 9 (CDA en BBB): …" -> "9",
+    "03 Moasje 09 - …" -> "9", "Moasje 6-M-21: …" -> "21", "Motie (26): …" -> "26"."""
+    m = TITLE_NUMBER.match(re.sub(r"^\s*\d+\s+", "", title or ""))
+    return m.group(1) if m else None
 
 
 def notubiz_classify(title, voting_type):
-    """Item type. Prefer the API's explicit `voting_type` (motion/amendment/council_proposal/
-    initiative_proposal); it's reliable for Fryslân/Overijssel but null for Gelderland and many ZH
-    votings, so fall back to the title. Titles embed the type as a code prefix that varies per province
-    — "M 1567"/"A 873"/"SV …" (ZH), "26M45"/"36A12" (Gelderland), "PS26-M52"/"PS26-MV9" (Overijssel) —
-    or in Frisian on Fryslân ("Moasje"/"Amendemint")."""
+    """Item type. Prefer the API's explicit `voting_type` (reliable for Fryslân); fall back to the
+    (Frisian) title: "Moasje"/"Amendemint"/"Oarderfoarstel"."""
     vt = (voting_type or "").lower()
     if vt == "motion":
         return "motie"
@@ -1733,14 +205,11 @@ def notubiz_classify(title, voting_type):
     low = re.sub(r"\s+", " ", title or "").strip().lower()
     if "ordevoorstel" in low or "oarderfoarstel" in low:
         return "ordevoorstel"
-    if ("amendement" in low or "amendemint" in low
-            or re.match(r"^(?:ps\s?\d+[-\s])?a\s?\d", low) or re.match(r"^\d{1,3}\s?a\d", low)):
+    if "amendement" in low or "amendemint" in low:
         return "amendement"
-    if ("motie" in low or "moasje" in low
-            or re.match(r"^(?:ps\s?\d+[-\s])?m\s?v?\s?\d", low) or re.match(r"^\d{1,3}\s?m\s?v?\d", low)):
+    if "motie" in low or "moasje" in low or "moasie" in low:
         return "motie"
-    if ("statenvoorstel" in low or low.startswith("sv") or "besluit" in low
-            or "voordracht" in low or "voarstel" in low):
+    if "statenvoorstel" in low or "besluit" in low or "voordracht" in low or "voarstel" in low:
         return "besluit"
     return "overig"
 
@@ -1756,17 +225,16 @@ def notubiz_result(s):
     return None, (s or None)
 
 
+# --- Notubiz: meetings, votes, portal ---------------------------------------------------------------
+
 def notubiz_events(org_id, gremium_id, term_start, end):
-    """Page the public events API over the term window; return [(meeting_id, date)] for the plenary
-    gremium's meetings that actually carry agenda items (recesses etc. have agenda_item_count 0)."""
+    """Page the events API over the term window; return [(meeting_id, date)] for the plenary
+    gremium's meetings that carry agenda items (recesses etc. have agenda_item_count 0)."""
     meetings, page = [], 1
     while page <= 60:
-        qs = urllib.parse.urlencode(
-            {"organisation_id": org_id,
-             "date_from": term_start.isoformat() + " 00:00:00",
-             "date_to": end.isoformat() + " 23:59:59",
-             "page": page, "format": "json", "version": "1.21"})
-        data = try_json(f"{NOTUBIZ_API}/events?{qs}")
+        data = try_json(api("events", organisation_id=org_id,
+                            date_from=term_start.isoformat() + " 00:00:00",
+                            date_to=end.isoformat() + " 23:59:59", page=page))
         if not data:
             break
         for e in data.get("events", []):
@@ -1786,12 +254,11 @@ def notubiz_events(org_id, gremium_id, term_start, end):
 
 
 def notubiz_parse_meeting(html):
-    """Parse a portal vergadering page into {chart_id: {fractie_name: {agree,disagree,abstain}}}.
-    Each stemming is a <div ... id="chart_<id>"> followed by a votes_parties block; within it each
-    fractie is a <li>NAME<ul> ...member <li class="in_favor|against">... </ul></li>. The member li
-    class is that member's own vote, so counting them gives exact per-fractie tallies and a fractie in
-    the 'verdeeld' (divided) side yields a real split (agree>0 and disagree>0). Member/Leden <li>s
-    carry a class or a <p>, so only the bare <li>NAME<ul> fractie rows match."""
+    """Parse a portal vergadering page into {chart_id: {fractie: {agree, disagree, abstain,
+    members: {name: vote}}}}. Each stemming is a <div id="chart_<id>"> followed by a votes block in
+    which each fractie is <li>NAME<ul> …<li class="in_favor|against">member</li>… </ul></li>.
+    Counting the member classes gives exact per-fractie tallies; a fractie in the 'verdeeld' side
+    yields a real split. Member names stay in memory (role learning) and are never written."""
     out = {}
     for m in re.finditer(r'id="chart_(\d+)"[^>]*></div>(.*?)'
                          r'(?=<div class="votes_chart"|id="chart_\d+"|$)', html, re.S):
@@ -1799,31 +266,118 @@ def notubiz_parse_meeting(html):
         for fm in re.finditer(r'<li>\s*([^<]+?)\s*<ul>(.*?)</ul>\s*</li>', seg, re.S):
             name = re.sub(r"\s+", " ", fm.group(1)).strip()
             inner = fm.group(2)
-            agree = len(re.findall(r'class="in_favor"', inner))
-            disagree = len(re.findall(r'class="against"', inner))
+            members = {re.sub(r"\s+", " ", mm.group(2)).strip(): mm.group(1)
+                       for mm in re.finditer(r'<li class="(in_favor|against)">([^<]+)</li>', inner)}
+            agree = sum(1 for v in members.values() if v == "in_favor")
+            disagree = sum(1 for v in members.values() if v == "against")
             if not name or not (agree or disagree):
                 continue
-            v = votes.setdefault(name, {"agree": 0, "disagree": 0, "abstain": 0})
+            v = votes.setdefault(name, {"agree": 0, "disagree": 0, "abstain": 0, "members": {}})
             v["agree"] += agree
             v["disagree"] += disagree
+            v["members"].update(members)
         if votes:
             out[cid] = votes
     return out
 
 
-def collect_notubiz(p):
-    """Notubiz PS province. Discover plenary meetings (events API), then per meeting join the votings
-    API metadata (title/result) to the portal page's per-fractie breakdown (exact member counts)."""
-    org_id, gremium_id, slug = p["organisation_id"], p["gremium_id"], p["slug"]
-    portal = f"https://{slug}.notubiz.nl"
-    term_start = date(*p["term_start"])
-    meetings = notubiz_events(org_id, gremium_id, term_start, date.today())
+# --- Notubiz: Moasjes en amendeminten module (documents + indieners) --------------------------------
+
+def module_attr(item, attr_id):
+    for a in item.get("attributes", []):
+        if a.get("id") == attr_id:
+            return [v.get("content") for v in a.get("values", [])]
+    return []
+
+
+def load_module_items(p):
+    """All items of the motions module, grouped by the agenda item they were handled under, plus
+    the party id -> name map. Returns (by_agenda_item, by_date, party_names) — empty on failure,
+    in which case the stemmingen simply get no document/indieners this run."""
+    data = try_json(api(f"modules/{p['module_id']}/items", organisation_id=p["organisation_id"]))
+    parties = try_json(api(f"organisations/{p['organisation_id']}/parties"))
+    time.sleep(SLEEP)
+    items = (data or {}).get("items") or []
+    party_names = {pt["id"]: pt["name"] for pt in (parties or {}).get("parties", []) if pt.get("id")}
+    by_agenda, by_date = {}, {}
+    for it in items:
+        rec = {
+            "id": it.get("id"),
+            "title": (module_attr(it, 1) or [""])[0] or "",
+            "type": ((module_attr(it, 45) or [""])[0] or "").strip().lower(),
+            "date": ((module_attr(it, 15) or [""])[0] or "")[:10],
+            "number": str((module_attr(it, 26) or [""])[0] or "").lstrip("0"),
+            "parties": [x for x in module_attr(it, 37) if isinstance(x, int)],
+            "document": None,
+        }
+        for d in module_attr(it, 2):
+            doc = (d or {}).get("document") if isinstance(d, dict) else None
+            if doc and doc.get("id"):
+                rec["document"] = {"id": doc["id"], "title": doc.get("title") or rec["title"]}
+                break
+        for ag in module_attr(it, 54):
+            if isinstance(ag, int):
+                by_agenda.setdefault(ag, []).append(rec)
+        if rec["date"]:
+            by_date.setdefault(rec["date"], []).append(rec)
+    print(f"  module 'Moasjes en amendeminten': {len(items)} items, {len(party_names)} partijen")
+    return by_agenda, by_date, party_names
+
+
+def module_type_matches(rec_type, item_type):
+    if item_type == "motie":
+        return rec_type.startswith("moasje") or rec_type.startswith("motie")
+    if item_type == "amendement":
+        return rec_type.startswith("amendem")
+    return False
+
+
+def match_module_item(title, item_type, candidates):
+    """Pick the module item for a stemming: same type, then the same motion number, else the unique
+    best title-token overlap (>= 2 shared tokens). None when nothing is convincing."""
+    cands = [c for c in candidates if module_type_matches(c["type"], item_type)] or list(candidates)
+    if not cands:
+        return None
+    n = title_number(title)
+    if n:
+        by_n = [c for c in cands if c["number"] == n or title_number(c["title"]) == n]
+        if len(by_n) == 1:
+            return by_n[0]
+        if by_n:
+            cands = by_n
+    want = title_tokens(title)
+    scored = sorted(((len(want & title_tokens(c["title"])), c) for c in cands),
+                    key=lambda x: -x[0])
+    if scored and scored[0][0] >= 2 and (len(scored) == 1 or scored[0][0] > scored[1][0]):
+        return scored[0][1]
+    return None
+
+
+def document_url(portal, doc):
+    """Portal URL of a document: https://fryslan.notubiz.nl/document/<id>/1/<title-slug>."""
+    slug = urllib.parse.quote(re.sub(r"\s+", "+", (doc.get("title") or "document").strip()), safe="+")
+    return f"{portal}/document/{doc['id']}/1/{slug}"
+
+
+# --- Collect ------------------------------------------------------------------------------------
+
+def collect(p):
+    """Discover plenary meetings, join votings API metadata to the portal's per-fractie breakdown,
+    attach documents/indieners from the motions module, and learn role_id -> fractie.
+    Returns ({parties, moties}, roles) or (None, None) when nothing was collected."""
+    org_id, gremium_id, portal = p["organisation_id"], p["gremium_id"], p["public"]
+    meetings = notubiz_events(org_id, gremium_id, date(*p["term_start"]), date.today())
     print(f"  {len(meetings)} plenaire vergadering(en) met agendapunten in termijn")
+    if not meetings:
+        return None, None
+    by_agenda, by_date, party_names = load_module_items(p)
 
     items, appear, seats, name_by_slug, seen = [], {}, {}, {}, set()
-    mismatch = 0
+    role_votes = {}      # role_id -> {voting id: vote}
+    member_votes = {}    # (fractie slug, member name) -> {voting id: vote}
+    mismatch = doc_hits = doc_miss = 0
     for mid, mdate in meetings:
-        vdata = try_json(f"{NOTUBIZ_API}/agenda_items/votings?meeting_id={mid}&format=json&version=1.21")
+        vdata = try_json(api("agenda_items/votings", meeting_id=mid))
         time.sleep(SLEEP)
         votings = (vdata or {}).get("votings") or []
         if not votings:
@@ -1836,45 +390,69 @@ def collect_notubiz(p):
                 continue
             fr_votes = breakdown.get(cid)
             if not fr_votes:
-                continue   # no per-fractie breakdown on the portal -> can't attribute the role_ids; skip
+                continue   # no per-fractie breakdown on the portal (acclamatie / no roll-call)
             seen.add(cid)
             td = v.get("type_data") or {}
-            # Cross-check the parsed per-fractie totals against the API's own per-member votes.
-            api_for = sum(1 for x in (td.get("votes") or []) if x.get("vote") == "in_favor")
-            api_ag = sum(1 for x in (td.get("votes") or []) if x.get("vote") == "against")
+            api_votes = td.get("votes") or []
+            api_for = sum(1 for x in api_votes if x.get("vote") == "in_favor")
+            api_ag = sum(1 for x in api_votes if x.get("vote") == "against")
             if (sum(fv["agree"] for fv in fr_votes.values()),
                     sum(fv["disagree"] for fv in fr_votes.values())) != (api_for, api_ag):
                 mismatch += 1
             votes = {}
             for name, fv in fr_votes.items():
-                name = NOTUBIZ_ALIASES.get(name, name)
-                if name in NOTUBIZ_SKIP:
+                s = party_slug(name)
+                if not s:
                     continue
-                s = slugify(name)
-                name_by_slug.setdefault(s, name)
+                name_by_slug.setdefault(s, NOTUBIZ_ALIASES.get(name, name))
                 cell = votes.setdefault(s, {"agree": 0, "disagree": 0, "abstain": 0})
                 cell["agree"] += fv["agree"]
                 cell["disagree"] += fv["disagree"]
                 cell["abstain"] += fv["abstain"]
+                for member, vote in fv["members"].items():
+                    member_votes.setdefault((s, member), {})[cid] = vote
+            for x in api_votes:
+                if x.get("role_id") and x.get("vote") in ("in_favor", "against"):
+                    role_votes.setdefault(x["role_id"], {})[cid] = x["vote"]
             for s, cell in votes.items():
                 appear[s] = appear.get(s, 0) + 1
                 seats[s] = max(seats.get(s, 0), cell["agree"] + cell["disagree"])
             title = (td.get("title") or "").strip()
+            itype = notubiz_classify(title, td.get("voting_type"))
             result, label = notubiz_result(td.get("voting_result"))
-            items.append({
+            item = {
                 "id": cid,
                 "date": mdate,
                 "title": title,
-                "type": notubiz_classify(title, td.get("voting_type")),
+                "type": itype,
                 "result": result,
                 "resultLabel": label,
                 "source": f"{portal}/vergadering/{mid}",
                 "votes": votes,
-            })
+            }
+            if itype in ("motie", "amendement"):
+                agenda_id = (v.get("parent") or {}).get("id")
+                rec = match_module_item(title, itype, by_agenda.get(agenda_id, [])) \
+                    or match_module_item(title, itype, by_date.get(mdate, []))
+                if rec:
+                    if rec["document"]:
+                        item["document"] = document_url(portal, rec["document"])
+                        item["documentTitle"] = rec["document"]["title"]
+                    ind = []
+                    for pid in rec["parties"]:
+                        s = party_slug(party_names.get(pid, ""))
+                        if s and s not in ind:
+                            ind.append(s)
+                    if ind:
+                        item["indieners"] = ind
+                    doc_hits += 1
+                else:
+                    doc_miss += 1
+            items.append(item)
     if mismatch:
         print(f"  WARN: {mismatch} stemming(en) waar portal- en API-totalen verschillen")
     if not items:
-        return None
+        return None, None
 
     items.sort(key=lambda m: (m["date"], m["title"]), reverse=True)
     for m in items:
@@ -1882,276 +460,145 @@ def collect_notubiz(p):
                        "disagree": sum(v["disagree"] for v in m["votes"].values())}
     # Columns ordered by fractie size (biggest first), then activity, then name.
     order = sorted(appear, key=lambda s: (-seats.get(s, 0), -appear[s], name_by_slug[s].lower()))
+    unknown = sorted({s for m in items for s in m.get("indieners", []) if s not in name_by_slug})
+    if unknown:
+        print(f"  WARN: indieners zonder eigen kolom (partij zonder stemmen in deze termijn): {unknown}")
     by_type = {}
     for m in items:
         by_type[m["type"]] = by_type.get(m["type"], 0) + 1
     print(f"  {len(items)} stemmingen; {len(appear)} fracties; {by_type}")
-    return {"parties": [{"slug": s, "name": name_by_slug[s]} for s in order], "moties": items}
+    print(f"  documenten/indieners: {doc_hits} gekoppeld, {doc_miss} niet gevonden "
+          f"({100 * doc_hits // max(1, doc_hits + doc_miss)}% van moties+amendementen)")
+    roles = learn_roles(role_votes, member_votes)
+    return {"parties": [{"slug": s, "name": name_by_slug[s]} for s in order], "moties": items}, roles
 
 
-def province_granularity(p):
-    """Vote detail level, for the frontend: "member" = real per-fractie counts (GO, Limburg
-    "stemmen") so "ruwe getallen" are meaningful; "fractie" = faction-level V/T only
-    (NH "stemverhouding"), where counts are just 1/0 and must not be shown as tallies."""
-    if p["vendor"] == "ek":   # faction-level voor/tegen, no seat counts
-        return "fractie"
-    if p["vendor"] == "ibabs" and p.get("votes", "stemverhouding") == "stemverhouding":
-        return "fractie"
-    return "member"
+ROLE_MIN_SHARED = 20   # a role needs this many votings in common with a member before we trust it
 
 
-ADAPTERS = {"go": collect_go, "ibabs": collect_ibabs, "tk": collect_tk, "ek": collect_ek,
-            "ep": collect_ep, "notubiz": collect_notubiz}
-
-# A scope with more stemmingen than this is written as per-year chunk files + a small manifest,
-# instead of one large JSON. Only the multi-year Tweede Kamer terms cross it. Wins: the browser
-# loads the newest year first and the rest in the background (fast first paint); each year is a
-# separately cacheable file, so a weekly re-run only rewrites the current year (no huge git churn).
-CHUNK_MIN = 5000
-
-
-def _year_chunks(fn):
-    """Existing per-year chunk files for a scope key (so a shrunk/unchunked scope can clean up)."""
-    return sorted(DATA_DIR.glob(fn + ".*.json"))
-
-
-def write_scope(key, out, compact):
-    """Write a scope's data. Small scopes -> one {key}.json (as before). Large scopes -> a manifest
-    {key}.json ({meta, parties, chunked:true, chunks:[{year,count,file}]}) + one {key}.{year}.json
-    per calendar year. Returns True if chunked."""
-    sep = (",", ":") if compact else None
-    indent = None if compact else 2
-
-    def dump(obj):
-        return json.dumps(obj, ensure_ascii=False, separators=sep, indent=indent)
-
-    moties = out["moties"]
-    if len(moties) <= CHUNK_MIN:
-        for stale in _year_chunks(key):   # drop chunk files if this scope used to be chunked
-            stale.unlink()
-        (DATA_DIR / f"{key}.json").write_text(dump(out), encoding="utf-8")
-        return False
-
-    by_year = {}
-    for m in moties:
-        by_year.setdefault((m["date"] or "0000")[:4], []).append(m)
-    keep = set()
-    chunks = []
-    for y in sorted(by_year, reverse=True):   # newest year first
-        fn = f"{key}.{y}.json"
-        keep.add(DATA_DIR / fn)
-        (DATA_DIR / fn).write_text(dump({"moties": by_year[y]}), encoding="utf-8")
-        chunks.append({"year": y, "count": len(by_year[y]), "file": fn})
-    for stale in _year_chunks(key):          # remove chunk files for years that vanished
-        if stale not in keep:
-            stale.unlink()
-    manifest = {"meta": out["meta"], "parties": out["parties"], "chunked": True, "chunks": chunks}
-    (DATA_DIR / f"{key}.json").write_text(dump(manifest), encoding="utf-8")
-    return True
+def learn_roles(role_votes, member_votes):
+    """role_id -> fractie slug. The API tags each vote with an anonymous role_id; the portal names
+    the member per vote. A role's vote pattern over the term matches exactly one member's pattern
+    (members of the same fractie may be indistinguishable — that is fine, we only need the fractie).
+    Unmapped roles (too few shared votings, or a tie between fracties) are listed, not guessed."""
+    roles, unmapped = {}, []
+    for rid, rv in role_votes.items():
+        best = []
+        for (slug, _name), mv in member_votes.items():
+            shared = set(rv) & set(mv)
+            if len(shared) < ROLE_MIN_SHARED:
+                continue
+            same = sum(1 for k in shared if rv[k] == mv[k])
+            best.append((same / len(shared), len(shared), slug))
+        if not best:
+            unmapped.append({"role_id": rid, "reason": "te weinig gezamenlijke stemmingen", "n": len(rv)})
+            continue
+        best.sort(reverse=True)
+        top = best[0][0]
+        slugs = {b[2] for b in best if b[0] == top}
+        if len(slugs) != 1 or top < 0.9:
+            unmapped.append({"role_id": rid, "reason": "geen eenduidige fractie", "candidates": sorted(slugs)})
+            continue
+        roles[str(rid)] = best[0][2]
+    sizes = {}
+    for s in roles.values():
+        sizes[s] = sizes.get(s, 0) + 1
+    print(f"  rollen: {len(roles)} gekoppeld aan een fractie, {len(unmapped)} niet; zetels: {sizes}")
+    for u in unmapped:
+        print(f"  WARN: rol {u['role_id']} niet gekoppeld: {u['reason']}")
+    return {"roles": roles, "unmapped": unmapped, "seats": sizes}
 
 
-def scope_entry(p, available, chunked, known_issue=None):
-    """One catalog scope row. termNote (cabinet nickname / period) drives the picker-card subtitle;
-    chunked tells the frontend to load per-year chunk files instead of one JSON; knownIssue is set
-    only while this scope is actually serving stale data, and the frontend shows it to visitors —
-    "bijgewerkt <datum>" alone does not tell someone that a date is a fault rather than a quiet
-    month. It disappears by itself the moment the source collects normally again."""
-    e = {"key": p["key"], "name": p["name"], "available": available, "style": p.get("style", {})}
-    if p.get("termNote"):
-        e["termNote"] = p["termNote"]
-    if chunked:
-        e["chunked"] = True
-    if known_issue:
-        e["knownIssue"] = known_issue
-    return e
+# --- Regression guard + write -------------------------------------------------------------------------
+
+STALE_AFTER_DAYS = 45    # an acknowledged breakage turns the run red anyway past this age
+NOTICE_AFTER_DAYS = 14   # visitors see the known_issue notice only once the data is this old
 
 
 def previous_state():
-    """What the last good run left behind: {scope key: (available, stemmingen, chunked)}. The guard
-    in main() compares against this, so a source that breaks — or quietly starts returning a
-    fraction of its votes — fails the run instead of shrinking the site in silence."""
-    avail = {}
+    """What the last good run left behind: (stemmingen count, generated_at) or (0, None)."""
     try:
-        cat = json.loads((DATA_DIR / "catalog.json").read_text(encoding="utf-8"))
-        for c in cat.get("categories", []):
-            for sc in c.get("scopes", []):
-                avail[sc["key"]] = bool(sc.get("available"))
-    except (OSError, ValueError, KeyError):
-        pass
-    state = {}
-    for p in SOURCES:
-        n, chunked, gen = 0, False, None
-        try:
-            j = json.loads((DATA_DIR / f"{p['key']}.json").read_text(encoding="utf-8"))
-            chunked = bool(j.get("chunked"))
-            n = sum(c["count"] for c in j["chunks"]) if chunked else len(j.get("moties", []))
-            gen = (j.get("meta") or {}).get("generated_at")
-        except (OSError, ValueError, KeyError):
-            pass
-        state[p["key"]] = {"available": avail.get(p["key"], False), "n": n,
-                           "chunked": chunked, "generated_at": gen}
-    return state
+        j = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+        return len(j.get("moties", [])), (j.get("meta") or {}).get("generated_at")
+    except (OSError, ValueError):
+        return 0, None
 
 
 def data_age_days(generated_at):
-    """How stale the scope's last good data is, in days (None when we cannot tell)."""
     try:
         return (datetime.now(timezone.utc) - datetime.fromisoformat(generated_at)).days
     except (TypeError, ValueError):
         return None
 
 
-# An acknowledged breakage (a `known_issue` source) does not turn the weekly run red — otherwise a
-# permanently red workflow trains you to ignore it, which is the failure we just fixed wearing a
-# different hat. But it must not rot silently either: past this many days the scope goes red anyway.
-STALE_AFTER_DAYS = 45
-# Visitors see a known_issue notice only once the data is genuinely old. The Notubiz provinces are
-# refreshed from a home connection (collector/refresh-notubiz.ps1), so CI failing to reach them is
-# the normal state and says nothing about freshness: without this, all four showed "niet ververst"
-# on days-old data.
-NOTICE_AFTER_DAYS = 14
-
-
 def lost_data(prev_n, n):
-    """True when a run lost more than a rounding error's worth of stemmingen. Sources do drop the
-    odd item (a griffie corrects or withdraws one, an iBabs detail page times out), so allow a small
-    absolute/relative slack — a broken adapter or a throttled API loses far more than that."""
+    """True when a run lost more than a rounding error's worth of stemmingen (a griffie withdraws
+    the odd item; a broken source loses far more)."""
     return n < prev_n - max(5, int(prev_n * 0.02))
 
 
 def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    # ONLY=key1,key2 re-collects just those scopes and reuses the existing data file (availability +
-    # style) for the rest — fast iteration without re-fetching/overwriting the other scopes. The
-    # weekly Action runs with no ONLY, so it does the full refresh.
-    only = {k.strip() for k in os.environ.get("ONLY", "").split(",") if k.strip()}
-    prev = previous_state()
-    problems = []        # scopes that lost data this run -> printed as a block, and exit code 1
-    scopes_by_cat = {}   # category key -> list of {key, name, available}
-    default = None
-    for p in SOURCES:
-        catkey = p.get("category", "provinciale-staten")
-        if only and p["key"] not in only:
-            existing = DATA_DIR / f"{p['key']}.json"
-            available = existing.exists()
-            chunked = False
-            if available:
-                try:
-                    chunked = bool(json.loads(existing.read_text(encoding="utf-8")).get("chunked"))
-                except (ValueError, OSError):
-                    chunked = False
-            print(f"== {p['name']} == (skipped; reuse existing data: {available})")
-            scopes_by_cat.setdefault(catkey, []).append(scope_entry(p, available, chunked))
-            if available and default is None:
-                default = {"category": catkey, "scope": p["key"]}
-            continue
-        print(f"== {p['name']} ({p['vendor']}) ==")
-        _HTTP_LOG.clear()
-        adapter = ADAPTERS.get(p["vendor"])
-        res = None
-        if adapter:
-            try:
-                res = adapter(p)
-            except Exception as e:
-                print(f"  ERROR: {type(e).__name__}: {e}")
-        prev_s = prev.get(p["key"], {})
-        prev_avail, prev_n = prev_s.get("available", False), prev_s.get("n", 0)
-        prev_chunked = prev_s.get("chunked", False)
-        n = len(res["moties"]) if res and res.get("moties") else 0
-        failures = http_log_summary()
-        note = f"; failed requests: {failures}" if failures else ""
-        # Guard: never let a broken or throttled source quietly delete or shrink a live scope. Keep
-        # the last good data file — the scope stays on the site, carrying its "bijgewerkt" date and
-        # (below) a notice saying the data is not being refreshed — and fail the run so the Action
-        # reports it. A source we have already acknowledged (`known_issue`) does not re-fail every
-        # week, so red keeps meaning "something NEW broke" — until it passes STALE_AFTER_DAYS.
-        if prev_avail and (n == 0 or lost_data(prev_n, n)):
-            why = "no data at all" if n == 0 else f"{n} stemmingen, was {prev_n}"
-            age = data_age_days(prev_s.get("generated_at"))
-            acknowledged = bool(p.get("known_issue")) and (age is None or age <= STALE_AFTER_DAYS)
-            if acknowledged:
-                print(f"  KNOWN ISSUE ({age}d stale): {why}{note}")
-            else:
-                if p.get("known_issue"):
-                    why += f"; acknowledged, but the last good data is now {age} days old"
-                print(f"  REGRESSION: {why}{note}")
-                problems.append(f"{p['name']} ({p['key']}, {p['vendor']}): {why}{note}")
-            print(f"  keeping the existing {p['key']}.json from the last good run (not overwritten)")
-            notice = p.get("known_issue") if (age is None or age > NOTICE_AFTER_DAYS) else None
-            scopes_by_cat.setdefault(catkey, []).append(
-                scope_entry(p, True, prev_chunked, known_issue=notice))
-            if default is None:
-                default = {"category": catkey, "scope": p["key"]}
-            continue
-        if p.get("known_issue") and n and not only:   # an ONLY run is the local refresher, not a recovery
-            # It collected fine: the acknowledgement is stale, and so is the notice on the page.
-            print(f"  NOTE: this source has a known_issue set but collected normally "
-                  f"({n} stemmingen) — remove known_issue from its SOURCES entry.")
-        available = n > 0
-        if available:
-            out = {
-                "meta": {
-                    "province": p["name"],
-                    "body": p.get("body", "Provinciale Staten"),
-                    "term": p["term_label"],
-                    "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-                    "source": p.get("public", p["base"]),
-                    "sourceName": p.get("sourceName", ""),   # overrides the "Bron:" label (e.g. EP via HowTheyVote)
-                    "license": p.get("license", ""),
-                    "style": p.get("style", {}),
-                    "note": p.get("note", ""),
-                    "granularity": province_granularity(p),
-                    "counts": {"moties": len(res["moties"]), "parties": len(res["parties"])},
-                    # Full type set, so a chunked scope's filter chips are complete before every
-                    # year-chunk has loaded (types are otherwise derived from the loaded moties).
-                    "types": sorted({m["type"] for m in res["moties"]}),
-                },
-                "parties": res["parties"],
-                "moties": res["moties"],
-            }
-            # Large datasets (multi-year TK terms) are minified AND split into per-year chunk files;
-            # smaller scopes stay a single JSON. write_scope handles both and reports which it did.
-            chunked = write_scope(p["key"], out, p.get("compact"))
-            by_type = {}
-            for m in res["moties"]:
-                by_type[m["type"]] = by_type.get(m["type"], 0) + 1
-            print(f"  wrote {p['key']}.json{' (chunked per year)' if chunked else ''}: "
-                  f"{len(res['moties'])} stemmingen, {len(res['parties'])} fracties, {by_type}{note}")
-        else:
-            chunked = False
-            # Not a regression: this scope had no data last run either (a source we have not
-            # unlocked yet). Still say why, so "never worked" stays distinguishable from "blocked".
-            print(f"  (no data — marked unavailable){note}")
-        # style travels in the index so the frontend can theme the header *before* the (large) data
-        # file finishes loading — avoids a flash of the previous/default colour.
-        scopes_by_cat.setdefault(catkey, []).append(scope_entry(p, available, chunked))
-        if available and default is None:
-            default = {"category": catkey, "scope": p["key"]}
+    p = SOURCE
+    prev_n, prev_gen = previous_state()
+    print(f"== {p['name']} (notubiz) ==")
+    _HTTP_LOG.clear()
+    res, roles = None, None
+    try:
+        res, roles = collect(p)
+    except Exception as e:   # noqa: BLE001 — a crash must still reach the guard below
+        print(f"  ERROR: {type(e).__name__}: {e}")
+    n = len(res["moties"]) if res and res.get("moties") else 0
+    failures = http_log_summary()
+    note = f"; failed requests: {failures}" if failures else ""
 
-    # catalog.json — the frontend's "pick category -> pick scope" index.
-    categories = []
-    for catkey in CATEGORY_ORDER:
-        scopes = scopes_by_cat.get(catkey)
-        if not scopes:
-            continue
-        meta = CATEGORY_META[catkey]
-        categories.append({"key": catkey, "name": meta["name"], "scopeNoun": meta["scope_noun"],
-                           "blurb": meta["blurb"], "scopes": scopes})
-    (DATA_DIR / "catalog.json").write_text(json.dumps(
-        {"generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-         "default": default, "categories": categories},
-        ensure_ascii=False, indent=2), encoding="utf-8")
-    avail = [s["key"] for c in categories for s in c["scopes"] if s["available"]]
-    print(f"\nWrote catalog.json: categories = {[c['key'] for c in categories]}; available = {avail}")
-
-    if problems:
-        print("\n" + "=" * 78)
-        print(f"FAILED: {len(problems)} scope(s) lost data this run. The site keeps serving"
-              f" the previous data for them, but these sources need attention:\n")
-        for line in problems:
-            print(f"  - {line}")
-        print("=" * 78)
+    # Guard: never let a blocked or throttled source quietly delete or shrink the site. Keep the last
+    # good file (the page shows its "bijgewerkt" date and, once old enough, the notice) and only turn
+    # the run red for something NEW — or when the acknowledged problem has lasted too long.
+    if prev_n and (n == 0 or lost_data(prev_n, n)):
+        why = "no data at all" if n == 0 else f"{n} stemmingen, was {prev_n}"
+        age = data_age_days(prev_gen)
+        acknowledged = bool(p.get("known_issue")) and (age is None or age <= STALE_AFTER_DAYS)
+        if acknowledged:
+            print(f"  KNOWN ISSUE ({age}d stale): {why}{note}")
+            print(f"  keeping the existing {DATA_FILE.name} from the last good run (not overwritten)")
+            return 0
+        print(f"  REGRESSION: {why}; the last good data is {age} days old{note}")
+        print(f"  keeping the existing {DATA_FILE.name} from the last good run (not overwritten)")
         return 1
+    if n == 0:
+        print(f"  (no data — nothing written){note}")
+        return 1
+
+    out = {
+        "meta": {
+            "province": p["name"],
+            "body": p["body"],
+            "term": p["term_label"],
+            "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "source": p["public"],
+            "sourceName": "",
+            "license": p["license"],
+            "style": p["style"],
+            "note": p["note"],
+            "granularity": "member",
+            "counts": {"moties": n, "parties": len(res["parties"])},
+            "types": sorted({m["type"] for m in res["moties"]}),
+            "organisationId": p["organisation_id"],
+            "gremiumId": p["gremium_id"],
+            "moduleId": p["module_id"],
+            "knownIssue": p.get("known_issue", ""),
+            "noticeAfterDays": NOTICE_AFTER_DAYS,
+        },
+        "parties": res["parties"],
+        "moties": res["moties"],
+    }
+    DATA_FILE.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+    roles_out = {"generated_at": out["meta"]["generated_at"], "term": p["term_label"],
+                 "organisationId": p["organisation_id"], **(roles or {"roles": {}, "unmapped": []})}
+    ROLES_FILE.write_text(json.dumps(roles_out, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"  wrote {DATA_FILE.name}: {n} stemmingen, {len(res['parties'])} fracties{note}")
+    print(f"  wrote {ROLES_FILE.name}: {len(roles_out['roles'])} rollen")
     return 0
 
 

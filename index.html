@@ -3,275 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wie stemde wat? — stemgedrag in de Tweede Kamer, Eerste Kamer en Provinciale Staten</title>
-<meta name="description" content="Zie per partij hoe er gestemd is in de Tweede Kamer, de Eerste Kamer, de Provinciale Staten en het Europees Parlement — per motie Voor of Tegen, op basis van open data. Nu: Tweede Kamer, Eerste Kamer, Europees Parlement, Utrecht, Noord-Holland en Limburg.">
-<meta name="keywords" content="stemgedrag, tweede kamer, eerste kamer, senaat, provinciale staten, europees parlement, EU, moties, amendementen, wetsvoorstellen, stemmingen, open data, transparantie, politiek, Utrecht, Noord-Holland, Limburg">
+<title>Wa hat wat stimd? — stemgedrag in de Provinciale Staten van Fryslân</title>
+<meta name="description" content="Zie per partij hoe er gestemd is in de Provinciale Staten van Fryslân — per moasje, amendemint of besluit Voor of Tegen, met een directe link naar het document. Op basis van open data van het Statenportaal.">
+<meta name="keywords" content="stemgedrag, provinciale staten, fryslân, friesland, provinsjale steaten, moasje, moties, amendementen, stemmingen, open data, transparantie, politiek">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://carefulcamel61097.github.io/wie-stemde-wat/">
-<meta name="theme-color" content="#1b1b1b">
-<!-- Open Graph / social link previews -->
+<link rel="canonical" href="https://lucsmits5-afk.github.io/wa-hat-wat-stimd/">
+<meta name="theme-color" content="#2a0a0c">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
-<meta property="og:site_name" content="Wie stemde wat?">
-<meta property="og:title" content="Wie stemde wat? — stemgedrag in de Tweede Kamer, Eerste Kamer en Provinciale Staten">
-<meta property="og:description" content="Zie per partij hoe er gestemd is in de Tweede Kamer, de Eerste Kamer en de Provinciale Staten — per motie Voor of Tegen, op basis van open data.">
-<meta property="og:url" content="https://carefulcamel61097.github.io/wie-stemde-wat/">
+<meta property="og:site_name" content="Wa hat wat stimd?">
+<meta property="og:title" content="Wa hat wat stimd? — stemgedrag in de Provinciale Staten van Fryslân">
+<meta property="og:description" content="Zie per partij hoe er gestemd is in de Provinciale Staten van Fryslân — per stemming Voor of Tegen, op basis van open data.">
+<meta property="og:url" content="https://lucsmits5-afk.github.io/wa-hat-wat-stimd/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wie stemde wat? — stemgedrag in de Tweede Kamer, Eerste Kamer en Provinciale Staten">
-<meta name="twitter:description" content="Zie per partij hoe er gestemd is in de Tweede Kamer, de Eerste Kamer en de Provinciale Staten — per motie Voor of Tegen, op basis van open data.">
-
-<style>
-  :root{
-    --voor:#8fd3a6; --voor-tx:#0a3a20;
-    --tegen:#f59a9a; --tegen-tx:#6d1414;
-    --neutraal:#d7d4cd; --neutraal-tx:#444;
-    --afw:#eceae5; --line:#e3e1dc; --row-line:#cdc9c0; --ink:#1c1c22; --muted:#6b6b76;
-    --bg:#efece7; --chip:#e7e5df;
-    --surface:#fbf9f6; --surface-2:#f1eee8;   /* off-white cards / header row (no pure white) */
-    --control-line:#bfbbb1;   /* darker outline for filter controls */
-    --accent:#EC0000; --header-bg:#1b1b1b;   /* overridden per province from data.meta.style */
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
-  a{color:var(--accent)}
-  :focus-visible{outline:2px solid var(--accent);outline-offset:1px}
-
-  header.top{position:relative;padding:20px 22px 18px;background:var(--header-bg);color:#fff;border-bottom:4px solid var(--accent)}
-  h1{margin:0 0 4px;font-size:23px;letter-spacing:-.01em}
-  h1 .q{color:var(--accent)}
-  .lead{margin:0 0 6px;color:#d7d7db}
-  .src{font-size:12.5px;color:#a9a9b1}
-  .src a{color:#d9d9df;text-decoration:underline}
-  /* Shown when a scope is serving data the collector can no longer refresh. "bijgewerkt
-     <datum>" on its own does not tell a visitor that a date is a fault rather than a
-     quiet month, and on an open-data site that is the wrong side to err on. */
-  .staleNote{margin:9px 0 0;padding:7px 10px;font-size:12.5px;line-height:1.45;max-width:70ch;
-    color:#ffe6a8;background:rgba(255,193,7,.13);border-left:3px solid #ffc107;border-radius:0 6px 6px 0}
-
-  .controls{display:flex;flex-direction:column;gap:9px;padding:11px 22px;border-bottom:1px solid var(--line);background:var(--surface-2);position:sticky;top:0;z-index:10}
-  .controls-row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:flex-end}
-  .controls label.field{display:flex;flex-direction:column;font-size:11px;font-weight:500;color:#4b4b53;gap:4px}
-  select,input[type=search],details.parties>summary{
-    font:inherit;font-size:13.5px;color:var(--ink);
-    border:1.5px solid var(--control-line);border-radius:9px;background:#fff;
-    padding:7px 11px;box-shadow:0 1px 2px rgba(0,0,0,.05);
-    transition:border-color .12s,box-shadow .12s}
-  select{appearance:none;-webkit-appearance:none;padding-right:30px;cursor:pointer;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' fill='none' stroke='%236b6b76' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-    background-repeat:no-repeat;background-position:right 10px center}
-  input[type=search]{min-width:230px}
-  select:focus,input[type=search]:focus,details.parties>summary:focus-visible{
-    border-color:var(--accent);outline:none;
-    box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent)}
-  input[type=checkbox]{accent-color:var(--accent);width:16px;height:16px;cursor:pointer}
-
-  .chips{display:flex;gap:6px}
-  .chip{cursor:pointer;border:1.5px solid var(--control-line);background:var(--chip);border-radius:999px;padding:6px 12px;font-size:13px;user-select:none;transition:.12s}
-  .chip:hover{border-color:var(--accent)}
-  .chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .chip.on:hover{filter:brightness(1.07)}
-
-  details.parties{position:relative}
-  details.parties>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:8px}
-  details.parties>summary::-webkit-details-marker{display:none}
-  details.parties>summary::after{content:"";width:11px;height:11px;flex:none;transition:transform .15s;
-    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' fill='none' stroke='%236b6b76' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat}
-  details.parties[open]>summary::after{transform:rotate(180deg)}
-  .ppanel{position:absolute;z-index:20;margin-top:6px;background:var(--surface);border:1px solid var(--line);border-radius:9px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:10px;width:230px;max-height:320px;overflow:auto}
-  .ppanel .pp-actions{display:flex;gap:8px;margin-bottom:8px}
-  .ppanel .pp-actions button{font:inherit;font-size:12px;border:1.5px solid var(--control-line);background:#fff;border-radius:7px;padding:4px 10px;cursor:pointer;transition:.12s}
-  .ppanel .pp-actions button:hover{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 7%,#fff)}
-  .ppanel label{display:flex;gap:7px;align-items:center;padding:3px 2px;font-size:13.5px;cursor:pointer}
-
-  .toggles{display:flex;gap:14px;flex-wrap:wrap}
-  .toggles label{display:flex;gap:6px;align-items:center;font-size:13px;cursor:pointer}
-
-  .legend{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:8px 22px;font-size:12.5px;color:var(--muted)}
-  .legend .sw{display:inline-block;width:18px;height:18px;border-radius:4px;text-align:center;line-height:18px;font-weight:700;font-size:12px;vertical-align:middle;margin-right:4px}
-  .count{margin-left:auto;font-size:12.5px;color:var(--muted)}
-
-  .wrap{padding:0 14px 40px}
-  .tbl-title{margin:18px 8px 8px;font-size:12.5px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.04em;border-left:3px solid var(--accent);padding-left:8px}
-  .table-scroll{overflow:auto;max-height:74vh;border:1px solid var(--line);border-radius:10px;background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.06)}
-  table{border-collapse:separate;border-spacing:0;width:100%}
-  th,td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:0}
-  tbody td{border-bottom:1px solid var(--row-line)}
-  thead th{position:sticky;top:0;background:var(--surface-2);z-index:3;font-size:11.5px;color:var(--ink);font-weight:600;padding:6px 4px;text-align:center;white-space:nowrap;border-bottom:2px solid var(--accent)}
-  th.onderwerp-h{left:0;z-index:5;text-align:left;padding-left:10px;min-width:300px}
-  thead th[title]{cursor:help}
-
-  td.onderwerp{position:sticky;left:0;background:var(--surface);z-index:2;min-width:300px;max-width:440px;padding:7px 10px 7px 8px;vertical-align:top}
-  tr:hover td.onderwerp{background:#f7ece9}
-  .ond-row{display:flex;gap:7px;align-items:flex-start}
-  button.pin{border:none;background:none;cursor:pointer;font-size:15px;line-height:1;filter:grayscale(1) opacity(.45);padding:1px 2px}
-  button.pin.on{filter:none}
-  .titel{font-size:13.7px}
-  .ext{text-decoration:none;color:var(--accent);font-size:15px;font-weight:600;margin-left:5px}
-  .ext:hover{text-decoration:underline}
-  .meta{margin-top:3px;font-size:11.5px;color:var(--muted);display:flex;gap:7px;align-items:center;flex-wrap:wrap}
-  .type{font-size:10.5px;padding:1px 6px;border-radius:999px;font-weight:600;text-transform:capitalize}
-  .t-motie{background:#e3eefe;color:#1e40af}
-  .t-amendement{background:#fdeede;color:#9a4d00}
-  .t-besluit{background:#e8e6fb;color:#4c3fb5}
-  .t-ordevoorstel{background:#eef0f4;color:#555}
-  .t-overig{background:#eef0f4;color:#555}
-  .t-wetgeving{background:#e0f2f1;color:#00695c}
-  .t-resolutie{background:#ede7f6;color:#5e35b1}
-  .t-initiatiefverslag{background:#fff3e0;color:#9a4d00}
-  .t-begroting{background:#e8f5e9;color:#2e7d32}
-  .res{font-weight:600}
-  .r-accepted{color:#15803d}.r-rejected{color:#b91c1c}
-
-  td.cell{width:42px;min-width:42px;text-align:center;font-weight:700;font-size:13px;position:relative}
-  td.voor{background:var(--voor);color:var(--voor-tx)}
-  td.tegen{background:var(--tegen);color:var(--tegen-tx)}
-  td.neutraal{background:var(--neutraal);color:var(--neutraal-tx)}
-  td.afw{background:var(--afw)}
-  td.cell.split::after{content:"";position:absolute;top:3px;right:3px;width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.7}
-  td.cell.raw{font-size:11px;font-weight:600}
-
-  .empty{padding:30px;text-align:center;color:var(--muted)}
-  @media (max-width:640px){
-    th.onderwerp-h,td.onderwerp{min-width:170px;max-width:220px}
-    input[type=search]{min-width:140px}
-    header.top{padding:15px 15px 13px}
-    h1{font-size:20px} .lead{font-size:13px}
-    .helpbtn{top:13px;right:13px;padding:5px 10px;font-size:12px}
-    .controls{position:static;padding:10px 14px;gap:8px}
-    .controls-row{gap:8px 12px}
-    .legend{padding:8px 14px}
-    .wrap{padding:0 8px 28px}
-    .actions{width:100%} .bigbtn{flex:1 1 auto;text-align:center}
-    table.matrix td{width:27px;height:24px;font-size:10px}
-    table.matrix th{padding:2px 4px;font-size:10px}
-    .modal{padding:10px} .modal-card{padding:14px 15px 18px}
-  }
-
-  /* prominent action button */
-  .bigbtn{align-self:center;cursor:pointer;border:none;border-radius:9px;background:var(--accent);
-    color:#fff;font:inherit;font-weight:600;font-size:13.5px;padding:9px 16px;
-    box-shadow:0 2px 7px color-mix(in srgb,var(--accent) 35%,transparent);transition:filter .12s,transform .04s}
-  .bigbtn:hover{filter:brightness(1.07)} .bigbtn:active{transform:translateY(1px)}
-
-  /* modal / popup */
-  .modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(24,20,20,.5)}
-  .modal[hidden]{display:none}
-  .modal-card{background:var(--surface);border-radius:14px;border-top:4px solid var(--accent);
-    box-shadow:0 24px 64px rgba(0,0,0,.4);max-width:min(96vw,1060px);max-height:90vh;overflow:auto;padding:16px 22px 22px}
-  .modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .modal-head h2{margin:0;font-size:18px}
-  .modal-close{border:none;background:none;cursor:pointer;font-size:26px;line-height:1;color:var(--muted)}
-  .modal-close:hover{color:var(--accent)}
-  .modal-sub{margin:4px 0 14px;color:var(--muted);font-size:12.5px;max-width:74ch}
-
-  table.matrix{border-collapse:collapse;font-size:11px}
-  table.matrix th{font-weight:600;color:var(--ink);padding:3px 6px;white-space:nowrap}
-  table.matrix thead th{position:sticky;top:0;background:var(--surface);z-index:2}
-  table.matrix th.rowh{position:sticky;left:0;background:var(--surface);text-align:right;z-index:1}
-  table.matrix thead th:first-child{left:0;z-index:3}
-  table.matrix td{width:34px;height:28px;text-align:center;font-weight:600;color:#222;border:1px solid var(--surface)}
-  table.matrix td.diag{background:#e3e1da;color:#b3b0a8}
-  table.matrix td.na{color:#bbb}
-  table.matrix td.lown{background:#ecebe6;color:#a8a59d;font-style:italic}
-  .matrix-controls{display:flex;align-items:center;gap:8px;margin:2px 0 14px;flex-wrap:wrap}
-  .matrix-controls .mc-label{font-size:11.5px;color:var(--muted);font-weight:600}
-  .matrix-legend{display:flex;align-items:center;gap:9px;margin-top:14px;font-size:12px;color:var(--muted)}
-  .matrix-legend .bar{height:12px;width:170px;border-radius:6px;background:linear-gradient(90deg,hsl(0,70%,72%),hsl(67,70%,72%),hsl(135,70%,72%))}
-
-  .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-  .modal-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:4px 0 16px}
-  .modal-controls .field{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
-  .stat-grid{display:flex;flex-wrap:wrap;gap:10px}
-  .stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 14px;min-width:92px}
-  .stat .num{font-size:22px;font-weight:700;line-height:1.1}
-  .stat .lab{font-size:11px;color:var(--muted);margin-top:2px}
-  .stat.primary{border-color:var(--accent)} .stat.primary .num{color:var(--accent)}
-  .vbadge{display:inline-block;min-width:22px;padding:1px 6px;border-radius:5px;font-weight:700;font-size:12px;text-align:center}
-  .vbadge.voor{background:var(--voor);color:var(--voor-tx)} .vbadge.tegen{background:var(--tegen);color:var(--tegen-tx)} .vbadge.neutraal{background:var(--neutraal);color:var(--neutraal-tx)}
-  .scrollbox{max-height:52vh;overflow:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
-  table.list{border-collapse:collapse;width:100%;font-size:13px}
-  table.list th,table.list td{text-align:left;padding:6px 9px;border-bottom:1px solid var(--row-line);vertical-align:top}
-  table.list th{font-size:11px;color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--surface-2);white-space:nowrap}
-  table.list td:first-child{white-space:nowrap;color:var(--muted)}
-  .cmp-summary{margin:0 0 12px;font-size:13.5px}
-  h3.section{margin:16px 0 7px;font-size:14px}
-
-  .helpbtn{position:absolute;top:18px;right:20px;cursor:pointer;border:1.5px solid rgba(255,255,255,.5);background:transparent;color:#fff;border-radius:8px;padding:7px 13px;font:inherit;font-size:13px;font-weight:600;transition:.12s}
-  .helpbtn:hover{background:rgba(255,255,255,.14);border-color:#fff}
-  .help h3.section:first-child{margin-top:2px}
-  .help p{margin:0 0 9px;font-size:13.5px;color:#2c2c30;max-width:76ch;line-height:1.5}
-  .legenda{list-style:none;margin:4px 0 10px;padding:0}
-  .legenda li{display:flex;align-items:center;gap:9px;margin:5px 0;font-size:13.5px}
-  .help-list{margin:4px 0 10px;padding-left:18px}
-  .help-list li{margin:5px 0;font-size:13.5px;line-height:1.5}
-  .swatch{display:inline-block;width:22px;height:20px;border-radius:4px;border:1px solid var(--line)}
-  .swatch.afw{background:var(--afw)}
-  .splitdot{position:relative}
-  .splitdot::after{content:"";position:absolute;top:2px;right:2px;width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.75}
-  .toggles .tog{display:inline-flex;align-items:center;gap:6px}
-  .help-q{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;border:1px solid var(--control-line);color:var(--muted);font-size:10px;font-weight:700;cursor:help}
-
-  .controls-row-2{align-items:center}
-  .controls-row-2 .actions{margin-left:auto}
-  .tbl-toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 8px 8px}
-  .tbl-toolbar-title{font-size:12.5px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.04em;border-left:3px solid var(--accent);padding-left:8px}
-  .tbl-toolbar .tb-right{margin-left:auto;display:flex;align-items:center;gap:10px}
-  .tbl-toolbar .count{font-size:12.5px;color:var(--muted);margin-left:0}
-  .chips.small .chip{padding:4px 10px;font-size:12px}
-  .iconbtn{cursor:pointer;border:1.5px solid var(--control-line);background:#fff;color:var(--muted);width:27px;height:27px;border-radius:50%;font-size:14px;display:inline-flex;align-items:center;justify-content:center;transition:.12s;flex:none}
-  .iconbtn:hover{border-color:var(--accent);color:var(--accent)}
-  .csvbtn{cursor:pointer;border:1.5px solid var(--control-line);background:#fff;color:var(--ink);border-radius:8px;padding:5px 11px;font:inherit;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:5px;transition:.12s;white-space:nowrap}
-  .csvbtn:hover{border-color:var(--accent);color:var(--accent)}
-  .t-wetsvoorstel{background:#e0f2f1;color:#00695c}
-
-  /* category -> scope landing ("pick a niveau -> pick a scope") */
-  #home{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px 20px;
-    background:radial-gradient(120% 90% at 50% 0%, #f6f3ee 0%, var(--bg) 70%)}
-  #home[hidden]{display:none}   /* id+attr specificity must beat the #home display:flex above */
-  .home-inner{max-width:780px;width:100%;text-align:center}
-  #home h1{font-size:clamp(30px,6vw,44px);margin:0 0 12px;letter-spacing:-.02em}
-  #home h1 .q{color:var(--accent)}
-  #home .home-lead{font-size:16px;color:var(--muted);margin:0 auto 30px;max-width:54ch;line-height:1.5}
-  .home-step-label{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 14px}
-  .home-back{display:inline-flex;align-items:center;gap:5px;margin:0 0 16px;cursor:pointer;background:none;border:none;color:var(--accent);font:inherit;font-size:14px;font-weight:600}
-  .home-back:hover{text-decoration:underline}
-  .cards{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
-  .card{flex:1 1 240px;max-width:320px;cursor:pointer;border:1.5px solid var(--control-line);
-    background:var(--surface);border-radius:14px;padding:22px 22px;text-align:left;font:inherit;
-    box-shadow:0 1px 3px rgba(0,0,0,.05);transition:transform .14s,box-shadow .14s,border-color .14s}
-  .card:hover:not(.disabled){border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
-  .card .card-name{font-size:19px;font-weight:700;color:var(--ink)}
-  .card .card-desc{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.45}
-  .card.disabled{opacity:.55;cursor:default}
-  .card .soon{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;color:var(--muted);background:var(--chip);border-radius:999px;padding:2px 10px}
-  .home-foot{margin-top:30px;font-size:12.5px;color:var(--muted)}
-  .home-foot a{color:var(--muted)}
-
-  /* breadcrumb in the app header (back to the landing) */
-  .crumb{display:inline-flex;align-items:center;gap:6px;margin:0 0 7px;color:#cfcfd6;
-    text-decoration:none;font-size:12.5px;background:none;border:none;cursor:pointer;font:inherit}
-  .crumb:hover{color:#fff;text-decoration:underline}
-  .crumb b{color:#fff;font-weight:600}
-</style>
+<meta name="twitter:title" content="Wa hat wat stimd? — stemgedrag in de Provinciale Staten van Fryslân">
+<meta name="twitter:description" content="Zie per partij hoe er gestemd is in de Provinciale Staten van Fryslân — per stemming Voor of Tegen, op basis van open data.">
+<link rel="stylesheet" href="app.css">
 </head>
 <body>
-<section id="home" hidden>
-  <div class="home-inner">
-    <h1>Wie stemde wat<span class="q">?</span></h1>
-    <p class="home-lead">Bekijk per partij hoe er gestemd is — per motie <b>Voor</b> of <b>Tegen</b>, op basis van open data.</p>
-    <div id="homeStep"></div>
-    <p class="home-foot">Open data · gratis · <a href="https://github.com/carefulCamel61097/wie-stemde-wat" target="_blank" rel="noopener">broncode op GitHub</a></p>
-  </div>
-</section>
-
-<div id="app" hidden>
+<div id="app">
 <header class="top">
   <button id="helpBtn" class="helpbtn">&#9432; Uitleg</button>
-  <button id="homeLink" class="crumb" title="Terug naar de startpagina">&#8592; Startpagina</button>
-  <h1>Wie stemde wat<span class="q">?</span></h1>
-  <p class="lead" id="appLead">Stemgedrag per partij — <b>Voor</b> of <b>Tegen</b> per stemming.</p>
+  <h1>Wa hat wat stimd<span class="q">?</span></h1>
+  <p class="lead" id="appLead">Stemgedrag per partij in de <b>Provinciale Staten van Fryslân</b> — <b>Voor</b> of <b>Tegen</b> per stemming.</p>
   <p class="src" id="src"></p>
   <p class="staleNote" id="staleNote" hidden></p>
+  <p class="liveNote" id="liveNote" hidden></p>
 </header>
 
 <div class="controls">
@@ -301,9 +58,6 @@
         <option value="result">Op uitslag</option>
       </select>
     </label>
-    <label class="field" id="yearField" hidden>Periode
-      <select id="year"></select>
-    </label>
   </div>
   <div class="controls-row controls-row-2">
     <div class="toggles">
@@ -312,6 +66,7 @@
       <span class="tog" id="rawToggle"><label><input type="checkbox" id="raw"> Ruwe getallen</label><span class="help-q" title="Toon de aantallen (bijv. 6-0) in plaats van V/T">?</span></span>
     </div>
     <div class="actions">
+      <button id="statsBtn" class="bigbtn">&#128200; Statistieken</button>
       <button id="matrixBtn" class="bigbtn">&#128202; Overeenkomst</button>
       <button id="profileBtn" class="bigbtn">&#128100; Partijprofiel</button>
       <button id="compareBtn" class="bigbtn">&#8646; Vergelijken</button>
@@ -332,7 +87,24 @@
   <div id="pinnedBlock"></div>
   <div id="mainBlock"></div>
 </div>
+<p class="foot">Open data · gratis · <a href="https://github.com/lucsmits5-afk/wa-hat-wat-stimd" target="_blank" rel="noopener">broncode op GitHub</a> · afgeleid van <a href="https://github.com/carefulCamel61097/wie-stemde-wat" target="_blank" rel="noopener">Wie stemde wat?</a></p>
 </div><!-- /#app -->
+
+<div class="modal" id="statsModal" hidden>
+  <div class="modal-card wide">
+    <div class="modal-head"><h2>&#128200; Statistieken</h2>
+      <button class="modal-close" data-close="statsModal" title="Sluiten">&times;</button></div>
+    <p class="modal-sub">Overzicht van alle stemmingen in deze Statenperiode: hoeveel er zijn, wie indient, wie wint en hoe omstreden ze zijn.</p>
+    <div class="modal-controls"><span class="mc-label">Tel mee:</span><span class="chips" id="statsTypes"></span></div>
+    <div class="stat-grid" id="statsKpis"></div>
+    <div class="charts">
+      <section class="chart"><h3>Stemmingen per maand</h3><p class="chart-sub">Aantal stemmingen per maand, naar uitslag.</p><div id="chartMonths"></div></section>
+      <section class="chart"><h3>Indieners</h3><p class="chart-sub">Moties en amendementen die een fractie (mede) indiende, en hoeveel daarvan werden aangenomen.</p><div id="chartIndieners"></div></section>
+      <section class="chart"><h3>Aan de winnende kant</h3><p class="chart-sub">Hoe vaak een fractie meestemde met de uitslag — coalitie en oppositie in één beeld.</p><div id="chartWinning"></div></section>
+      <section class="chart"><h3>Hoe omstreden</h3><p class="chart-sub">Verdeling van het verschil tussen voor- en tegenstemmen: van unaniem tot een nipte meerderheid.</p><div id="chartMargins"></div></section>
+    </div>
+  </div>
+</div>
 
 <div class="modal" id="matrixModal" hidden>
   <div class="modal-card">
@@ -381,8 +153,9 @@
       <button class="modal-close" data-close="helpModal" title="Sluiten">&times;</button></div>
     <div class="help">
       <h3 class="section">Wat is dit?</h3>
-      <p id="helpBody1">Per stemming &mdash; een motie, amendement of besluit in de Provinciale Staten &mdash;
-        zie je hoe elke fractie stemde.</p>
+      <p id="helpBody1">Per stemming &mdash; een moasje (motie), amendemint (amendement) of besluit in de Provinciale
+        Staten van Frysl&acirc;n &mdash; zie je hoe elke fractie stemde. De titels zijn zoals de Staten ze zelf
+        publiceren, vaak in het Frysk.</p>
 
       <h3 class="section">De tabel</h3>
       <p>Rijen zijn stemmingen (nieuwste boven), kolommen zijn partijen. In elke cel:</p>
@@ -393,7 +166,9 @@
         <li><span class="swatch afw"></span> leeg = afwezig (de fractie deed niet mee aan deze stemming)</li>
         <li><span class="vbadge voor splitdot">V</span> stip = de fractie stemde niet unaniem</li>
       </ul>
-      <p>Beweeg met de muis over een cel voor de exacte aantallen voor/tegen.</p>
+      <p>Beweeg met de muis over een cel voor de exacte aantallen voor/tegen. Klik op
+        <span class="doclink">&#128196; Moasje</span> om het ingediende document (pdf) te openen en op &#8599;
+        voor de vergadering op het Statenportaal.</p>
 
       <h3 class="section">Filteren &amp; pinnen</h3>
       <p>Filter op type, toon of verberg partijen, zoek op onderwerp of indiener, en sorteer.
@@ -401,8 +176,10 @@
         het oneens waren). Met <b>Ruwe getallen</b> zie je bijv. 6&ndash;0 in plaats van V/T.
         Klik op &#128204; om een stemming vast te pinnen en bovenaan te vergelijken.</p>
 
-      <h3 class="section">De drie analyses</h3>
+      <h3 class="section">De vier analyses</h3>
       <ul class="help-list">
+        <li><b>Statistieken</b> &mdash; stemmingen per maand, welke fracties indienen en met welk succes,
+          wie het vaakst aan de winnende kant staat, en hoe omstreden de stemmingen zijn.</li>
         <li><b>Overeenkomst</b> &mdash; hoe vaak twee partijen hetzelfde stemden. Partijen die vaak
           gelijk stemmen staan bij elkaar.</li>
         <li><b>Partijprofiel</b> &mdash; o.a. hoe vaak een partij aan de winnende kant stond, en
@@ -413,7 +190,9 @@
       <h3 class="section">Bron &amp; methode</h3>
       <p id="helpSource"></p>
       <p>V of T is de meerderheid van de fractie; afwezige fracties tellen niet mee in de
-        percentages. Dit is geen offici&euml;le uitgave van de overheid.</p>
+        percentages. Stemmingen van na de laatste dagelijkse verversing worden waar mogelijk
+        <b>live</b> van het Statenportaal bijgeladen en zo gemarkeerd. Dit is geen offici&euml;le
+        uitgave van de provincie.</p>
     </div>
   </div>
 </div>
@@ -432,570 +211,6 @@
   </div>
 </div>
 
-<script>
-let PIN_KEY = "wsw_pinned_utrecht";   // becomes wsw_pinned_<province>
-const ABBR = {bbb:"BBB",groenlinks:"GL",vvd:"VVD",d66:"D66",utrechtnu:"U!",cda:"CDA",
-  pvda:"PvdA","partij-voor-de-dieren":"PvdD",christenunie:"CU",volt:"Volt",ja21:"JA21",
-  pvv:"PVV",sgp:"SGP",sp:"SP","forum-voor-democratie":"FvD","50plus":"50+",
-  // Noord-Holland (iBabs): short labels where the canonical name is long
-  pvdd:"PvdD",fvd:"FvD","fractie-de-weerdt":"Weerdt",
-  // Limburg (iBabs): local fracties
-  "lokaal-limburg":"LL","oos-limburg":"oos",horizon:"Horizon",svl:"SVL",
-  // Tweede Kamer fracties
-  "groenlinks-pvda":"GL-PvdA","progressief-nederland":"PRO",denk:"DENK",
-  "groep-markuszower":"Grp-Mark.",keijzer:"Keijzer",nsc:"NSC"};
-const TYPE_LABEL = {motie:"Motie",amendement:"Amendement",besluit:"Besluit",ordevoorstel:"Ordevoorstel",wetsvoorstel:"Wetsvoorstel",overig:"Overig",wetgeving:"Wetgeving",resolutie:"Resolutie",initiatiefverslag:"Initiatiefverslag",begroting:"Begroting"};
-// Min. stemmingen a party must have voted on to appear in the Overeenkomst matrix — below this an
-// agreement % is noise (a party that voted once is "100% gelijk" with everyone).
-const MATRIX_MIN = 5;
-// Below this many *shared* stemmingen a pair's agreement % is too noisy to colour confidently
-// (e.g. a small/newer fractie that overlapped little with another) — show it greyed instead.
-const MATRIX_PAIR_MIN = 10;
-
-let CATALOG, CAT, SCOPE;
-let DATA, state, AG = null, ORDER = null, ALLTYPES = null, MTYPES = null, PTYPES = null, CTYPES = null;
-const $ = s => document.querySelector(s);
-const esc = s => (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const srcLink = m => m.source ? ` <a class="ext" href="${m.source}" target="_blank" rel="noopener" title="Bekijk de bron">&#8599;</a>` : "";
-
-async function init(){
-  CATALOG = await (await fetch("data/catalog.json")).json();
-  setupGlobalHandlers();
-  $("#homeLink").onclick = () => { location.hash = ""; };
-  window.addEventListener("hashchange", route);
-  route();
-}
-
-// The URL hash drives the view, so every scope is deep-linkable (shareable + SEO):
-//   ""            -> landing (pick a category)
-//   "<cat>"       -> single-scope category opens its table directly; multi-scope shows scope picker
-//   "<cat>/<scope>" -> that scope's table
-function route(){
-  const h = decodeURIComponent(location.hash.replace(/^#\/?/, "")).trim();
-  if(!h){ showHome(null); return; }
-  const [catKey, scopeKey] = h.split("/");
-  const cat = CATALOG.categories.find(c => c.key === catKey);
-  if(!cat){ showHome(null); return; }
-  if(!scopeKey){
-    if(cat.scopes.length === 1 && cat.scopes[0].available){ openScope(cat, cat.scopes[0]); return; }
-    showHome(cat); return;
-  }
-  const scope = cat.scopes.find(s => s.key === scopeKey);
-  if(!scope || !scope.available){ showHome(cat); return; }
-  openScope(cat, scope);
-}
-
-function applyTheme(style){
-  document.documentElement.style.setProperty("--accent", style.accent || "#EC0000");
-  document.documentElement.style.setProperty("--header-bg", style.headerBg || "#1b1b1b");
-}
-
-function showHome(cat){
-  $("#app").hidden = true;
-  $("#home").hidden = false;
-  document.title = "Wie stemde wat? — stemgedrag in de politiek (open data)";
-  applyTheme({});
-  const step = $("#homeStep");
-  if(!cat){   // step 1: pick a category (legislative body)
-    step.innerHTML = `<p class="home-step-label">Kies een niveau</p><div class="cards">${
-      CATALOG.categories.map(c => {
-        const any = c.scopes.some(s => s.available);
-        return `<button class="card${any?"":" disabled"}" data-cat="${esc(c.key)}"${any?"":" disabled"}>
-          <div class="card-name">${esc(c.name)}</div>
-          <div class="card-desc">${esc(c.blurb||"")}</div>
-          ${any?"":`<span class="soon">binnenkort</span>`}</button>`;
-      }).join("")}</div>`;
-    step.querySelectorAll(".card[data-cat]:not([disabled])").forEach(b =>
-      b.onclick = () => { location.hash = b.dataset.cat; });
-  } else {    // step 2: pick a scope within the chosen category
-    step.innerHTML = `<button class="home-back">&#8592; terug</button>
-      <p class="home-step-label">Kies een ${esc(cat.scopeNoun||"onderdeel")}</p><div class="cards">${
-      cat.scopes.map(s => `<button class="card${s.available?"":" disabled"}" data-scope="${esc(s.key)}"${s.available?"":" disabled"}>
-        <div class="card-name">${esc(s.name)}</div>${s.termNote?`<div class="card-desc">${esc(s.termNote)}</div>`:""}${s.available?"":`<span class="soon">binnenkort</span>`}</button>`).join("")}</div>`;
-    step.querySelector(".home-back").onclick = () => { location.hash = ""; };
-    step.querySelectorAll(".card[data-scope]:not([disabled])").forEach(b =>
-      b.onclick = () => { location.hash = `${cat.key}/${b.dataset.scope}`; });
-  }
-}
-
-async function openScope(cat, scope){
-  CAT = cat; SCOPE = scope;
-  $("#home").hidden = true;
-  $("#app").hidden = false;
-  applyTheme(scope.style || {});   // theme now (before the large data fetch) so there's no colour flash
-  const raw = await (await fetch(`data/${scope.key}.json`)).json();
-  // A large scope (multi-year Tweede Kamer term) is a manifest: {meta, parties, chunked, chunks[]}
-  // with the stemmingen split into per-year files. Load the newest year now for a fast first paint,
-  // then stream the rest in the background (loadRemainingChunks). Small scopes are a plain data file.
-  const chunked = !!raw.chunked;
-  DATA = chunked ? {meta: raw.meta, parties: raw.parties, moties: [], chunks: raw.chunks, loading: true}
-                 : raw;
-  if(chunked){
-    const first = await (await fetch(`data/${raw.chunks[0].file}`)).json();
-    DATA.moties = first.moties || [];
-  }
-  // Types come from meta (complete even before every chunk loads); fall back to the loaded moties.
-  ALLTYPES = (DATA.meta.types && DATA.meta.types.length) ? DATA.meta.types.slice()
-             : [...new Set(DATA.moties.map(m => m.type))];
-  AG = ORDER = MTYPES = PTYPES = CTYPES = null;   // reset per-scope popup caches
-  PIN_KEY = `wsw_pinned_${scope.key}`;
-  state = {
-    types: new Set(ALLTYPES),
-    parties: new Set(DATA.parties.map(p => p.slug)),
-    search: "", result: "all", controversial: false, onlyPinned: false, raw: false,
-    sort: "date-desc",
-    year: chunked ? raw.chunks[0].year : null,   // chunked scopes default to the newest year
-    pinned: new Set(JSON.parse(localStorage.getItem(PIN_KEY) || "[]")),
-  };
-  applyTheme(DATA.meta.style || {});   // reaffirm from the data (matches the catalog style)
-
-  // Source label: a multi-scope category (provinces) reads "Provinciale Staten, provincie X";
-  // a single-body category (Tweede Kamer) just its own name (scopeNoun is null there).
-  const multi = cat.scopes.length > 1;
-  const isProv = cat.scopeNoun === "provincie";
-  const art = /parlement/i.test(DATA.meta.body) ? "het" : "de";   // "het Europees Parlement" vs "de … Kamer"
-  // "Bron:" label: only a province folds its name into the source ("Provinciale Staten, provincie X").
-  // Chambers keep just the body name — the term is shown separately as "· periode …" on the same line.
-  const srcName = DATA.meta.sourceName ? esc(DATA.meta.sourceName)   // explicit attribution (EP: HowTheyVote.eu)
-    : isProv ? `${esc(DATA.meta.body)}, ${esc(cat.scopeNoun)} ${esc(DATA.meta.province)}`
-    : esc(DATA.meta.body);
-  // Multi-scope copy: provinces read "… van Noord-Holland" (a place); other multi categories (chamber
-  // terms / EP weergaven) read "… de Tweede Kamer · <periode>" / "… het Europees Parlement · <weergave>".
-  $("#appLead").innerHTML = !multi
-    ? `Stemgedrag per fractie in ${art} <b>${esc(DATA.meta.body)}</b> — <b>Voor</b> of <b>Tegen</b> per stemming.`
-    : isProv
-    ? `Stemgedrag per partij in de <b>${esc(DATA.meta.body)} van ${esc(DATA.meta.province)}</b> — <b>Voor</b> of <b>Tegen</b> per stemming.`
-    : `Stemgedrag in ${art} <b>${esc(DATA.meta.body)}</b> · <b>${esc(DATA.meta.province)}</b> — <b>Voor</b> of <b>Tegen</b> per stemming.`;
-  document.title = !multi
-    ? `Wie stemde wat? — stemgedrag in de ${DATA.meta.body}`
-    : isProv ? `Wie stemde wat? — ${DATA.meta.body} ${DATA.meta.province}`
-    : `Wie stemde wat? — ${DATA.meta.body}: ${DATA.meta.province}`;
-  $("#src").innerHTML = `Bron: <a href="${DATA.meta.source}" target="_blank" rel="noopener">${srcName}</a> · open data · periode ${DATA.meta.term} · bijgewerkt ${DATA.meta.generated_at.slice(0,10)}`;
-  $("#helpSource").innerHTML = `Open data van de <a href="${DATA.meta.source}" target="_blank" rel="noopener">${srcName}</a>, periode ${esc(DATA.meta.term)}, wekelijks bijgewerkt.`
-    + (DATA.meta.note ? ` ${esc(DATA.meta.note)}` : "");
-  $("#helpBody1").textContent = `Per stemming — een motie, amendement of besluit in de ${DATA.meta.body} — zie je hoe elke fractie stemde.`;
-
-  // knownIssue is set by the collector only while this scope is serving data it could not refresh,
-  // and disappears on its own once the source works again — so this needs no separate upkeep.
-  const issue = SCOPE && SCOPE.knownIssue;
-  $("#staleNote").hidden = !issue;
-  if(issue) $("#staleNote").innerHTML = `⚠️ ${esc(issue)} `
-    + `<b>Laatste verversing: ${esc(DATA.meta.generated_at.slice(0,10))}.</b>`;
-
-  // Faction-level data stores votes as 1/0, so "ruwe getallen" would show a meaningless "1-0".
-  const faction = DATA.meta.granularity === "fractie";
-  $("#rawToggle").style.display = faction ? "none" : "";
-  if(faction) state.raw = false;
-
-  buildControls(ALLTYPES);
-  $("#search").value = ""; $("#result").value = "all"; $("#sort").value = "date-desc";
-  $("#controversial").checked = false; $("#onlyPinned").checked = false; $("#raw").checked = false;
-  buildYearControl(DATA.chunks, state.year);
-  updatePartySummary();
-  render();
-  if(DATA.chunks) loadRemainingChunks(scope.key);   // fire-and-forget: stream older years in
-}
-
-// The "Periode" (year) selector only appears for chunked scopes. It caps the (potentially ~15k-row)
-// table to one year at a time while the analyses still use every year that has loaded.
-function buildYearControl(chunks, current){
-  const field = $("#yearField"), sel = $("#year");
-  if(!chunks){ field.hidden = true; sel.onchange = null; return; }
-  field.hidden = false;
-  sel.innerHTML = chunks.map(c => `<option value="${c.year}">${c.year} (${c.count})</option>`).join("")
-    + `<option value="all">Alle jaren (${DATA.meta.counts.moties})</option>`;
-  sel.value = current;
-  sel.onchange = e => { state.year = e.target.value; render(); };
-}
-
-// Load every year-chunk except the newest (already loaded), merge into DATA.moties, then refresh.
-async function loadRemainingChunks(key){
-  const rest = DATA.chunks.slice(1);
-  const parts = await Promise.all(rest.map(c =>
-    fetch(`data/${c.file}`).then(r => r.json()).catch(() => ({moties: []}))));
-  for(const p of parts) DATA.moties.push(...(p.moties || []));
-  DATA.loading = false;
-  AG = ORDER = MTYPES = PTYPES = CTYPES = null;   // analyses now cover the whole term
-  render();
-}
-
-function setupGlobalHandlers(){
-  // Close the party dropdown when clicking outside or pressing Escape.
-  document.addEventListener("click", e => {
-    const d = document.querySelector("details.parties");
-    if(d && d.open && !d.contains(e.target)) d.open = false;
-  });
-  document.addEventListener("keydown", e => {
-    if(e.key === "Escape"){
-      const d = document.querySelector("details.parties"); if(d) d.open = false;
-      document.querySelectorAll(".modal").forEach(mo => mo.hidden = true);
-    }
-  });
-  // View popups
-  $("#matrixBtn").onclick = () => {
-    if(!MTYPES) MTYPES = new Set(ALLTYPES);
-    typeChips($("#matrixTypes"), MTYPES, refreshMatrix);
-    refreshMatrix();
-    $("#matrixModal").hidden = false;
-  };
-  $("#profileBtn").onclick = openProfile;
-  $("#compareBtn").onclick = openCompare;
-  $("#helpBtn").onclick = () => $("#helpModal").hidden = false;
-  $("#legendBtn").onclick = () => $("#legendModal").hidden = false;
-  $("#csvBtn").onclick = exportCSV;
-  document.querySelectorAll(".modal").forEach(mo => mo.addEventListener("click", e => { if(e.target === mo) mo.hidden = true; }));
-  document.querySelectorAll("[data-close]").forEach(btn => btn.onclick = () => { document.getElementById(btn.dataset.close).hidden = true; });
-  // Pin toggle via event delegation — one listener on the table container, instead of re-binding
-  // a handler to every pin button on each render (matters for the ~3k-row Tweede Kamer table).
-  $(".wrap").addEventListener("click", e => {
-    const b = e.target.closest("button.pin");
-    if(!b) return;
-    const id = +b.dataset.id;
-    state.pinned.has(id) ? state.pinned.delete(id) : state.pinned.add(id);
-    localStorage.setItem(PIN_KEY, JSON.stringify([...state.pinned]));
-    render();
-  });
-}
-
-// Shared type-filter chips for the popups.
-function typeChips(el, set, cb){
-  el.innerHTML = ALLTYPES.map(t => `<span class="chip${set.has(t)?" on":""}" data-type="${t}">${TYPE_LABEL[t]||t}</span>`).join("");
-  el.onclick = e => {
-    const c = e.target.closest(".chip"); if(!c) return;
-    const t = c.dataset.type;
-    if(set.has(t)){ if(set.size === 1) return; set.delete(t); } else set.add(t);
-    c.classList.toggle("on"); cb();
-  };
-}
-const pName = slug => { const p = DATA.parties.find(x => x.slug === slug); return p ? p.name : slug; };
-
-function refreshMatrix(){ AG = computeAgreement(MTYPES); ORDER = clusterOrder(); renderMatrix(); }
-
-function computeAgreement(types){
-  // Count how often each party cast a (decided) vote within the selected types, then drop the
-  // parties below MATRIX_MIN — they only add misleading 100%/0% cells.
-  const counts = {};
-  const vd = DATA.moties.filter(m => types.has(m.type)).map(m => {
-    const o = {};
-    for(const p of DATA.parties){
-      const r = cellVerdict(m.votes[p.slug]);
-      if(r){ o[p.slug] = r.label; counts[p.slug] = (counts[p.slug]||0) + 1; }
-    }
-    return o;
-  });
-  const ps = DATA.parties.filter(p => (counts[p.slug]||0) >= MATRIX_MIN);
-  const M = {};
-  for(const a of ps){ M[a.slug] = {};
-    for(const b of ps){
-      if(a.slug === b.slug){ M[a.slug][b.slug] = null; continue; }
-      let same = 0, tot = 0;
-      for(const v of vd){
-        if(v[a.slug] !== undefined && v[b.slug] !== undefined){ tot++; if(v[a.slug] === v[b.slug]) same++; }
-      }
-      M[a.slug][b.slug] = tot ? {pct: Math.round(100*same/tot), n: tot} : null;
-    }
-  }
-  return M;
-}
-// Seriation: average-linkage clustering so similar-voting parties end up adjacent.
-function clusterOrder(){
-  const slugs = Object.keys(AG);   // only the parties that cleared MATRIX_MIN
-  if(slugs.length < 2) return slugs;
-  const dist = (a,b) => { const c = AG[a] && AG[a][b]; return c ? 100 - c.pct : 100; };
-  let cl = slugs.map(s => ({m:[s]}));
-  const cd = (c1,c2) => { let s=0,n=0; for(const a of c1.m) for(const b of c2.m){ s+=dist(a,b); n++; } return s/n; };
-  while(cl.length > 1){
-    let bi=0, bj=1, best=Infinity;
-    for(let i=0;i<cl.length;i++) for(let j=i+1;j<cl.length;j++){ const d=cd(cl[i],cl[j]); if(d<best){best=d;bi=i;bj=j;} }
-    const A=cl[bi], B=cl[bj];
-    const aF=A.m[0], aL=A.m[A.m.length-1], bF=B.m[0], bL=B.m[B.m.length-1];
-    const opts = [[0,0,dist(aL,bF)],[0,1,dist(aL,bL)],[1,0,dist(aF,bF)],[1,1,dist(aF,bL)]].sort((x,y)=>x[2]-y[2]);
-    const ma = opts[0][0] ? [...A.m].reverse() : A.m;
-    const mb = opts[0][1] ? [...B.m].reverse() : B.m;
-    cl = cl.filter((_,k)=>k!==bi && k!==bj); cl.push({m:[...ma,...mb]});
-  }
-  return cl[0].m;
-}
-function renderMatrix(){
-  const order = ORDER || Object.keys(AG);
-  const pmap = Object.fromEntries(DATA.parties.map(p => [p.slug, p]));
-  const name = s => pmap[s] ? pmap[s].name : s;
-  const lbl = s => ABBR[s] || name(s);
-  const head = `<tr><th></th>${order.map(s=>`<th title="${esc(name(s))}">${lbl(s)}</th>`).join("")}</tr>`;
-  const rows = order.map(a => `<tr><th class="rowh" title="${esc(name(a))}">${lbl(a)}</th>${
-    order.map(b => {
-      const c = AG[a][b];
-      if(c === null) return `<td class="diag">&ndash;</td>`;
-      if(!c) return `<td class="na" title="geen gezamenlijke stemmingen">&middot;</td>`;
-      if(c.n < MATRIX_PAIR_MIN) return `<td class="lown" title="${esc(name(a))} &amp; ${esc(name(b))}: ${c.pct}% gelijk — slechts ${c.n} gezamenlijke stemming${c.n===1?"":"en"}, te weinig voor een betrouwbaar percentage">${c.pct}</td>`;
-      return `<td style="background:hsl(${Math.round(c.pct*1.35)},70%,72%)" title="${esc(name(a))} &amp; ${esc(name(b))}: ${c.pct}% gelijk (${c.n} stemmingen)">${c.pct}</td>`;
-    }).join("")}</tr>`).join("");
-  const excluded = DATA.parties.filter(p => !(p.slug in AG));
-  const note = excluded.length
-    ? `<p class="modal-sub" style="margin-top:10px">Niet getoond (minder dan ${MATRIX_MIN} stemmingen): ${excluded.map(p => esc(p.name)).join(", ")}.</p>`
-    : "";
-  $("#matrixBody").innerHTML = `<table class="matrix"><thead>${head}</thead><tbody>${rows}</tbody></table>${note}`;
-}
-
-/* ---- Party profile ---- */
-function openProfile(){
-  if(!PTYPES){
-    PTYPES = new Set(ALLTYPES);
-    $("#profileParty").innerHTML = DATA.parties.map(p => `<option value="${p.slug}">${esc(p.name)}</option>`).join("");
-    $("#profileParty").onchange = renderProfile;
-  }
-  typeChips($("#profileTypes"), PTYPES, renderProfile);
-  renderProfile();
-  $("#profileModal").hidden = false;
-}
-function profileStats(slug, types){
-  let voor=0, tegen=0, onth=0, afw=0, win=0, decided=0;
-  const lone = [];
-  for(const m of DATA.moties){
-    if(!types.has(m.type)) continue;
-    const v = m.votes[slug];
-    if(!v){ afw++; continue; }
-    const r = cellVerdict(v);
-    if(r.label === "V") voor++; else if(r.label === "T") tegen++; else onth++;
-    if(r.label !== "O" && m.result){
-      decided++;
-      if((r.label === "V" && m.result === "accepted") || (r.label === "T" && m.result === "rejected")) win++;
-    }
-    if(r.label !== "O"){
-      let same=0, opposite=0;
-      for(const p of DATA.parties){
-        if(p.slug === slug) continue;
-        const ov = m.votes[p.slug]; if(!ov) continue;
-        const orr = cellVerdict(ov);
-        if(orr.label === r.label) same++;
-        else if(orr.label !== "O") opposite++;
-      }
-      if(same === 0 && opposite > 0) lone.push(m);
-    }
-  }
-  return {voor, tegen, onth, afw, win, decided, winPct: decided ? Math.round(100*win/decided) : null, lone};
-}
-function renderProfile(){
-  const slug = $("#profileParty").value;
-  const st = profileStats(slug, PTYPES);
-  const lone = st.lone.slice().sort((a,b) => b.date.localeCompare(a.date));
-  $("#profileBody").innerHTML = `
-    <div class="stat-grid">
-      <div class="stat primary"><div class="num">${st.winPct===null?"&ndash;":st.winPct+"%"}</div><div class="lab">aan de winnende kant<br>(${st.decided} beslissende)</div></div>
-      <div class="stat"><div class="num">${st.voor}</div><div class="lab">voor</div></div>
-      <div class="stat"><div class="num">${st.tegen}</div><div class="lab">tegen</div></div>
-      <div class="stat"><div class="num">${st.onth}</div><div class="lab">onthouden</div></div>
-      <div class="stat"><div class="num">${st.afw}</div><div class="lab">afwezig</div></div>
-    </div>
-    <h3 class="section">Als enige tegen de rest in (${lone.length})</h3>
-    ${lone.length ? `<div class="scrollbox"><table class="list"><thead><tr><th>Datum</th><th>Onderwerp</th><th>Stem</th></tr></thead><tbody>${
-      lone.map(m => { const r = cellVerdict(m.votes[slug]);
-        return `<tr><td>${m.date}</td><td>${esc(m.title)}${srcLink(m)}</td><td><span class="vbadge ${r.cls}">${r.label}</span></td></tr>`; }).join("")
-    }</tbody></table></div>` : `<p class="modal-sub">Geen stemmingen waarbij ${esc(pName(slug))} als enige tegen de rest in stemde (binnen deze types).</p>`}
-  `;
-}
-
-/* ---- Compare two parties ---- */
-function openCompare(){
-  if(!CTYPES){
-    CTYPES = new Set(ALLTYPES);
-    const opts = DATA.parties.map(p => `<option value="${p.slug}">${esc(p.name)}</option>`).join("");
-    $("#cmpA").innerHTML = opts; $("#cmpB").innerHTML = opts;
-    if(DATA.parties.length > 1) $("#cmpB").selectedIndex = 1;
-    $("#cmpA").onchange = renderCompare; $("#cmpB").onchange = renderCompare;
-  }
-  typeChips($("#compareTypes"), CTYPES, renderCompare);
-  renderCompare();
-  $("#compareModal").hidden = false;
-}
-function renderCompare(){
-  const a = $("#cmpA").value, b = $("#cmpB").value;
-  if(a === b){ $("#compareBody").innerHTML = `<p class="modal-sub">Kies twee verschillende partijen.</p>`; return; }
-  let agree = 0; const rows = [];
-  for(const m of DATA.moties){
-    if(!CTYPES.has(m.type)) continue;
-    const va = m.votes[a], vb = m.votes[b]; if(!va || !vb) continue;
-    const ra = cellVerdict(va), rb = cellVerdict(vb);
-    if(ra.label === rb.label) agree++; else rows.push({m, ra, rb});
-  }
-  rows.sort((x,y) => y.m.date.localeCompare(x.m.date));
-  const tot = agree + rows.length;
-  $("#compareBody").innerHTML = `
-    <p class="cmp-summary"><b>${esc(pName(a))}</b> en <b>${esc(pName(b))}</b> stemden
-      <b>${tot?Math.round(100*agree/tot):0}% gelijk</b> &mdash; ${agree} gelijk, <b>${rows.length} verschillend</b> (van ${tot} gezamenlijke stemmingen).</p>
-    ${rows.length ? `<div class="scrollbox"><table class="list"><thead><tr><th>Datum</th><th>Onderwerp</th><th>${esc(ABBR[a]||pName(a))}</th><th>${esc(ABBR[b]||pName(b))}</th></tr></thead><tbody>${
-      rows.map(({m,ra,rb}) => `<tr><td>${m.date}</td><td>${esc(m.title)}${srcLink(m)}</td><td><span class="vbadge ${ra.cls}">${ra.label}</span></td><td><span class="vbadge ${rb.cls}">${rb.label}</span></td></tr>`).join("")
-    }</tbody></table></div>` : `<p class="modal-sub">Geen stemmingen waarbij ze verschillend stemden (binnen deze types).</p>`}
-  `;
-}
-
-function buildControls(types){
-  // type chips
-  $("#typeChips").innerHTML = types.map(t=>`<span class="chip on" data-type="${t}">${TYPE_LABEL[t]||t}</span>`).join("");
-  $("#typeChips").onclick = e => {
-    const c = e.target.closest(".chip"); if(!c) return;
-    const t = c.dataset.type;
-    state.types.has(t) ? state.types.delete(t) : state.types.add(t);
-    c.classList.toggle("on"); render();
-  };
-  // party checkboxes
-  $("#pList").innerHTML = DATA.parties.map(p=>
-    `<label><input type="checkbox" data-slug="${p.slug}" checked> ${esc(p.name)}</label>`).join("");
-  $("#pList").onchange = e => {
-    const s = e.target.dataset.slug;
-    e.target.checked ? state.parties.add(s) : state.parties.delete(s);
-    updatePartySummary(); render();
-  };
-  $("#pAll").onclick = ()=>{ DATA.parties.forEach(p=>state.parties.add(p.slug)); $("#pList").querySelectorAll("input").forEach(i=>i.checked=true); updatePartySummary(); render(); };
-  $("#pNone").onclick = ()=>{ state.parties.clear(); $("#pList").querySelectorAll("input").forEach(i=>i.checked=false); updatePartySummary(); render(); };
-
-  // Debounce search: avoid re-rendering the whole (up to ~3k-row) table on every keystroke.
-  let searchTimer;
-  $("#search").oninput = e => {
-    state.search = e.target.value.toLowerCase().trim();
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(render, 150);
-  };
-  $("#result").onchange = e => { state.result = e.target.value; render(); };
-  $("#sort").onchange = e => { state.sort = e.target.value; render(); };
-  $("#controversial").onchange = e => { state.controversial = e.target.checked; render(); };
-  $("#onlyPinned").onchange = e => { state.onlyPinned = e.target.checked; render(); };
-  $("#raw").onchange = e => { state.raw = e.target.checked; render(); };
-}
-
-function updatePartySummary(){
-  const n = state.parties.size, total = DATA.parties.length;
-  $("#psummary").textContent = n===total ? "Alle partijen" : (n===0 ? "Geen partijen" : `${n} van ${total} partijen`);
-}
-
-function visibleParties(){ return DATA.parties.filter(p=>state.parties.has(p.slug)); }
-
-function cellVerdict(v){ // returns {cls,label} or null for afwezig
-  if(!v) return null;
-  if(v.agree>v.disagree) return {cls:"voor",label:"V"};
-  if(v.disagree>v.agree) return {cls:"tegen",label:"T"};
-  return {cls:"neutraal",label:"O"};
-}
-function isControversial(m){
-  let hasV=false,hasT=false;
-  for(const p of visibleParties()){
-    const r = cellVerdict(m.votes[p.slug]); if(!r) continue;
-    if(r.label==="V") hasV=true; else if(r.label==="T") hasT=true;
-    if(hasV&&hasT) return true;
-  }
-  return false;
-}
-function passes(m){
-  if(state.year && state.year!=="all" && (m.date||"").slice(0,4)!==state.year) return false;
-  if(!state.types.has(m.type)) return false;
-  if(state.result!=="all" && m.result!==state.result) return false;
-  if(state.search && !m.title.toLowerCase().includes(state.search)) return false;
-  if(state.controversial && !isControversial(m)) return false;
-  return true;
-}
-function sortRows(rows){
-  const c = {
-    "date-desc": (a,b)=> b.date.localeCompare(a.date) || a.title.localeCompare(b.title),
-    "date-asc":  (a,b)=> a.date.localeCompare(b.date) || a.title.localeCompare(b.title),
-    "result":    (a,b)=> (a.result||"").localeCompare(b.result||"") || b.date.localeCompare(a.date),
-  }[state.sort];
-  return rows.sort(c);
-}
-
-function cellHTML(m, slug, name){
-  const v = m.votes[slug];
-  const r = cellVerdict(v);
-  if(!r) return `<td class="cell afw" title="${esc(name)}: afwezig"></td>`;
-  const split = v.agree>0 && v.disagree>0;
-  const disp = state.raw ? `${v.agree}-${v.disagree}` : r.label;
-  // Faction-level data has no real counts; describe the vote in words instead of "1 voor, 0 tegen".
-  const tip = DATA.meta.granularity === "fractie"
-    ? `${name}: ${split ? "verdeeld gestemd" : r.label==="V" ? "voor" : r.label==="T" ? "tegen" : "onthouden"}`
-    : `${name}: ${v.agree} voor, ${v.disagree} tegen` + (v.abstain?`, ${v.abstain} onthouden`:"") + (split?" (niet unaniem)":"");
-  return `<td class="cell ${r.cls}${split&&!state.raw?" split":""}${state.raw?" raw":""}" title="${esc(tip)}">${disp}</td>`;
-}
-function rowHTML(m, vps){
-  const pinned = state.pinned.has(m.id);
-  const ext = m.source ? `<a class="ext" href="${m.source}" target="_blank" rel="noopener" title="Bekijk de bron">&#8599;</a>` : "";
-  const res = m.resultLabel ? `<span class="res r-${m.result}">${esc(m.resultLabel)}</span>` : "";
-  const first = `<td class="onderwerp"><div class="ond-row">
-      <button class="pin${pinned?" on":""}" data-id="${m.id}" title="${pinned?"Losmaken":"Vastpinnen"}">&#128204;</button>
-      <div><div class="titel">${esc(m.title)}${ext}</div>
-      <div class="meta"><span>${m.date}</span><span class="type t-${m.type}">${TYPE_LABEL[m.type]||m.type}</span>${res}</div></div>
-    </div></td>`;
-  return `<tr>${first}${vps.map(p=>cellHTML(m,p.slug,p.name)).join("")}</tr>`;
-}
-function tableHTML(rows, vps){
-  if(!rows.length) return `<div class="empty">Geen stemmingen voor deze selectie.</div>`;
-  const head = `<thead><tr><th class="onderwerp-h">Onderwerp</th>${
-    vps.map(p=>`<th title="${esc(p.members&&p.members.length ? `${p.name} — ${p.members.length} leden:\n${p.members.join("\n")}` : p.name)}">${ABBR[p.slug]||p.name}</th>`).join("")}</tr></thead>`;
-  return `<div class="table-scroll"><table>${head}<tbody>${rows.map(m=>rowHTML(m,vps)).join("")}</tbody></table></div>`;
-}
-
-function render(){
-  const vps = visibleParties();
-  const all = DATA.moties.filter(passes);
-  const pinnedRows = sortRows(DATA.moties.filter(m=>state.pinned.has(m.id)));
-  const mainRows = state.onlyPinned ? [] : sortRows(all.filter(m=>!state.pinned.has(m.id)));
-
-  $("#pinnedBlock").innerHTML = pinnedRows.length
-    ? `<div class="tbl-title">&#128204; Vastgepind (${pinnedRows.length})</div>${tableHTML(pinnedRows, vps)}`
-    : "";
-  $("#mainBlock").innerHTML = state.onlyPinned
-    ? (pinnedRows.length?"":`<div class="empty">Nog niets vastgepind.</div>`)
-    : tableHTML(mainRows, vps);
-
-  const shown = (state.onlyPinned?pinnedRows.length:mainRows.length+pinnedRows.length);
-  // For a chunked scope the total is the whole term (meta.counts), even while older years still load.
-  const total = (DATA.meta.counts && DATA.meta.counts.moties) || DATA.moties.length;
-  const loadNote = DATA.loading ? " · overige jaren laden…" : "";
-  $("#count").textContent = `${shown} van ${total} stemmingen · ${vps.length} partijen${loadNote}`;
-}
-
-// Split a title into its code (e.g. "A26"), number ("19") and the rest. Formats vary per province:
-// Utrecht/NH "M26-43 …" / "A08-2026 — …"; Limburg "[Gewijzigd] Motie|Amendement 3297 …".
-function splitTitle(title){
-  title = title || "";
-  let m = title.match(/^([A-Z]{1,3}\d+)[-–](\w+)[\s—–:.\-]*(.*)$/);
-  if(m) return {code: m[1], nr: m[2], subject: m[3].trim()};
-  m = title.match(/^((?:Gewijzigde?\s+)?(?:Motie|Amendement))\s+(\d+)\s+(.*)$/i);
-  if(m) return {code: m[1], nr: m[2], subject: m[3].trim()};
-  return {code: "", nr: "", subject: title};
-}
-
-// Download the currently filtered/sorted stemmingen as a proper CSV — one column per metadata
-// field and one per party. Every party always gets a cell (empty if afwezig) so V/T never shift
-// into the wrong party's column.
-function exportCSV(){
-  const vps = DATA.parties;   // every party as a column, regardless of show/hide
-  const base = DATA.moties.filter(passes);
-  const rows = sortRows((state.onlyPinned ? base.filter(m => state.pinned.has(m.id)) : base).slice());
-  const faction = DATA.meta.granularity === "fractie";
-  // RFC-4180: comma-separated, quote any field containing comma/quote/newline.
-  const q = s => { s = (s==null ? "" : String(s)); return /[",\n\r]/.test(s) ? `"${s.replace(/"/g,'""')}"` : s; };
-  const cellVal = v => {
-    const r = cellVerdict(v);
-    if(!r) return "";                                       // afwezig -> empty cell
-    if(state.raw && !faction) return `${v.agree}-${v.disagree}`;   // member-level + ruwe getallen
-    return r.label;                                         // V / T / O
-  };
-  const header = ["Datum","Type","Code","Nr.","Onderwerp","Uitslag","Bron", ...vps.map(p => p.name)];
-  const lines = [header.map(q).join(",")];
-  for(const m of rows){
-    const t = splitTitle(m.title);
-    lines.push([m.date, TYPE_LABEL[m.type]||m.type, t.code, t.nr, t.subject, m.resultLabel||"", m.source||"",
-                ...vps.map(p => cellVal(m.votes[p.slug]))].map(q).join(","));
-  }
-  const blob = new Blob(["﻿" + lines.join("\r\n")], {type:"text/csv;charset=utf-8"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `wie-stemde-wat_${(DATA.meta.province||"").toLowerCase().replace(/\s+/g,"-")}_${DATA.meta.generated_at.slice(0,10)}.csv`;
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 0);
-}
-
-init().catch(e => { document.querySelector(".wrap").innerHTML = `<div class="empty">Kon data niet laden: ${esc(""+e)}<br><small>Draai lokaal met een server (zie README).</small></div>`; });
-</script>
+<script src="app.js"></script>
 </body>
 </html>

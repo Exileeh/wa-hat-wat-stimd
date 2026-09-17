@@ -1,82 +1,82 @@
-# Wie stemde wat?
+# Wa hat wat stimd?
 
-**▶ Live: https://carefulcamel61097.github.io/wie-stemde-wat/**
+**▶ Live: https://lucsmits5-afk.github.io/wa-hat-wat-stimd/**
 
-> Ik wil zien wie wat gestemd heeft in de Tweede Kamer, de Eerste Kamer, de provinciale staten en het Europees Parlement.
+> Wa hat wat stimd yn de Provinsjale Steaten fan Fryslân?
 
-Een overzicht van het **stemgedrag per partij** op moties, amendementen, wetsvoorstellen en
-besluiten. Per stemming zie je in één tabel of elke fractie **Voor (V, groen)** of
-**Tegen (T, rood)** was — gebaseerd op open data van het orgaan zelf. Je kiest eerst een **niveau**
-(Tweede Kamer, Eerste Kamer, Provinciale Staten of Europees Parlement) en daarna de **scope** (bij de
-provincies: welke provincie; bij het Europees Parlement: per Europese fractie of de Nederlandse afvaardiging).
+Een overzicht van het **stemgedrag per fractie** in de **Provinciale Staten van Fryslân**
+(Statenperiode 2023–2027): per moasje (motie), amendemint (amendement) of besluit zie je in één
+tabel of elke fractie **Voor (V, groen)** of **Tegen (T, rood)** stemde, met exacte aantallen,
+een **directe link naar het ingediende document** (pdf) en de **indieners**. Gebaseerd op de
+open data van het Statenportaal (Notubiz). De titels zijn zoals de Staten ze publiceren, vaak in het Frysk.
 
-**Nu live (vier categorieën):**
-- **Tweede Kamer** (OData open data, één scope per Kamer, terug tot 2008) — exacte zetelaantallen
-  per fractie, inclusief *verworpen*; moties, amendementen én wetsvoorstellen. Tier A.
-- **Eerste Kamer** (eerstekamer.nl, één scope per Kamer, terug tot 2015) — op fractieniveau (V/T,
-  beide zijden vermeld), inclusief *verworpen*; hamerstukken niet opgenomen. Tier B.
-- **Provinciale Staten** (9/12) — **Utrecht** en **Drenthe** (GemeenteOplossingen), **Limburg**,
-  **Noord-Brabant** en **Noord-Holland** (iBabs), **Zuid-Holland**, **Fryslân**, **Gelderland** en
-  **Overijssel** (Notubiz). Alle tier A (exacte aantallen per lid) behalve Noord-Holland, dat op
-  fractieniveau publiceert en alleen aangenomen moties/amendementen.
-- **Europees Parlement** (HowTheyVote.eu) — exacte aantallen per Europese fractie, incl.
-  *verworpen*, voor de 10e (2024–2029) en 9e (2019–2024) zittingsperiode. Twee weergaven:
-  **Europese fracties** en de **Nederlandse afvaardiging** (de 31 NL-leden per Nederlandse partij).
-  Tier A.
+Afgeleid van [Wie stemde wat?](https://github.com/carefulCamel61097/wie-stemde-wat) (alle
+niveaus, 12 provincies), teruggebracht tot alleen Fryslân en uitgebreid met een statistiekpagina.
 
-De collector is multi-vendor / multi-categorie (een adapter per platform: GO / iBabs / Notubiz /
-Tweede Kamer OData / Eerste Kamer HTML / HowTheyVote). Hoe betrouwbaar elke bron is, staat in
-[coverage.md](coverage.md); of een bron het op dit moment ook echt doet, staat in
-[coverage.md#status](coverage.md#status-van-de-bronnen).
-
-Naast de tabel: filters (type, partij, zoeken, uitslag, "alleen omstreden"), vastpinnen,
-**CSV-download** van de selectie, en drie analyses (popups): **Overeenkomst** (overeenkomstmatrix
-per partij), **Partijprofiel** en **Vergelijken** (twee partijen).
+**Functies**
+- Tabel: filters (type, partij, zoeken op onderwerp of indiener, uitslag, "alleen omstreden"),
+  vastpinnen, sorteren, ruwe getallen, **CSV-download** van de selectie.
+- **📄 Moasje / Amendemint**: opent het document op het Statenportaal.
+- Vier analyses: **Statistieken** (stemmingen per maand · indieners en hun succes · aan de winnende
+  kant · hoe omstreden), **Overeenkomst** (overeenkomstmatrix), **Partijprofiel** en **Vergelijken**.
+- **Live bijladen**: stemmingen van vergaderingen na de laatste dagelijkse snapshot haalt de
+  browser zelf op bij `api.notubiz.nl` (gemarkeerd als *live*).
 
 ## Hoe het werkt
 
 ```
-collector (Python)  ->  data/<scope>.json  ->  statische site  ->  GitHub Pages
-        ^                 (+ data/catalog.json)                         ^
-        └──────────  GitHub Actions (wekelijks) ververst de data  ────────┘
+collector/collect.py  ->  data/fryslan.json + data/roles.json  ->  statische site (index.html, app.js, app.css)
+        ^                                                                     |
+        └── GitHub Actions (dagelijks) of collector/refresh-local.ps1         └── browser laadt nieuwe
+            ververst de snapshot                                                   vergaderingen live bij
 ```
 
 - **Geen server, geen database.** De data is een gegenereerd JSON-bestand dat de site inleest.
-- De `collector/` heeft een **adapter per platform** (GemeenteOplossingen / iBabs / Tweede Kamer
-  OData / Eerste Kamer HTML / HowTheyVote / Notubiz). Hij normaliseert alles naar één schema,
-  schrijft een dataset per scope en een `data/catalog.json` die de scopes per categorie (Tweede Kamer
-  / Eerste Kamer / Provinciale Staten / Europees Parlement) indexeert.
-- De frontend leest `catalog.json` en bouwt daarmee de startpagina (kies categorie → scope). De
-  gekozen scope staat in de URL-hash (`#tweede-kamer`, `#provinciale-staten/utrecht`,
-  `#europees-parlement/europees-parlement-nl`) → deelbaar.
-- De aantallen (`voor` / `tegen` / `onthouden`) staan in de data; V/T wordt in de browser
-  afgeleid (`voor > tegen`). Zo blijven afsplitsingen en uitzonderingen zichtbaar.
+- De collector (Python, alleen stdlib) leest de openbare Notubiz-API (vergaderingen, stemmingen,
+  de module *Moasjes en amendeminten*, partijen) en de portaalpagina per vergadering (voor de
+  verdeling per fractie), en schrijft `data/fryslan.json`. Daarnaast leert hij welke anonieme
+  `role_id` bij welke fractie hoort en schrijft dat naar `data/roles.json`, zodat de browser nieuwe
+  stemmingen zelf per fractie kan optellen. Details: [docs/notubiz.md](docs/notubiz.md).
+- De aantallen (`voor` / `tegen` / `onthouden`) staan in de data; V/T wordt in de browser afgeleid
+  (`voor > tegen`), zodat afsplitsingen en verdeelde fracties zichtbaar blijven (stip in de cel).
 
-Technische details en de teruggevonden endpoints: [data-sources.md](data-sources.md).
+## Dagelijkse verversing
+
+De workflow [`.github/workflows/refresh.yml`](.github/workflows/refresh.yml) draait elke dag
+06:00 UTC en is handmatig te starten. **Let op:** Notubiz blokkeert GitHub's cloudservers
+(bevestigd door Notubiz, geen uitzonderingen). Vanaf `ubuntu-latest` logt de run daarom
+`KNOWN ISSUE … Network is unreachable`, houdt de bestaande data en blijft groen; de site laadt
+nieuwe stemmingen live bij. Twee manieren om de snapshot wél te verversen:
+
+1. **Self-hosted runner** op een altijd-aan machine in Nederland: registreer een runner
+   (repo → Settings → Actions → Runners → New self-hosted runner) en zet de repository variable
+   `RUNNER` op zijn label (Settings → Secrets and variables → Actions → Variables), bijv.
+   `self-hosted`. Dezelfde workflow draait dan dagelijks vanaf die machine.
+2. **Lokaal**: `python collector/collect.py` en de twee databestanden committen, of
+   [`collector/refresh-local.ps1`](collector/refresh-local.ps1) inplannen in Windows Task Scheduler
+   (doet pull → collect → commit → push, alleen de databestanden).
+
+Wordt de snapshot ouder dan 14 dagen, dan toont de site daar een melding over; na 45 dagen wordt
+de dagelijkse run rood.
 
 ## Lokaal draaien
 
 ```bash
-python collector/collect.py      # ververs data/<provincie>.json (alleen stdlib, geen install)
+python collector/collect.py      # ververs data/fryslan.json + data/roles.json (alleen stdlib)
 python -m http.server 8000       # bekijk de site op http://localhost:8000
 ```
-> De site moet via een server bekeken worden (niet `index.html` dubbelklikken): browsers
-> blokkeren `fetch` van het databestand bij openen via `file://`.
+> Bekijk de site via een server (niet `index.html` dubbelklikken): browsers blokkeren `fetch`
+> van het databestand bij `file://`.
 
-## Documentatie
-- [context.md](context.md) — doel, visie, scope en status
-- [roadmap.md](roadmap.md) — stappen, beslissingen en de **▶ NEXT** (waar verder te gaan)
-- [coverage.md](coverage.md) — wat we hébben per provincie + **betrouwbaarheid** per bron
-- [data-sources.md](data-sources.md) — databron, API-endpoints (GO + iBabs + Notubiz) en datamodel
-- [provinces.md](provinces.md) — alle 12 provincies: leverancier + haalbaarheid van stemdata
-- [outreach.md](outreach.md) — concept-mails (Notubiz-token, griffies) om meer provincies te ontsluiten
+## Bestanden
+- [index.html](index.html), [app.css](app.css), [app.js](app.js) — de site (vanilla JS, geen dependencies)
+- [collector/collect.py](collector/collect.py) — de collector
+- [data/fryslan.json](data/fryslan.json) — snapshot; [data/roles.json](data/roles.json) — role_id → fractie
+- [docs/notubiz.md](docs/notubiz.md) — databron, API-endpoints, datamodel, blokkade-diagnose
+- [docs/claude-design-prompt.md](docs/claude-design-prompt.md) — briefing voor een herontwerp van de vormgeving
 
 ## Bron & licentie
-**Open data** van het orgaan zelf:
-- **Tweede Kamer der Staten-Generaal** (opendata.tweedekamer.nl, OData).
-- **Eerste Kamer der Staten-Generaal** (eerstekamer.nl).
-- **Provinciale Staten** (Statengriffie): Utrecht (GemeenteOplossingen), Noord-Holland en Limburg (iBabs).
-- **Europees Parlement**: hoofdelijke stemmingen via **HowTheyVote.eu** (Open Database License, ODbL),
-  met fractie-indeling uit het **EP Open Data Portal**.
-
-Dit project hergebruikt die data (met bronvermelding) en is geen officiële uitgave van de overheid.
+Open data van de **Provinciale Staten van Fryslân** (Statengriffie, Notubiz vergaderportaal
+[fryslan.notubiz.nl](https://fryslan.notubiz.nl)). Dit project hergebruikt die data met
+bronvermelding en is geen officiële uitgave van de provincie. Ledennamen worden niet opgeslagen:
+de dataset is op fractieniveau.
