@@ -23,7 +23,7 @@ const MATRIX_MIN = 5;
 // Below this many *shared* stemmingen a pair's agreement % is too noisy to colour confidently.
 const MATRIX_PAIR_MIN = 10;
 
-let DATA, ROLES, state, AG = null, ORDER = null, ALLTYPES = null, MTYPES = null, PTYPES = null, CTYPES = null, STYPES = null;
+let DATA, ROLES, state, TABLE_ORDER = null, AG = null, ORDER = null, ALLTYPES = null, MTYPES = null, PTYPES = null, CTYPES = null, STYPES = null;
 const $ = s => document.querySelector(s);
 const esc = s => (s == null ? "" : String(s)).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const pName = slug => { const p = DATA.parties.find(x => x.slug === slug); return p ? p.name : (ABBR[slug] || slug); };
@@ -44,7 +44,7 @@ async function init(){
   state = {
     types: new Set(ALLTYPES),
     parties: new Set(DATA.parties.map(p => p.slug)),
-    search: "", result: "all", controversial: false, onlyPinned: false, raw: false,
+    search: "", result: "all", controversial: false, onlyPinned: false, raw: false, cluster: true,
     sort: "date-desc",
     pinned: new Set(JSON.parse(localStorage.getItem(PIN_KEY) || "[]")),
   };
@@ -53,6 +53,8 @@ async function init(){
   buildControls(ALLTYPES);
   updatePartySummary();
   render();
+  window.addEventListener("hashchange", route);
+  route();
   liveTopUp().catch(e => console.warn("live bijladen mislukt:", e));
 }
 
@@ -74,6 +76,39 @@ function renderHeader(){
   if(issue) $("#staleNote").innerHTML = `⚠️ ${esc(issue)} <b>Laatste verversing: ${esc(meta.generated_at.slice(0,10))}.</b>`;
 }
 
+/* ---- Views (tabs) ---- */
+const VIEWS = {
+  table:   {hash: "",              open: null},
+  stats:   {hash: "statistieken",  open: () => openStats()},
+  matrix:  {hash: "overeenkomst",  open: () => openMatrix()},
+  profile: {hash: "partijprofiel", open: () => openProfile()},
+  compare: {hash: "vergelijken",   open: () => openCompare()},
+};
+function route(){
+  const h = decodeURIComponent(location.hash.replace(/^#\/?/, "")).trim().toLowerCase();
+  const name = Object.keys(VIEWS).find(k => VIEWS[k].hash === h) || "table";
+  showView(name);
+}
+function showView(name){
+  const v = VIEWS[name];
+  if(v.open) v.open();
+  for(const k of Object.keys(VIEWS)){
+    const panel = document.getElementById(`${k}View`);
+    if(panel) panel.hidden = k !== name;
+  }
+  document.querySelectorAll(".view-tab[data-view]").forEach(b => {
+    const on = b.dataset.view === name;
+    b.classList.toggle("on", on);
+    if(on) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
+  });
+  if(name !== "table") window.scrollTo({top: 0});
+}
+function openMatrix(){
+  if(!MTYPES) MTYPES = new Set(ALLTYPES);
+  typeChips($("#matrixTypes"), MTYPES, refreshMatrix);
+  refreshMatrix();
+}
+
 function setupGlobalHandlers(){
   // Popovers (partijen, weergave) close on a click outside or Escape.
   document.addEventListener("click", e => {
@@ -85,15 +120,8 @@ function setupGlobalHandlers(){
       document.querySelectorAll(".modal").forEach(mo => mo.hidden = true);
     }
   });
-  $("#matrixBtn").onclick = () => {
-    if(!MTYPES) MTYPES = new Set(ALLTYPES);
-    typeChips($("#matrixTypes"), MTYPES, refreshMatrix);
-    refreshMatrix();
-    $("#matrixModal").hidden = false;
-  };
-  $("#profileBtn").onclick = openProfile;
-  $("#compareBtn").onclick = openCompare;
-  $("#statsBtn").onclick = openStats;
+  // The analyses are tabs (views); the URL hash carries the active one so every view is linkable.
+  document.querySelectorAll(".view-tab[data-view]").forEach(b => b.onclick = () => { location.hash = VIEWS[b.dataset.view].hash; });
   $("#helpBtn").onclick = () => $("#helpModal").hidden = false;
   $("#legendBtn").onclick = () => $("#legendModal").hidden = false;
   $("#csvBtn").onclick = exportCSV;
@@ -122,7 +150,7 @@ function typeChips(el, set, cb){
 }
 
 /* ---- Overeenkomst (agreement matrix) ---- */
-function refreshMatrix(){ AG = computeAgreement(MTYPES); ORDER = clusterOrder(); renderMatrix(); }
+function refreshMatrix(){ AG = computeAgreement(MTYPES); ORDER = seriate(AG); renderMatrix(); }
 
 function computeAgreement(types){
   const counts = {};
@@ -149,10 +177,10 @@ function computeAgreement(types){
   return M;
 }
 // Seriation: average-linkage clustering so similar-voting parties end up adjacent.
-function clusterOrder(){
-  const slugs = Object.keys(AG);
+function seriate(M){
+  const slugs = Object.keys(M);
   if(slugs.length < 2) return slugs;
-  const dist = (a,b) => { const c = AG[a] && AG[a][b]; return c ? 100 - c.pct : 100; };
+  const dist = (a,b) => { const c = M[a] && M[a][b]; return c ? 100 - c.pct : 100; };
   let cl = slugs.map(s => ({m:[s]}));
   const cd = (c1,c2) => { let s=0,n=0; for(const a of c1.m) for(const b of c2.m){ s+=dist(a,b); n++; } return s/n; };
   while(cl.length > 1){
@@ -195,7 +223,6 @@ function openProfile(){
   }
   typeChips($("#profileTypes"), PTYPES, renderProfile);
   renderProfile();
-  $("#profileModal").hidden = false;
 }
 function profileStats(slug, types){
   let voor=0, tegen=0, onth=0, afw=0, win=0, decided=0;
@@ -255,7 +282,6 @@ function openCompare(){
   }
   typeChips($("#compareTypes"), CTYPES, renderCompare);
   renderCompare();
-  $("#compareModal").hidden = false;
 }
 function renderCompare(){
   const a = $("#cmpA").value, b = $("#cmpB").value;
@@ -283,7 +309,6 @@ function openStats(){
   if(!STYPES) STYPES = new Set(ALLTYPES);
   typeChips($("#statsTypes"), STYPES, renderStats);
   renderStats();
-  $("#statsModal").hidden = false;
 }
 const svgOpen = (w, h) => `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="grafiek" preserveAspectRatio="xMidYMid meet">`;
 const fmtMonth = ym => { const [y, m] = ym.split("-"); return `${["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"][+m-1]} ${y}`; };
@@ -455,6 +480,7 @@ function buildControls(types){
   $("#controversial").onchange = e => { state.controversial = e.target.checked; render(); };
   $("#onlyPinned").onchange = e => { state.onlyPinned = e.target.checked; render(); };
   $("#raw").onchange = e => { state.raw = e.target.checked; render(); };
+  $("#clusterCols").onchange = e => { state.cluster = e.target.checked; render(); };
 }
 
 function updatePartySummary(){
@@ -462,7 +488,37 @@ function updatePartySummary(){
   $("#psummary").textContent = n===total ? "Alle partijen" : (n===0 ? "Geen partijen" : `${n} van ${total} partijen`);
 }
 
-function visibleParties(){ return DATA.parties.filter(p=>state.parties.has(p.slug)); }
+// Column order for the table. Clustered: parties that vote alike sit together (agreement over
+// every stemming, same method as the Overeenkomst view); `sep` is the slug before which the two
+// two least-agreeing blocks meet — in practice the coalition/opposition seam. Parties with too few
+// votes for a reliable agreement keep their size order at the end.
+function tableOrder(){
+  if(TABLE_ORDER) return TABLE_ORDER;
+  const M = computeAgreement(new Set(ALLTYPES));
+  const order = seriate(M);
+  // The seam: cut the seriated row into two blocks where agreement within the blocks is highest
+  // relative to agreement across them (blocks of at least two parties).
+  const pct = (a, b) => { const c = M[a] && M[a][b]; return c ? c.pct : null; };
+  const avg = pairs => { const v = pairs.map(([a,b]) => pct(a,b)).filter(x => x !== null); return v.length ? v.reduce((s,x)=>s+x,0)/v.length : 0; };
+  const within = xs => avg(xs.flatMap((a,i) => xs.slice(i+1).map(b => [a,b])));
+  let sep = null, best = -Infinity;
+  for(let k = 2; k <= order.length - 2; k++){
+    const L = order.slice(0,k), R = order.slice(k);
+    const score = (within(L) + within(R))/2 - avg(L.flatMap(a => R.map(b => [a,b])));
+    if(score > best){ best = score; sep = order[k]; }
+  }
+  const rest = DATA.parties.map(p => p.slug).filter(s => !(s in M));
+  TABLE_ORDER = {order: [...order, ...rest], sep};
+  return TABLE_ORDER;
+}
+function visibleParties(){
+  const vis = DATA.parties.filter(p=>state.parties.has(p.slug));
+  if(!state.cluster) return vis;
+  const {order, sep} = tableOrder();
+  const rank = Object.fromEntries(order.map((s,i) => [s,i]));
+  return vis.slice().sort((a,b) => (rank[a.slug] ?? 99) - (rank[b.slug] ?? 99))
+            .map(p => p.slug === sep ? {...p, sep: true} : p);
+}
 
 function cellVerdict(v){ // returns {cls,label} or null for afwezig
   if(!v) return null;
@@ -498,14 +554,15 @@ function sortRows(rows){
   return rows.sort(c);
 }
 
-function cellHTML(m, slug, name){
+function cellHTML(m, slug, name, sep){
   const v = m.votes[slug];
   const r = cellVerdict(v);
-  if(!r) return `<td class="cell afw" title="${esc(name)}: afwezig"></td>`;
+  const sc = sep ? " sep" : "";
+  if(!r) return `<td class="cell afw${sc}" title="${esc(name)}: afwezig"></td>`;
   const split = v.agree>0 && v.disagree>0;
   const disp = state.raw ? `${v.agree}-${v.disagree}` : r.label;
   const tip = `${name}: ${v.agree} voor, ${v.disagree} tegen` + (v.abstain?`, ${v.abstain} onthouden`:"") + (split?" (niet unaniem)":"");
-  return `<td class="cell ${r.cls}${split&&!state.raw?" split":""}${state.raw?" raw":""}" title="${esc(tip)}">${disp}</td>`;
+  return `<td class="cell ${r.cls}${sc}${split&&!state.raw?" split":""}${state.raw?" raw":""}" title="${esc(tip)}">${disp}</td>`;
 }
 function rowHTML(m, vps){
   const pinned = state.pinned.has(m.id);
@@ -517,12 +574,12 @@ function rowHTML(m, vps){
       <div><div class="titel">${esc(m.title)}${srcLink(m)}${live}</div>
       <div class="meta"><span>${m.date}</span><span class="type t-${m.type}">${TYPE_LABEL[m.type]||m.type}</span>${res}${docLink(m)}${ind?`<span class="indieners" title="Indieners">${esc(ind)}</span>`:""}</div></div>
     </div></td>`;
-  return `<tr>${first}${vps.map(p=>cellHTML(m,p.slug,p.name)).join("")}</tr>`;
+  return `<tr>${first}${vps.map(p=>cellHTML(m,p.slug,p.name,p.sep)).join("")}</tr>`;
 }
 function tableHTML(rows, vps){
   if(!rows.length) return `<div class="empty">Geen stemmingen voor deze selectie.</div>`;
   const head = `<thead><tr><th class="onderwerp-h">Onderwerp</th>${
-    vps.map(p=>`<th title="${esc(p.name)}">${esc(pLabel(p.slug))}</th>`).join("")}</tr></thead>`;
+    vps.map(p=>`<th${p.sep?' class="sep"':""} title="${esc(p.name)}">${esc(pLabel(p.slug))}</th>`).join("")}</tr></thead>`;
   return `<div class="table-scroll"><table>${head}<tbody>${rows.map(m=>rowHTML(m,vps)).join("")}</tbody></table></div>`;
 }
 
@@ -713,7 +770,7 @@ async function liveTopUp(){
   DATA.moties.push(...rows);
   let newType = false;
   for(const t of new Set(rows.map(r => r.type))) if(!ALLTYPES.includes(t)){ ALLTYPES.push(t); state.types.add(t); newType = true; }
-  AG = ORDER = null;
+  AG = ORDER = TABLE_ORDER = null;
   const unknown = rows.reduce((s,r) => s + (r.unknownVotes||0), 0);
   $("#liveNote").hidden = false;
   $("#liveNote").innerHTML = `● <b>${rows.length} stemming${rows.length===1?"":"en"} live opgehaald</b> van Notubiz (${meetings.length} vergadering${meetings.length===1?"":"en"} na ${esc(lastDate)}) — nog niet in de dagelijkse snapshot.`

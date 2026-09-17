@@ -51,14 +51,15 @@
   <p class="staleNote" id="staleNote" hidden></p>
   <p class="liveNote" id="liveNote" hidden></p>
   <nav class="views" aria-label="Weergaven">
-    <span class="view-tab on" aria-current="page">Tabel</span>
-    <button id="statsBtn" class="view-tab"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Statistieken</button>
-    <button id="matrixBtn" class="view-tab"><svg class="ico" aria-hidden="true"><use href="#i-grid"/></svg>Overeenkomst</button>
-    <button id="profileBtn" class="view-tab"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg>Partijprofiel</button>
-    <button id="compareBtn" class="view-tab"><svg class="ico" aria-hidden="true"><use href="#i-compare"/></svg>Vergelijken</button>
+    <button id="tableBtn" class="view-tab on" aria-current="page" data-view="table">Tabel</button>
+    <button id="statsBtn" class="view-tab" data-view="stats"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Statistieken</button>
+    <button id="matrixBtn" class="view-tab" data-view="matrix"><svg class="ico" aria-hidden="true"><use href="#i-grid"/></svg>Overeenkomst</button>
+    <button id="profileBtn" class="view-tab" data-view="profile"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg>Partijprofiel</button>
+    <button id="compareBtn" class="view-tab" data-view="compare"><svg class="ico" aria-hidden="true"><use href="#i-compare"/></svg>Vergelijken</button>
   </nav>
 </header>
 
+<section id="tableView">
 <div class="controls">
   <div class="controls-row">
     <label class="field field-search">
@@ -102,6 +103,7 @@
           <div class="toggles">
             <span class="tog"><label><input type="checkbox" id="controversial"> Alleen omstreden</label><span class="help-q" title="Toon alleen stemmingen waarbij de partijen niet allemaal hetzelfde stemden">?</span></span>
             <label><input type="checkbox" id="onlyPinned"> Alleen vastgepind</label>
+            <span class="tog"><label><input type="checkbox" id="clusterCols" checked> Kolommen op stemgelijkenis</label><span class="help-q" title="Zet fracties die vaak hetzelfde stemmen naast elkaar; de lijn markeert de grootste kloof. Uit = op fractiegrootte">?</span></span>
             <span class="tog" id="rawToggle"><label><input type="checkbox" id="raw"> Ruwe getallen</label><span class="help-q" title="Toon de aantallen (bijv. 6-0) in plaats van V/T">?</span></span>
           </div>
           <div class="vpanel-actions">
@@ -119,13 +121,9 @@
   <div id="pinnedBlock"></div>
   <div id="mainBlock"></div>
 </div>
-<p class="foot">Open data · gratis · <a href="https://github.com/lucsmits5-afk/wa-hat-wat-stimd" target="_blank" rel="noopener">broncode op GitHub</a> · afgeleid van <a href="https://github.com/carefulCamel61097/wie-stemde-wat" target="_blank" rel="noopener">Wie stemde wat?</a></p>
-</div><!-- /#app -->
-
-<div class="modal" id="statsModal" hidden>
-  <div class="modal-card wide">
-    <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Statistieken</h2>
-      <button class="modal-close" data-close="statsModal" title="Sluiten" aria-label="Sluiten">&times;</button></div>
+</section><!-- /#tableView -->
+<section class="view-panel" id="statsView" hidden>
+    <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Statistieken</h2></div>
     <p class="modal-sub">Overzicht van alle stemmingen in deze Statenperiode: hoeveel er zijn, wie indient, wie wint en hoe omstreden ze zijn.</p>
     <div class="modal-controls"><span class="mc-label">Tel mee:</span><span class="chips" id="statsTypes"></span></div>
     <div class="stat-grid" id="statsKpis"></div>
@@ -135,13 +133,10 @@
       <section class="chart"><h3>Aan de winnende kant</h3><p class="chart-sub">Hoe vaak een fractie meestemde met de uitslag — coalitie en oppositie in één beeld.</p><div id="chartWinning"></div></section>
       <section class="chart"><h3>Hoe omstreden</h3><p class="chart-sub">Verdeling van het verschil tussen voor- en tegenstemmen: van unaniem tot een nipte meerderheid.</p><div id="chartMargins"></div></section>
     </div>
-  </div>
-</div>
+</section>
 
-<div class="modal" id="matrixModal" hidden>
-  <div class="modal-card">
-    <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-grid"/></svg>Partij-overeenkomst</h2>
-      <button class="modal-close" data-close="matrixModal" title="Sluiten" aria-label="Sluiten">&times;</button></div>
+<section class="view-panel" id="matrixView" hidden>
+    <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-grid"/></svg>Partij-overeenkomst</h2></div>
     <p class="modal-sub">Percentage van de stemmingen waarin twee partijen hetzelfde stemden
       (voor / tegen / onthouden), over stemmingen waarbij beide aanwezig waren. Partijen die
       vaak hetzelfde stemmen staan bij elkaar.</p>
@@ -149,26 +144,20 @@
     <div id="matrixBody"></div>
     <div class="matrix-legend"><span>weinig overeenkomst</span><span class="bar"></span><span>veel overeenkomst</span>
       <span style="margin-left:14px"><span class="vbadge" style="background:#eeece6;color:#77746c;font-style:italic">%</span> te weinig gezamenlijke stemmingen</span></div>
-  </div>
-</div>
+</section>
 
-<div class="modal" id="profileModal" hidden>
-  <div class="modal-card">
-    <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg>Partijprofiel</h2>
-      <button class="modal-close" data-close="profileModal" title="Sluiten" aria-label="Sluiten">&times;</button></div>
+<section class="view-panel" id="profileView" hidden>
+    <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg>Partijprofiel</h2></div>
     <p class="modal-sub">Hoe vaak een partij aan de winnende kant stond, en de stemmingen waarbij ze als enige tegen de rest in stemde.</p>
     <div class="modal-controls">
       <label class="field">Partij: <select id="profileParty"></select></label>
       <span class="mc-label">Tel mee:</span><span class="chips" id="profileTypes"></span>
     </div>
     <div id="profileBody"></div>
-  </div>
-</div>
+</section>
 
-<div class="modal" id="compareModal" hidden>
-  <div class="modal-card">
-    <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-compare"/></svg>Vergelijk partijen</h2>
-      <button class="modal-close" data-close="compareModal" title="Sluiten" aria-label="Sluiten">&times;</button></div>
+<section class="view-panel" id="compareView" hidden>
+    <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-compare"/></svg>Vergelijk partijen</h2></div>
     <p class="modal-sub">Kies twee partijen om te zien op welke stemmingen ze verschillend stemden.</p>
     <div class="modal-controls">
       <label class="field">Partij A: <select id="cmpA"></select></label>
@@ -176,8 +165,14 @@
       <span class="mc-label">Tel mee:</span><span class="chips" id="compareTypes"></span>
     </div>
     <div id="compareBody"></div>
-  </div>
-</div>
+</section>
+
+<p class="foot">Open data · gratis · <a href="https://github.com/lucsmits5-afk/wa-hat-wat-stimd" target="_blank" rel="noopener">broncode op GitHub</a> · afgeleid van <a href="https://github.com/carefulCamel61097/wie-stemde-wat" target="_blank" rel="noopener">Wie stemde wat?</a></p>
+</div><!-- /#app -->
+
+
+
+
 
 <div class="modal" id="helpModal" hidden>
   <div class="modal-card">

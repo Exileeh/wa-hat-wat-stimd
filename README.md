@@ -17,8 +17,12 @@ niveaus, 12 provincies), teruggebracht tot alleen Fryslân en uitgebreid met een
 - Tabel: filters (type, partij, zoeken op onderwerp of indiener, uitslag, "alleen omstreden"),
   vastpinnen, sorteren, ruwe getallen, **CSV-download** van de selectie.
 - **📄 Moasje / Amendemint**: opent het document op het Statenportaal.
-- Vier analyses: **Statistieken** (stemmingen per maand · indieners en hun succes · aan de winnende
-  kant · hoe omstreden), **Overeenkomst** (overeenkomstmatrix), **Partijprofiel** en **Vergelijken**.
+- Vier analyses als eigen weergaven (tabs, deelbaar via `#statistieken`, `#overeenkomst`,
+  `#partijprofiel`, `#vergelijken`): **Statistieken** (stemmingen per maand · indieners en hun succes ·
+  aan de winnende kant · hoe omstreden), **Overeenkomst** (overeenkomstmatrix), **Partijprofiel** en
+  **Vergelijken**.
+- Kolomvolgorde op **stemgelijkenis**: fracties die vaak hetzelfde stemmen staan naast elkaar, met een
+  blauwe lijn op de grootste kloof (in de praktijk coalitie | oppositie). Uit te zetten onder *Weergave*.
 - **Live bijladen**: stemmingen van vergaderingen na de laatste dagelijkse snapshot haalt de
   browser zelf op bij `api.notubiz.nl` (gemarkeerd als *live*).
 

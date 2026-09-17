@@ -61,7 +61,7 @@ h1 .q{color:var(--accent)}
   padding:7px 12px;font:600 13px/1 var(--sans);transition:border-color .12s,color .12s,background .12s}
 .helpbtn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-tint)}
 
-/* weergave-tabs: Tabel (actief) + de vier analyses (openen nu nog modals) */
+/* weergave-tabs: Tabel + de vier analyses (elke tab is een eigen weergave, met URL-hash) */
 .views{display:flex;gap:2px;margin:16px -8px 0;overflow-x:auto;scrollbar-width:none}
 .views::-webkit-scrollbar{display:none}
 .view-tab{display:inline-flex;align-items:center;gap:7px;flex:none;padding:10px 12px 11px;margin-bottom:-1px;
@@ -197,6 +197,14 @@ td.cell.raw{font-size:11px;font-weight:600;letter-spacing:.02em}
 .empty{padding:40px 24px;text-align:center;color:var(--muted);font-size:14px}
 .empty small{display:block;margin-top:6px;font-size:12.5px}
 
+/* ---- analyse-weergaven (tabs) ---- */
+.view-panel{padding:18px 28px 44px;max-width:1240px}
+.view-panel .modal-head{padding-bottom:10px}
+.view-panel .modal-sub{margin:12px 0 14px}
+
+/* scheidingslijn in de tabel: de grootste kloof in stemgelijkenis (coalitie | oppositie) */
+th.sep,td.sep{border-left:3px solid var(--blue)}
+
 /* ---- footer ---- */
 .foot{margin:0;padding:18px 28px 30px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line-2)}
 .foot a{color:var(--muted)}
@@ -318,6 +326,7 @@ table.matrix td.lown{background:#eeece6;color:#77746c;font-style:italic}
   .tb-right{width:100%;justify-content:space-between;margin-left:0}
   .vpanel{right:0}
   .wrap{padding:12px 10px 32px}
+  .view-panel{padding:14px 12px 32px}
   .table-scroll{max-height:none}
   table.matrix td{width:27px;height:24px;font-size:10px}
   table.matrix th{padding:2px 4px;font-size:10px}
