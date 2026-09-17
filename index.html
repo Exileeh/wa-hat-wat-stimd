@@ -18,12 +18,15 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Wa hat wat stimd? — stemgedrag in de Provinciale Staten van Fryslân">
 <meta name="twitter:description" content="Zie per partij hoe er gestemd is in de Provinciale Staten van Fryslân — per stemming Voor of Tegen, op basis van open data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600&family=Source+Sans+3:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="app.css">
 </head>
 <body>
 <div id="app">
 <header class="top">
-  <button id="helpBtn" class="helpbtn">&#9432; Uitleg</button>
+  <button id="helpBtn" class="helpbtn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg> Uitleg</button>
   <h1>Wa hat wat stimd<span class="q">?</span></h1>
   <p class="lead" id="appLead">Stemgedrag per partij in de <b>Provinciale Staten van Fryslân</b> — <b>Voor</b> of <b>Tegen</b> per stemming.</p>
   <p class="src" id="src"></p>
@@ -66,10 +69,10 @@
       <span class="tog" id="rawToggle"><label><input type="checkbox" id="raw"> Ruwe getallen</label><span class="help-q" title="Toon de aantallen (bijv. 6-0) in plaats van V/T">?</span></span>
     </div>
     <div class="actions">
-      <button id="statsBtn" class="bigbtn">&#128200; Statistieken</button>
-      <button id="matrixBtn" class="bigbtn">&#128202; Overeenkomst</button>
-      <button id="profileBtn" class="bigbtn">&#128100; Partijprofiel</button>
-      <button id="compareBtn" class="bigbtn">&#8646; Vergelijken</button>
+      <button id="statsBtn" class="bigbtn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M6 16l4-5 4 3 4-7"/></svg> Statistieken</button>
+      <button id="matrixBtn" class="bigbtn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 12h16M12 4v16"/></svg> Overeenkomst</button>
+      <button id="profileBtn" class="bigbtn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> Partijprofiel</button>
+      <button id="compareBtn" class="bigbtn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg> Vergelijken</button>
     </div>
   </div>
 </div>
@@ -80,8 +83,8 @@
     <span class="chips small" id="typeChips"></span>
     <span class="tb-right">
       <span class="count" id="count"></span>
-      <button id="csvBtn" class="csvbtn" title="Download de getoonde stemmingen als CSV-bestand">&#8675; CSV</button>
-      <button id="legendBtn" class="iconbtn" title="Uitleg van de kleuren">&#9432;</button>
+      <button id="csvBtn" class="csvbtn" title="Download de getoonde stemmingen als CSV-bestand"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> CSV</button>
+      <button id="legendBtn" class="iconbtn" title="Uitleg van de kleuren" aria-label="Uitleg van de kleuren"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></button>
     </span>
   </div>
   <div id="pinnedBlock"></div>
@@ -92,7 +95,7 @@
 
 <div class="modal" id="statsModal" hidden>
   <div class="modal-card wide">
-    <div class="modal-head"><h2>&#128200; Statistieken</h2>
+    <div class="modal-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M6 16l4-5 4 3 4-7"/></svg> Statistieken</h2>
       <button class="modal-close" data-close="statsModal" title="Sluiten">&times;</button></div>
     <p class="modal-sub">Overzicht van alle stemmingen in deze Statenperiode: hoeveel er zijn, wie indient, wie wint en hoe omstreden ze zijn.</p>
     <div class="modal-controls"><span class="mc-label">Tel mee:</span><span class="chips" id="statsTypes"></span></div>
@@ -108,7 +111,7 @@
 
 <div class="modal" id="matrixModal" hidden>
   <div class="modal-card">
-    <div class="modal-head"><h2>&#128202; Partij-overeenkomst</h2>
+    <div class="modal-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 12h16M12 4v16"/></svg> Partij-overeenkomst</h2>
       <button class="modal-close" data-close="matrixModal" title="Sluiten">&times;</button></div>
     <p class="modal-sub">Percentage van de stemmingen waarin twee partijen hetzelfde stemden
       (voor / tegen / onthouden), over stemmingen waarbij beide aanwezig waren. Partijen die
@@ -122,7 +125,7 @@
 
 <div class="modal" id="profileModal" hidden>
   <div class="modal-card">
-    <div class="modal-head"><h2>&#128100; Partijprofiel</h2>
+    <div class="modal-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> Partijprofiel</h2>
       <button class="modal-close" data-close="profileModal" title="Sluiten">&times;</button></div>
     <p class="modal-sub">Hoe vaak een partij aan de winnende kant stond, en de stemmingen waarbij ze als enige tegen de rest in stemde.</p>
     <div class="modal-controls">
@@ -135,7 +138,7 @@
 
 <div class="modal" id="compareModal" hidden>
   <div class="modal-card">
-    <div class="modal-head"><h2>&#8646; Vergelijk partijen</h2>
+    <div class="modal-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg> Vergelijk partijen</h2>
       <button class="modal-close" data-close="compareModal" title="Sluiten">&times;</button></div>
     <p class="modal-sub">Kies twee partijen om te zien op welke stemmingen ze verschillend stemden.</p>
     <div class="modal-controls">
@@ -149,7 +152,7 @@
 
 <div class="modal" id="helpModal" hidden>
   <div class="modal-card">
-    <div class="modal-head"><h2>&#9432; Hoe werkt deze site?</h2>
+    <div class="modal-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg> Hoe werkt deze site?</h2>
       <button class="modal-close" data-close="helpModal" title="Sluiten">&times;</button></div>
     <div class="help">
       <h3 class="section">Wat is dit?</h3>
