@@ -3,7 +3,7 @@
     "province": "Noord-Brabant",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-09-10T11:50:46+00:00",
+    "generated_at": "2026-09-17T12:36:26+00:00",
     "source": "https://noordbrabant.bestuurlijkeinformatie.nl",
     "sourceName": "",
     "license": "Open data - Provincie Noord-Brabant (iBabs publieksportaal)",
@@ -869,11 +869,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -887,6 +882,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -959,11 +959,6 @@
           "disagree": 4,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -977,6 +972,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -1039,11 +1039,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 2,
           "disagree": 2,
@@ -1056,6 +1051,11 @@
         },
         "volt": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -1139,11 +1139,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -1157,6 +1152,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -1229,11 +1229,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -1247,6 +1242,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -1319,11 +1319,6 @@
           "disagree": 4,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -1337,6 +1332,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -1409,11 +1409,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -1427,6 +1422,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -3604,13 +3604,13 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
+        "pvv": {
+          "agree": 3,
           "disagree": 0,
           "abstain": 0
         },
-        "pvv": {
-          "agree": 3,
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -3704,11 +3704,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -3722,6 +3717,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 8,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -9089,11 +9089,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "sp": {
           "agree": 4,
           "disagree": 0,
@@ -9101,6 +9096,11 @@
         },
         "volt": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -9184,11 +9184,6 @@
           "disagree": 4,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 0,
           "disagree": 4,
@@ -9207,6 +9202,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -9549,11 +9549,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -9567,6 +9562,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -9639,11 +9639,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -9657,6 +9652,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -9729,11 +9729,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -9747,6 +9742,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -9819,11 +9819,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -9837,6 +9832,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -9879,11 +9879,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
         "volt": {
           "agree": 1,
           "disagree": 0,
@@ -9891,6 +9886,11 @@
         },
         "vvd": {
           "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
           "disagree": 0,
           "abstain": 0
         },
@@ -9999,11 +9999,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -10017,6 +10012,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -10089,11 +10089,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -10107,6 +10102,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -10179,11 +10179,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -10197,6 +10192,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -10339,11 +10339,6 @@
           "disagree": 1,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -10357,6 +10352,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 8,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -10419,11 +10419,6 @@
           "disagree": 1,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -10437,6 +10432,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 8,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -10499,11 +10499,6 @@
           "disagree": 1,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -10517,6 +10512,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 8,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -10579,11 +10579,6 @@
           "disagree": 1,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -10597,6 +10592,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 8,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -12104,11 +12104,6 @@
           "disagree": 4,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -12127,6 +12122,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -12199,11 +12199,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -12217,6 +12212,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -12289,11 +12289,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -12307,6 +12302,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -16534,11 +16534,6 @@
           "disagree": 4,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -16547,6 +16542,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -16609,11 +16609,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -16627,6 +16622,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -16689,11 +16689,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -16707,6 +16702,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -16769,11 +16769,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -16787,6 +16782,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -16849,11 +16849,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -16867,6 +16862,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -16924,11 +16924,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 0,
           "disagree": 4,
@@ -16947,6 +16942,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -17179,11 +17179,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -17202,6 +17197,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -17269,11 +17269,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -17287,6 +17282,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -17339,11 +17339,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -17361,6 +17356,11 @@
         },
         "vvd": {
           "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
           "disagree": 0,
           "abstain": 0
         },
@@ -17609,11 +17609,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -17631,6 +17626,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 2,
           "disagree": 0,
           "abstain": 0
         },
@@ -17684,11 +17684,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -17701,6 +17696,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 2,
           "disagree": 0,
           "abstain": 0
         },
@@ -17779,11 +17779,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 2,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -17796,6 +17791,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 2,
           "disagree": 0,
           "abstain": 0
         },
@@ -17894,11 +17894,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 2,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -17912,6 +17907,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 2,
           "abstain": 0
         }
       },
@@ -17984,11 +17984,6 @@
           "disagree": 3,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 2,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -18002,6 +17997,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 2,
           "abstain": 0
         }
       },
@@ -18424,11 +18424,6 @@
           "disagree": 4,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -18442,6 +18437,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -18514,11 +18514,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -18532,6 +18527,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -18599,11 +18599,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -18622,6 +18617,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -19404,11 +19404,6 @@
           "disagree": 4,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -19427,6 +19422,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -24539,11 +24539,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 2,
@@ -24557,6 +24552,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -24624,11 +24624,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 2,
@@ -24647,6 +24642,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -25979,11 +25979,6 @@
           "disagree": 3,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -25997,6 +25992,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 8,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -26069,11 +26069,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -26087,6 +26082,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 8,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -26149,11 +26149,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 0,
           "disagree": 4,
@@ -26177,6 +26172,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -26229,11 +26229,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "sp": {
           "agree": 3,
           "disagree": 0,
@@ -26251,6 +26246,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -26334,11 +26334,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -26357,6 +26352,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -34129,11 +34129,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -34152,6 +34147,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -34219,11 +34219,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -34242,6 +34237,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -34309,11 +34309,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -34332,6 +34327,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -34574,11 +34574,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -34601,6 +34596,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         }
@@ -34669,11 +34669,6 @@
           "disagree": 4,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -34692,6 +34687,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -34759,11 +34759,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -34782,6 +34777,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -35574,11 +35574,6 @@
           "disagree": 4,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -35592,6 +35587,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -35669,11 +35669,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -35682,6 +35677,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 7,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -35754,11 +35754,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -35772,6 +35767,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 7,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -35844,11 +35844,6 @@
           "disagree": 4,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -35862,6 +35857,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 7,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -35934,11 +35934,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -35952,6 +35947,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 7,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -36024,11 +36024,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -36042,6 +36037,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 7,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -36109,11 +36109,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 3,
@@ -36132,6 +36127,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -37369,11 +37369,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -37392,6 +37387,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -37464,11 +37464,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -37482,6 +37477,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -37554,11 +37554,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -37572,6 +37567,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -42604,11 +42604,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -42622,6 +42617,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -42689,11 +42689,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -42712,6 +42707,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -42754,11 +42754,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 3,
           "disagree": 0,
@@ -42771,6 +42766,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -42874,11 +42874,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -42892,6 +42887,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -42954,11 +42954,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -42972,6 +42967,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -43044,11 +43044,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -43062,6 +43057,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -43134,11 +43134,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -43152,6 +43147,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -43194,11 +43194,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "sp": {
           "agree": 4,
           "disagree": 0,
@@ -43211,6 +43206,11 @@
         },
         "vvd": {
           "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -43314,11 +43314,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -43332,6 +43327,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -43649,11 +43649,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -43672,6 +43667,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -44454,11 +44454,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -44481,6 +44476,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         }
@@ -44549,11 +44549,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -44572,6 +44567,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -44644,11 +44644,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -44662,6 +44657,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -44729,11 +44729,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -44752,6 +44747,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -44809,11 +44809,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -44836,6 +44831,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -44904,11 +44904,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -44931,6 +44926,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         }
@@ -44989,11 +44989,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -45016,6 +45011,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -45084,11 +45084,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -45111,6 +45106,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         }
@@ -45174,11 +45174,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -45201,6 +45196,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         }
@@ -45264,11 +45264,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -45291,6 +45286,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         }
@@ -45354,11 +45354,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -45381,6 +45376,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         }
@@ -45444,11 +45444,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -45471,6 +45466,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         }
@@ -45519,11 +45519,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "sp": {
           "agree": 4,
           "disagree": 0,
@@ -45536,6 +45531,11 @@
         },
         "vvd": {
           "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -45624,11 +45624,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -45651,6 +45646,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         }
@@ -45989,11 +45989,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -46012,6 +46007,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -48749,11 +48749,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "volt": {
           "agree": 1,
           "disagree": 0,
@@ -48766,6 +48761,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -48844,11 +48844,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "sp": {
           "agree": 4,
           "disagree": 0,
@@ -48866,6 +48861,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -48939,11 +48939,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "volt": {
           "agree": 1,
           "disagree": 0,
@@ -48956,6 +48951,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -49049,11 +49049,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -49072,6 +49067,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -49139,11 +49139,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -49162,6 +49157,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -49324,11 +49324,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -49342,6 +49337,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -49669,11 +49669,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -49696,6 +49691,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -49769,11 +49769,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -49792,6 +49787,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -49864,11 +49864,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 0,
           "disagree": 4,
@@ -49882,6 +49877,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -49949,11 +49949,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -49972,6 +49967,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -50039,11 +50039,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -50062,6 +50057,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -50129,11 +50129,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -50152,6 +50147,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -50209,11 +50209,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -50236,6 +50231,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
           "disagree": 0,
           "abstain": 0
         },
@@ -50299,11 +50299,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -50326,6 +50321,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
           "disagree": 0,
           "abstain": 0
         },
@@ -50394,11 +50394,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 4,
           "disagree": 0,
@@ -50421,6 +50416,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
           "disagree": 0,
           "abstain": 0
         }
@@ -50489,11 +50489,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -50512,6 +50507,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -50584,11 +50584,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -50602,6 +50597,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -50674,11 +50674,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -50692,6 +50687,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -50759,11 +50759,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -50777,6 +50772,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -50844,11 +50844,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "volt": {
           "agree": 0,
           "disagree": 1,
@@ -50862,6 +50857,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -50929,11 +50929,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -50947,6 +50942,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -51014,11 +51014,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -51032,6 +51027,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -51094,11 +51094,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -51117,6 +51112,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -51184,11 +51184,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 0,
           "disagree": 4,
@@ -51202,6 +51197,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -51244,11 +51244,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "sp": {
           "agree": 4,
           "disagree": 0,
@@ -51266,6 +51261,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -51349,11 +51349,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -51372,6 +51367,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -51444,11 +51444,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -51457,6 +51452,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -51529,11 +51529,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -51542,6 +51537,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -51564,14 +51564,14 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 2,
-          "disagree": 2,
-          "abstain": 0
-        },
         "volt": {
           "agree": 1,
           "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 2,
+          "disagree": 2,
           "abstain": 0
         },
         "bbb": {
@@ -51659,11 +51659,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "sp": {
           "agree": 4,
           "disagree": 0,
@@ -51671,6 +51666,11 @@
         },
         "volt": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -51779,11 +51779,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -51797,6 +51792,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -51854,11 +51854,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 0,
           "disagree": 4,
@@ -51882,6 +51877,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -51944,11 +51944,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 0,
           "disagree": 4,
@@ -51967,6 +51962,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -52009,11 +52009,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "sp": {
           "agree": 4,
           "disagree": 0,
@@ -52026,6 +52021,11 @@
         },
         "vvd": {
           "agree": 9,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -52089,11 +52089,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "sp": {
           "agree": 4,
           "disagree": 0,
@@ -52101,6 +52096,11 @@
         },
         "volt": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -52214,12 +52214,12 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
+        "sp": {
           "agree": 0,
           "disagree": 4,
           "abstain": 0
         },
-        "sp": {
+        "pvda": {
           "agree": 0,
           "disagree": 4,
           "abstain": 0
@@ -52284,11 +52284,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -52307,6 +52302,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -52374,11 +52374,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -52392,6 +52387,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -52454,11 +52454,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -52477,6 +52472,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -52554,14 +52554,14 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -52629,11 +52629,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -52647,6 +52642,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -52709,11 +52709,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -52732,6 +52727,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -52799,11 +52799,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -52817,6 +52812,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -52889,11 +52889,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "volt": {
           "agree": 0,
           "disagree": 1,
@@ -52902,6 +52897,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -52964,11 +52964,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -52987,6 +52982,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -53059,11 +53059,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -53072,6 +53067,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -53139,11 +53139,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -53157,6 +53152,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -53224,11 +53224,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -53242,6 +53237,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -53309,11 +53309,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -53327,6 +53322,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -53389,11 +53389,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -53412,6 +53407,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -53479,11 +53479,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -53497,6 +53492,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -53529,11 +53529,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "sp": {
           "agree": 4,
           "disagree": 0,
@@ -53551,6 +53546,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -53649,11 +53649,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -53672,6 +53667,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -53744,11 +53744,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -53762,6 +53757,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -53844,14 +53844,14 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -53929,11 +53929,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "volt": {
           "agree": 0,
           "disagree": 1,
@@ -53942,6 +53937,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -54019,11 +54019,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "volt": {
           "agree": 0,
           "disagree": 1,
@@ -54032,6 +54027,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 9,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -54084,11 +54084,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 3,
-          "disagree": 0,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 3,
           "disagree": 0,
@@ -54111,6 +54106,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
           "disagree": 0,
           "abstain": 0
         },
@@ -54194,11 +54194,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 0,
           "disagree": 3,
@@ -54212,6 +54207,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },
@@ -54254,11 +54254,6 @@
           "disagree": 0,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 4,
-          "disagree": 0,
-          "abstain": 0
-        },
         "sp": {
           "agree": 4,
           "disagree": 0,
@@ -54276,6 +54271,11 @@
         },
         "christenunie-sgp": {
           "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
           "disagree": 0,
           "abstain": 0
         },
@@ -54359,11 +54359,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -54382,6 +54377,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -54444,11 +54444,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -54467,6 +54462,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -54544,11 +54544,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 0,
           "disagree": 4,
@@ -54557,6 +54552,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 8,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -54629,11 +54629,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -54647,6 +54642,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -54714,11 +54714,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -54737,6 +54732,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -54804,11 +54804,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -54827,6 +54822,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -54894,11 +54894,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -54917,6 +54912,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -54979,11 +54979,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "pvv": {
           "agree": 0,
           "disagree": 4,
@@ -55007,6 +55002,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -55079,11 +55079,6 @@
           "disagree": 5,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -55097,6 +55092,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 8,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -55164,11 +55164,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -55187,6 +55182,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -55259,11 +55259,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 4,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -55277,6 +55272,11 @@
         "vvd": {
           "agree": 0,
           "disagree": 8,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
           "abstain": 0
         }
       },
@@ -55344,11 +55344,6 @@
           "disagree": 2,
           "abstain": 0
         },
-        "pvda": {
-          "agree": 0,
-          "disagree": 3,
-          "abstain": 0
-        },
         "sp": {
           "agree": 0,
           "disagree": 4,
@@ -55367,6 +55362,11 @@
         "christenunie-sgp": {
           "agree": 0,
           "disagree": 1,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 3,
           "abstain": 0
         }
       },

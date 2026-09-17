@@ -3,7 +3,7 @@
     "province": "Nederlandse afvaardiging",
     "body": "Europees Parlement",
     "term": "2024–2029",
-    "generated_at": "2026-09-10T12:22:18+00:00",
+    "generated_at": "2026-09-17T13:08:29+00:00",
     "source": "https://howtheyvote.eu",
     "sourceName": "HowTheyVote.eu",
     "license": "Open data - HowTheyVote.eu (ODbL 1.0) op basis van hoofdelijke stemmingen (roll-call) van het Europees Parlement",
@@ -14,7 +14,7 @@
     "note": "De 31 Nederlandse Europarlementariërs, gegroepeerd per Nederlandse partij, met exacte aantallen (voor/tegen/onthouding). Alleen hoofdelijke eindstemmingen. Bron: HowTheyVote.eu (ODbL) + Europees Parlement Open Data (fractie-indeling).",
     "granularity": "member",
     "counts": {
-      "moties": 614,
+      "moties": 654,
       "parties": 10
     },
     "types": [
@@ -122,6 +122,2586 @@
     }
   ],
   "moties": [
+    {
+      "id": 196157,
+      "date": "2026-09-17",
+      "title": "The role of social, economic and environmental standards in safeguarding fair competition for all aquatic food products and improving food security",
+      "type": "initiatiefverslag",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196157",
+      "votes": {
+        "pvv": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 4
+        },
+        "gl-pvda": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 11,
+        "disagree": 13
+      }
+    },
+    {
+      "id": 197199,
+      "date": "2026-09-17",
+      "title": "The recent hybrid attacks and instrumentalisation of migrants in Ceuta and the need for a coordinated response to protect EU’s external borders",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/197199",
+      "votes": {
+        "pvv": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 0,
+          "disagree": 7,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 13,
+        "disagree": 14
+      }
+    },
+    {
+      "id": 196774,
+      "date": "2026-09-17",
+      "title": "Strengthening global health resilience in partner countries",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196774",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 1,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 6
+      }
+    },
+    {
+      "id": 197216,
+      "date": "2026-09-17",
+      "title": "Post-electoral repression in Zambia and the killing of Mutotwe Kafwaya",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/197216",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 5
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 22,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 197242,
+      "date": "2026-09-17",
+      "title": "Political prisoners in Cuba, in particular the case of Félix Navarro and his daughter Saylí Navarro",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/197242",
+      "votes": {
+        "pvv": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 9
+      }
+    },
+    {
+      "id": 196796,
+      "date": "2026-09-17",
+      "title": "Narco-trafficking in Europe’s waters: protecting our borders and supporting our law enforcement officers",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196796",
+      "votes": {
+        "pvv": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 28,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 196147,
+      "date": "2026-09-17",
+      "title": "Impact of social media and the online environment on young people",
+      "type": "initiatiefverslag",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196147",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 2
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 20,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 196838,
+      "date": "2026-09-17",
+      "title": "Evaluation of the Common Fisheries Policy and follow-up",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196838",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 13,
+        "disagree": 14
+      }
+    },
+    {
+      "id": 197236,
+      "date": "2026-09-17",
+      "title": "Deteriorating situation of media freedom and freedom of expression in Hong Kong following the recent arrest of bookseller Leticia Wong and the convictions of Lee Cheuk-yan and Chow Hang-tung",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/197236",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 4
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 22,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 196143,
+      "date": "2026-09-17",
+      "title": "An EU health workforce crisis plan: sustainability of healthcare systems and employment and working conditions in the healthcare sector",
+      "type": "initiatiefverslag",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196143",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 2
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 16,
+        "disagree": 9
+      }
+    },
+    {
+      "id": 196483,
+      "date": "2026-09-16",
+      "title": "Objection pursuant to Rule 115(2) and (3) of the Rules of procedure on renewing the authorisation for the placing on the market of products containing, consisting of or produced from genetically modified maize MON 87460, pursuant to Regulation (EC) No 1829/2003 of the European Parliament and of the Council - D115874",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196483",
+      "votes": {
+        "pvv": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 12
+      }
+    },
+    {
+      "id": 196510,
+      "date": "2026-09-16",
+      "title": "Objection pursuant to Rule 115(2) and (3) of the Rules of procedure on authorising the placing on the market of products containing, consisting of or produced from genetically modified soybean MON 94313, pursuant to Regulation (EC) No 1829/2003 of the European Parliament and of the Council - D115872",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196510",
+      "votes": {
+        "pvv": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 21,
+        "disagree": 9
+      }
+    },
+    {
+      "id": 196493,
+      "date": "2026-09-16",
+      "title": "Objection pursuant to Rule 115(2) and (3) of the Rules of procedure on authorising the placing on the market of products containing, consisting of or produced from genetically modified soybean GMB151 x DAS-44406-6, pursuant to Regulation (EC) No 1829/2003 of the European Parliament and of the Council - D115873",
+      "type": "resolutie",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196493",
+      "votes": {
+        "pvv": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 21,
+        "disagree": 10
+      }
+    },
+    {
+      "id": 195830,
+      "date": "2026-09-16",
+      "title": "Nuclear decommissioning assistance programme of the Ignalina nuclear power plant in Lithuania for the period 2028-2034, and repealing Regulation (EU) 2021/101",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195830",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 25,
+        "disagree": 6
+      }
+    },
+    {
+      "id": 195857,
+      "date": "2026-09-16",
+      "title": "Laying down the rules for participation of the Kingdom of Norway in the GOVSATCOM component of the Union Space Programme and in the Union Secure Connectivity Programme",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195857",
+      "votes": {
+        "pvv": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 30,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 195856,
+      "date": "2026-09-16",
+      "title": "Laying down the rules for participation of Iceland in the GOVSATCOM component of the Union Space Programme and in the Union Secure Connectivity Programme",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195856",
+      "votes": {
+        "pvv": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 31,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 196176,
+      "date": "2026-09-16",
+      "title": "Hybrid warfare and the protection of the EU’s territorial integrity and critical security and defence infrastructure",
+      "type": "initiatiefverslag",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196176",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 25,
+        "disagree": 6
+      }
+    },
+    {
+      "id": 196156,
+      "date": "2026-09-16",
+      "title": "Gender inequalities in health, specifically as regards gender-specific conditions",
+      "type": "initiatiefverslag",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196156",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 21,
+        "disagree": 9
+      }
+    },
+    {
+      "id": 196138,
+      "date": "2026-09-16",
+      "title": "Establishing the Single Market and Customs Programme for the period 2028-2034 and repealing Regulations (EU) 2021/444, (EU) 2021/690, (EU) 2021/785, (EU) 2021/847 and (EU) 2021/1077",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196138",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 2
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 22,
+        "disagree": 6
+      }
+    },
+    {
+      "id": 195831,
+      "date": "2026-09-16",
+      "title": "Establishing the Instrument for Nuclear Safety Cooperation and Decommissioning for the period 2028-2034 and repealing Regulations (Euratom) 2021/100 and (Euratom) 2021/948",
+      "type": "overig",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195831",
+      "votes": {
+        "pvv": {
+          "agree": 1,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 25,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 195855,
+      "date": "2026-09-16",
+      "title": "Conclusion of an agreement between the European Union and the Swiss Confederation on the transfer of passenger name record (PNR) data for the prevention, detection, investigation and prosecution of terrorist offences and serious crime",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195855",
+      "votes": {
+        "pvv": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 8
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 2
+        }
+      },
+      "totals": {
+        "agree": 20,
+        "disagree": 1
+      }
+    },
+    {
+      "id": 196162,
+      "date": "2026-09-16",
+      "title": "An EU cardiovascular diseases strategy",
+      "type": "initiatiefverslag",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196162",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 6
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 24,
+        "disagree": 1
+      }
+    },
+    {
+      "id": 196161,
+      "date": "2026-09-16",
+      "title": "Amending Regulations (EC) No 1907/2006, (EC) No 1272/2008, (EU) No 528/2012, (EU) 2019/1021 and (EU) 2021/697 as regards defence readiness and facilitating defence investments and conditions for defence industry",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196161",
+      "votes": {
+        "pvv": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 30,
+        "disagree": 1
+      }
+    },
+    {
+      "id": 196519,
+      "date": "2026-09-16",
+      "title": "Amending Regulations (EC) No 1907/2006, (EC) No 1272/2008, (EU) No 528/2012, (EU) 2019/1021 and (EU) 2021/697 as regards defence readiness and facilitating defence investments and conditions for defence industry",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196519",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 6,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 1,
+        "disagree": 30
+      }
+    },
+    {
+      "id": 196116,
+      "date": "2026-09-16",
+      "title": "Amending Directives 2009/43/EC and 2009/81/EC, as regards the simplification of intra-EU transfers of defence-related products and the simplification of security and defence procurement",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196116",
+      "votes": {
+        "pvv": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 30,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 195854,
+      "date": "2026-09-16",
+      "title": "Agreement between the European Union and the United Kingdom of Great Britain and Northern Ireland regarding cooperation on the application of their competition laws",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195854",
+      "votes": {
+        "pvv": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 31,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 196114,
+      "date": "2026-09-16",
+      "title": "Acceleration of permit-granting for defence readiness projects",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196114",
+      "votes": {
+        "pvv": {
+          "agree": 6,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 30,
+        "disagree": 1
+      }
+    },
+    {
+      "id": 196482,
+      "date": "2026-09-16",
+      "title": "Acceleration of permit-granting for defence readiness projects",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196482",
+      "votes": {
+        "pvv": {
+          "agree": 1,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 0,
+          "disagree": 8,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 2,
+        "disagree": 29
+      }
+    },
+    {
+      "id": 195890,
+      "date": "2026-09-15",
+      "title": "The EU Youth Strategy 2019-2027",
+      "type": "initiatiefverslag",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195890",
+      "votes": {
+        "pvv": {
+          "agree": 1,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 2
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 23,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 195891,
+      "date": "2026-09-15",
+      "title": "Temporary trade-liberalisation measures applicable to Armenian products",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195891",
+      "votes": {
+        "pvv": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 28,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 195849,
+      "date": "2026-09-15",
+      "title": "Implementation of the Council Recommendation of 30 October 2020 on A Bridge to Jobs – Reinforcing the Youth Guarantee and replacing the Council Recommendation of 22 April 2013 on establishing a Youth Guarantee",
+      "type": "initiatiefverslag",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195849",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 1,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 7,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 17,
+        "disagree": 11
+      }
+    },
+    {
+      "id": 195833,
+      "date": "2026-09-15",
+      "title": "Implementation into Union law of measures adopted by several Regional Fisheries Management Organisations",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195833",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 5
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 25,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 195850,
+      "date": "2026-09-15",
+      "title": "Global role of the euro",
+      "type": "initiatiefverslag",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195850",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 3
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 14,
+        "disagree": 8
+      }
+    },
+    {
+      "id": 195987,
+      "date": "2026-09-15",
+      "title": "Findings and recommendations of the Special Committee on the European Democracy Shield",
+      "type": "initiatiefverslag",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195987",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 21,
+        "disagree": 8
+      }
+    },
+    {
+      "id": 196109,
+      "date": "2026-09-15",
+      "title": "Establishing the Temporary Decarbonisation Fund",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196109",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 2
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 22,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 195870,
+      "date": "2026-09-15",
+      "title": "Draft amending budget no 2 to the general budget 2026 - update of revenue (own resources) and adjustments to expenditure",
+      "type": "begroting",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195870",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 2
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 17,
+        "disagree": 10
+      }
+    },
+    {
+      "id": 195835,
+      "date": "2026-09-15",
+      "title": "Amending Regulation (EU) No 2023/2124 on certain provisions for fishing in the GFCM (General Fisheries Commission for the Mediterranean) Agreement area",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/195835",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 24,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 196071,
+      "date": "2026-09-15",
+      "title": "Amending Regulation (EU) 2023/956 as regards the extension of its scope to downstream goods and anti-circumvention measures",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196071",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 8,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 2
+        },
+        "volt": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 22,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 196227,
+      "date": "2026-09-15",
+      "title": "Amending Decision (EU) 2015/1814 as regards the market stability reserve for the buildings, road transport and additional sector",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196227",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 4
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        }
+      },
+      "totals": {
+        "agree": 18,
+        "disagree": 8
+      }
+    },
+    {
+      "id": 196438,
+      "date": "2026-09-15",
+      "title": "Amending Decision (EU) 2015/1814 as regards ceasing the invalidation of allowances in the market stability reserve",
+      "type": "wetgeving",
+      "result": null,
+      "resultLabel": null,
+      "source": "https://howtheyvote.eu/votes/196438",
+      "votes": {
+        "pvv": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "gl-pvda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 3
+        },
+        "d66": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "nsc": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "cda": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sgp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "volt": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 1
+        }
+      },
+      "totals": {
+        "agree": 15,
+        "disagree": 8
+      }
+    },
     {
       "id": 195769,
       "date": "2026-07-09",

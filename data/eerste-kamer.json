@@ -3,7 +3,7 @@
     "province": "2023–2027",
     "body": "Eerste Kamer",
     "term": "2023–2027",
-    "generated_at": "2026-09-10T12:01:12+00:00",
+    "generated_at": "2026-09-17T12:46:53+00:00",
     "source": "https://www.eerstekamer.nl",
     "sourceName": "",
     "license": "Open data - Eerste Kamer der Staten-Generaal (eerstekamer.nl)",
@@ -270,9 +270,9 @@
       }
     },
     {
-      "id": 221862309574151,
+      "id": 131477921270184,
       "date": "2026-09-08",
-      "title": "Voorstel-Rosenmöller tot wijziging Reglement van Orde in verband met introduceren meer flexibiliteit in naamgeving van fracties van fuserende politieke groeperingen (CLXXVII)",
+      "title": "Amendement van het lid Van den Oetelaar over onmogelijkheid nieuwe tussentijdse naam afgesplitste fracties (EK, F) (EK CLXXVII F)",
       "type": "overig",
       "result": "rejected",
       "resultLabel": "Verworpen",
