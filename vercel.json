@@ -2,6 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "regions": ["fra1"],
   "functions": {
-    "api/probe.py": { "maxDuration": 60 }
+    "api/notubiz.py": { "maxDuration": 60 }
   }
 }

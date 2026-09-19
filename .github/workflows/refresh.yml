@@ -2,13 +2,13 @@ name: Ververs stemdata Fryslân
 
 # Dagelijks de stemdata verversen + handmatig te starten (Actions -> Run workflow).
 #
-# Let op: api.notubiz.nl blokkeert GitHub's cloudservers (geo-/datacenterfilter, geen
-# uitzonderingen). Vanaf `ubuntu-latest` logt de collector dan "KNOWN ISSUE ... Network is
-# unreachable", houdt het bestaande databestand en eindigt groen. De site laadt nieuwere
-# stemmingen live bij in de browser. Wil je wél dagelijks verversen, registreer dan een
-# self-hosted runner op een Nederlandse machine en zet de repository variable RUNNER op zijn
-# label (Settings -> Secrets and variables -> Actions -> Variables), bijv. `self-hosted`.
-# Zie docs/notubiz.md.
+# Let op: api.notubiz.nl blokkeert GitHub's cloudservers. De requests lopen daarom via de relay
+# op Vercel (api/notubiz.py, regio fra1): zet de secrets NOTUBIZ_RELAY (de URL van die functie)
+# en RELAY_KEY (dezelfde waarde als in de Vercel-projectinstellingen) onder Settings -> Secrets
+# and variables -> Actions. Zonder die secrets doet de collector gewone directe requests, logt
+# "KNOWN ISSUE ... Network is unreachable", houdt het bestaande databestand en eindigt groen.
+# Alternatief: een self-hosted runner op een Nederlandse machine via de repository variable
+# RUNNER. Zie docs/notubiz.md.
 on:
   schedule:
     - cron: "0 6 * * *"   # dagelijks 06:00 UTC (~08:00 NL)
@@ -42,6 +42,9 @@ jobs:
         id: collect
         continue-on-error: true
         shell: bash
+        env:
+          NOTUBIZ_RELAY: ${{ secrets.NOTUBIZ_RELAY }}   # https://<project>.vercel.app/api/notubiz
+          RELAY_KEY: ${{ secrets.RELAY_KEY }}
         run: python collector/collect.py
 
       - name: Commit updated data

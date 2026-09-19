@@ -73,10 +73,36 @@ geen uitzonderingen; u kunt de requests wel uitvoeren van Nederlandse servers."*
 upstream-run van 2026-09-17: `== Fryslân (notubiz) == 0 plenaire vergadering(en) … KNOWN ISSUE:
 no data at all; failed requests: URLError ([Errno 101] Network is unreachable)`.
 
-Gevolg voor dit project: de dagelijkse cloud-run is een **waakhond** (houdt de data, wordt rood
-als iets nieuws breekt of de data > 45 dagen oud is). Echt verversen: self-hosted runner in NL
-(repository variable `RUNNER`) of `collector/refresh-local.ps1`. De site zelf blijft actueel via
-het live bijladen.
+Maar het filter blijkt niet op Nederland te zitten, wel op de herkomst. Gemeten op 19 september
+2026: vanaf een Duitse consumentenlijn geven zowel `api.notubiz.nl` als het portaal **200**, en
+vanaf een Vercel-functie in `fra1` (AWS `eu-central-1`, IP `35.156.88.0`) net zo goed — alle vier
+de oppervlakken, inclusief de 3,4 MB module-lijst. Geblokkeerd zijn dus de cloudrunners van
+GitHub (Azure, VS), niet datacenters in het algemeen.
+
+### De relay
+
+De collector draait daarom gewoon in GitHub Actions — daar staan de OCR-pakketten, is er geen
+tijdslimiet en kan hij committen — en alleen zijn **uitgaande requests** gaan via een kleine
+Vercel-functie:
+
+```
+Actions-runner ──> https://<project>.vercel.app/api/notubiz?u=<url> ──> api.notubiz.nl
+                   (fra1, host-allowlist + X-Relay-Key)                fryslan.notubiz.nl
+```
+
+* `api/notubiz.py` laat alleen `https` naar `api.notubiz.nl` en `fryslan.notubiz.nl` door en
+  vraagt de header `X-Relay-Key` (env `RELAY_KEY` in het Vercel-project); zonder die sleutel
+  antwoordt hij 404, zodat de functie op het publieke domein geen open proxy is. De status van de
+  bron gaat ongewijzigd terug, zodat `fetch()` zijn eigen 429/5xx-retries houdt.
+* Een antwoordbody op Vercel mag hoogstens 4,5 MB zijn. Grotere bodies (de Útslach-PDF's; ooit de
+  module-lijst, nu 3,4 MB) komen in stukken: de relay geeft 206 met `Content-Range`, `http()` in
+  `collect.py` vraagt de rest op met een `Range`-header en plakt het aan elkaar.
+* In de workflow staan de secrets `NOTUBIZ_RELAY` en `RELAY_KEY`. Zijn ze leeg — een lokale run,
+  `refresh-local.ps1` — dan gaan alle requests rechtstreeks, precies zoals eerst.
+
+Alternatieven blijven bestaan: een self-hosted runner in NL (repository variable `RUNNER`) of
+`collector/refresh-local.ps1`. De site zelf blijft daarnaast actueel via het live bijladen, al
+werkt dat sinds 27 mei 2026 alleen voor vergaderingen die nog digitale stemmingen hebben.
 
 ## 5. Datamodel (`data/fryslan.json`)
 
