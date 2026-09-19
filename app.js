@@ -277,7 +277,7 @@ function renderMatrix(){
       if(c === null) return `<td class="diag">&ndash;</td>`;
       if(!c) return `<td class="na" title="geen gezamenlijke stemmingen">&middot;</td>`;
       if(c.n < MATRIX_PAIR_MIN) return `<td class="lown" title="${esc(name(a))} &amp; ${esc(name(b))}: ${c.pct}% gelijk — slechts ${c.n} gezamenlijke stemming${c.n===1?"":"en"}, te weinig voor een betrouwbaar percentage">${c.pct}</td>`;
-      return `<td style="background:hsl(${Math.round(c.pct*1.35)},70%,72%)" title="${esc(name(a))} &amp; ${esc(name(b))}: ${c.pct}% gelijk (${c.n} stemmingen)">${c.pct}</td>`;
+      return `<td style="background:hsl(${Math.round(c.pct*1.35)},70%,var(--matrix-l))" title="${esc(name(a))} &amp; ${esc(name(b))}: ${c.pct}% gelijk (${c.n} stemmingen)">${c.pct}</td>`;
     }).join("")}</tr>`).join("");
   const excluded = DATA.parties.filter(p => !(p.slug in AG));
   const note = excluded.length
