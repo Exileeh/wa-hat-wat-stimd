@@ -37,6 +37,7 @@ problem, or data older than STALE_AFTER_DAYS, turns the run red.
 """
 
 import json
+import os
 import re
 import sys
 import time
@@ -100,11 +101,51 @@ SLEEP = 0.3  # be polite between requests
 
 # --- HTTP ---------------------------------------------------------------------------------------
 
+# Notubiz blocks GitHub's cloud runners (docs/notubiz.md section 4), so the workflow points
+# NOTUBIZ_RELAY at a small Vercel function in Frankfurt that fetches on our behalf
+# (api/notubiz.py). Unset — a local run, refresh-local.ps1 — and every request goes straight out,
+# byte for byte as before.
+RELAY = os.environ.get("NOTUBIZ_RELAY", "").strip()
+RELAY_KEY = os.environ.get("RELAY_KEY", "")
+
+
+def open_url(url, timeout, extra_headers=None):
+    headers = dict(HEADERS)
+    if extra_headers:
+        headers.update(extra_headers)
+    if RELAY:
+        url = f"{RELAY}?u={urllib.parse.quote(url, safe='')}"
+        headers["X-Relay-Key"] = RELAY_KEY
+    return urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=timeout)
+
+
+def range_total(response):
+    """Total size behind a 206, or None when the whole body already arrived."""
+    if response.status != 206:
+        return None
+    header = (response.headers.get("Content-Range") or "").rsplit("/", 1)
+    return int(header[1]) if len(header) == 2 and header[1].isdigit() else None
+
+
 def http(url, binary=False):
-    req = urllib.request.Request(url, headers=HEADERS)
-    with urllib.request.urlopen(req, timeout=90 if binary else 30) as r:
+    timeout = 90 if binary else 30
+    if RELAY:
+        timeout += 60          # one hop more, and the relay re-reads the source for every chunk
+    with open_url(url, timeout) as r:
         data = r.read()
-        return data if binary else data.decode("utf-8", "replace")
+        total = range_total(r)
+
+    # A Vercel response body is capped at 4.5 MB, so the relay hands anything larger (the Útslach
+    # PDFs; one day the module list, now at 3.4 MB) over in pieces.
+    while total is not None and len(data) < total:
+        with open_url(url, timeout, {"Range": f"bytes={len(data)}-"}) as r:
+            part = r.read()
+            total = range_total(r) or total
+        if not part:
+            raise urllib.error.URLError(f"relay sent an empty chunk at {len(data)} of {total} bytes")
+        data += part
+
+    return data if binary else data.decode("utf-8", "replace")
 
 
 # Why requests failed, so a run that collects nothing names its own cause ("Network is
@@ -775,6 +816,9 @@ def main():
     p = SOURCE
     prev_n, prev_gen = previous_state()
     print(f"== {p['name']} (notubiz) ==")
+    if RELAY:
+        print(f"  requests go through the relay at {urllib.parse.urlparse(RELAY).netloc}"
+              f"{'' if RELAY_KEY else ' — WARNING: RELAY_KEY is empty, it will answer 404'}")
     _HTTP_LOG.clear()
     res, roles = None, None
     try:

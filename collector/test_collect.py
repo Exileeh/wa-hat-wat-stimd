@@ -89,5 +89,77 @@ class MeetingDetail(unittest.TestCase):
         self.assertIsNone(collect.agenda_for_number(None, by_id))
 
 
+class Relay(unittest.TestCase):
+    """The optional NOTUBIZ_RELAY hop must be invisible to the rest of the collector."""
+
+    URL = "https://api.notubiz.nl/events?organisation_id=822&format=json&version=1.21"
+
+    class FakeResponse:
+        def __init__(self, body, status=200, content_range=None):
+            self.body, self.status = body, status
+            self.headers = {"Content-Range": content_range} if content_range else {}
+
+        def read(self):
+            return self.body
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+    def capture(self, responses):
+        """Swap urlopen for a canned list of responses; collect the Requests it was given."""
+        seen = []
+
+        def fake_urlopen(req, timeout=None):
+            seen.append(req)
+            return responses[len(seen) - 1]
+
+        orig = collect.urllib.request.urlopen
+        collect.urllib.request.urlopen = fake_urlopen
+        self.addCleanup(lambda: setattr(collect.urllib.request, "urlopen", orig))
+        return seen
+
+    def use_relay(self, relay="https://example.vercel.app/api/notubiz", key="s3cret"):
+        for name, value in (("RELAY", relay), ("RELAY_KEY", key)):
+            orig = getattr(collect, name)
+            setattr(collect, name, value)
+            self.addCleanup(lambda n=name, v=orig: setattr(collect, n, v))
+
+    def test_without_relay_the_request_is_untouched(self):
+        self.use_relay(relay="", key="")
+        seen = self.capture([self.FakeResponse(b"{}")])
+        self.assertEqual(collect.http(self.URL), "{}")
+        self.assertEqual(seen[0].full_url, self.URL)
+        self.assertIsNone(seen[0].get_header("X-relay-key"))
+
+    def test_with_relay_the_url_is_wrapped_and_keyed(self):
+        self.use_relay()
+        seen = self.capture([self.FakeResponse(b"{}")])
+        collect.http(self.URL)
+        self.assertTrue(seen[0].full_url.startswith("https://example.vercel.app/api/notubiz?u="))
+        self.assertIn("%3A%2F%2Fapi.notubiz.nl", seen[0].full_url)   # target is encoded, not merged
+        self.assertEqual(seen[0].get_header("X-relay-key"), "s3cret")
+
+    def test_a_chunked_body_is_reassembled(self):
+        self.use_relay()
+        seen = self.capture([
+            self.FakeResponse(b"aaaa", 206, "bytes 0-3/10"),
+            self.FakeResponse(b"bbbb", 206, "bytes 4-7/10"),
+            self.FakeResponse(b"cc", 206, "bytes 8-9/10"),
+        ])
+        self.assertEqual(collect.http(self.URL, binary=True), b"aaaabbbbcc")
+        self.assertEqual([r.get_header("Range") for r in seen],
+                         [None, "bytes=4-", "bytes=8-"])
+
+    def test_an_empty_chunk_raises_instead_of_looping(self):
+        self.use_relay()
+        self.capture([self.FakeResponse(b"aaaa", 206, "bytes 0-3/10"),
+                      self.FakeResponse(b"", 206, "bytes 4-3/10")])
+        with self.assertRaises(collect.urllib.error.URLError):
+            collect.http(self.URL)
+
+
 if __name__ == "__main__":
     unittest.main()
