@@ -38,6 +38,10 @@ const MeetingPage = (() => {
   const hms = t => `${Math.floor(t/3600)}:${String(Math.floor(t/60)%60).padStart(2,"0")}:${String(t%60).padStart(2,"0")}`;
   const mmss = s => `${Math.floor(s/60)} min`;
 
+  // Rollen are stored lower-case (sprekers.py); only the titles with a proper noun need a map.
+  const ROLE_LABEL = {"commissaris van de koning": "Commissaris van de Koning"};
+  const roleLabel = r => ROLE_LABEL[r] || (r ? r.charAt(0).toUpperCase() + r.slice(1) : r);
+
   function loadSprekers(){
     if(SPREKERS !== null) return;
     SPREKERS = false;                                   // don't ask twice while it is in flight
@@ -214,37 +218,91 @@ const MeetingPage = (() => {
     </div>`;
   }
 
-  /* Wie was aan het woord. Fracties and rollen are drawn apart on purpose: the gedeputeerde alone
-     is good for about a fifth of the speaking time and would flatten every fractie next to it. */
+  /* Wie was aan het woord — twee ringen naast elkaar.
+
+     Both are part-to-whole at a glance, so each is capped at six segments: more than that and
+     adjacent slices stop being tellable apart. The left ring splits the meeting over the fracties
+     as a whole and the people with a role (the gedeputeerde alone takes about a fifth, so mixing
+     them into one ranking would flatten every fractie); the right ring divides the fracties' own
+     share, largest five by name and the rest as one slice.
+
+     Colour is a sequential ramp, not one hue per fractie: the slices are ordered by size and the
+     legend names every one of them, so the colour carries magnitude and the text carries identity.
+     Fifteen fracties would need fifteen hues nobody can tell apart, and a hue per rank would
+     repaint a fractie every time you opened another vergadering. The ramp is defined per theme in
+     app.css (--pie-1 … --pie-6, --pie-rest). */
+  const PIE_SLOTS = 6;
+
+  // One donut segment. Angles run clockwise from twelve o'clock.
+  function arcPath(cx, cy, rIn, rOut, a0, a1){
+    const pt = (r, a) => [(cx + r*Math.sin(a)).toFixed(2), (cy - r*Math.cos(a)).toFixed(2)];
+    const big = (a1 - a0) > Math.PI ? 1 : 0;
+    const [x0,y0] = pt(rOut,a0), [x1,y1] = pt(rOut,a1), [x2,y2] = pt(rIn,a1), [x3,y3] = pt(rIn,a0);
+    return `M${x0} ${y0}A${rOut} ${rOut} 0 ${big} 1 ${x1} ${y1}L${x2} ${y2}A${rIn} ${rIn} 0 ${big} 0 ${x3} ${y3}Z`;
+  }
+
+  /* `slices` = [{label, title, secs, fill}], biggest first. `centre` is the two lines in the hole. */
+  function donutHTML(slices, total, centre){
+    const S = 132, cx = S/2, cy = S/2, rOut = S/2 - 2, rIn = rOut*0.58;
+    let a = 0, arcs = "";
+    // A lone slice has no wedge to draw: a ring is two half arcs, or the path degenerates.
+    if(slices.length === 1){
+      arcs = `<path d="${arcPath(cx,cy,rIn,rOut,0,Math.PI)}${arcPath(cx,cy,rIn,rOut,Math.PI,2*Math.PI)}" fill="${slices[0].fill}"><title>${esc(slices[0].title)}</title></path>`;
+    } else {
+      for(const sl of slices){
+        const a1 = a + (sl.secs/total)*2*Math.PI;
+        arcs += `<path class="pie-seg" d="${arcPath(cx,cy,rIn,rOut,a,Math.min(a1,2*Math.PI))}" fill="${sl.fill}"><title>${esc(sl.title)}</title></path>`;
+        a = a1;
+      }
+    }
+    const legend = slices.map(sl =>
+      `<li><span class="sw" style="background:${sl.fill}"></span>
+        <span class="nm">${esc(sl.label)}</span>
+        <span class="pc">${Math.round(100*sl.secs/total)}%</span></li>`).join("");
+    return `<div class="pie">
+      <svg viewBox="0 0 ${S} ${S}" role="img" aria-label="ringdiagram" preserveAspectRatio="xMidYMid meet">${arcs}
+        <text class="pie-mid" x="${cx}" y="${cy-1}" text-anchor="middle">${esc(centre[0])}</text>
+        <text class="pie-sub" x="${cx}" y="${cy+12}" text-anchor="middle">${esc(centre[1])}</text>
+      </svg>
+      <ul class="pie-legend">${legend}</ul>
+    </div>`;
+  }
+
   function sprekersHTML(){
     const sp = SPREKERS && SPREKERS.meetings && SPREKERS.meetings[String(current)];
     if(!sp) return "";
     const fr = Object.entries(sp.fracties || {});
     const ro = Object.entries(sp.rollen || {});
     if(!fr.length && !ro.length) return "";
-    const total = [...fr, ...ro].reduce((a, [, v]) => a + v, 0) || 1;
+    const frTotal = fr.reduce((a, [, v]) => a + v, 0);
+    const total = frTotal + ro.reduce((a, [, v]) => a + v, 0) || 1;
+    const ramp = i => `var(--pie-${Math.min(i + 1, PIE_SLOTS)})`;
 
-    const bars = (list, cls) => {
-      if(!list.length) return "";
-      const W = 520, rowH = 22, L = 104, R = 92, T = 6, pw = W - L - R;
-      const max = list[0][1] || 1;
-      let s = svgOpen(W, T + list.length*rowH + 8);
-      list.forEach(([key, secs], i) => {
-        const yy = T + i*rowH, w = secs/max*pw;
-        const label = cls === "fractie" ? pLabel(key) : key;
-        const name = cls === "fractie" ? pName(key) : key;
-        s += `<g class="row"><text class="lbl" x="${L-8}" y="${yy+15}" text-anchor="end">${esc(label)}</text>`
-          + `<rect class="bar" x="${L}" y="${yy+3}" width="${Math.max(w,1).toFixed(1)}" height="${rowH-6}" fill="${cls === "fractie" ? "var(--accent)" : "var(--muted)"}">`
-          + `<title>${esc(name)}: ${mmss(secs)} (${Math.round(100*secs/total)}% van de vergadering)</title></rect>`
-          + `<text class="val" x="${(L + Math.max(w,1) + 6).toFixed(1)}" y="${yy+15}">${mmss(secs)} · ${Math.round(100*secs/total)}%</text></g>`;
-      });
-      return s + `</svg>`;
-    };
+    // Left: the fracties together against each role, biggest first.
+    const wie = [{key: "fracties", label: "Fracties", secs: frTotal},
+                 ...ro.map(([k, v]) => ({key: k, label: roleLabel(k), secs: v}))]
+      .filter(x => x.secs > 0).sort((a, b) => b.secs - a.secs)
+      .map((x, i) => ({...x, fill: ramp(i),
+                       title: `${x.label}: ${mmss(x.secs)} — ${Math.round(100*x.secs/total)}% van de vergadering`}));
+
+    // Right: inside the fracties. Five by name, everything else as one slice.
+    const top = fr.slice(0, PIE_SLOTS - 1), rest = fr.slice(PIE_SLOTS - 1);
+    const restSecs = rest.reduce((a, [, v]) => a + v, 0);
+    const binnen = top.map(([slug, secs], i) => ({
+      label: pLabel(slug), secs, fill: ramp(i),
+      title: `${pName(slug)}: ${mmss(secs)} — ${Math.round(100*secs/frTotal)}% van de spreektijd van de fracties`}));
+    if(restSecs > 0) binnen.push({
+      label: `Overige ${rest.length} fracties`, secs: restSecs, fill: "var(--pie-rest)",
+      title: `${rest.map(([s]) => pName(s)).join(", ")}: samen ${mmss(restSecs)}`});
 
     return `<section class="chart meet-sprekers"><h3>Wie was aan het woord</h3>
       <p class="chart-sub">Spreektijd volgens de sprekersindex van de griffie: ${sp.momenten} spreekmomenten over ${mmss(sp.indexed)} vergadering.</p>
-      ${bars(fr, "fractie")}
-      ${ro.length ? `<h4 style="margin:14px 0 2px">Voorzitter en college</h4>${bars(ro, "rol")}` : ""}
+      <div class="pies">
+        <figure>${donutHTML(wie, total, [mmss(total), "totaal"])}
+          <figcaption>Fracties tegenover voorzitter en college.</figcaption></figure>
+        ${frTotal > 0 ? `<figure>${donutHTML(binnen, frTotal, [mmss(frTotal), "fracties"])}
+          <figcaption>De spreektijd van de fracties onderling${rest.length ? `, de kleinste ${rest.length} samengenomen` : ""}.</figcaption></figure>` : ""}
+      </div>
     </section>`;
   }
 
