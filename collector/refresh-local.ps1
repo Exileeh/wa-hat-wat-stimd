@@ -4,7 +4,8 @@
 # (geo-IP / datacenter filtering; no exceptions, 2026-09). A Dutch connection works. Run this
 # manually, or daily via Windows Task Scheduler:
 #   powershell -NoProfile -ExecutionPolicy Bypass -File "<repo>\collector\refresh-local.ps1"
-# It commits and pushes ONLY data/fryslan.json and data/roles.json.
+# It commits and pushes ONLY the generated data: data/fryslan.json, data/roles.json,
+# data/sprekers.json and data/transcript/.
 #
 # Requirements: python (3.10+) and git on PATH, and push rights to the repo (credential manager).
 # The optional PDF reader (collector/requirements-pdf.txt: pypdf, Pillow, numpy, rapidocr) is
@@ -66,7 +67,7 @@ if ($pipCode -ne 0) {
 $collectorCode = Invoke-Logged 'python' @('-u', 'collector/collect.py')
 Write-Log "collector finished (exit $collectorCode)"
 
-$files = @('data/fryslan.json', 'data/roles.json')
+$files = @('data/fryslan.json', 'data/roles.json', 'data/sprekers.json', 'data/transcript')
 & git add -- $files
 & git diff --cached --quiet
 if ($LASTEXITCODE -eq 0) {

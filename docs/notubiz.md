@@ -139,6 +139,10 @@ twee velden en `#vergadering/<meetingId>` is de pagina van één vergadering.
 `data/roles.json`: `{ "generated_at", "term", "organisationId", "roles": {"173341": "pvda", …},
 "unmapped": [ {"role_id", "reason", …} ], "seats": {"bbb": 16, …} }`.
 
+Dezelfde portaalpagina levert ook de sprekersindex en de ondertiteling van de vergadering; die
+gaan naar `data/sprekers.json` en `data/transcript/<meetingId>.json`. Zie
+[sprekers.md](sprekers.md).
+
 ## 6. Terugval: de PDF "Útslach stimming" (`collector/uitslag_pdf.py`)
 
 Voor elke plenaire vergadering die via de API géén stemmingen oplevert, zoekt `collect.py` in

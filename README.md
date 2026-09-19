@@ -21,6 +21,11 @@ niveaus, 12 provincies), teruggebracht tot alleen Fryslân en uitgebreid met een
 - **Pagina per vergadering** (`#vergadering/<id>`, [meeting.js](meeting.js)): kerncijfers, de analyses
   van díe dag en alle stemmingen per agendapunt, met een filter op agendapunt. Te openen met de knop
   *Vergadering* in de tabel.
+- **Wie was aan het woord** en **Zoek in het debat**, op die vergaderpagina: spreektijd per fractie
+  volgens de sprekersindex van de griffie, en een zoekveld over de ondertiteling van de vergadering.
+  Elke treffer noemt het tijdstip, de spreker en zijn fractie, en linkt naar de video op dat
+  spreekmoment. De ondertiteling is automatische spraakherkenning, dus controleer een citaat in de
+  video. Zie [docs/sprekers.md](docs/sprekers.md).
 - Types: moasje, **moasje frjemd** (een motie over iets dat niet op de wurklist staat), amendemint
   en besluit — elk met een eigen filterknop en eigen cijfers.
 - **📄 Moasje / Amendemint**: opent het document op het Statenportaal.
@@ -38,7 +43,8 @@ niveaus, 12 provincies), teruggebracht tot alleen Fryslân en uitgebreid met een
 ## Hoe het werkt
 
 ```
-collector/collect.py  ->  data/fryslan.json + data/roles.json  ->  statische site (index.html, app.js, app.css)
+collector/collect.py  ->  data/fryslan.json + data/roles.json     ->  statische site (index.html, app.js, app.css)
+                          data/sprekers.json + data/transcript/
         ^                                                                     |
         └── GitHub Actions (dagelijks) of collector/refresh-local.ps1         └── browser laadt nieuwe
             ververst de snapshot                                                   vergaderingen live bij
@@ -72,9 +78,9 @@ nieuwe stemmingen live bij. Twee manieren om de snapshot wél te verversen:
    (repo → Settings → Actions → Runners → New self-hosted runner) en zet de repository variable
    `RUNNER` op zijn label (Settings → Secrets and variables → Actions → Variables), bijv.
    `self-hosted`. Dezelfde workflow draait dan dagelijks vanaf die machine.
-2. **Lokaal**: `python collector/collect.py` en de twee databestanden committen, of
+2. **Lokaal**: `python collector/collect.py` en de databestanden committen, of
    [`collector/refresh-local.ps1`](collector/refresh-local.ps1) inplannen in Windows Task Scheduler
-   (doet pull → collect → commit → push, alleen de databestanden).
+   (doet pull → collect → commit → push, alleen de databestanden in `data/`).
 
 Wordt de snapshot ouder dan 14 dagen, dan toont de site daar een melding over; na 45 dagen wordt
 de dagelijkse run rood.
@@ -83,8 +89,8 @@ de dagelijkse run rood.
 
 ```bash
 python -m pip install -r collector/requirements-pdf.txt   # eenmalig, optioneel: PDF-terugval (zie boven)
-python collector/collect.py      # ververs data/fryslan.json + data/roles.json
-python -m unittest discover -s collector                  # tests van de PDF-lezer
+python collector/collect.py      # ververs alle databestanden in data/
+python -m unittest discover -s collector                  # tests (PDF-lezer, sprekers)
 python -m http.server 8000       # bekijk de site op http://localhost:8000
 ```
 > Bekijk de site via een server (niet `index.html` dubbelklikken): browsers blokkeren `fetch`
@@ -93,13 +99,18 @@ python -m http.server 8000       # bekijk de site op http://localhost:8000
 ## Bestanden
 - [index.html](index.html), [app.css](app.css), [app.js](app.js) — de site (vanilla JS, geen dependencies)
 - [meeting.js](meeting.js) — de pagina van één vergadering, los van de rest van de site
-- [collector/collect.py](collector/collect.py) — de collector
-- [data/fryslan.json](data/fryslan.json) — snapshot; [data/roles.json](data/roles.json) — role_id → fractie
+- [collector/collect.py](collector/collect.py) — de collector;
+  [collector/sprekers.py](collector/sprekers.py) — sprekersindex en ondertiteling
+- [data/fryslan.json](data/fryslan.json) — snapshot; [data/roles.json](data/roles.json) — role_id → fractie;
+  [data/sprekers.json](data/sprekers.json) — spreektijd; `data/transcript/<id>.json` — ondertiteling per vergadering
 - [docs/notubiz.md](docs/notubiz.md) — databron, API-endpoints, datamodel, blokkade-diagnose
+- [docs/sprekers.md](docs/sprekers.md) — sprekersstatistiek en doorzoekbare transcripten per vergadering
 - [docs/claude-design-prompt.md](docs/claude-design-prompt.md) — briefing voor een herontwerp van de vormgeving
 
 ## Bron & licentie
 Open data van de **Provinciale Staten van Fryslân** (Statengriffie, Notubiz vergaderportaal
 [fryslan.notubiz.nl](https://fryslan.notubiz.nl)). Dit project hergebruikt die data met
-bronvermelding en is geen officiële uitgave van de provincie. Ledennamen worden niet opgeslagen:
-de dataset is op fractieniveau.
+bronvermelding en is geen officiële uitgave van de provincie. De **stemdata is op fractieniveau**:
+hoe een individueel lid stemde wordt niet opgeslagen, ook niet waar het portaal dat toont. De
+sprekersindex en de ondertiteling zijn daarop de uitzondering — daar staat wél wie sprak, precies
+zoals de griffie dat zelf bij de video publiceert. Zie [docs/sprekers.md](docs/sprekers.md).

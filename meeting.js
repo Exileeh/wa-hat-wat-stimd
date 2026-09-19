@@ -2,9 +2,12 @@
 
    Deliberately a file of its own: the table and the analyses in app.js do not know about it, and it
    only borrows their helpers (DATA, esc, pName/pLabel, cellVerdict, rowHTML, headHTML, tableOrder,
-   the chart functions, formatDateNL, meetingOf, agendaIdOf, agendaLabel). Room to grow: notulen,
-   sprekers, toezeggingen, a link to the video — add a block to render() below and nothing else in
-   the site has to change.
+   svgOpen, the chart functions, formatDateNL, meetingOf, agendaIdOf, agendaLabel). Room to grow:
+   notulen, toezeggingen — add a block to render() below and nothing else in the site has to change.
+
+   Sprekers (data/sprekers.json) and the doorzoekbaar transcript (data/transcript/<id>.json) work
+   that way: both are fetched lazily and every block degrades to nothing when they are absent, so a
+   vergadering without them renders exactly as it did before. See docs/sprekers.md.
 
    app.js calls MeetingPage.open(mid) from route() and MeetingPage.refresh() after live bijladen. */
 const MeetingPage = (() => {
@@ -12,6 +15,73 @@ const MeetingPage = (() => {
   let current = null;          // the meeting id being shown, null when the view is closed
   let picked = null;           // agendapunt ids that count; null = all of them
   let wired = false;
+
+  /* ---- sprekers en transcript (docs/sprekers.md) ----
+     Two extra sources, both optional: the page must render exactly as before when they are
+     missing. `SPREKERS` (±12 KB, every meeting) is fetched once; the transcript (±300-600 KB) only
+     for the vergadering on screen. */
+  let SPREKERS = null;         // data/sprekers.json, or false once it turned out not to be there
+  let TR = null;               // the transcript on screen
+  let trFor = null;            // which meeting TR belongs to, so a stale fetch cannot overwrite it
+  let trFailed = false;        // the transcript was announced but could not be fetched
+  let q = "";                  // the debate search box
+  let limit = 50;              // hits rendered before "toon meer"
+  let timer = null;
+
+  // Length-preserving fold, so an index into the folded text also indexes the original. Enough for
+  // Frisian and Dutch; NFD would shift every position and break the highlighting.
+  const FOLD = {"à":"a","á":"a","â":"a","ä":"a","ã":"a","å":"a","æ":"a","è":"e","é":"e","ê":"e",
+                "ë":"e","ì":"i","í":"i","î":"i","ï":"i","ò":"o","ó":"o","ô":"o","ö":"o","õ":"o",
+                "ù":"u","ú":"u","û":"u","ü":"u","ý":"y","ÿ":"y","ñ":"n","ç":"c","ø":"o","š":"s"};
+  const fold = s => s.toLowerCase().replace(/[^\x00-\x7f]/g, c => FOLD[c] || c);
+
+  const hms = t => `${Math.floor(t/3600)}:${String(Math.floor(t/60)%60).padStart(2,"0")}:${String(t%60).padStart(2,"0")}`;
+  const mmss = s => `${Math.floor(s/60)} min`;
+
+  function loadSprekers(){
+    if(SPREKERS !== null) return;
+    SPREKERS = false;                                   // don't ask twice while it is in flight
+    fetch("data/sprekers.json").then(r => r.ok ? r.json() : null).then(j => {
+      if(j && j.meetings){ SPREKERS = j; render(); }
+    }).catch(() => {});
+  }
+
+  function loadTranscript(mid){
+    if(trFor === mid) return;
+    trFor = mid; TR = null; trFailed = false;
+    const done = ok => { if(trFor === mid && !ok){ trFailed = true; render(); } };
+    fetch(`data/transcript/${mid}.json`).then(r => r.ok ? r.json() : null).then(j => {
+      if(trFor !== mid) return;                         // another vergadering was opened meanwhile
+      if(j && j.cues){
+        j.folded = j.cues.map(c => fold(c[1]));         // search once, not on every keystroke
+        TR = j;
+        render();
+      } else done(false);
+    }).catch(() => done(false));
+  }
+
+  // The spreekmoment a cue falls in: the last one that started at or before it.
+  function momentAt(t){
+    const ix = TR.index;
+    let lo = 0, hi = ix.length - 1, best = null;
+    while(lo <= hi){
+      const mid = (lo + hi) >> 1;
+      if(ix[mid][0] <= t){ best = ix[mid]; lo = mid + 1; } else hi = mid - 1;
+    }
+    return best && t <= best[1] ? best : null;
+  }
+
+  // Escape first, then wrap the matches — `fold` keeps positions, so the raw string can be sliced.
+  function mark(raw, needle){
+    if(!needle) return esc(raw);
+    const hay = fold(raw);
+    let out = "", i = 0, k;
+    while((k = hay.indexOf(needle, i)) !== -1){
+      out += esc(raw.slice(i, k)) + `<mark>${esc(raw.slice(k, k + needle.length))}</mark>`;
+      i = k + needle.length;
+    }
+    return out + esc(raw.slice(i));
+  }
 
   // Pin buttons and the agendapunt filter, both by delegation: the page is rebuilt on every change.
   function wire(){
@@ -25,15 +95,29 @@ const MeetingPage = (() => {
       const chip = e.target.closest(".ag-filter .chip");
       if(chip){ toggleAgenda(chip.dataset.ag === "" ? 0 : +chip.dataset.ag); return; }
       const all = e.target.closest(".ag-filter [data-ag-all]");
-      if(all){ picked = null; render(); }
+      if(all){ picked = null; render(); return; }
+      const more = e.target.closest("[data-tr-more]");
+      if(more){ limit += 100; renderHits(); }
+    });
+    // Only the hit list is redrawn while typing, so the caret stays where it is.
+    view.addEventListener("input", e => {
+      if(e.target.id !== "trQ") return;
+      q = e.target.value;
+      limit = 50;
+      clearTimeout(timer);
+      timer = setTimeout(renderHits, 150);
     });
   }
 
   function open(mid){
     wire();
     const next = Number.isFinite(mid) && mid > 0 ? mid : null;
-    if(next !== current) picked = null;   // another vergadering starts with every agendapunt on
+    if(next !== current){
+      picked = null;                      // another vergadering starts with every agendapunt on
+      q = ""; limit = 50;
+    }
     current = next;
+    if(current !== null){ loadSprekers(); loadTranscript(current); }
     render();
   }
 
@@ -65,7 +149,7 @@ const MeetingPage = (() => {
     const date = all.map(m => m.date).sort()[0];
     document.title = `Vergadering ${formatDateNL(date, false)} — Wa hat wat stimd?`;
     box.innerHTML = headerHTML(all, date) + agendaFilterHTML(all) + kpiHTML(rows)
-      + chartsHTML(rows) + agendaTablesHTML(rows);
+      + sprekersHTML() + zoekHTML() + chartsHTML(rows) + agendaTablesHTML(rows);
   }
 
   /* ---- blokken ---- */
@@ -128,6 +212,98 @@ const MeetingPage = (() => {
       <span class="mc-label">Agendapunt:</span><span class="chips">${chips}</span>
       ${picked === null ? "" : `<button class="csvbtn" data-ag-all>Alle agendapunten</button>`}
     </div>`;
+  }
+
+  /* Wie was aan het woord. Fracties and rollen are drawn apart on purpose: the gedeputeerde alone
+     is good for about a fifth of the speaking time and would flatten every fractie next to it. */
+  function sprekersHTML(){
+    const sp = SPREKERS && SPREKERS.meetings && SPREKERS.meetings[String(current)];
+    if(!sp) return "";
+    const fr = Object.entries(sp.fracties || {});
+    const ro = Object.entries(sp.rollen || {});
+    if(!fr.length && !ro.length) return "";
+    const total = [...fr, ...ro].reduce((a, [, v]) => a + v, 0) || 1;
+
+    const bars = (list, cls) => {
+      if(!list.length) return "";
+      const W = 520, rowH = 22, L = 104, R = 92, T = 6, pw = W - L - R;
+      const max = list[0][1] || 1;
+      let s = svgOpen(W, T + list.length*rowH + 8);
+      list.forEach(([key, secs], i) => {
+        const yy = T + i*rowH, w = secs/max*pw;
+        const label = cls === "fractie" ? pLabel(key) : key;
+        const name = cls === "fractie" ? pName(key) : key;
+        s += `<g class="row"><text class="lbl" x="${L-8}" y="${yy+15}" text-anchor="end">${esc(label)}</text>`
+          + `<rect class="bar" x="${L}" y="${yy+3}" width="${Math.max(w,1).toFixed(1)}" height="${rowH-6}" fill="${cls === "fractie" ? "var(--accent)" : "var(--muted)"}">`
+          + `<title>${esc(name)}: ${mmss(secs)} (${Math.round(100*secs/total)}% van de vergadering)</title></rect>`
+          + `<text class="val" x="${(L + Math.max(w,1) + 6).toFixed(1)}" y="${yy+15}">${mmss(secs)} · ${Math.round(100*secs/total)}%</text></g>`;
+      });
+      return s + `</svg>`;
+    };
+
+    return `<section class="chart meet-sprekers"><h3>Wie was aan het woord</h3>
+      <p class="chart-sub">Spreektijd volgens de sprekersindex van de griffie: ${sp.momenten} spreekmomenten over ${mmss(sp.indexed)} vergadering.</p>
+      ${bars(fr, "fractie")}
+      ${ro.length ? `<h4 style="margin:14px 0 2px">Voorzitter en college</h4>${bars(ro, "rol")}` : ""}
+    </section>`;
+  }
+
+  /* Zoek in het debat. Hits are rendered into #trHits by renderHits(), so typing never rebuilds
+     the page and the input keeps focus. */
+  function zoekHTML(){
+    const sp = SPREKERS && SPREKERS.meetings && SPREKERS.meetings[String(current)];
+    if(TR === null){
+      const msg = (sp && sp.transcript === false) ? "Voor deze vergadering is geen ondertitelbestand gepubliceerd."
+        : trFailed ? "Het transcript van deze vergadering kon niet geladen worden."
+        : (sp && sp.transcript) ? "Transcript wordt geladen&hellip;" : null;
+      return msg ? `<section class="chart meet-zoek"><h3>Zoek in het debat</h3>
+          <p class="chart-sub">${msg}</p></section>` : "";
+    }
+    return `<section class="chart meet-zoek"><h3>Zoek in het debat</h3>
+      <p class="chart-sub">Automatische ondertiteling van ${TR.cues.length.toLocaleString("nl")} fragmenten &mdash;
+        de spraakherkenning verhaspelt namen en woorden, dus controleer een citaat in de
+        <a href="${esc(TR.source)}" target="_blank" rel="noopener">video</a>
+        (<a href="${esc(TR.srt)}" target="_blank" rel="noopener">bronbestand</a>).
+        Een treffer linkt naar het begin van het spreekmoment, niet naar de seconde zelf.</p>
+      <div class="tr-search"><input id="trQ" type="search" placeholder="Zoek een woord in deze vergadering&hellip;"
+        autocomplete="off" value="${esc(q)}" aria-label="Zoek in het transcript"></div>
+      <div id="trHits">${hitsHTML()}</div>
+    </section>`;
+  }
+
+  function hitsHTML(){
+    if(!TR) return "";
+    const needle = fold(q.trim());
+    if(needle.length < 2)
+      return `<p class="chart-sub">Typ minstens twee letters.</p>`;
+    const hits = [];
+    for(let i = 0; i < TR.folded.length; i++) if(TR.folded[i].includes(needle)) hits.push(i);
+    if(!hits.length)
+      return `<p class="chart-sub">Geen treffers voor &ldquo;${esc(q.trim())}&rdquo; in deze vergadering.</p>`;
+
+    const rows = hits.slice(0, limit).map(i => {
+      const [t, text] = TR.cues[i];
+      const mom = momentAt(t);
+      const sp = mom ? TR.speakers[mom[2]] : null;
+      const who = sp ? sp.n : "onbekende spreker";
+      const tag = sp ? (sp.p ? pLabel(sp.p) : sp.r) : "";
+      const href = mom && mom[3] ? `${TR.source}#si_${mom[3]}` : TR.source;
+      return `<li>
+        <a class="tr-time" href="${esc(href)}" target="_blank" rel="noopener"
+           title="Open de video op dit spreekmoment">${hms(t)}</a>
+        <span class="tr-who">${esc(who)}${tag ? ` <span class="tr-tag">${esc(tag)}</span>` : ""}</span>
+        <span class="tr-text">${mark(text, needle)}</span>
+      </li>`;
+    }).join("");
+
+    return `<p class="chart-sub">${hits.length.toLocaleString("nl")} treffer${hits.length === 1 ? "" : "s"}${hits.length > limit ? `, eerste ${limit} getoond` : ""}.</p>
+      <ul class="tr-hits">${rows}</ul>
+      ${hits.length > limit ? `<button class="csvbtn" data-tr-more>Toon meer</button>` : ""}`;
+  }
+
+  function renderHits(){
+    const box = document.getElementById("trHits");
+    if(box) box.innerHTML = hitsHTML();
   }
 
   function chartsHTML(rows){

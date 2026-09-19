@@ -4,11 +4,14 @@ Collector — Provinciale Staten van Fryslân ("Wa hat wat stimd?").
 
 Pulls every hoofdelijke stemming of the plenary Provinsjale Steaten from Notubiz, aggregates the
 per-member votes to exact per-fractie counts, joins each stemming to its Moasje/Amendemint document
-and its indieners, and writes two static files the site reads:
+and its indieners, and writes the static files the site reads:
 
   data/fryslan.json   {meta, parties, moties}   — the snapshot the page loads first
   data/roles.json     {roles: {role_id: slug}}  — lets the browser aggregate NEW meetings live
                                                   straight from api.notubiz.nl (CORS is open there)
+  data/sprekers.json  {meetings: {...}}         — seconds spoken per fractie and per rol
+  data/transcript/<meetingId>.json              — the meeting's subtitles, one file per meeting,
+                                                  lazy-loaded by the vergaderpagina
 
 Three public Notubiz surfaces, no token (see ../docs/notubiz.md):
   1. events API    GET api.notubiz.nl/events?organisation_id=&date_from=&date_to=&page=&version=1.21
@@ -22,6 +25,8 @@ Three public Notubiz surfaces, no token (see ../docs/notubiz.md):
   4. module items  GET api.notubiz.nl/modules/6/items?organisation_id=  (the "Moasjes en amendeminten"
                    module) -> per motion: title, PDF document, agenda item, indienende partijen.
      parties       GET api.notubiz.nl/organisations/<id>/parties -> party id -> name.
+  4b. sprekers     the same portal HTML as 3. also carries the griffie's sprekersindex and the URL
+                   of the meeting's .srt subtitle file -> sprekers.py (see ../docs/sprekers.md).
   5. uitslag PDF   GET api.notubiz.nl/events/meetings/<mid> -> the document "Útslach stimming <datum>"
                    under the agenda item "Stimming". Since 2026-05-27 the griffie no longer registers
                    votes in Notubiz's voting module (2. and 3. are empty); this PDF holds one
@@ -48,11 +53,14 @@ import urllib.request
 from datetime import date, datetime, timezone
 from pathlib import Path
 
+import sprekers
 import uitslag_pdf
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 DATA_FILE = DATA_DIR / "fryslan.json"
 ROLES_FILE = DATA_DIR / "roles.json"
+SPREKERS_FILE = DATA_DIR / "sprekers.json"
+TRANSCRIPT_DIR = DATA_DIR / "transcript"
 
 SOURCE = {
     "key": "fryslan",
@@ -595,15 +603,54 @@ def collect_pdf_meeting(p, mid, mdate, doc, by_date, all_recs, agenda_titles, ag
 
 # --- Collect ------------------------------------------------------------------------------------
 
+def collect_sprekers(p, mid, mdate, page_html, out, log):
+    """Sprekersindex and transcript of one meeting (see ../docs/sprekers.md).
+
+    Strictly additive: a meeting without an index, without a subtitle file or with an unreachable
+    one is reported and skipped, leaving any existing transcript in place. None of it may ever make
+    the run fail — the stemmingen are the product, this is extra."""
+    index = sprekers.parse_indexations(page_html)
+    if not index:
+        return
+    agg = sprekers.aggregate(index, party_slug)
+    if agg["unknown"]:
+        print(f"  WARN: {mdate}: sprekerslabel zonder fractie: {', '.join(agg['unknown'])}")
+    entry = {"date": mdate, "indexed": agg["indexed"], "momenten": agg["momenten"],
+             "fracties": agg["fracties"], "rollen": agg["rollen"], "transcript": False}
+    out[str(mid)] = entry
+
+    url = sprekers.subtitle_url(page_html)
+    if not url:
+        return
+    text = try_text(url)
+    time.sleep(SLEEP)
+    if not text:
+        print(f"  WARN: {mdate}: ondertitelbestand niet op te halen ({url})")
+        return
+    cues = sprekers.parse_srt(text)
+    if not cues:
+        print(f"  WARN: {mdate}: ondertitelbestand zonder bruikbare cues ({url})")
+        return
+    sprekers.write_transcript(
+        TRANSCRIPT_DIR / f"{mid}.json",
+        sprekers.transcript_doc(mid, f"{p['public']}/vergadering/{mid}", url, index, cues,
+                                party_slug))
+    entry["transcript"] = True
+    hit, total = sprekers.coverage(cues, index)
+    log.append(f"{mdate}: {len(cues)} cues, {agg['momenten']} spreekmomenten, "
+               f"{100 * hit // max(1, total)}% met spreker")
+
+
 def collect(p):
     """Discover plenary meetings, join votings API metadata to the portal's per-fractie breakdown,
     attach documents/indieners from the motions module, and learn role_id -> fractie.
-    Returns ({parties, moties}, roles) or (None, None) when nothing was collected."""
+    Returns ({parties, moties}, roles, sprekers) or (None, None, None) when nothing was
+    collected."""
     org_id, gremium_id, portal = p["organisation_id"], p["gremium_id"], p["public"]
     meetings = notubiz_events(org_id, gremium_id, date(*p["term_start"]), date.today())
     print(f"  {len(meetings)} plenaire vergadering(en) met agendapunten in termijn")
     if not meetings:
-        return None, None
+        return None, None, None
     by_agenda, by_date, party_names = load_module_items(p)
     all_recs = [r for recs in by_date.values() for r in recs]
 
@@ -612,6 +659,8 @@ def collect(p):
     member_votes = {}    # (fractie slug, member name) -> {voting id: vote}
     mismatch = doc_hits = doc_miss = 0
     pdf_meetings, pdf_skipped = 0, []
+    speakers_by_meeting = {}   # meeting id -> seconds per fractie/rol, for data/sprekers.json
+    transcript_log = []        # one line per meeting that produced a transcript, for the log
     for mid, mdate in meetings:
         # Agenda of the meeting: files every stemming under its wurklistpunt, and (for meetings
         # without digital votes) names the "Útslach stimming" PDF and the besluit titles.
@@ -621,9 +670,12 @@ def collect(p):
         time.sleep(SLEEP)
         votings = (vdata or {}).get("votings") or []
         before = len(items)
-        if votings:
-            breakdown = notubiz_parse_meeting(try_text(f"{portal}/vergadering/{mid}") or "")
-            time.sleep(SLEEP)
+        # One fetch of the portal page serves two purposes: the per-fractie breakdown of the
+        # stemmingen and the griffie's sprekersindex. It is fetched for every meeting, also for the
+        # ones whose votes only exist in a PDF — those have speakers just the same.
+        page_html = try_text(f"{portal}/vergadering/{mid}") or ""
+        time.sleep(SLEEP)
+        breakdown = notubiz_parse_meeting(page_html) if votings else {}
         for v in votings:
             cid = v.get("id")
             if cid in seen:
@@ -713,6 +765,8 @@ def collect(p):
                     if stats.get("error"):
                         print(f"    WARN: {stats['error']}")
 
+        collect_sprekers(p, mid, mdate, page_html, speakers_by_meeting, transcript_log)
+
         for item in items[before:]:
             for s, cell in item["votes"].items():
                 appear[s] = appear.get(s, 0) + 1
@@ -726,7 +780,7 @@ def collect(p):
               f"({', '.join(pdf_skipped)}): installeer collector/requirements-pdf.txt "
               f"(ontbreekt: {', '.join(uitslag_pdf.missing())})")
     if not items:
-        return None, None
+        return None, None, None
 
     items.sort(key=lambda m: (m["date"], m["title"]), reverse=True)
     for m in items:
@@ -743,8 +797,15 @@ def collect(p):
     print(f"  {len(items)} stemmingen; {len(appear)} fracties; {by_type}")
     print(f"  documenten/indieners: {doc_hits} gekoppeld, {doc_miss} niet gevonden "
           f"({100 * doc_hits // max(1, doc_hits + doc_miss)}% van moties+amendementen)")
+    if speakers_by_meeting:
+        with_t = sum(1 for v in speakers_by_meeting.values() if v["transcript"])
+        print(f"  sprekers: {len(speakers_by_meeting)} vergadering(en) met een index, "
+              f"{with_t} met een transcript")
+        for line in transcript_log:
+            print(f"    {line}")
     roles = learn_roles(role_votes, member_votes)
-    return {"parties": [{"slug": s, "name": name_by_slug[s]} for s in order], "moties": items}, roles
+    return ({"parties": [{"slug": s, "name": name_by_slug[s]} for s in order], "moties": items},
+            roles, speakers_by_meeting)
 
 
 ROLE_MIN_SHARED = 20   # a role needs this many votings in common with a member before we trust it
@@ -820,9 +881,9 @@ def main():
         print(f"  requests go through the relay at {urllib.parse.urlparse(RELAY).netloc}"
               f"{'' if RELAY_KEY else ' — WARNING: RELAY_KEY is empty, it will answer 404'}")
     _HTTP_LOG.clear()
-    res, roles = None, None
+    res, roles, speakers = None, None, None
     try:
-        res, roles = collect(p)
+        res, roles, speakers = collect(p)
     except Exception as e:   # noqa: BLE001 — a crash must still reach the guard below
         print(f"  ERROR: {type(e).__name__}: {e}")
     n = len(res["moties"]) if res and res.get("moties") else 0
@@ -860,7 +921,9 @@ def main():
             "note": p["note"],
             "granularity": "member",
             "counts": {"moties": n, "parties": len(res["parties"]),
-                       "fromPdf": sum(1 for m in res["moties"] if m.get("uitslag"))},
+                       "fromPdf": sum(1 for m in res["moties"] if m.get("uitslag")),
+                       "transcripts": sum(1 for v in (speakers or {}).values()
+                                          if v.get("transcript"))},
             "types": sorted({m["type"] for m in res["moties"]}),
             "organisationId": p["organisation_id"],
             "gremiumId": p["gremium_id"],
@@ -877,6 +940,16 @@ def main():
     ROLES_FILE.write_text(json.dumps(roles_out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"  wrote {DATA_FILE.name}: {n} stemmingen, {len(res['parties'])} fracties{note}")
     print(f"  wrote {ROLES_FILE.name}: {len(roles_out['roles'])} rollen")
+
+    # Additive, and written only when this run actually collected speakers: a run that could not
+    # reach the portal must not blank an existing sprekers.json.
+    if speakers:
+        sprekers_out = {"generated_at": out["meta"]["generated_at"], "term": p["term_label"],
+                        "source": p["public"], "meetings": speakers}
+        SPREKERS_FILE.write_text(json.dumps(sprekers_out, ensure_ascii=False, indent=1),
+                                 encoding="utf-8")
+        print(f"  wrote {SPREKERS_FILE.name}: {len(speakers)} vergadering(en), "
+              f"{out['meta']['counts']['transcripts']} met transcript")
     return 0
 
 
