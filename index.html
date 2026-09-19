@@ -89,7 +89,6 @@
       <select id="sort">
         <option value="date-desc">Nieuwste eerst</option>
         <option value="date-asc">Oudste eerst</option>
-        <option value="result">Op uitslag</option>
       </select>
     </label>
     <div class="field field-types">
@@ -125,10 +124,21 @@
 <section class="view-panel" id="statsView" hidden>
     <div class="modal-head"><h2><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Statistieken</h2></div>
     <p class="modal-sub">Overzicht van alle stemmingen in deze Statenperiode: hoeveel er zijn, wie indient, wie wint en hoe omstreden ze zijn.</p>
-    <div class="modal-controls"><span class="mc-label">Tel mee:</span><span class="chips" id="statsTypes"></span></div>
+    <div class="modal-controls">
+      <span class="mc-label">Tel mee:</span><span class="chips" id="statsTypes"></span>
+      <label class="field">
+        <span class="lbl">Vergaderingen</span>
+        <details class="parties pop"><summary id="smSummary">Alle vergaderingen</summary>
+          <div class="ppanel">
+            <div class="pp-actions"><button id="smAll">Alle</button><button id="smNone">Geen</button></div>
+            <div id="smList"></div>
+          </div>
+        </details>
+      </label>
+    </div>
     <div class="stat-grid" id="statsKpis"></div>
     <div class="charts">
-      <section class="chart"><h3>Stemmingen per maand</h3><p class="chart-sub">Aantal stemmingen per maand, naar uitslag.</p><div id="chartMonths"></div></section>
+      <section class="chart"><h3>Stemmingen per vergadering</h3><p class="chart-sub">Aantal stemmingen per plenaire vergadering, naar uitslag. Klik op een balk om de vergadering op het Statenportaal te openen.</p><div id="chartMeetings"></div></section>
       <section class="chart"><h3>Indieners</h3><p class="chart-sub">Moties en amendementen die een fractie (mede) indiende, en hoeveel daarvan werden aangenomen.</p><div id="chartIndieners"></div></section>
       <section class="chart"><h3>Aan de winnende kant</h3><p class="chart-sub">Hoe vaak een fractie meestemde met de uitslag — coalitie en oppositie in één beeld.</p><div id="chartWinning"></div></section>
       <section class="chart"><h3>Hoe omstreden</h3><p class="chart-sub">Verdeling van het verschil tussen voor- en tegenstemmen: van unaniem tot een nipte meerderheid.</p><div id="chartMargins"></div></section>
@@ -167,6 +177,11 @@
     <div id="compareBody"></div>
 </section>
 
+<section class="view-panel" id="meetingView" hidden>
+    <p class="meet-back"><a class="back" href="#">&larr; Terug naar de tabel</a></p>
+    <div id="meetingBody"></div>
+</section>
+
 <p class="foot">Open data · gratis · <a href="https://github.com/lucsmits5-afk/wa-hat-wat-stimd" target="_blank" rel="noopener">broncode op GitHub</a> · afgeleid van <a href="https://github.com/carefulCamel61097/wie-stemde-wat" target="_blank" rel="noopener">Wie stemde wat?</a></p>
 </div><!-- /#app -->
 
@@ -185,7 +200,9 @@
         publiceren, vaak in het Frysk.</p>
 
       <h3 class="section">De tabel</h3>
-      <p>Rijen zijn stemmingen (nieuwste boven), kolommen zijn partijen. In elke cel:</p>
+      <p>De stemmingen staan gegroepeerd per <b>vergadering</b> en daarbinnen per <b>wurklistpunt</b>
+        (agendapunt). Klik een regel open om de stemmingen te zien; met <b>Vergadering</b> open je een
+        aparte pagina met alles van die vergadering. Kolommen zijn partijen. In elke cel:</p>
       <ul class="legenda">
         <li><span class="vbadge voor">V</span> Voor</li>
         <li><span class="vbadge tegen">T</span> Tegen</li>
@@ -197,6 +214,11 @@
         <span class="doclink"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg>Moasje</span> om het ingediende document (pdf) te openen en op &#8599;
         voor de vergadering op het Statenportaal.</p>
 
+      <h3 class="section">Per vergadering</h3>
+      <p>De knop <b>Vergadering</b> bij een datum opent een eigen pagina met alles van die vergadering:
+        de kerncijfers, de analyses van die dag en alle stemmingen per agendapunt. Die pagina heeft een
+        eigen adres (<code>#vergadering/&lt;nummer&gt;</code>) en is dus te delen.</p>
+
       <h3 class="section">Filteren &amp; pinnen</h3>
       <p>Filter op type, toon of verberg partijen, zoek op onderwerp of indiener, en sorteer.
         Toon desgewenst alleen aangenomen/verworpen of <i>omstreden</i> stemmingen (waarbij partijen
@@ -205,8 +227,10 @@
 
       <h3 class="section">De vier analyses</h3>
       <ul class="help-list">
-        <li><b>Statistieken</b> &mdash; stemmingen per maand, welke fracties indienen en met welk succes,
-          wie het vaakst aan de winnende kant staat, en hoe omstreden de stemmingen zijn.</li>
+        <li><b>Statistieken</b> &mdash; stemmingen per vergadering (klik een balk voor die vergadering op
+          het Statenportaal), welke fracties indienen en met welk succes, wie het vaakst aan de winnende
+          kant staat, en hoe omstreden de stemmingen zijn. Met <i>Vergaderingen</i> kies je welke
+          vergaderingen meetellen.</li>
         <li><b>Overeenkomst</b> &mdash; hoe vaak twee partijen hetzelfde stemden. Partijen die vaak
           gelijk stemmen staan bij elkaar.</li>
         <li><b>Partijprofiel</b> &mdash; o.a. hoe vaak een partij aan de winnende kant stond, en
@@ -239,5 +263,6 @@
 </div>
 
 <script src="app.js"></script>
+<script src="meeting.js"></script>
 </body>
 </html>

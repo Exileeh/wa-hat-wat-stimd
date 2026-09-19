@@ -1,0 +1,13 @@
+# Optional dependencies of collector/uitslag_pdf.py.
+#
+# Only needed for plenary meetings whose hoofdelijke stemmingen exist solely as the griffie's
+# "Útslach stimming <datum>" PDF (since 2026-05-27 Notubiz's voting module is no longer used).
+# Without these packages collect.py still runs the stdlib-only API path and prints which
+# meetings it had to skip. See docs/notubiz.md §6.
+#
+#   python -m pip install -r collector/requirements-pdf.txt
+#
+pypdf>=6,<7                    # page images out of the PDF
+Pillow>=10                     # pixel colours of the vote grid
+numpy>=1.26                    # image hand-over to the OCR engine
+rapidocr_onnxruntime>=1.2,<2   # local OCR (ONNX model bundled, no network calls) for title, fractie names, totals

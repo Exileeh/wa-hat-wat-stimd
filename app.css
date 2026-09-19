@@ -150,6 +150,51 @@ summary.viewbtn:hover,details.view[open]>summary.viewbtn{border-color:var(--blue
 .tbl-title{margin:0 4px 8px;font:600 15px/1.3 var(--serif);color:var(--ink)}
 #pinnedBlock:not(:empty){margin-bottom:18px}
 
+/* ---- tabel: groepsregels (vergadering > agendapunt) ---- */
+tr.grp{cursor:pointer}
+tr.grp>td{padding:0;border-right:none;background:var(--surface-2)}
+tr.grp:hover>td{background:var(--chip)}
+tr.grp:focus-visible{outline:none}
+tr.grp:focus-visible>td{box-shadow:inset 0 0 0 2px var(--blue)}
+.grp-row{display:flex;align-items:center;gap:10px;padding:9px 14px;position:sticky;left:0;box-sizing:border-box;
+  /* never wider than the viewport, so title and knoppen stay in beeld while the table scrolls sideways */
+  width:min(100%,calc(100vw - 56px))}
+.grp-title{font:600 14.5px/1.3 var(--serif);color:var(--ink)}
+tr.grp-m>td{border-top:1px solid var(--line-2)}
+tr.grp-a>td{background:var(--surface)}
+tr.grp-a:hover>td{background:var(--surface-2)}
+tr.grp-a .grp-row{padding-left:34px}
+tr.grp-a .grp-title{font:600 13px/1.35 var(--sans);color:var(--ink-2)}
+.grp-n{flex:none;font-size:11.5px;font-weight:600;color:var(--muted);background:var(--chip);border-radius:999px;padding:1px 8px;font-variant-numeric:tabular-nums}
+.grp-links{margin-left:auto;display:flex;align-items:center;gap:10px;white-space:nowrap}
+a.meetlink{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;
+  border:1px solid var(--blue-line);background:var(--blue-tint);border-radius:999px;padding:3px 10px}
+a.meetlink:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+a.meetlink .ico{width:13px;height:13px}
+.caret{flex:none;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+  transform:rotate(-45deg);transition:transform .15s;margin-left:2px;margin-top:-3px}
+tr.grp.open .caret{transform:rotate(45deg);margin-top:-5px}
+
+/* ---- vergaderingpagina (meeting.js) ---- */
+.meet-back{margin:0 0 10px}
+a.back{font-size:13px;font-weight:600;color:var(--blue);text-decoration:none}
+a.back:hover{text-decoration:underline}
+.meet-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.meet-head h2{margin:0;font:600 26px/1.2 var(--serif);color:var(--ink)}
+.meet-head .modal-sub{margin:6px 0 0}
+.meet-links{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 0}
+.agenda-nav{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 4px}
+.agenda-nav a{display:inline-flex;align-items:center;gap:6px;max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font-size:12.5px;color:var(--ink-2);text-decoration:none;border:1px solid var(--control-line);background:var(--paper);border-radius:999px;padding:4px 11px}
+.agenda-nav a:hover{border-color:var(--blue);color:var(--blue)}
+.meet-agenda{margin-top:22px;scroll-margin-top:12px}
+.meet-agenda h3{display:flex;align-items:center;gap:10px;margin:0 0 8px;font:600 17px/1.3 var(--serif);color:var(--ink)}
+.table-scroll.flat{max-height:none}
+.ppanel .pp-n{margin-left:auto;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.chart a .bar{transition:opacity .12s}
+.chart a:hover .bar{opacity:.75}
+.chart a{cursor:pointer}
+
 /* ---- tabel ---- */
 .table-scroll{overflow:auto;max-height:76vh;border:1px solid var(--line-2);border-radius:var(--radius);background:var(--surface)}
 table{border-collapse:separate;border-spacing:0;width:100%}
@@ -270,7 +315,7 @@ table.matrix td.lown{background:#eeece6;color:#77746c;font-style:italic}
 .chart{background:var(--paper);border:1px solid var(--line-2);border-radius:var(--radius);padding:14px 16px 12px;min-width:0}
 .chart h3{margin:0 0 2px;font:600 16px/1.25 var(--serif);color:var(--ink)}
 .chart .chart-sub{margin:0 0 10px;font-size:12.5px;color:var(--muted);line-height:1.45}
-.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart svg:not(.ico){display:block;width:100%;height:auto;overflow:visible}
 .chart .legend-row{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0 2px;font-size:12px;color:var(--muted)}
 .chart .legend-row .sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:5px}
 .chart text{font:11px var(--sans);fill:var(--muted)}

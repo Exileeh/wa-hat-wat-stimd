@@ -7,6 +7,9 @@
 # It commits and pushes ONLY data/fryslan.json and data/roles.json.
 #
 # Requirements: python (3.10+) and git on PATH, and push rights to the repo (credential manager).
+# The optional PDF reader (collector/requirements-pdf.txt: pypdf, Pillow, numpy, rapidocr) is
+# installed/updated by this script; without it meetings that only publish an "Útslach stimming"
+# PDF are skipped and reported by the collector.
 
 $ErrorActionPreference = 'Continue'
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
@@ -53,6 +56,13 @@ if ([int](& git rev-list --count 'origin/main..HEAD') -gt 0) {
 
 $env:PYTHONUTF8 = '1'
 $env:PYTHONIOENCODING = 'utf-8'
+
+# Optional dependencies for the "Útslach stimming" PDF fallback (no-op when already satisfied).
+$pipCode = Invoke-Logged 'python' @('-m', 'pip', 'install', '-q', '--disable-pip-version-check', '-r', 'collector/requirements-pdf.txt')
+if ($pipCode -ne 0) {
+    Write-Log "warning: installing collector/requirements-pdf.txt failed (exit $pipCode); PDF-only meetings will be skipped this run"
+}
+
 $collectorCode = Invoke-Logged 'python' @('-u', 'collector/collect.py')
 Write-Log "collector finished (exit $collectorCode)"
 

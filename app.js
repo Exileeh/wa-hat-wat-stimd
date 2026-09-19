@@ -11,12 +11,14 @@ const LIVE_MAX_MEETINGS = 10;   // protect the API: never crawl more than this m
 const PIN_KEY = "wsw_pinned_fryslan";
 // Short column labels where the fractie name is long.
 const ABBR = {bbb:"BBB", pvda:"PvdA", cda:"CDA", fnp:"FNP", grienlinks:"GL", vvd:"VVD", christenunie:"CU",
-  pvv:"PVV", ja21:"JA21", "provinciaal-belang-frysln":"PBF", pvdd:"PvdD", sp:"SP", d66:"D66", fvd:"FvD",
-  "steatelid-van-dijk":"Van Dijk", "steatelid-jonker":"Jonker"};
-const TYPE_LABEL = {motie:"Motie", amendement:"Amendement", besluit:"Besluit", ordevoorstel:"Ordevoorstel", overig:"Overig"};
-const TYPE_PLURAL = {motie:"moties", amendement:"amendementen", besluit:"besluiten", ordevoorstel:"ordevoorstellen", overig:"overige"};
+  pvv:"PVV", ja21:"JA21", "provinciaal-belang-frysln":"PBF", pvdd:"PvdD", sp:"SP", d66:"D66",
+  "van-dijk-fvd":"Van Dijk", "steatelid-jonker":"Jonker"};
+const TYPE_LABEL = {motie:"Motie", frjemd:"Moasje frjemd", amendement:"Amendement", besluit:"Besluit", ordevoorstel:"Ordevoorstel", overig:"Overig"};
+const TYPE_PLURAL = {motie:"moties", frjemd:"moasjes frjemd", amendement:"amendementen", besluit:"besluiten", ordevoorstel:"ordevoorstellen", overig:"overige"};
+// Reading order of the type chips/tiles (the collector sorts the list alphabetically).
+const TYPE_ORDER = ["motie", "frjemd", "amendement", "besluit", "ordevoorstel", "overig"];
 // Frisian document label per type (the portal module is "Moasjes en amendeminten").
-const DOC_LABEL = {motie:"Moasje", amendement:"Amendemint"};
+const DOC_LABEL = {motie:"Moasje", frjemd:"Moasje", amendement:"Amendemint"};
 // Min. stemmingen a party must have voted on to appear in the Overeenkomst matrix — below this an
 // agreement % is noise (a party that voted once is "100% gelijk" with everyone).
 const MATRIX_MIN = 5;
@@ -37,15 +39,36 @@ const docLink = m => m.document
   : "";
 const indienersText = m => (m.indieners && m.indieners.length) ? m.indieners.map(pLabel).join(", ") : "";
 
+/* ---- Vergaderingen en agendapunten ----
+   Every stemming carries `meetingId` and (nearly always) `agenda` {id, nr, title}; older snapshots
+   and live rows without an agenda fall back on the meeting id in `source`. The table groups on
+   these two keys, the meeting page (meeting.js) uses the same helpers. */
+const MONTHS_NL = ["januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december"];
+const DAYS_NL = ["zondag","maandag","dinsdag","woensdag","donderdag","vrijdag","zaterdag"];
+function formatDateNL(iso, withDay = true){
+  const d = new Date(`${iso}T12:00:00`);
+  if(isNaN(d)) return iso;
+  const long = `${d.getDate()} ${MONTHS_NL[d.getMonth()]} ${d.getFullYear()}`;
+  return withDay ? `${DAYS_NL[d.getDay()]} ${long}` : long;
+}
+const meetingOf = m => m.meetingId || +((String(m.source || "").match(/vergadering\/(\d+)/) || [0, 0])[1]);
+const agendaIdOf = m => (m.agenda && m.agenda.id) || 0;
+const agendaLabel = m => m.agenda ? `${m.agenda.nr} · ${m.agenda.title}` : "Zonder agendapunt";
+const mKey = mid => `m:${mid}`;
+const aKey = (mid, aid) => `a:${mid}:${aid}`;
+const collator = new Intl.Collator("nl", {numeric: true, sensitivity: "base"});
+const meetingRows = mid => DATA.moties.filter(m => meetingOf(m) === mid);
+
 async function init(){
   DATA = await (await fetch(DATA_URL)).json();
-  ALLTYPES = (DATA.meta.types && DATA.meta.types.length) ? DATA.meta.types.slice() : [...new Set(DATA.moties.map(m => m.type))];
+  ALLTYPES = sortTypes((DATA.meta.types && DATA.meta.types.length) ? DATA.meta.types.slice() : [...new Set(DATA.moties.map(m => m.type))]);
   applyTheme(DATA.meta.style || {});
   state = {
     types: new Set(ALLTYPES),
     parties: new Set(DATA.parties.map(p => p.slug)),
     search: "", result: "all", controversial: false, onlyPinned: false, raw: false, cluster: true,
     sort: "date-desc",
+    open: new Set(),   // expanded accordion keys: "m:<meetingId>" and "a:<meetingId>:<agendaId>"
     pinned: new Set(JSON.parse(localStorage.getItem(PIN_KEY) || "[]")),
   };
   renderHeader();
@@ -57,6 +80,9 @@ async function init(){
   route();
   liveTopUp().catch(e => console.warn("live bijladen mislukt:", e));
 }
+
+// Chips and tiles read best in a fixed order; the collector writes meta.types alphabetically.
+const sortTypes = ts => ts.slice().sort((a, b) => (TYPE_ORDER.indexOf(a) + 1 || 99) - (TYPE_ORDER.indexOf(b) + 1 || 99) || a.localeCompare(b));
 
 function applyTheme(style){
   document.documentElement.style.setProperty("--accent", style.accent || "#c8102e");
@@ -83,15 +109,21 @@ const VIEWS = {
   matrix:  {hash: "overeenkomst",  open: () => openMatrix()},
   profile: {hash: "partijprofiel", open: () => openProfile()},
   compare: {hash: "vergelijken",   open: () => openCompare()},
+  // No tab of its own: reached from a vergadering-regel in the table or straight from a URL.
+  meeting: {hash: "vergadering",   open: arg => MeetingPage.open(+arg)},
 };
 function route(){
-  const h = decodeURIComponent(location.hash.replace(/^#\/?/, "")).trim().toLowerCase();
+  const raw = decodeURIComponent(location.hash.replace(/^#\/?/, "")).trim();
+  const [head, ...rest] = raw.split("/");
+  const h = head.toLowerCase();
   const name = Object.keys(VIEWS).find(k => VIEWS[k].hash === h) || "table";
-  showView(name);
+  showView(name, rest.join("/"));
 }
-function showView(name){
+const BASE_TITLE = document.title;
+function showView(name, arg){
   const v = VIEWS[name];
-  if(v.open) v.open();
+  if(name !== "meeting") document.title = BASE_TITLE;   // the meeting page names itself
+  if(v.open) v.open(arg);
   for(const k of Object.keys(VIEWS)){
     const panel = document.getElementById(`${k}View`);
     if(panel) panel.hidden = k !== name;
@@ -127,14 +159,19 @@ function setupGlobalHandlers(){
   $("#csvBtn").onclick = exportCSV;
   document.querySelectorAll(".modal").forEach(mo => mo.addEventListener("click", e => { if(e.target === mo) mo.hidden = true; }));
   document.querySelectorAll("[data-close]").forEach(btn => btn.onclick = () => { document.getElementById(btn.dataset.close).hidden = true; });
-  // Pin toggle via event delegation — one listener instead of one per row.
+  // Pin toggle and accordion toggle via event delegation — one listener instead of one per row.
   $(".wrap").addEventListener("click", e => {
     const b = e.target.closest("button.pin");
-    if(!b) return;
-    const id = +b.dataset.id;
-    state.pinned.has(id) ? state.pinned.delete(id) : state.pinned.add(id);
-    localStorage.setItem(PIN_KEY, JSON.stringify([...state.pinned]));
-    render();
+    if(b){ togglePin(+b.dataset.id); return; }
+    const g = e.target.closest("tr.grp");
+    if(g && !e.target.closest("a")) toggleGroup(g.dataset.key);
+  });
+  $(".wrap").addEventListener("keydown", e => {
+    if(e.key !== "Enter" && e.key !== " ") return;
+    const g = e.target.closest && e.target.closest("tr.grp");
+    if(!g) return;
+    e.preventDefault();
+    toggleGroup(g.dataset.key);
   });
 }
 
@@ -224,11 +261,12 @@ function openProfile(){
   typeChips($("#profileTypes"), PTYPES, renderProfile);
   renderProfile();
 }
-function profileStats(slug, types){
+function profileStats(slug, types, keep){
   let voor=0, tegen=0, onth=0, afw=0, win=0, decided=0;
   const lone = [];
   for(const m of DATA.moties){
     if(!types.has(m.type)) continue;
+    if(keep && !keep(m)) continue;
     const v = m.votes[slug];
     if(!v){ afw++; continue; }
     const r = cellVerdict(v);
@@ -308,17 +346,60 @@ function renderCompare(){
 function openStats(){
   if(!STYPES) STYPES = new Set(ALLTYPES);
   typeChips($("#statsTypes"), STYPES, renderStats);
+  buildMeetingPicker();
   renderStats();
 }
+
+/* The vergadering filter: every meeting on by default. SMEETINGS holds the meeting ids that count;
+   it survives a rebuild (after live bijladen new meetings arrive switched on). */
+let SMEETINGS = null;
+function allMeetings(){
+  const byId = new Map();
+  for(const m of DATA.moties){
+    const mid = meetingOf(m);
+    const g = byId.get(mid);
+    if(g) g.n++; else byId.set(mid, {mid, date: m.date, n: 1});
+  }
+  return [...byId.values()].sort((a,b) => b.date.localeCompare(a.date) || b.mid - a.mid);
+}
+function buildMeetingPicker(){
+  const list = allMeetings();
+  if(!SMEETINGS) SMEETINGS = new Set(list.map(g => g.mid));
+  else for(const g of list) if(!SMEETINGS.has(g.mid) && !SM_SEEN.has(g.mid)) SMEETINGS.add(g.mid);
+  for(const g of list) SM_SEEN.add(g.mid);
+  $("#smList").innerHTML = list.map(g =>
+    `<label><input type="checkbox" data-mid="${g.mid}"${SMEETINGS.has(g.mid) ? " checked" : ""}> ${esc(formatDateNL(g.date, false))} <span class="pp-n">${g.n}</span></label>`).join("");
+  $("#smList").onchange = e => {
+    const mid = +e.target.dataset.mid;
+    e.target.checked ? SMEETINGS.add(mid) : SMEETINGS.delete(mid);
+    updateMeetingSummary(list);
+    renderStats();
+  };
+  $("#smAll").onclick = () => setAllMeetings(list, true);
+  $("#smNone").onclick = () => setAllMeetings(list, false);
+  updateMeetingSummary(list);
+}
+const SM_SEEN = new Set();
+function setAllMeetings(list, on){
+  SMEETINGS = new Set(on ? list.map(g => g.mid) : []);
+  $("#smList").querySelectorAll("input").forEach(i => { i.checked = on; });
+  updateMeetingSummary(list);
+  renderStats();
+}
+function updateMeetingSummary(list){
+  const n = SMEETINGS.size, total = list.length;
+  $("#smSummary").textContent = n === total ? "Alle vergaderingen"
+    : n === 0 ? "Geen vergaderingen" : `${n} van ${total} vergaderingen`;
+}
+const statsKeep = m => SMEETINGS.has(meetingOf(m));
 const svgOpen = (w, h) => `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="grafiek" preserveAspectRatio="xMidYMid meet">`;
-const fmtMonth = ym => { const [y, m] = ym.split("-"); return `${["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"][+m-1]} ${y}`; };
 const legend = items => `<div class="legend-row">${items.map(([c, l]) => `<span><span class="sw" style="background:${c}"></span>${l}</span>`).join("")}</div>`;
 const RES_COLOR = {accepted:"var(--c-aangenomen)", rejected:"var(--c-verworpen)", tie:"var(--c-staken)"};
 const RES_LABEL = {accepted:"aangenomen", rejected:"verworpen", tie:"staken van stemmen"};
 const resKey = m => m.result === "accepted" || m.result === "rejected" ? m.result : "tie";
 
 function renderStats(){
-  const ms = DATA.moties.filter(m => STYPES.has(m.type));
+  const ms = DATA.moties.filter(m => STYPES.has(m.type) && statsKeep(m));
   const acc = ms.filter(m => m.result === "accepted").length;
   const byType = {}; for(const m of ms) byType[m.type] = (byType[m.type]||0) + 1;
   const meetings = new Set(ms.map(m => m.source)).size;
@@ -329,40 +410,52 @@ function renderStats(){
     ${ALLTYPES.map(t => `<div class="stat"><div class="num">${byType[t]||0}</div><div class="lab">${esc(TYPE_PLURAL[t]||t)}</div></div>`).join("")}
     <div class="stat"><div class="num">${meetings}</div><div class="lab">vergaderingen</div></div>
     <div class="stat"><div class="num" style="font-size:16px;padding-top:4px">${dates.length ? esc(dates[dates.length-1]) : "&ndash;"}</div><div class="lab">laatste stemming</div></div>`;
-  $("#chartMonths").innerHTML = chartMonths(ms);
+  $("#chartMeetings").innerHTML = chartMeetings(ms);
   $("#chartIndieners").innerHTML = chartIndieners(ms);
-  $("#chartWinning").innerHTML = chartWinning();
+  $("#chartWinning").innerHTML = chartWinning(STYPES, statsKeep);
   $("#chartMargins").innerHTML = chartMargins(ms);
 }
 
-// 1. Stacked bars per month: aangenomen / verworpen / staken, over the whole term.
-function chartMonths(ms){
+/* 1. Stacked bars per vergadering: aangenomen / verworpen / staken. Each bar links to that
+      meeting on the Statenportaal, so a striking vergadering is one click from its notulen. */
+function chartMeetings(ms){
   if(!ms.length) return `<p class="modal-sub">Geen stemmingen.</p>`;
-  const months = [];
-  const first = ms.map(m => m.date).sort()[0].slice(0,7), last = new Date().toISOString().slice(0,7);
-  for(let y = +first.slice(0,4), mo = +first.slice(5,7); `${y}-${String(mo).padStart(2,"0")}` <= last; ){
-    months.push(`${y}-${String(mo).padStart(2,"0")}`); if(++mo > 12){ mo = 1; y++; }
+  const byId = new Map();
+  for(const m of ms){
+    const mid = meetingOf(m);
+    let g = byId.get(mid);
+    if(!g) byId.set(mid, g = {mid, date: m.date, source: m.source, accepted:0, rejected:0, tie:0, n:0});
+    g[resKey(m)]++; g.n++;
   }
-  const agg = Object.fromEntries(months.map(k => [k, {accepted:0, rejected:0, tie:0}]));
-  for(const m of ms){ const k = m.date.slice(0,7); if(agg[k]) agg[k][resKey(m)]++; }
+  const gs = [...byId.values()].sort((a,b) => a.date.localeCompare(b.date) || a.mid - b.mid);
   const W = 520, H = 220, L = 34, R = 8, T = 10, B = 34, pw = W - L - R, ph = H - T - B;
-  const max = Math.max(1, ...months.map(k => agg[k].accepted + agg[k].rejected + agg[k].tie));
+  const max = Math.max(1, ...gs.map(g => g.n));
   const step = max > 60 ? 20 : max > 30 ? 10 : 5, ymax = Math.ceil(max/step)*step;
-  const bw = pw / months.length, y = v => T + ph - v/ymax*ph;
+  const bw = pw / gs.length, y = v => T + ph - v/ymax*ph;
   let s = svgOpen(W, H);
   for(let v = 0; v <= ymax; v += step) s += `<line class="grid" x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end">${v}</text>`;
-  months.forEach((k, i) => {
-    const a = agg[k]; let base = 0; const x = L + i*bw + 1, w = Math.max(1, bw - 2);
+  let lastYear = null;
+  gs.forEach((g, i) => {
+    const x = L + i*bw + 1, w = Math.max(1, bw - 2);
+    const parts = ["accepted","rejected","tie"].filter(k => g[k])
+      .map(k => `${g[k]} ${RES_LABEL[k]}`).join(", ");
+    const tip = `${formatDateNL(g.date, false)}: ${g.n} stemming${g.n===1?"":"en"} — ${parts}. Klik voor de vergadering op het Statenportaal.`;
+    s += `<a href="${esc(g.source || "")}" target="_blank" rel="noopener"><title>${esc(tip)}</title>`;
+    let base = 0;
     for(const key of ["accepted","rejected","tie"]){
-      const v = a[key]; if(!v) continue;
+      const v = g[key]; if(!v) continue;
       const y1 = y(base + v), h = y(base) - y1;
-      s += `<rect class="bar" x="${x.toFixed(1)}" y="${y1.toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" fill="${RES_COLOR[key]}"${base===0?` rx="2"`:""}><title>${fmtMonth(k)}: ${v} ${RES_LABEL[key]} (totaal ${a.accepted+a.rejected+a.tie})</title></rect>`;
+      s += `<rect class="bar" x="${x.toFixed(1)}" y="${y1.toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" fill="${RES_COLOR[key]}"${base===0?` rx="2"`:""}/>`;
       base += v;
     }
-    if(k.endsWith("-01") || k.endsWith("-07")) s += `<text x="${(x + w/2).toFixed(1)}" y="${H-B+16}" text-anchor="middle">${fmtMonth(k)}</text>`;
+    // A hit area over the whole column, so a thin bar is still easy to click.
+    s += `<rect class="hit" x="${x.toFixed(1)}" y="${T}" width="${w.toFixed(1)}" height="${ph.toFixed(1)}" fill="transparent"/></a>`;
+    const year = g.date.slice(0,4);
+    if(year !== lastYear){ lastYear = year; s += `<text x="${(x + w/2).toFixed(1)}" y="${H-B+16}" text-anchor="middle">${year}</text>`; }
   });
   s += `<line class="axis" x1="${L}" x2="${W-R}" y1="${y(0)}" y2="${y(0)}"/></svg>`;
-  return s + legend([[RES_COLOR.accepted,"aangenomen"],[RES_COLOR.rejected,"verworpen"],[RES_COLOR.tie,"staken van stemmen"]]);
+  return s + legend([[RES_COLOR.accepted,"aangenomen"],[RES_COLOR.rejected,"verworpen"],[RES_COLOR.tie,"staken van stemmen"]])
+    + `<p class="chart-sub" style="margin-top:6px">Eén balk per plenaire vergadering (${gs.length} in deze selectie), oudste links.</p>`;
 }
 
 // 2. Indieners: per fractie the moties/amendementen it (co-)submitted, split by outcome.
@@ -370,7 +463,7 @@ function chartIndieners(ms){
   const rows = {};
   let withInd = 0, eligible = 0;
   for(const m of ms){
-    if(m.type !== "motie" && m.type !== "amendement") continue;
+    if(m.type !== "motie" && m.type !== "frjemd" && m.type !== "amendement") continue;
     eligible++;
     if(!m.indieners || !m.indieners.length) continue;
     withInd++;
@@ -399,9 +492,9 @@ function chartIndieners(ms){
 }
 
 // 3. Percentage of decided votes each fractie cast on the winning side.
-function chartWinning(){
-  const list = DATA.parties.map(p => ({slug: p.slug, ...profileStats(p.slug, STYPES)}))
-    .filter(r => r.decided >= 5).sort((a,b) => b.winPct - a.winPct || b.decided - a.decided);
+function chartWinning(types, keep, minDecided = 5){
+  const list = DATA.parties.map(p => ({slug: p.slug, ...profileStats(p.slug, types, keep)}))
+    .filter(r => r.decided >= minDecided).sort((a,b) => b.winPct - a.winPct || b.decided - a.decided);
   if(!list.length) return `<p class="modal-sub">Te weinig stemmingen.</p>`;
   const W = 520, rowH = 22, L = 74, R = 78, T = 6, H = T + list.length*rowH + 8, pw = W - L - R;
   let s = svgOpen(W, H);
@@ -413,7 +506,7 @@ function chartWinning(){
       <text class="val" x="${(L+w+6).toFixed(1)}" y="${yy+15}">${r.winPct}% <tspan style="font-weight:400;fill:var(--muted)">(${r.decided})</tspan></text></g>`;
   });
   s += `</svg>`;
-  return s + `<p class="chart-sub" style="margin-top:6px">Aandeel van de aangenomen/verworpen stemmingen waarin de fractie met de uitslag meestemde; tussen haakjes het aantal. Fracties met minder dan 5 stemmingen zijn weggelaten.</p>`;
+  return s + `<p class="chart-sub" style="margin-top:6px">Aandeel van de aangenomen/verworpen stemmingen waarin de fractie met de uitslag meestemde; tussen haakjes het aantal. Fracties met minder dan ${minDecided} beslissende stemmingen zijn weggelaten.</p>`;
 }
 
 // 4. How contested: distribution of the margin |voor − tegen|, from unanimous to razor-thin.
@@ -547,11 +640,40 @@ function passes(m){
 }
 function sortRows(rows){
   const c = {
-    "date-desc": (a,b)=> b.date.localeCompare(a.date) || a.title.localeCompare(b.title),
-    "date-asc":  (a,b)=> a.date.localeCompare(b.date) || a.title.localeCompare(b.title),
-    "result":    (a,b)=> (a.result||"").localeCompare(b.result||"") || b.date.localeCompare(a.date),
-  }[state.sort];
+    "date-desc": (a,b)=> b.date.localeCompare(a.date) || collator.compare(a.title, b.title),
+    "date-asc":  (a,b)=> a.date.localeCompare(b.date) || collator.compare(a.title, b.title),
+  }[state.sort] || ((a,b)=> b.date.localeCompare(a.date));
   return rows.sort(c);
+}
+
+// A filter (not a type chip) is active: groups with hits open themselves so the hits are visible.
+const filterActive = () => !!state.search || state.result !== "all" || state.controversial;
+
+/* Rows -> [{mid, date, source, n, agendas:[{aid, nr, label, rows}]}], meetings in the chosen date
+   order, agendapunten by their number ("2a" sorts after "2"), "Zonder agendapunt" last. */
+function groupRows(rows){
+  const asc = state.sort === "date-asc";
+  const byMeeting = new Map();
+  for(const m of rows){
+    const mid = meetingOf(m);
+    let g = byMeeting.get(mid);
+    if(!g) byMeeting.set(mid, g = {mid, date: m.date, source: m.source, n: 0, ag: new Map()});
+    if(m.date < g.date) g.date = m.date;
+    g.n++;
+    const aid = agendaIdOf(m);
+    let a = g.ag.get(aid);
+    if(!a) g.ag.set(aid, a = {aid, nr: m.agenda ? m.agenda.nr : "", label: agendaLabel(m), rows: []});
+    a.rows.push(m);
+  }
+  const groups = [...byMeeting.values()].sort((a,b) =>
+    (asc ? a.date.localeCompare(b.date) : b.date.localeCompare(a.date)) || a.mid - b.mid);
+  for(const g of groups){
+    g.agendas = [...g.ag.values()].sort((a,b) =>
+      (a.aid === 0) - (b.aid === 0) || collator.compare(a.nr, b.nr) || collator.compare(a.label, b.label));
+    for(const a of g.agendas) a.rows.sort((x,y) => collator.compare(x.title, y.title));
+    delete g.ag;
+  }
+  return groups;
 }
 
 function cellHTML(m, slug, name, sep){
@@ -576,18 +698,66 @@ function rowHTML(m, vps){
     </div></td>`;
   return `<tr>${first}${vps.map(p=>cellHTML(m,p.slug,p.name,p.sep)).join("")}</tr>`;
 }
+function headHTML(vps){
+  return `<thead><tr><th class="onderwerp-h">Onderwerp</th>${
+    vps.map(p=>`<th${p.sep?' class="sep"':""} title="${esc(p.name)}">${esc(pLabel(p.slug))}</th>`).join("")}</tr></thead>`;
+}
 function tableHTML(rows, vps){
   if(!rows.length) return `<div class="empty">Geen stemmingen voor deze selectie.</div>`;
-  const head = `<thead><tr><th class="onderwerp-h">Onderwerp</th>${
-    vps.map(p=>`<th${p.sep?' class="sep"':""} title="${esc(p.name)}">${esc(pLabel(p.slug))}</th>`).join("")}</tr></thead>`;
-  return `<div class="table-scroll"><table>${head}<tbody>${rows.map(m=>rowHTML(m,vps)).join("")}</tbody></table></div>`;
+  return `<div class="table-scroll"><table>${headHTML(vps)}<tbody>${rows.map(m=>rowHTML(m,vps)).join("")}</tbody></table></div>`;
+}
+
+// One table, three kinds of row: vergadering, agendapunt, stemming. A collapsed group does not
+// render its children, so a folded table stays small however many stemmingen it holds.
+const CARET = `<span class="caret" aria-hidden="true"></span>`;
+function grpRowHTML(cls, key, open, span, inner){
+  return `<tr class="grp ${cls}${open?" open":""}" data-key="${esc(key)}" tabindex="0" role="button" aria-expanded="${open}">
+    <td colspan="${span}"><div class="grp-row">${CARET}${inner}</div></td></tr>`;
+}
+function groupedHTML(groups, vps, forceOpen){
+  if(!groups.length) return `<div class="empty">Geen stemmingen voor deze selectie.</div>`;
+  const span = vps.length + 1;
+  let body = "";
+  for(const g of groups){
+    const key = mKey(g.mid), open = forceOpen || state.open.has(key);
+    body += grpRowHTML("grp-m", key, open, span,
+      `<span class="grp-title">${esc(formatDateNL(g.date))}</span>
+       <span class="grp-n">${g.n} stemming${g.n===1?"":"en"}</span>
+       <span class="grp-links"><a class="meetlink" href="#vergadering/${g.mid}" title="Alles over deze vergadering">${ICO("i-chart")}Vergadering</a>${srcLink(g)}</span>`);
+    if(!open) continue;
+    for(const a of g.agendas){
+      const akey = aKey(g.mid, a.aid), aopen = forceOpen || state.open.has(akey);
+      body += grpRowHTML("grp-a", akey, aopen, span,
+        `<span class="grp-title">${esc(a.label)}</span><span class="grp-n">${a.rows.length}</span>`);
+      if(aopen) body += a.rows.map(m => rowHTML(m, vps)).join("");
+    }
+  }
+  return `<div class="table-scroll"><table>${headHTML(vps)}<tbody>${body}</tbody></table></div>`;
+}
+
+function togglePin(id){
+  state.pinned.has(id) ? state.pinned.delete(id) : state.pinned.add(id);
+  localStorage.setItem(PIN_KEY, JSON.stringify([...state.pinned]));
+  render();
+  if(window.MeetingPage) MeetingPage.refresh();
+}
+// Folding a vergadering also forgets its agendapunten, so reopening it starts folded again.
+function toggleGroup(key){
+  if(state.open.has(key)){
+    state.open.delete(key);
+    if(key.startsWith("m:")) for(const k of [...state.open]) if(k.startsWith(`a:${key.slice(2)}:`)) state.open.delete(k);
+  }else{
+    state.open.add(key);
+  }
+  render();
 }
 
 function render(){
   const vps = visibleParties();
   const all = DATA.moties.filter(passes);
   const pinnedRows = sortRows(DATA.moties.filter(m=>state.pinned.has(m.id)));
-  const mainRows = state.onlyPinned ? [] : sortRows(all.filter(m=>!state.pinned.has(m.id)));
+  const mainRows = state.onlyPinned ? [] : all.filter(m=>!state.pinned.has(m.id));
+  const groups = groupRows(mainRows);
 
   $("#pinnedBlock").innerHTML = pinnedRows.length
     ? `<div class="tbl-title">${ICO("i-pin")} Vastgepind (${pinnedRows.length})</div>${tableHTML(pinnedRows, vps)}`
@@ -597,10 +767,11 @@ function render(){
   if(vb) vb.dataset.n = [state.controversial, state.onlyPinned, state.raw].filter(Boolean).length;
   $("#mainBlock").innerHTML = state.onlyPinned
     ? (pinnedRows.length?"":`<div class="empty">Nog niets vastgepind.</div>`)
-    : tableHTML(mainRows, vps);
+    : groupedHTML(groups, vps, filterActive());
 
   const shown = (state.onlyPinned?pinnedRows.length:mainRows.length+pinnedRows.length);
-  $("#count").textContent = `${shown} van ${DATA.moties.length} stemmingen · ${vps.length} partijen`;
+  const nm = groups.length;
+  $("#count").textContent = `${shown} van ${DATA.moties.length} stemmingen · ${nm} vergadering${nm===1?"":"en"} · ${vps.length} partijen`;
 }
 
 // Split a Frisian title into number, indieners-in-title and subject for the CSV.
@@ -624,11 +795,12 @@ function exportCSV(){
     if(state.raw) return `${v.agree}-${v.disagree}`;
     return r.label;
   };
-  const header = ["Datum","Type","Code","Nr.","Onderwerp","Indieners","Uitslag","Voor","Tegen","Document","Bron", ...vps.map(p => p.name)];
+  const header = ["Datum","VergaderingId","Agendapunt","Type","Code","Nr.","Onderwerp","Indieners","Uitslag","Voor","Tegen","Document","Bron", ...vps.map(p => p.name)];
   const lines = [header.map(q).join(",")];
   for(const m of rows){
     const t = splitTitle(m.title);
-    lines.push([m.date, TYPE_LABEL[m.type]||m.type, t.code, t.nr, t.subject, (m.indieners||[]).map(pName).join("; "), m.resultLabel||"",
+    lines.push([m.date, meetingOf(m) || "", m.agenda ? `${m.agenda.nr} ${m.agenda.title}` : "",
+                TYPE_LABEL[m.type]||m.type, t.code, t.nr, t.subject, (m.indieners||[]).map(pName).join("; "), m.resultLabel||"",
                 m.totals ? m.totals.agree : "", m.totals ? m.totals.disagree : "", m.document||"", m.source||"",
                 ...vps.map(p => cellVal(m.votes[p.slug]))].map(q).join(","));
   }
@@ -651,6 +823,9 @@ const fetchJSON = async url => { const r = await fetch(url); if(!r.ok) throw new
 
 // JS ports of the collector's classification, so live rows are typed exactly like snapshot rows.
 function liveClassify(title, votingType){
+  // A "Moasje frjemd" is filed by the API as a plain motion (sometimes even as a proposal); the
+  // title is the only reliable signal, so it is checked first. Mirrors collect.notubiz_classify.
+  if(/^\s*(?:\d+[a-z]?\s+)?(?:moasje|moasie|motie)\s*(?:frjemd|fremd)\b/i.test(title||"")) return "frjemd";
   const vt = (votingType||"").toLowerCase();
   if(vt === "motion") return "motie";
   if(vt === "amendment") return "amendement";
@@ -676,14 +851,15 @@ function titleNumber(title){
   return m ? m[1] : null;
 }
 const slugify = name => name.toLowerCase().replace(/[^a-z0-9\s-]/g,"").trim().replace(/\s+/g,"-");
-const LIVE_ALIASES = {"Partij voor de Dieren":"PvdD"};
+const LIVE_ALIASES = {"Partij voor de Dieren":"PvdD", "FVD":"Van Dijk (FvD)", "Steatelid Van Dijk":"Van Dijk (FvD)"};
 const LIVE_SKIP = new Set(["Geen partij","Gedeputeerde Staten"]);
 const partySlug = name => { name = LIVE_ALIASES[name] || name; return LIVE_SKIP.has(name) ? null : slugify(name); };
 const attr = (item, id) => { const a = (item.attributes||[]).find(x => x.id === id); return a ? a.values.map(v => v.content) : []; };
 
 function matchModuleItem(title, type, candidates){
-  const typeOk = c => type === "motie" ? /^(moasje|motie)/.test(c.type) : type === "amendement" ? /^amendem/.test(c.type) : false;
+  const typeOk = c => (type === "motie" || type === "frjemd") ? /^(moasje|motie)/.test(c.type) : type === "amendement" ? /^amendem/.test(c.type) : false;
   let cands = candidates.filter(typeOk); if(!cands.length) cands = candidates.slice();
+  if(type === "frjemd"){ const fr = cands.filter(c => /frjemd|fremd/.test(c.type)); if(fr.length) cands = fr; }
   if(!cands.length) return null;
   const n = titleNumber(title);
   if(n){
@@ -695,6 +871,24 @@ function matchModuleItem(title, type, candidates){
   const scored = cands.map(c => [[...want].filter(t => titleTokens(c.title).has(t)).length, c]).sort((a,b) => b[0]-a[0]);
   if(scored.length && scored[0][0] >= 2 && (scored.length === 1 || scored[0][0] > scored[1][0])) return scored[0][1];
   return null;
+}
+
+/* {agenda item id: {id, nr, title}} of one meeting — the votings' parent.id points at these.
+   Port of collect.notubiz_meeting_detail; a failure only costs the grouping of those rows. */
+async function fetchAgenda(mid){
+  const data = await fetchJSON(apiUrl(`events/meetings/${mid}`, {})).catch(() => null);
+  const out = {};
+  (function walk(items){
+    for(const it of items || []){
+      const td = it.type_data || {};
+      const nr = String(td.title_prefix || "").trim();
+      const a = (td.attributes || []).find(x => x.id === 1 && x.value);
+      const title = a ? String(a.value).replace(/\s+/g, " ").trim() : "";
+      if(nr && title && it.id) out[it.id] = {id: it.id, nr, title};
+      walk(it.agenda_items);
+    }
+  })(((data || {}).meeting || {}).agenda_items);
+  return out;
 }
 
 async function liveTopUp(){
@@ -717,6 +911,7 @@ async function liveTopUp(){
   const rows = [];
   const seen = new Set(DATA.moties.map(m => m.id));
   for(const mt of meetings){
+    mt.agenda = await fetchAgenda(mt.id);
     const vd = await fetchJSON(apiUrl("agenda_items/votings", {meeting_id: mt.id})).catch(() => null);
     for(const v of (vd && vd.votings) || []){
       const td = v.type_data || {}, votesIn = td.votes || [];
@@ -733,8 +928,9 @@ async function liveTopUp(){
       }
       if(!Object.keys(votes).length) continue;
       const title = (td.title||"").trim();
-      rows.push({id: v.id, date: mt.date, title, type: liveClassify(title, td.voting_type), result, resultLabel,
-        source: `${meta.source}/vergadering/${mt.id}`, votes, agendaItem: (v.parent||{}).id,
+      rows.push({id: v.id, date: mt.date, meetingId: mt.id, title, type: liveClassify(title, td.voting_type), result, resultLabel,
+        source: `${meta.source}/vergadering/${mt.id}`, votes, agenda: mt.agenda ? mt.agenda[(v.parent||{}).id] : undefined,
+        agendaItem: (v.parent||{}).id,
         totals: {agree: Object.values(votes).reduce((s,c)=>s+c.agree,0), disagree: Object.values(votes).reduce((s,c)=>s+c.disagree,0)},
         live: true, unknownVotes: unknown});
     }
@@ -756,7 +952,7 @@ async function liveTopUp(){
       if(rec.date) (byDate[rec.date] = byDate[rec.date] || []).push(rec);
     }
     for(const m of rows){
-      if(m.type !== "motie" && m.type !== "amendement") continue;
+      if(m.type !== "motie" && m.type !== "frjemd" && m.type !== "amendement") continue;
       const rec = matchModuleItem(m.title, m.type, byAgenda[m.agendaItem]||[]) || matchModuleItem(m.title, m.type, byDate[m.date]||[]);
       if(!rec) continue;
       if(rec.document){
@@ -770,13 +966,16 @@ async function liveTopUp(){
   DATA.moties.push(...rows);
   let newType = false;
   for(const t of new Set(rows.map(r => r.type))) if(!ALLTYPES.includes(t)){ ALLTYPES.push(t); state.types.add(t); newType = true; }
+  if(newType) ALLTYPES = sortTypes(ALLTYPES);
   AG = ORDER = TABLE_ORDER = null;
   const unknown = rows.reduce((s,r) => s + (r.unknownVotes||0), 0);
   $("#liveNote").hidden = false;
   $("#liveNote").innerHTML = `● <b>${rows.length} stemming${rows.length===1?"":"en"} live opgehaald</b> van Notubiz (${meetings.length} vergadering${meetings.length===1?"":"en"} na ${esc(lastDate)}) — nog niet in de dagelijkse snapshot.`
     + (unknown ? ` ${unknown} individuele stem${unknown===1?"":"men"} van nog onbekende leden ${unknown===1?"is":"zijn"} niet meegeteld.` : "");
   if(newType) buildControls(ALLTYPES);   // a type unseen in the snapshot needs its filter chip
+  if(SMEETINGS) buildMeetingPicker();    // new vergaderingen join the stats filter switched on
   render();
+  if(window.MeetingPage) MeetingPage.refresh();
 }
 
 init().catch(e => { document.querySelector(".wrap").innerHTML = `<div class="empty">Kon data niet laden: ${esc(""+e)}<br><small>Draai lokaal met een server (zie README).</small></div>`; });

@@ -22,8 +22,13 @@ Three public Notubiz surfaces, no token (see ../docs/notubiz.md):
   4. module items  GET api.notubiz.nl/modules/6/items?organisation_id=  (the "Moasjes en amendeminten"
                    module) -> per motion: title, PDF document, agenda item, indienende partijen.
      parties       GET api.notubiz.nl/organisations/<id>/parties -> party id -> name.
+  5. uitslag PDF   GET api.notubiz.nl/events/meetings/<mid> -> the document "Útslach stimming <datum>"
+                   under the agenda item "Stimming". Since 2026-05-27 the griffie no longer registers
+                   votes in Notubiz's voting module (2. and 3. are empty); this PDF holds one
+                   screenshot of the voting display per stemming and is read by uitslag_pdf.py.
 
-Zero dependencies (stdlib only), so GitHub Actions needs no install step.
+The API path is stdlib only. Reading the PDFs needs the optional packages in
+collector/requirements-pdf.txt; without them those meetings are reported and skipped.
 
 NOTE: api.notubiz.nl silently drops connections from GitHub's cloud runners (geo/datacenter
 filtering, no exceptions — 2026-09). From a Dutch connection everything works. When a run cannot
@@ -41,6 +46,8 @@ import urllib.parse
 import urllib.request
 from datetime import date, datetime, timezone
 from pathlib import Path
+
+import uitslag_pdf
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 DATA_FILE = DATA_DIR / "fryslan.json"
@@ -75,6 +82,10 @@ API_VERSION = "1.21"   # mandatory: other versions silently reject every paramet
 # stemmingen use "PvdD"). Fracties that genuinely existed separately are NOT merged.
 NOTUBIZ_ALIASES = {
     "Partij voor de Dieren": "PvdD",
+    # One member: elected for FVD (listed as indiener under that name until mid-2024), votes registered
+    # as "Steatelid Van Dijk" throughout the term. One column, one name.
+    "FVD": "Van Dijk (FvD)",
+    "Steatelid Van Dijk": "Van Dijk (FvD)",
 }
 # Labels that are not a real fractie (the absence of one) -> not a voting column.
 NOTUBIZ_SKIP = {"Geen partij", "Gedeputeerde Staten"}
@@ -89,10 +100,11 @@ SLEEP = 0.3  # be polite between requests
 
 # --- HTTP ---------------------------------------------------------------------------------------
 
-def http(url):
+def http(url, binary=False):
     req = urllib.request.Request(url, headers=HEADERS)
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return r.read().decode("utf-8", "replace")
+    with urllib.request.urlopen(req, timeout=90 if binary else 30) as r:
+        data = r.read()
+        return data if binary else data.decode("utf-8", "replace")
 
 
 # Why requests failed, so a run that collects nothing names its own cause ("Network is
@@ -111,11 +123,11 @@ def http_log_summary():
 RETRY_STATUS = {429, 500, 502, 503, 504}
 
 
-def fetch(url, tries=3):
+def fetch(url, tries=3, binary=False):
     """GET with retries on transient errors; None on a permanent 4xx or after `tries` failures."""
     for attempt in range(tries):
         try:
-            return http(url)
+            return http(url, binary)
         except urllib.error.HTTPError as e:
             if e.code not in RETRY_STATUS or attempt + 1 == tries:
                 note_failure(f"HTTP {e.code}")
@@ -147,6 +159,10 @@ def try_json(url):
 
 def try_text(url):
     return fetch(url)
+
+
+def try_bytes(url):
+    return fetch(url, binary=True)
 
 
 def api(path, **params):
@@ -192,9 +208,16 @@ def title_number(title):
     return m.group(1) if m else None
 
 
+FRJEMD_RE = re.compile(r"^\s*(?:\d+[a-z]?\s+)?(?:moasje|moasie|motie)\s*(?:frjemd|fremd)\b", re.I)
+
+
 def notubiz_classify(title, voting_type):
-    """Item type. Prefer the API's explicit `voting_type` (reliable for Fryslân); fall back to the
+    """Item type. A "Moasje frjemd" (a motion on a subject not on the agenda) is its own type and is
+    recognised from the title first — the API files it as a plain motion or even a council proposal.
+    Otherwise prefer the API's explicit `voting_type` (reliable for Fryslân); fall back to the
     (Frisian) title: "Moasje"/"Amendemint"/"Oarderfoarstel"."""
+    if FRJEMD_RE.match(title or ""):
+        return "frjemd"
     vt = (voting_type or "").lower()
     if vt == "motion":
         return "motie"
@@ -325,17 +348,32 @@ def load_module_items(p):
 
 
 def module_type_matches(rec_type, item_type):
-    if item_type == "motie":
+    """Module attribute 45 ("Moasje", "Moasje frjemd", "Amendemint", spelling variants) vs our type.
+    The module is not consistent about "frjemd", so both motion types accept any moasje record;
+    `prefer_frjemd` narrows that when it can."""
+    if item_type in ("motie", "frjemd"):
         return rec_type.startswith("moasje") or rec_type.startswith("motie")
     if item_type == "amendement":
         return rec_type.startswith("amendem")
     return False
 
 
+def is_frjemd_type(rec_type):
+    return "frjemd" in rec_type or "fremd" in rec_type
+
+
+def prefer_frjemd(cands, item_type):
+    """For a frjemd stemming keep only the module records typed frjemd, when there are any."""
+    if item_type != "frjemd":
+        return cands
+    return [c for c in cands if is_frjemd_type(c["type"])] or cands
+
+
 def match_module_item(title, item_type, candidates):
     """Pick the module item for a stemming: same type, then the same motion number, else the unique
     best title-token overlap (>= 2 shared tokens). None when nothing is convincing."""
     cands = [c for c in candidates if module_type_matches(c["type"], item_type)] or list(candidates)
+    cands = prefer_frjemd(cands, item_type)
     if not cands:
         return None
     n = title_number(title)
@@ -359,6 +397,161 @@ def document_url(portal, doc):
     return f"{portal}/document/{doc['id']}/1/{slug}"
 
 
+# --- Notubiz: "Útslach stimming" PDF (meetings without digital votes) ------------------------------------
+
+def is_uitslag_doc(title):
+    t = uitslag_pdf.squash(title)
+    return "tslachstimming" in t or "uitslagstemming" in t
+
+
+def notubiz_meeting_detail(mid):
+    """From events/meetings/<mid>:
+      * the "Útslach stimming" document {id, title} or None,
+      * {agenda point number (int): title} — names the besluit votes read from the PDF,
+      * {agenda item id: {"nr": title_prefix, "title": …}} for every numbered agenda point — the
+        votings API's `parent.id` points at these, so each stemming can be filed under its
+        wurklistpunt. Nodes without a number or title (section headers, the votings themselves) are
+        skipped."""
+    data = try_json(api(f"events/meetings/{mid}"))
+    found = {"doc": None}
+    titles, by_id = {}, {}
+
+    def walk(items):
+        for it in items or []:
+            td = it.get("type_data") or {}
+            prefix = str(td.get("title_prefix") or "").strip()
+            title = ""
+            for a in td.get("attributes") or []:
+                if a.get("id") == 1 and a.get("value"):
+                    title = re.sub(r"\s+", " ", str(a["value"])).strip()
+                    break
+            if prefix and title and it.get("id"):
+                by_id[it["id"]] = {"nr": prefix, "title": title}
+                if prefix.isdigit():
+                    titles.setdefault(int(prefix), title)
+            for d in it.get("documents") or []:
+                if found["doc"] is None and d.get("id") and is_uitslag_doc(d.get("title") or ""):
+                    found["doc"] = {"id": d["id"], "title": d.get("title") or ""}
+            walk(it.get("agenda_items"))
+
+    walk(((data or {}).get("meeting") or {}).get("agenda_items"))
+    return found["doc"], titles, by_id
+
+
+def agenda_for_number(nr, by_id):
+    """{id, nr, title} of the agenda point whose number is `nr` (int, as read from a PDF page
+    title), or None."""
+    if nr is None:
+        return None
+    for aid, a in by_id.items():
+        if a["nr"].isdigit() and int(a["nr"]) == nr:
+            return {"id": aid, **a}
+    return None
+
+
+def match_pdf_module_item(info, title, candidates):
+    """Module item for a PDF page (`info` = uitslag_pdf.title_info): same type, then the same
+    motion number (and the same agenda point when that still leaves several), else the best
+    space-less title similarity. None when nothing is convincing."""
+    cands = [c for c in candidates if module_type_matches(c["type"], info["type"])]
+    cands = prefer_frjemd(cands, info["type"])
+    if not cands:
+        return None
+    if info["number"]:
+        by_n = [c for c in cands if title_number(c["title"]) == info["number"]]
+        # A re-vote ("Werstimming … wurklistpunt 03 Moasje 19") names the ORIGINAL agenda point,
+        # so only a first vote may be narrowed down by today's agenda number.
+        if len(by_n) > 1 and info["agenda"] is not None and not info["revote"]:
+            by_n = [c for c in by_n if c["number"] == str(info["agenda"])] or by_n
+        if len(by_n) == 1 and not info["revote"]:
+            return by_n[0]
+        if by_n:
+            cands = by_n
+    scored = sorted(((uitslag_pdf.similarity(title, c["title"]), c) for c in cands),
+                    key=lambda x: -x[0])
+    return scored[0][1] if scored[0][0] >= 0.6 else None
+
+
+def collect_pdf_meeting(p, mid, mdate, doc, by_date, all_recs, agenda_titles, agenda_by_id,
+                        party_names, name_by_slug, primary):
+    """Stemmingen of one meeting read from its "Útslach stimming" PDF, in the same shape as the
+    API path produces. Returns (items, stats); stats["rejected"] lists pages the reader would
+    not vouch for (never guessed, see uitslag_pdf.read_page)."""
+    portal = p["public"]
+    pdf_url = document_url(portal, doc)
+    raw = try_bytes(pdf_url)
+    if not raw:
+        return [], {"error": "pdf niet opgehaald", "pages": 0, "withdrawn": 0, "rejected": [],
+                    "matched": 0, "unmatched": 0}
+    pages = uitslag_pdf.parse_pdf(raw, primary, list(party_names.values()))
+    items, rejected = [], []
+    stats = {"pages": len(pages), "withdrawn": 0, "rejected": rejected, "matched": 0, "unmatched": 0}
+    for pg in pages:
+        if not pg["ok"]:
+            if pg["warning"] == "ynlutsen":
+                stats["withdrawn"] += 1
+            elif pg["votes"] or pg["totals"]:   # the cover page has neither: not a stemming
+                rejected.append(pg)
+            continue
+        info = pg["info"]
+        votes = {}
+        for name, fv in pg["votes"].items():
+            s = party_slug(name)
+            if not s or not (fv["agree"] or fv["disagree"] or fv["abstain"]):
+                continue   # like the API path: a fractie that was absent gets no cell
+            name_by_slug.setdefault(s, NOTUBIZ_ALIASES.get(name, name))
+            votes[s] = {"agree": fv["agree"], "disagree": fv["disagree"], "abstain": fv["abstain"]}
+        if not votes:
+            continue
+        voor, tegen, _ = pg["totals"]
+        if voor > tegen:
+            result, label = "accepted", "Aangenomen"
+        elif voor < tegen:
+            result, label = "rejected", "Verworpen"
+        else:
+            result, label = "tie", "Staken van stemmen"
+        title = pg["title"]
+        item = {
+            "id": doc["id"] * 1000 + pg["page"],   # numeric and stable: document id + page
+            "date": mdate,
+            "meetingId": mid,
+            "title": title,
+            "type": info["type"],
+            "result": result,
+            "resultLabel": label,
+            "source": f"{portal}/vergadering/{mid}",
+            "uitslag": pdf_url,
+            "votes": votes,
+        }
+        agenda = agenda_for_number(info["agenda"], agenda_by_id)
+        if agenda:
+            item["agenda"] = agenda
+        rec = None
+        if info["type"] in ("motie", "frjemd", "amendement"):
+            # A re-vote concerns a motion from an earlier meeting: search the whole module.
+            pool = all_recs if info["revote"] else by_date.get(mdate, [])
+            rec = match_pdf_module_item(info, title, pool)
+            stats["matched" if rec else "unmatched"] += 1
+        if rec:
+            item["title"] = ("Werstimming: " if info["revote"] else "") + rec["title"]
+            if rec["document"]:
+                item["document"] = document_url(portal, rec["document"])
+                item["documentTitle"] = rec["document"]["title"]
+            ind = []
+            for pid in rec["parties"]:
+                s = party_slug(party_names.get(pid, ""))
+                if s and s not in ind:
+                    ind.append(s)
+            if ind:
+                item["indieners"] = ind
+        elif info["type"] == "besluit" and info["agenda"] in agenda_titles:
+            final = "finalebeslut" in uitslag_pdf.squash(title)
+            item["title"] = f"{info['agenda']:02d} {agenda_titles[info['agenda']]}" + \
+                            (" - Finale beslút" if final else "")
+        items.append(item)
+    return items, stats
+
+
 # --- Collect ------------------------------------------------------------------------------------
 
 def collect(p):
@@ -371,19 +564,25 @@ def collect(p):
     if not meetings:
         return None, None
     by_agenda, by_date, party_names = load_module_items(p)
+    all_recs = [r for recs in by_date.values() for r in recs]
 
     items, appear, seats, name_by_slug, seen = [], {}, {}, {}, set()
     role_votes = {}      # role_id -> {voting id: vote}
     member_votes = {}    # (fractie slug, member name) -> {voting id: vote}
     mismatch = doc_hits = doc_miss = 0
+    pdf_meetings, pdf_skipped = 0, []
     for mid, mdate in meetings:
+        # Agenda of the meeting: files every stemming under its wurklistpunt, and (for meetings
+        # without digital votes) names the "Útslach stimming" PDF and the besluit titles.
+        uitslag_doc, agenda_titles, agenda_by_id = notubiz_meeting_detail(mid)
+        time.sleep(SLEEP)
         vdata = try_json(api("agenda_items/votings", meeting_id=mid))
         time.sleep(SLEEP)
         votings = (vdata or {}).get("votings") or []
-        if not votings:
-            continue
-        breakdown = notubiz_parse_meeting(try_text(f"{portal}/vergadering/{mid}") or "")
-        time.sleep(SLEEP)
+        before = len(items)
+        if votings:
+            breakdown = notubiz_parse_meeting(try_text(f"{portal}/vergadering/{mid}") or "")
+            time.sleep(SLEEP)
         for v in votings:
             cid = v.get("id")
             if cid in seen:
@@ -414,15 +613,14 @@ def collect(p):
             for x in api_votes:
                 if x.get("role_id") and x.get("vote") in ("in_favor", "against"):
                     role_votes.setdefault(x["role_id"], {})[cid] = x["vote"]
-            for s, cell in votes.items():
-                appear[s] = appear.get(s, 0) + 1
-                seats[s] = max(seats.get(s, 0), cell["agree"] + cell["disagree"])
             title = (td.get("title") or "").strip()
             itype = notubiz_classify(title, td.get("voting_type"))
             result, label = notubiz_result(td.get("voting_result"))
+            agenda_id = (v.get("parent") or {}).get("id")
             item = {
                 "id": cid,
                 "date": mdate,
+                "meetingId": mid,
                 "title": title,
                 "type": itype,
                 "result": result,
@@ -430,8 +628,9 @@ def collect(p):
                 "source": f"{portal}/vergadering/{mid}",
                 "votes": votes,
             }
-            if itype in ("motie", "amendement"):
-                agenda_id = (v.get("parent") or {}).get("id")
+            if agenda_id in agenda_by_id:
+                item["agenda"] = {"id": agenda_id, **agenda_by_id[agenda_id]}
+            if itype in ("motie", "frjemd", "amendement"):
                 rec = match_module_item(title, itype, by_agenda.get(agenda_id, [])) \
                     or match_module_item(title, itype, by_date.get(mdate, []))
                 if rec:
@@ -449,8 +648,42 @@ def collect(p):
                 else:
                     doc_miss += 1
             items.append(item)
+
+        if len(items) == before:
+            # No digital stemmingen for this meeting: fall back to the griffie's "Útslach stimming"
+            # PDF (since 2026-05-27 the only place the hoofdelijke stemmingen are published).
+            doc = uitslag_doc
+            if doc:
+                if not uitslag_pdf.available():
+                    pdf_skipped.append(mdate)
+                else:
+                    new, stats = collect_pdf_meeting(p, mid, mdate, doc, by_date, all_recs,
+                                                     agenda_titles, agenda_by_id, party_names,
+                                                     name_by_slug, list(name_by_slug.values()))
+                    items.extend(new)
+                    doc_hits += stats["matched"]
+                    doc_miss += stats["unmatched"]
+                    pdf_meetings += 1
+                    print(f"  {mdate}: {len(new)} stemmingen uit PDF '{doc['title']}' "
+                          f"({stats['pages']} pagina's, {stats['withdrawn']} ynlutsen, "
+                          f"{len(stats['rejected'])} afgekeurd)")
+                    for pg in stats["rejected"]:
+                        print(f"    WARN: pagina {pg['page']} afgekeurd: {pg['warning']} | {pg['title'][:70]}")
+                    if stats.get("error"):
+                        print(f"    WARN: {stats['error']}")
+
+        for item in items[before:]:
+            for s, cell in item["votes"].items():
+                appear[s] = appear.get(s, 0) + 1
+                seats[s] = max(seats.get(s, 0), cell["agree"] + cell["disagree"])
     if mismatch:
         print(f"  WARN: {mismatch} stemming(en) waar portal- en API-totalen verschillen")
+    if pdf_meetings:
+        print(f"  {pdf_meetings} vergadering(en) via de 'Útslach stimming'-PDF (geen digitale stemmingen in Notubiz)")
+    if pdf_skipped:
+        print(f"  WARN: {len(pdf_skipped)} vergadering(en) alleen met een 'Útslach stimming'-PDF overgeslagen "
+              f"({', '.join(pdf_skipped)}): installeer collector/requirements-pdf.txt "
+              f"(ontbreekt: {', '.join(uitslag_pdf.missing())})")
     if not items:
         return None, None
 
@@ -582,7 +815,8 @@ def main():
             "style": p["style"],
             "note": p["note"],
             "granularity": "member",
-            "counts": {"moties": n, "parties": len(res["parties"])},
+            "counts": {"moties": n, "parties": len(res["parties"]),
+                       "fromPdf": sum(1 for m in res["moties"] if m.get("uitslag"))},
             "types": sorted({m["type"] for m in res["moties"]}),
             "organisationId": p["organisation_id"],
             "gremiumId": p["gremium_id"],

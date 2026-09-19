@@ -30,6 +30,14 @@ jobs:
       # collect.py exits 1 when the source lost data (REGRESSION) or has been unreachable for
       # longer than 45 days. We still want the commit step to run, so: record the outcome here,
       # commit whatever did refresh, then fail the job at the end.
+      # Optional: lets the collector read the griffie's "Útslach stimming" PDFs (the only place
+      # the hoofdelijke stemmingen are published since 2026-05-27). If this fails the collector
+      # still runs and reports which meetings it skipped.
+      - name: Install PDF reader dependencies
+        continue-on-error: true
+        shell: bash
+        run: python -m pip install -q --disable-pip-version-check -r collector/requirements-pdf.txt
+
       - name: Run collector
         id: collect
         continue-on-error: true

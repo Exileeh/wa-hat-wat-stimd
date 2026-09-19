@@ -14,18 +14,35 @@ Alles komt van openbare Notubiz-oppervlakken, zonder token. Provincie Fryslân =
 | Moasjes en amendeminten | `GET api.notubiz.nl/modules/6/items?organisation_id=822&format=json&version=1.21` | 1 930 items (≈3,5 MB, geen paginering, geen datumfilter). Attributen: `1` titel, `15` datum, `45` type (Moasje / Amendemint / Moasje frjemd …), `2` document `{document:{id,url,title}}` (pdf), `54` agendapunt-id (== `votings[].parent.id`), `37` partij-id's (indieners), `26` nummer, `62` uitslag (Oannommen/Fersmiten/Ynlutsen). |
 | Partijen | `GET api.notubiz.nl/organisations/822/parties?format=json&version=1.21` | `id → name` (incl. historische fracties). |
 | Document-URL | `https://fryslan.notubiz.nl/document/<docid>/1/<titel-met-plussen>` | Geeft `application/pdf`. |
+| Vergaderdetail | `GET api.notubiz.nl/events/meetings/<mid>?format=json&version=1.21` | Voor **elke** vergadering opgehaald. `meeting.agenda_items[]` (genest): `type_data.title_prefix` (agendapuntnummer, ook "2a"), `type_data.attributes[id=1].value` (titel), `documents[] {id, title}`. Elk genummerd agendapunt met titel komt in de map `agenda item id → {nr, title}`; `votings[].parent.id` wijst daarop, zodat elke stemming onder haar wurklistpunt valt. Hier staat ook, onder het agendapunt "Stimming", het document **"Útslach stimming <datum>"** (zie §6). |
 
 Niet openbaar: `/roles` (401 "Insufficient rights"), `/persons` (401). De koppeling
 `role_id → fractie` moet dus worden **afgeleid** (zie §3).
 
+**Let op (sinds 27 mei 2026):** de griffie registreert de hoofdelijke stemmingen niet meer in de
+Notubiz-stemmodule. Voor de plenaire vergaderingen vanaf die datum geeft de stemmingen-API
+`{"votings": []}` en heeft de portaalpagina geen `chart_`-blokken. De module *Moasjes en
+amendeminten* is wél gewoon bijgewerkt (titel, indieners, document, uitslag), maar zonder
+verdeling per fractie. Die staat alleen nog in de PDF van §6.
+
 ## 2. Koppeling stemming ↔ document/indieners (`collect.py`, `match_module_item`)
 
 1. Kandidaten = module-items met hetzelfde agendapunt (`parent.id` ↔ attribuut 54), gefilterd op
-   type (Moasje* ↔ motie, Amendemint ↔ amendement).
+   type (Moasje* ↔ motie en moasje frjemd, Amendemint ↔ amendement). Voor een **moasje frjemd**
+   tellen eerst de items waarvan attribuut 45 zelf "frjemd"/"fremd" zegt; de griffie schrijft dat
+   type niet consequent, dus zonder treffer gelden alle moasje-items alsnog als kandidaat.
 2. Zelfde **nummer**: uit attribuut 26 of uit de titel (`Moasje 9 (…)`, `03 Moasje 09 - …`,
    `Moasje 6-M-21: …`, `Motie (26): …`).
 3. Anders de unieke beste **titel-overlap** (≥ 2 gedeelde woorden, accenten en leestekens
    genegeerd). Terugval: kandidaten van dezelfde vergaderdatum.
+**Types.** `notubiz_classify` kijkt eerst naar de titel: begint die met "Moasje frjemd"/"Moasje
+fremd" (eventueel na het agendapuntnummer), dan is het type `frjemd` — de API zet zulke moties weg
+als gewone `motion` en een enkele keer zelfs als `council_proposal`. Daarna pas telt `voting_type`.
+
+**Eén kolom voor Van Dijk.** Het lid is gekozen voor FVD en staat tot medio 2024 onder die naam
+als indiener in de module; de stemmen staan de hele periode op "Steatelid Van Dijk". Beide namen
+worden in `NOTUBIZ_ALIASES` naar **"Van Dijk (FvD)"** gemapt, dus naar één slug `van-dijk-fvd`.
+
 4. Resultaat 2026-09-17: **671 van 676** moties+amendementen gekoppeld (99 %); 663 met document
    (8 module-items hebben geen bijlage). Indieners: partij-id's → namen → `slugify` (met alias
    "Partij voor de Dieren" → "PvdD"). Een indiener zonder eigen kolom (bijv. FVD, in deze periode
@@ -68,15 +85,18 @@ het live bijladen.
   "meta": { "province": "Fryslân", "body": "Provinciale Staten", "term": "2023-2027",
             "generated_at": "…", "source": "https://fryslan.notubiz.nl", "license": "…", "note": "…",
             "style": {"accent": "#c8102e", "headerBg": "#2a0a0c"}, "granularity": "member",
-            "counts": {"moties": 836, "parties": 15}, "types": ["amendement","besluit","motie"],
+            "counts": {"moties": 913, "parties": 15, "fromPdf": 77},
+            "types": ["amendement","besluit","frjemd","motie"],
             "organisationId": 822, "gremiumId": 430, "moduleId": 6,
             "knownIssue": "…tekst voor de melding…", "noticeAfterDays": 14 },
   "parties": [ {"slug": "bbb", "name": "BBB"}, … ],            // kolomvolgorde: grootste fractie eerst
   "moties": [ {
-      "id": 10358759, "date": "2026-05-06",
+      "id": 10358759, "date": "2026-05-06", "meetingId": 1488191,
       "title": "Moasje 9 (CDA en BBB): Each foar predatoaren yn N2000 gebieten",
-      "type": "motie", "result": "accepted", "resultLabel": "Aangenomen",
+      "type": "motie",                        // motie | frjemd | amendement | besluit | ordevoorstel | overig
+      "result": "accepted", "resultLabel": "Aangenomen",
       "source": "https://fryslan.notubiz.nl/vergadering/1488191",
+      "agenda": {"id": 10204740, "nr": "3", "title": "Untwerp Fryske Oanpak Stikstofreduksje"},  // optioneel
       "document": "https://fryslan.notubiz.nl/document/16906811/1/03+Moasje+09+-+…",   // optioneel
       "documentTitle": "03 Moasje 09 - each foar predatoaren …",                          // optioneel
       "indieners": ["cda", "bbb"],                                                        // optioneel
@@ -86,5 +106,56 @@ het live bijladen.
 }
 ```
 
+`meetingId` staat op elke stemming, `agenda` op vrijwel alle (2026-09-19: 11 van de 913 niet — hun
+`parent.id` hoort bij een agendapunt zonder nummer of titel). De site groepeert de tabel op deze
+twee velden en `#vergadering/<meetingId>` is de pagina van één vergadering.
+
 `data/roles.json`: `{ "generated_at", "term", "organisationId", "roles": {"173341": "pvda", …},
 "unmapped": [ {"role_id", "reason", …} ], "seats": {"bbb": 16, …} }`.
+
+## 6. Terugval: de PDF "Útslach stimming" (`collector/uitslag_pdf.py`)
+
+Voor elke plenaire vergadering die via de API géén stemmingen oplevert, zoekt `collect.py` in
+het vergaderdetail naar een document met "Útslach stimming" in de titel en leest dat.
+
+**Wat erin staat.** Een voorblad (aanwezig/afwezig) en daarna per stemming één schermafdruk
+(JPEG, 1280×800) van het stemdisplay: de titel bovenaan, per fractie een donkere kopbalk met
+daaronder één gekleurde regel per lid — groen = foar, rood = tsjin, geel = ûnthâlding, grijs =
+ôfwêzich — en onderaan `Voor: N Tegen: N Onthouding: N`. Ynlutsen (ingetrokken) moasjes staan er
+met `YNLUTSEN` in de titel en 0-0-0 in; die worden overgeslagen. Ook de eindstemming over het
+Statenvoorstel zelf ("… - Finale beslút") staat erin, en een herstemming ("Werstimming") op een
+moasje van een eerdere vergadering.
+
+**Hoe het gelezen wordt.**
+1. `pypdf` haalt per pagina de afbeelding eruit.
+2. Het raster wordt uit **pixelkleuren** gelezen: per kolom worden aan de rechterrand (waar geen
+   tekst staat) de kopbalken gezocht en daaronder de ledenregels met een vaste steek van 31 px
+   afgelopen; de klasse van een regel is de meerderheidskleur van een vlak van 5×21 pixels
+   (bestand tegen JPEG-ruis). De aantallen zelf hangen dus **niet** van OCR af.
+3. `RapidOCR` (lokaal ONNX-model, geen netwerk) leest alleen de titel, de fractienamen in de
+   kopbalken en de totaalregel. Een kopbalk zonder OCR-tekst (komt voor bij "VVD") wordt
+   opnieuw gelezen op een uitvergrote, geïnverteerde uitsnede.
+4. **Controle per pagina**: de per kleur getelde regels moeten gelijk zijn aan de OCR-totaalregel
+   en elke kopbalk moet (fuzzy, ≥ 0,75) op een bekende fractie uitkomen — eerst de fracties die
+   deze periode al een kolom hebben, dan de partijenlijst van de organisatie; "PBF" is een alias
+   voor "Provinciaal Belang Fryslân". Anders wordt de pagina **afgekeurd** en in het log genoemd,
+   nooit geraden.
+5. Titel, document en indieners komen van het module-item met dezelfde datum, hetzelfde type en
+   hetzelfde nummer (spatieloze titelovereenkomst als terugval, want OCR laat spaties weg);
+   voor een "Finale beslút" komt de titel van het agendapunt uit het vergaderdetail. De uitslag
+   volgt uit de aantallen (voor > tegen = aangenomen, gelijk = staken van stemmen).
+
+**Datamodel.** Zulke stemmingen hebben `id = document-id × 1000 + paginanummer` (numeriek en
+stabiel), dezelfde `source` (vergaderpagina) als de API-stemmingen, en extra het veld
+`uitslag` met de URL van de PDF. `meta.counts.fromPdf` telt ze. Ze voeden `roles.json` niet
+(geen role_id's), maar `app.js` laadt deze vergaderingen ook niet live bij: die herkent ze aan
+`source`.
+
+**Validatie.** Voor 6 mei 2026 bestaan de digitale stemmingen én de PDF naast elkaar: alle 24
+vergelijkbare stemmingen komen per fractie exact overeen; de PDF bevat daarnaast de gestaakte
+stemming (19-19) en de eindstemming, die de API-route niet had.
+
+**Afhankelijkheden.** `collector/requirements-pdf.txt` (pypdf, Pillow, numpy,
+rapidocr_onnxruntime, samen ± 100 MB). `refresh-local.ps1` en de workflow installeren ze; zonder
+deze pakketten draait de API-route gewoon en meldt de collector welke vergaderingen hij oversloeg
+(`WARN: … alleen met een 'Útslach stimming'-PDF overgeslagen`).
