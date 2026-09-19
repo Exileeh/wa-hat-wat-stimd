@@ -19,6 +19,9 @@ const TYPE_PLURAL = {motie:"moties", frjemd:"moasjes frjemd", amendement:"amende
 const TYPE_ORDER = ["motie", "frjemd", "amendement", "besluit", "ordevoorstel", "overig"];
 // Frisian document label per type (the portal module is "Moasjes en amendeminten").
 const DOC_LABEL = {motie:"Moasje", frjemd:"Moasje", amendement:"Amendemint"};
+// How much better the best coalition|oppositie cut must be than the best cut elsewhere in the row
+// before the table draws the line (percentage points of agreement).
+const SEAM_MIN_LEAD = 3;
 // Min. stemmingen a party must have voted on to appear in the Overeenkomst matrix — below this an
 // agreement % is noise (a party that voted once is "100% gelijk" with everyone).
 const MATRIX_MIN = 5;
@@ -594,12 +597,18 @@ function tableOrder(){
   const pct = (a, b) => { const c = M[a] && M[a][b]; return c ? c.pct : null; };
   const avg = pairs => { const v = pairs.map(([a,b]) => pct(a,b)).filter(x => x !== null); return v.length ? v.reduce((s,x)=>s+x,0)/v.length : 0; };
   const within = xs => avg(xs.flatMap((a,i) => xs.slice(i+1).map(b => [a,b])));
-  let sep = null, best = -Infinity;
+  const scores = [];
   for(let k = 2; k <= order.length - 2; k++){
     const L = order.slice(0,k), R = order.slice(k);
-    const score = (within(L) + within(R))/2 - avg(L.flatMap(a => R.map(b => [a,b])));
-    if(score > best){ best = score; sep = order[k]; }
+    scores.push({k, score: (within(L) + within(R))/2 - avg(L.flatMap(a => R.map(b => [a,b])))});
   }
+  // Only draw the line where the fracties really fall into two blocks. When the best cut barely
+  // beats a cut somewhere else entirely (2023-2027: 22.6 against 21.5), the Staten are a gradient,
+  // not two camps, and a line would suggest a divide that is not in the data.
+  const ranked = scores.slice().sort((a,b) => b.score - a.score);
+  const bestCut = ranked[0];
+  const rival = ranked.find(c => bestCut && Math.abs(c.k - bestCut.k) > 1);
+  const sep = bestCut && (!rival || bestCut.score - rival.score >= SEAM_MIN_LEAD) ? order[bestCut.k] : null;
   const rest = DATA.parties.map(p => p.slug).filter(s => !(s in M));
   TABLE_ORDER = {order: [...order, ...rest], sep};
   return TABLE_ORDER;
@@ -680,7 +689,7 @@ function cellHTML(m, slug, name, sep){
   const v = m.votes[slug];
   const r = cellVerdict(v);
   const sc = sep ? " sep" : "";
-  if(!r) return `<td class="cell afw${sc}" title="${esc(name)}: afwezig"></td>`;
+  if(!r) return `<td class="cell afw${sc}" title="${esc(name)}: afwezig (deed niet mee aan deze stemming)">A</td>`;
   const split = v.agree>0 && v.disagree>0;
   const disp = state.raw ? `${v.agree}-${v.disagree}` : r.label;
   const tip = `${name}: ${v.agree} voor, ${v.disagree} tegen` + (v.abstain?`, ${v.abstain} onthouden`:"") + (split?" (niet unaniem)":"");
@@ -696,11 +705,18 @@ function rowHTML(m, vps){
       <div><div class="titel">${esc(m.title)}${srcLink(m)}${live}</div>
       <div class="meta"><span>${m.date}</span><span class="type t-${m.type}">${TYPE_LABEL[m.type]||m.type}</span>${res}${docLink(m)}${ind?`<span class="indieners" title="Indieners">${esc(ind)}</span>`:""}</div></div>
     </div></td>`;
-  return `<tr>${first}${vps.map(p=>cellHTML(m,p.slug,p.name,p.sep)).join("")}</tr>`;
+  return `<tr>${first}${vps.map(p=>cellHTML(m,p.slug,p.name,p.sep)).join("")}${PAD_CELL}</tr>`;
 }
+const PAD_CELL = `<td class="pad"></td>`;
 function headHTML(vps){
   return `<thead><tr><th class="onderwerp-h">Onderwerp</th>${
-    vps.map(p=>`<th${p.sep?' class="sep"':""} title="${esc(p.name)}">${esc(pLabel(p.slug))}</th>`).join("")}</tr></thead>`;
+    vps.map(p => {
+      // Only an abbreviated header gets a tooltip (and with it the help cursor): on "PVV" the
+      // tooltip would just repeat the header.
+      const lbl = pLabel(p.slug);
+      const tip = lbl === p.name ? "" : ` title="${esc(p.name)}"`;
+      return `<th${p.sep?' class="sep"':""}${tip}>${esc(lbl)}</th>`;
+    }).join("")}<th class="pad" aria-hidden="true"></th></tr></thead>`;
 }
 function tableHTML(rows, vps){
   if(!rows.length) return `<div class="empty">Geen stemmingen voor deze selectie.</div>`;
@@ -716,8 +732,8 @@ function grpRowHTML(cls, key, open, span, inner){
 }
 function groupedHTML(groups, vps, forceOpen){
   if(!groups.length) return `<div class="empty">Geen stemmingen voor deze selectie.</div>`;
-  const span = vps.length + 1;
-  let body = "";
+  const span = vps.length + 2;   // onderwerp + fracties + de lege opvulkolom
+  let body = "", anyRows = false;
   for(const g of groups){
     const key = mKey(g.mid), open = forceOpen || state.open.has(key);
     body += grpRowHTML("grp-m", key, open, span,
@@ -729,10 +745,12 @@ function groupedHTML(groups, vps, forceOpen){
       const akey = aKey(g.mid, a.aid), aopen = forceOpen || state.open.has(akey);
       body += grpRowHTML("grp-a", akey, aopen, span,
         `<span class="grp-title">${esc(a.label)}</span><span class="grp-n">${a.rows.length}</span>`);
-      if(aopen) body += a.rows.map(m => rowHTML(m, vps)).join("");
+      if(aopen){ body += a.rows.map(m => rowHTML(m, vps)).join(""); anyRows = true; }
     }
   }
-  return `<div class="table-scroll"><table>${headHTML(vps)}<tbody>${body}</tbody></table></div>`;
+  // With everything folded the party columns are empty, so their header would name columns that
+  // show nothing; it comes back the moment a wurklistpunt is open.
+  return `<div class="table-scroll"><table>${anyRows ? headHTML(vps) : ""}<tbody>${body}</tbody></table></div>`;
 }
 
 function togglePin(id){
