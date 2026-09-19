@@ -102,7 +102,7 @@
           <div class="toggles">
             <span class="tog"><label><input type="checkbox" id="controversial"> Alleen omstreden</label><span class="help-q" title="Toon alleen stemmingen waarbij de partijen niet allemaal hetzelfde stemden">?</span></span>
             <label><input type="checkbox" id="onlyPinned"> Alleen vastgepind</label>
-            <span class="tog"><label><input type="checkbox" id="clusterCols" checked> Kolommen op stemgelijkenis</label><span class="help-q" title="Zet fracties die vaak hetzelfde stemmen naast elkaar; de lijn markeert de grootste kloof. Uit = op fractiegrootte">?</span></span>
+            <span class="tog"><label><input type="checkbox" id="clusterCols" checked> Kolommen op stemgelijkenis</label><span class="help-q" title="Zet fracties die vaak hetzelfde stemmen naast elkaar. Alleen als de fracties duidelijk in twee blokken uiteenvallen komt er een lijn op de scheiding. Uit = op fractiegrootte">?</span></span>
             <span class="tog" id="rawToggle"><label><input type="checkbox" id="raw"> Ruwe getallen</label><span class="help-q" title="Toon de aantallen (bijv. 6-0) in plaats van V/T">?</span></span>
           </div>
           <div class="vpanel-actions">
@@ -207,7 +207,7 @@
         <li><span class="vbadge voor">V</span> Voor</li>
         <li><span class="vbadge tegen">T</span> Tegen</li>
         <li><span class="vbadge neutraal">O</span> Onthouden of staken van stemmen</li>
-        <li><span class="swatch afw"></span> leeg = afwezig (de fractie deed niet mee aan deze stemming)</li>
+        <li><span class="vbadge afwbadge">A</span> Afwezig (de fractie deed niet mee aan deze stemming)</li>
         <li><span class="vbadge voor splitdot">V</span> stip = de fractie stemde niet unaniem</li>
       </ul>
       <p>Beweeg met de muis over een cel voor de exacte aantallen voor/tegen. Klik op
@@ -216,8 +216,9 @@
 
       <h3 class="section">Per vergadering</h3>
       <p>De knop <b>Vergadering</b> bij een datum opent een eigen pagina met alles van die vergadering:
-        de kerncijfers, de analyses van die dag en alle stemmingen per agendapunt. Die pagina heeft een
-        eigen adres (<code>#vergadering/&lt;nummer&gt;</code>) en is dus te delen.</p>
+        de kerncijfers, de analyses van die dag en alle stemmingen per agendapunt. Met de knoppen bij
+        <b>Agendapunt</b> kies je welke wurklistpunten meetellen; de cijfers en grafieken volgen die keuze.
+        Die pagina heeft een eigen adres (<code>#vergadering/&lt;nummer&gt;</code>) en is dus te delen.</p>
 
       <h3 class="section">Filteren &amp; pinnen</h3>
       <p>Filter op type, toon of verberg partijen, zoek op onderwerp of indiener, en sorteer.
@@ -256,7 +257,7 @@
       <li><span class="vbadge voor">V</span> Voor</li>
       <li><span class="vbadge tegen">T</span> Tegen</li>
       <li><span class="vbadge neutraal">O</span> Onthouden of staken van stemmen</li>
-      <li><span class="swatch afw"></span> leeg = afwezig (fractie deed niet mee)</li>
+      <li><span class="vbadge afwbadge">A</span> Afwezig (fractie deed niet mee)</li>
       <li><span class="vbadge voor splitdot">V</span> stip = fractie stemde niet unaniem</li>
     </ul>
   </div>

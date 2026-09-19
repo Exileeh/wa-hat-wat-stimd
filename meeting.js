@@ -10,9 +10,10 @@
 const MeetingPage = (() => {
   const el = () => document.getElementById("meetingBody");
   let current = null;          // the meeting id being shown, null when the view is closed
+  let picked = null;           // agendapunt ids that count; null = all of them
   let wired = false;
 
-  // The pin buttons on this page are the same buttons as in the table.
+  // Pin buttons and the agendapunt filter, both by delegation: the page is rebuilt on every change.
   function wire(){
     if(wired) return;
     wired = true;
@@ -20,15 +21,31 @@ const MeetingPage = (() => {
     if(!view) return;
     view.addEventListener("click", e => {
       const b = e.target.closest("button.pin");
-      if(b) togglePin(+b.dataset.id);
+      if(b){ togglePin(+b.dataset.id); return; }
+      const chip = e.target.closest(".ag-filter .chip");
+      if(chip){ toggleAgenda(chip.dataset.ag === "" ? 0 : +chip.dataset.ag); return; }
+      const all = e.target.closest(".ag-filter [data-ag-all]");
+      if(all){ picked = null; render(); }
     });
   }
 
   function open(mid){
     wire();
-    current = Number.isFinite(mid) && mid > 0 ? mid : null;
+    const next = Number.isFinite(mid) && mid > 0 ? mid : null;
+    if(next !== current) picked = null;   // another vergadering starts with every agendapunt on
+    current = next;
     render();
   }
+
+  // Never leave the page empty: switching the last agendapunt off turns the filter back to all.
+  function toggleAgenda(aid){
+    const all = agendas(meetingRows(current)).map(a => a.aid);
+    const set = new Set(picked === null ? all : picked);
+    set.has(aid) ? set.delete(aid) : set.add(aid);
+    picked = set.size === 0 || set.size === all.length ? null : [...set];
+    render();
+  }
+  const keepAgenda = m => picked === null || picked.includes(agendaIdOf(m));
 
   function refresh(){
     if(current !== null && !document.getElementById("meetingView").hidden) render();
@@ -37,15 +54,17 @@ const MeetingPage = (() => {
   function render(){
     const box = el();
     if(!box) return;
-    const rows = current === null ? [] : meetingRows(current);
-    if(!rows.length){
+    const all = current === null ? [] : meetingRows(current);
+    if(!all.length){
       document.title = "Vergadering — Wa hat wat stimd?";
       box.innerHTML = `<div class="empty">Geen stemmingen bekend voor deze vergadering.</div>`;
       return;
     }
-    const date = rows.map(m => m.date).sort()[0];
+    // `all` sets the header and the filter, `rows` (the chosen agendapunten) everything below it.
+    const rows = all.filter(keepAgenda);
+    const date = all.map(m => m.date).sort()[0];
     document.title = `Vergadering ${formatDateNL(date, false)} — Wa hat wat stimd?`;
-    box.innerHTML = headerHTML(rows, date) + kpiHTML(rows) + agendaNavHTML(rows)
+    box.innerHTML = headerHTML(all, date) + agendaFilterHTML(all) + kpiHTML(rows)
       + chartsHTML(rows) + agendaTablesHTML(rows);
   }
 
@@ -96,11 +115,19 @@ const MeetingPage = (() => {
     return list;
   }
 
-  function agendaNavHTML(rows){
+  /* The agendapunten as filter chips: the cijfers, de grafieken and the tabellen below follow the
+     selection. Every point is on until one is switched off. */
+  function agendaFilterHTML(rows){
     const list = agendas(rows);
     if(list.length < 2) return "";
-    return `<nav class="agenda-nav" aria-label="Agendapunten">${
-      list.map(a => `<a href="#vergadering/${current}" data-ag="${a.aid}">${esc(a.label)} <span class="grp-n">${a.rows.length}</span></a>`).join("")}</nav>`;
+    const chips = list.map(a => {
+      const on = picked === null || picked.includes(a.aid);
+      return `<span class="chip${on ? " on" : ""}" data-ag="${a.aid}" role="button" tabindex="0" title="${esc(a.label)}">${esc(a.label)} <span class="chip-n">${a.rows.length}</span></span>`;
+    }).join("");
+    return `<div class="modal-controls ag-filter">
+      <span class="mc-label">Agendapunt:</span><span class="chips">${chips}</span>
+      ${picked === null ? "" : `<button class="csvbtn" data-ag-all>Alle agendapunten</button>`}
+    </div>`;
   }
 
   function chartsHTML(rows){
@@ -126,13 +153,13 @@ const MeetingPage = (() => {
   return {open, refresh};
 })();
 
-// The agenda navigation scrolls instead of following the (identical) hash.
-document.addEventListener("click", e => {
-  const a = e.target.closest ? e.target.closest(".agenda-nav a[data-ag]") : null;
-  if(!a) return;
+// The filter chips are spans, so they need their own keyboard handling.
+document.addEventListener("keydown", e => {
+  if(e.key !== "Enter" && e.key !== " ") return;
+  const chip = e.target.closest ? e.target.closest(".ag-filter .chip") : null;
+  if(!chip) return;
   e.preventDefault();
-  const s = document.getElementById(`ag-${a.dataset.ag}`);
-  if(s) s.scrollIntoView({behavior: "smooth", block: "start"});
+  chip.click();
 });
 
 // Classic script: a top-level const is not a property of window, and app.js checks for it there.

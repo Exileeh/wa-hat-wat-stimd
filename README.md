@@ -19,7 +19,8 @@ niveaus, 12 provincies), teruggebracht tot alleen Fryslân en uitgebreid met een
   vastpinnen, sorteren, ruwe getallen, **CSV-download** van de selectie. Zoeken of filteren vouwt de
   groepen met treffers vanzelf open.
 - **Pagina per vergadering** (`#vergadering/<id>`, [meeting.js](meeting.js)): kerncijfers, de analyses
-  van díe dag en alle stemmingen per agendapunt. Te openen met de knop *Vergadering* in de tabel.
+  van díe dag en alle stemmingen per agendapunt, met een filter op agendapunt. Te openen met de knop
+  *Vergadering* in de tabel.
 - Types: moasje, **moasje frjemd** (een motie over iets dat niet op de wurklist staat), amendemint
   en besluit — elk met een eigen filterknop en eigen cijfers.
 - **📄 Moasje / Amendemint**: opent het document op het Statenportaal.
@@ -28,8 +29,9 @@ niveaus, 12 provincies), teruggebracht tot alleen Fryslân en uitgebreid met een
   die vergadering op het Statenportaal — met een filter op vergadering · indieners en hun succes ·
   aan de winnende kant · hoe omstreden), **Overeenkomst** (overeenkomstmatrix), **Partijprofiel** en
   **Vergelijken**.
-- Kolomvolgorde op **stemgelijkenis**: fracties die vaak hetzelfde stemmen staan naast elkaar, met een
-  blauwe lijn op de grootste kloof (in de praktijk coalitie | oppositie). Uit te zetten onder *Weergave*.
+- Kolomvolgorde op **stemgelijkenis**: fracties die vaak hetzelfde stemmen staan naast elkaar. Alleen
+  als ze duidelijk in twee blokken uiteenvallen (coalitie | oppositie) komt daar een blauwe lijn tussen;
+  bij een geleidelijk verloop, zoals in deze periode, blijft die weg. Uit te zetten onder *Weergave*.
 - **Live bijladen**: stemmingen van vergaderingen na de laatste dagelijkse snapshot haalt de
   browser zelf op bij `api.notubiz.nl` (gemarkeerd als *live*).
 
