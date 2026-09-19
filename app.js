@@ -66,7 +66,6 @@ const meetingRows = mid => DATA.moties.filter(m => meetingOf(m) === mid);
 async function init(){
   DATA = await (await fetch(DATA_URL)).json();
   ALLTYPES = sortTypes((DATA.meta.types && DATA.meta.types.length) ? DATA.meta.types.slice() : [...new Set(DATA.moties.map(m => m.type))]);
-  applyTheme(DATA.meta.style || {});
   state = {
     types: new Set(ALLTYPES),
     parties: new Set(DATA.parties.map(p => p.slug)),
@@ -119,9 +118,11 @@ function setupTheme(){
     .addEventListener("change", () => { if(!document.documentElement.dataset.theme) paint(); });
 }
 
-function applyTheme(style){
-  document.documentElement.style.setProperty("--accent", style.accent || "#c8102e");
-}
+/* meta.style (accent + headerBg) is no longer applied. applyTheme() used to push meta.style.accent
+   onto <html> as an inline --accent, which outranks every stylesheet rule and so pinned the light-mode
+   red in dark mode too. The collector hardcodes the same #c8102e that app.css already defines, so the
+   override bought nothing and cost us the theme. The accent now lives in app.css, per theme. The field
+   stays in the data for compatibility; drop it from the collector if it never finds a second use. */
 
 function renderHeader(){
   const meta = DATA.meta;
