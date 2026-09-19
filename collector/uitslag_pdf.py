@@ -18,7 +18,10 @@ This module turns such a PDF into the same per-fractie counts the API path produ
   * RapidOCR (a small local ONNX model, no network) reads the title, the fractie names in the
     header bars and the totals line.
 Every page is cross-checked: the rows counted per colour must equal the OCR'd totals and every
-header must resolve to a known fractie; otherwise the page is rejected, never guessed.
+header must resolve to a known fractie; otherwise the page is rejected, never guessed. How the OCR
+splits a header bar differs per platform — the Linux build hands back the fractie together with the
+first member's name — so a header is also searched for a fractie it merely contains (match_party /
+embedded_party).
 
 Optional dependencies (collector/requirements-pdf.txt): pypdf, Pillow, numpy,
 rapidocr_onnxruntime. Without them `available()` is False and collect.py reports which meetings
@@ -131,6 +134,46 @@ def title_info(title):
     }
 
 
+# A member row always carries initials ("A.van Dijk", "S.de Jong-Snip"); a fractie bar never does.
+MEMBER_RE = re.compile(r"(?:^|\s)[A-Za-z]\.\s*[A-Za-z]")
+
+
+def word_hits(text, known):
+    """Fracties named by a separate word in the line: an abbreviation from HEADER_ALIASES or a
+    fractie name written out in full."""
+    out = set()
+    for word in re.split(r"[\s,;/|]+", text or ""):
+        w = squash(word)
+        if not w:
+            continue
+        if w in HEADER_ALIASES:
+            out.add(HEADER_ALIASES[w])
+        for n in known:
+            if w == squash(n):
+                out.add(n)
+    return out
+
+
+def embedded_party(text, key, known):
+    """The fractie inside a header line that also carries a member's name. RapidOCR on Linux reads
+    the bar and the first member row as one box ("A.van Dijk BBB", "S.de Jong-Snip SP"), where the
+    Windows build keeps them apart.
+
+    Two passes, both conservative. First the separate words: a word that is exactly an
+    abbreviation or exactly a fractie name ("… PBF", "… SP"). If that finds nothing, a fractie
+    name written against a name without a space, at the start or end of the line
+    ("A.van DijkBBB") — never in the middle, where it is more likely part of a surname. Either
+    pass must land on exactly one fractie; two of them is ambiguous and gives None, so the page is
+    rejected rather than filed under the wrong fractie."""
+    words = word_hits(text, known)
+    if words:
+        return words.pop() if len(words) == 1 else None
+    glued = {n for n in known
+             if len(squash(n)) >= 3 and squash(n) != key
+             and (key.startswith(squash(n)) or key.endswith(squash(n)))}
+    return glued.pop() if len(glued) == 1 else None
+
+
 def match_party(text, primary, secondary=()):
     """Resolve an OCR'd header bar to a known fractie name. `primary` are the fracties already
     seen this term (preferred), `secondary` the organisation's full party list. None when
@@ -140,6 +183,16 @@ def match_party(text, primary, secondary=()):
         return None
     if key in HEADER_ALIASES:
         return HEADER_ALIASES[key]
+    known = list(primary) + [n for n in secondary if n not in primary]
+    # Two fracties in one line means two bars were read as one: ambiguous, whatever the ratio of
+    # the line as a whole says.
+    if len(word_hits(text, known)) > 1:
+        return None
+    # A line with initials is a member row (possibly with the fractie next to it), so the fractie
+    # has to be found inside it. Comparing the whole line would let "A.van Dijk" of BBB pass for
+    # the fractie "Van Dijk (FvD)" on similarity alone.
+    if MEMBER_RE.search(text or ""):
+        return embedded_party(text, key, known)
     for names in (primary, secondary):
         best = None
         for n in names:
@@ -148,7 +201,7 @@ def match_party(text, primary, secondary=()):
                 best = (r, n)
         if best and best[0] >= PARTY_MATCH_MIN:
             return best[1]
-    return None
+    return embedded_party(text, key, known)
 
 
 # --- pixel grid -----------------------------------------------------------------------------------

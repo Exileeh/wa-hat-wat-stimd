@@ -7,7 +7,11 @@
 #
 #   python -m pip install -r collector/requirements-pdf.txt
 #
-pypdf>=6,<7                    # page images out of the PDF
-Pillow>=10                     # pixel colours of the vote grid
-numpy>=1.26                    # image hand-over to the OCR engine
-rapidocr_onnxruntime>=1.2,<2   # local OCR (ONNX model bundled, no network calls) for title, fractie names, totals
+# Pinned: the OCR result decides whether a page is accepted, so the daily run on GitHub and a
+# local run must read the same pixels with the same model. These are the versions the 913-stemming
+# snapshot of 2026-09-19 was read with.
+pypdf==6.19.0                  # page images out of the PDF
+Pillow==12.3.0                 # pixel colours of the vote grid
+numpy==2.4.2                   # image hand-over to the OCR engine
+rapidocr_onnxruntime==1.2.3    # local OCR (ONNX model bundled, no network calls) for title, fractie names, totals
+onnxruntime==1.30.0            # the engine under rapidocr; pinned because its build decides how header bars are split

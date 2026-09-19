@@ -70,6 +70,26 @@ class PartyMatch(unittest.TestCase):
         self.assertEqual(up.match_party("PBF", self.PRIMARY), "Provinciaal Belang Fryslân")
         self.assertEqual(up.match_party("FVD", self.PRIMARY, self.SECONDARY), "FVD")
 
+    def test_header_read_together_with_a_member_name(self):
+        """The Linux build of RapidOCR hands back the bar and the first member row as one box."""
+        primary = self.PRIMARY + ["BBB", "SP", "Van Dijk (FvD)"]
+        self.assertEqual(up.match_party("A.van Dijk BBB", primary), "BBB")
+        self.assertEqual(up.match_party("S.de Jong-Snip SP", primary), "SP")
+        self.assertEqual(up.match_party("J.Graansma GrienLinks", primary), "GrienLinks")
+        self.assertEqual(up.match_party("F.Kosse PBF", primary), "Provinciaal Belang Fryslân")
+        self.assertEqual(up.match_party("SP S.de Jong-Snip", primary), "SP")
+        self.assertEqual(up.match_party("A.van DijkBBB", primary), "BBB")   # no space at all
+
+    def test_a_member_name_alone_is_not_a_fractie(self):
+        primary = self.PRIMARY + ["BBB", "SP", "Van Dijk (FvD)"]
+        self.assertIsNone(up.match_party("A.van Dijk", primary))       # surname of a BBB member
+        self.assertIsNone(up.match_party("J.Graansma", primary))
+        self.assertIsNone(up.match_party("Voor:7Tegen:35", primary))
+
+    def test_two_fracties_in_one_line_are_ambiguous(self):
+        primary = self.PRIMARY + ["BBB", "SP"]
+        self.assertIsNone(up.match_party("SP BBB", primary))
+
     def test_rejects_noise(self):
         self.assertIsNone(up.match_party("Voor:7Tegen:35Onthouding:0", self.PRIMARY, self.SECONDARY))
         self.assertIsNone(up.match_party("", self.PRIMARY))
