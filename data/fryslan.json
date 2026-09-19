@@ -3,7 +3,7 @@
     "province": "Fryslân",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-09-19T10:47:37+00:00",
+    "generated_at": "2026-09-19T12:03:52+00:00",
     "source": "https://fryslan.notubiz.nl",
     "sourceName": "",
     "license": "Open data - Provincie Fryslân (Notubiz vergaderportaal)",
@@ -16,7 +16,8 @@
     "counts": {
       "moties": 913,
       "parties": 15,
-      "fromPdf": 77
+      "fromPdf": 77,
+      "transcripts": 45
     },
     "types": [
       "amendement",
