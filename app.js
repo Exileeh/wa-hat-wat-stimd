@@ -9,6 +9,7 @@ const API_VERSION = "1.21";
 const LIVE_MAX_MEETINGS = 10;   // protect the API: never crawl more than this many new meetings per visit
 
 const PIN_KEY = "wsw_pinned_fryslan";
+const THEME_KEY = "wsw_theme";
 // Short column labels where the fractie name is long.
 const ABBR = {bbb:"BBB", pvda:"PvdA", cda:"CDA", fnp:"FNP", grienlinks:"GL", vvd:"VVD", christenunie:"CU",
   pvv:"PVV", ja21:"JA21", "provinciaal-belang-frysln":"PBF", pvdd:"PvdD", sp:"SP", d66:"D66",
@@ -75,6 +76,7 @@ async function init(){
     pinned: new Set(JSON.parse(localStorage.getItem(PIN_KEY) || "[]")),
   };
   renderHeader();
+  setupTheme();
   setupGlobalHandlers();
   buildControls(ALLTYPES);
   updatePartySummary();
@@ -86,6 +88,36 @@ async function init(){
 
 // Chips and tiles read best in a fixed order; the collector writes meta.types alphabetically.
 const sortTypes = ts => ts.slice().sort((a, b) => (TYPE_ORDER.indexOf(a) + 1 || 99) - (TYPE_ORDER.indexOf(b) + 1 || 99) || a.localeCompare(b));
+
+/* ---- Theme ----
+   The chosen theme lives on <html data-theme>; the inline script in index.html applies it before
+   first paint so the wrong theme never flashes. Without a stored choice app.css follows
+   prefers-color-scheme, so the button has to track the media query as well. The matrix colours
+   read --matrix-l straight from CSS, so switching needs no re-render. */
+const systemDark = () => !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+const currentTheme = () => document.documentElement.dataset.theme || (systemDark() ? "dark" : "light");
+
+function setupTheme(){
+  const btn = $("#themeBtn");
+  // The button shows where it takes you, not where you are.
+  const paint = () => {
+    const label = currentTheme() === "dark" ? "Licht thema" : "Donker thema";
+    btn.innerHTML = ICO(currentTheme() === "dark" ? "i-sun" : "i-moon");
+    btn.title = label;
+    btn.setAttribute("aria-label", label);
+  };
+  btn.hidden = false;
+  paint();
+  btn.onclick = () => {
+    const next = currentTheme() === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+    paint();
+  };
+  // Keep following the system for as long as the visitor has not chosen explicitly.
+  if(window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", () => { if(!document.documentElement.dataset.theme) paint(); });
+}
 
 function applyTheme(style){
   document.documentElement.style.setProperty("--accent", style.accent || "#c8102e");

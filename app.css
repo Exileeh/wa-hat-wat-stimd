@@ -153,10 +153,13 @@ h1 .q{color:var(--accent)}
 .liveNote{color:var(--ok-tx);background:var(--ok-bg);border:1px solid var(--ok-line)}
 .badge-live{display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;font-size:10px;font-weight:700;line-height:16px;
   letter-spacing:.06em;text-transform:uppercase;background:var(--c-aangenomen);color:var(--on-brand);vertical-align:middle}
+.top-actions{flex:none;display:flex;align-items:flex-start;gap:8px}
 .helpbtn{flex:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer;margin-top:4px;
   border:1px solid var(--control-line);background:transparent;color:var(--ink);border-radius:var(--radius);
   padding:7px 12px;font:600 13px/1 var(--sans);transition:border-color .12s,color .12s,background .12s}
 .helpbtn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-tint)}
+.themebtn{padding:7px 9px}
+.themebtn .ico{width:16px;height:16px}
 
 /* weergave-tabs: Tabel + de vier analyses (elke tab is een eigen weergave, met URL-hash) */
 .views{display:flex;gap:2px;margin:16px -8px 0;overflow-x:auto;scrollbar-width:none}
@@ -293,7 +296,6 @@ a.back:hover{text-decoration:underline}
 .tr-search{margin:0 0 10px}
 .tr-search input{width:100%;box-sizing:border-box;min-height:36px;padding:7px 11px;font:14px var(--sans);
   color:var(--ink);background:var(--paper);border:1px solid var(--control-line);border-radius:var(--radius)}
-.tr-search input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .tr-hits{margin:8px 0 0;padding:0;list-style:none;font-size:13px}
 .tr-hits li{display:grid;grid-template-columns:76px minmax(0,190px) minmax(0,1fr);gap:4px 12px;
   align-items:baseline;padding:7px 0;border-top:1px solid var(--line)}
@@ -305,7 +307,8 @@ a.back:hover{text-decoration:underline}
 .tr-tag{display:inline-block;padding:1px 6px;margin-left:4px;border:1px solid var(--line-2);
   border-radius:999px;font-size:10.5px;color:var(--muted);white-space:nowrap}
 .tr-text{color:var(--ink);line-height:1.5;min-width:0;overflow-wrap:anywhere}
-.tr-hits mark{background:var(--c-staken);color:var(--ink);padding:0 2px;border-radius:3px}
+.tr-hits mark{background:var(--warn-bg);color:var(--warn-tx);box-shadow:0 0 0 1px var(--warn-line);
+  padding:0 2px;border-radius:3px}
 .meet-zoek .csvbtn{margin-top:10px}
 @media(max-width:700px){
   .tr-hits li{grid-template-columns:76px minmax(0,1fr)}

@@ -22,6 +22,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="app.css">
+<script>
+  /* Zet de opgeslagen themakeuze vóór het renderen; anders flitst kort het verkeerde thema.
+     Zonder keuze beslist prefers-color-scheme in app.css. */
+  try{ var t = localStorage.getItem("wsw_theme"); if(t === "dark" || t === "light") document.documentElement.dataset.theme = t; }catch(e){}
+</script>
 </head>
 <body>
 <!-- Inline SVG-iconen (sprite); gebruikt via <svg class="ico"><use href="#i-…"/></svg> -->
@@ -36,6 +41,8 @@
   <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
   <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h5M10 17h5"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 17v5"/><path d="M9 3h6l-1 6 3 3H7l3-3z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.5 1.5M17.6 17.6l1.5 1.5M19.1 4.9l-1.5 1.5M6.4 17.6l-1.5 1.5"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.3A8.4 8.4 0 0 1 9.7 4a7.5 7.5 0 1 0 10.3 10.3z"/></symbol>
 </svg>
 
 <div id="app">
@@ -45,7 +52,10 @@
       <h1>Wa hat wat stimd<span class="q">?</span></h1>
       <p class="lead" id="appLead">Stemgedrag per partij in de <b>Provinciale Staten van Fryslân</b> — <b>Voor</b> of <b>Tegen</b> per stemming.</p>
     </div>
-    <button id="helpBtn" class="helpbtn"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg>Uitleg</button>
+    <div class="top-actions">
+      <button id="themeBtn" class="helpbtn themebtn" hidden></button>
+      <button id="helpBtn" class="helpbtn"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg>Uitleg</button>
+    </div>
   </div>
   <p class="src" id="src"></p>
   <p class="staleNote" id="staleNote" hidden></p>
