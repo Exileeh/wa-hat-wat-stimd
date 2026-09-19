@@ -31,7 +31,7 @@ niveaus, 12 provincies), teruggebracht tot alleen Fryslân en uitgebreid met een
 - **📄 Moasje / Amendemint**: opent het document op het Statenportaal.
 - Vier analyses als eigen weergaven (tabs, deelbaar via `#statistieken`, `#overeenkomst`,
   `#partijprofiel`, `#vergelijken`): **Statistieken** (stemmingen per vergadering — klik een balk voor
-  die vergadering op het Statenportaal — met een filter op vergadering · indieners en hun succes ·
+  de pagina van die vergadering — met een filter op vergadering · indieners en hun succes ·
   aan de winnende kant · hoe omstreden), **Overeenkomst** (overeenkomstmatrix), **Partijprofiel** en
   **Vergelijken**.
 - Kolomvolgorde op **stemgelijkenis**: fracties die vaak hetzelfde stemmen staan naast elkaar. Alleen

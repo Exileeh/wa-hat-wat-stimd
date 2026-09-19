@@ -452,8 +452,9 @@ function renderStats(){
   $("#chartMargins").innerHTML = chartMargins(ms);
 }
 
-/* 1. Stacked bars per vergadering: aangenomen / verworpen / staken. Each bar links to that
-      meeting on the Statenportaal, so a striking vergadering is one click from its notulen. */
+/* 1. Stacked bars per vergadering: aangenomen / verworpen / staken. Each bar links to our own
+      #vergadering/<id> page, so a striking vergadering is one click from its stemmingen, its
+      sprekers and its transcript; that page links on to the Statenportaal. */
 function chartMeetings(ms){
   if(!ms.length) return `<p class="modal-sub">Geen stemmingen.</p>`;
   const byId = new Map();
@@ -475,8 +476,8 @@ function chartMeetings(ms){
     const x = L + i*bw + 1, w = Math.max(1, bw - 2);
     const parts = ["accepted","rejected","tie"].filter(k => g[k])
       .map(k => `${g[k]} ${RES_LABEL[k]}`).join(", ");
-    const tip = `${formatDateNL(g.date, false)}: ${g.n} stemming${g.n===1?"":"en"} — ${parts}. Klik voor de vergadering op het Statenportaal.`;
-    s += `<a href="${esc(g.source || "")}" target="_blank" rel="noopener"><title>${esc(tip)}</title>`;
+    const tip = `${formatDateNL(g.date, false)}: ${g.n} stemming${g.n===1?"":"en"} — ${parts}. Klik voor de pagina van deze vergadering.`;
+    s += `<a href="#vergadering/${g.mid}"><title>${esc(tip)}</title>`;
     let base = 0;
     for(const key of ["accepted","rejected","tie"]){
       const v = g[key]; if(!v) continue;
