@@ -1,6 +1,6 @@
 # Wa hat wat stimd?
 
-**▶ Live: https://lucsmits5-afk.github.io/wa-hat-wat-stimd/**
+**▶ Live: (https://wa-hat-wat-stimd.vercel.app/#)**
 
 > Wa hat wat stimd yn de Provinsjale Steaten fan Fryslân?
 
