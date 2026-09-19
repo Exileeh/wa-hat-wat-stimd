@@ -16,13 +16,110 @@
   /* Fryslân */
   --accent:#c8102e; --accent-ink:#9d0c24; --accent-tint:#fbe9ec;   /* pompeblêd-rood: vraagteken, speld, 'tegen' */
   --blue:#0b4a9b; --blue-ink:#083a7a; --blue-tint:#e6eef9; --blue-line:#9db7dd;   /* vlagblauw: structuur, koppen, interactie */
-  --header-bg:#2a0a0c;   /* wordt door app.js gezet (data.meta.style); niet meer gebruikt in deze laag */
+  --on-brand:#fff;   /* tekst op een gevuld blauw/rood/groen vlak */
   /* grafiekseries */
   --c-aangenomen:#3f9d5f; --c-verworpen:#c8102e; --c-staken:#8a8794; --c-grid:#e2ded4;
+  /* meldingen, uitslagen, afwezigheid */
+  --warn-tx:#6b4a00; --warn-bg:#fbf1d6; --warn-line:#ecd9a0;
+  --ok-tx:#0f4a26; --ok-bg:#e4f3e9; --ok-line:#b9dcc5;
+  --r-ok:#177a3e; --r-no:#b0141c;
+  --afw-tx:#a8a49a; --afw-hover:#e9e6df;
+  /* formulieren en lagen */
+  --placeholder:#8a8892; --control-line-hover:#8f8a7e;
+  --cell-sep:rgba(255,255,255,.55);
+  --scrim:rgba(27,26,31,.55);
+  --shadow-pop:0 10px 30px rgba(27,26,31,.14);
+  --shadow-modal:0 30px 80px rgba(0,0,0,.35);
+  --chev:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' fill='none' stroke='%235b5a63' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  /* overeenkomst-matrix: renderMatrix() zet hsl(<hue>,70%,var(--matrix-l)) inline,
+     zodat de celkleur het thema volgt zonder opnieuw te renderen. */
+  --matrix-l:72%; --matrix-ink:#1b1a1f;
+  --matrix-diag-bg:#e4e1d9; --matrix-diag-tx:#8f8c84;
+  --matrix-lown-bg:#eeece6; --matrix-lown-tx:#77746c;
   /* typografie */
   --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
   --sans:"Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;
   --radius:6px;
+}
+
+/* ---- donker thema ----------------------------------------------------------
+   Twee ingangen: de systeemvoorkeur (tenzij de bezoeker uitdrukkelijk licht koos)
+   en <html data-theme="dark">, gezet door de themaknop. De twee blokken hieronder
+   zijn opzettelijk identiek — pas ze altijd samen aan. Ze bevatten uitsluitend
+   tokens: de opmaakregels verderop blijven zo één bron van waarheid. */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+  color-scheme:dark;
+  /* stemkleuren: op donkere grond dragen de vlakken de kleur en de tekst het licht */
+  --voor:#1f6b40; --voor-tx:#d6f5e2;
+  --tegen:#8c2530; --tegen-tx:#ffdfe2;
+  --neutraal:#3b3c46; --neutraal-tx:#d8d6e0;
+  --afw:#1e1f26;
+  /* grond & inkt */
+  --bg:#131419; --surface:#1a1b21; --surface-2:#202128; --paper:#181920;
+  --ink:#eeecf3; --ink-2:#c6c4d0; --muted:#95939f;
+  --line:#2a2b33; --line-2:#383944; --row-line:#2a2b33; --control-line:#4b4c58;
+  --chip:#252630;
+  /* Fryslân: rood en blauw opgelicht, anders vallen ze weg tegen de donkere grond */
+  --accent:#ff7484; --accent-ink:#ff96a2; --accent-tint:#361a20;
+  --blue:#7cb0f7; --blue-ink:#a4c9fb; --blue-tint:#172741; --blue-line:#39557f;
+  --on-brand:#0f1117;   /* gevulde vlakken zijn nu licht, dus donkere tekst erop */
+  /* grafiekseries */
+  --c-aangenomen:#4fbd77; --c-verworpen:#ff7484; --c-staken:#9b98a6; --c-grid:#2a2b33;
+  /* meldingen, uitslagen, afwezigheid */
+  --warn-tx:#f0d9a0; --warn-bg:#332a12; --warn-line:#5a4a1d;
+  --ok-tx:#b7e6c8; --ok-bg:#14301f; --ok-line:#29563a;
+  --r-ok:#5cc47f; --r-no:#ff7d8b;
+  --afw-tx:#6f6d79; --afw-hover:#262730;
+  /* formulieren en lagen */
+  --placeholder:#8a8894; --control-line-hover:#6a6b78;
+  --cell-sep:rgba(0,0,0,.35);
+  --scrim:rgba(8,8,11,.68);
+  --shadow-pop:0 10px 30px rgba(0,0,0,.5);
+  --shadow-modal:0 30px 80px rgba(0,0,0,.6);
+  --chev:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' fill='none' stroke='%23a8a6b2' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  /* matrix: 25% i.p.v. 72%. Bij 32% haalt de lichtste tint (geelgroen) met witte
+     cijfers maar 3.8:1; bij 25% is de zwakste combinatie 5.2:1 en dus ruim boven 4.5:1. */
+  --matrix-l:25%; --matrix-ink:#f5f3fa;
+  --matrix-diag-bg:#24252d; --matrix-diag-tx:#7e7c88;
+  --matrix-lown-bg:#1f2028; --matrix-lown-tx:#8b8894;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  /* stemkleuren: op donkere grond dragen de vlakken de kleur en de tekst het licht */
+  --voor:#1f6b40; --voor-tx:#d6f5e2;
+  --tegen:#8c2530; --tegen-tx:#ffdfe2;
+  --neutraal:#3b3c46; --neutraal-tx:#d8d6e0;
+  --afw:#1e1f26;
+  /* grond & inkt */
+  --bg:#131419; --surface:#1a1b21; --surface-2:#202128; --paper:#181920;
+  --ink:#eeecf3; --ink-2:#c6c4d0; --muted:#95939f;
+  --line:#2a2b33; --line-2:#383944; --row-line:#2a2b33; --control-line:#4b4c58;
+  --chip:#252630;
+  /* Fryslân: rood en blauw opgelicht, anders vallen ze weg tegen de donkere grond */
+  --accent:#ff7484; --accent-ink:#ff96a2; --accent-tint:#361a20;
+  --blue:#7cb0f7; --blue-ink:#a4c9fb; --blue-tint:#172741; --blue-line:#39557f;
+  --on-brand:#0f1117;   /* gevulde vlakken zijn nu licht, dus donkere tekst erop */
+  /* grafiekseries */
+  --c-aangenomen:#4fbd77; --c-verworpen:#ff7484; --c-staken:#9b98a6; --c-grid:#2a2b33;
+  /* meldingen, uitslagen, afwezigheid */
+  --warn-tx:#f0d9a0; --warn-bg:#332a12; --warn-line:#5a4a1d;
+  --ok-tx:#b7e6c8; --ok-bg:#14301f; --ok-line:#29563a;
+  --r-ok:#5cc47f; --r-no:#ff7d8b;
+  --afw-tx:#6f6d79; --afw-hover:#262730;
+  /* formulieren en lagen */
+  --placeholder:#8a8894; --control-line-hover:#6a6b78;
+  --cell-sep:rgba(0,0,0,.35);
+  --scrim:rgba(8,8,11,.68);
+  --shadow-pop:0 10px 30px rgba(0,0,0,.5);
+  --shadow-modal:0 30px 80px rgba(0,0,0,.6);
+  --chev:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' fill='none' stroke='%23a8a6b2' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  /* matrix: 25% i.p.v. 72%. Bij 32% haalt de lichtste tint (geelgroen) met witte
+     cijfers maar 3.8:1; bij 25% is de zwakste combinatie 5.2:1 en dus ruim boven 4.5:1. */
+  --matrix-l:25%; --matrix-ink:#f5f3fa;
+  --matrix-diag-bg:#24252d; --matrix-diag-tx:#7e7c88;
+  --matrix-lown-bg:#1f2028; --matrix-lown-tx:#8b8894;
 }
 
 *{box-sizing:border-box}
@@ -52,10 +149,10 @@ h1 .q{color:var(--accent)}
 .src a{color:var(--muted)}
 .src a:hover{color:var(--blue)}
 .staleNote,.liveNote{margin:12px 0 0;padding:8px 12px;font-size:13px;line-height:1.45;max-width:72ch;border-radius:var(--radius)}
-.staleNote{color:#6b4a00;background:#fbf1d6;border:1px solid #ecd9a0}
-.liveNote{color:#0f4a26;background:#e4f3e9;border:1px solid #b9dcc5}
+.staleNote{color:var(--warn-tx);background:var(--warn-bg);border:1px solid var(--warn-line)}
+.liveNote{color:var(--ok-tx);background:var(--ok-bg);border:1px solid var(--ok-line)}
 .badge-live{display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;font-size:10px;font-weight:700;line-height:16px;
-  letter-spacing:.06em;text-transform:uppercase;background:var(--c-aangenomen);color:#fff;vertical-align:middle}
+  letter-spacing:.06em;text-transform:uppercase;background:var(--c-aangenomen);color:var(--on-brand);vertical-align:middle}
 .helpbtn{flex:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer;margin-top:4px;
   border:1px solid var(--control-line);background:transparent;color:var(--ink);border-radius:var(--radius);
   padding:7px 12px;font:600 13px/1 var(--sans);transition:border-color .12s,color .12s,background .12s}
@@ -87,10 +184,10 @@ select,input[type=search],details.parties>summary{
   border:1px solid var(--control-line);border-radius:var(--radius);background:var(--paper);
   padding:6px 10px;min-height:34px;transition:border-color .12s,box-shadow .12s}
 select{appearance:none;-webkit-appearance:none;padding-right:30px;cursor:pointer;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' fill='none' stroke='%235b5a63' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-image:var(--chev);
   background-repeat:no-repeat;background-position:right 10px center}
-input[type=search]::placeholder{color:#8a8892}
-select:hover,input[type=search]:hover,details.parties>summary:hover{border-color:#8f8a7e}
+input[type=search]::placeholder{color:var(--placeholder)}
+select:hover,input[type=search]:hover,details.parties>summary:hover{border-color:var(--control-line-hover)}
 select:focus,input[type=search]:focus,details.parties>summary:focus-visible,summary.viewbtn:focus-visible{
   border-color:var(--blue);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--blue) 18%,transparent)}
 input[type=checkbox]{accent-color:var(--blue);width:16px;height:16px;margin:0;cursor:pointer}
@@ -99,8 +196,8 @@ input[type=checkbox]{accent-color:var(--blue);width:16px;height:16px;margin:0;cu
 .chip{cursor:pointer;border:1px solid var(--control-line);background:var(--paper);color:var(--ink-2);border-radius:999px;
   padding:5px 12px;font-size:13px;font-weight:500;line-height:1.3;user-select:none;transition:.12s}
 .chip:hover{border-color:var(--blue);color:var(--blue)}
-.chip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
-.chip.on:hover{background:var(--blue-ink);border-color:var(--blue-ink);color:#fff}
+.chip.on{background:var(--blue);color:var(--on-brand);border-color:var(--blue)}
+.chip.on:hover{background:var(--blue-ink);border-color:var(--blue-ink);color:var(--on-brand)}
 .chips.small .chip{padding:4px 11px;font-size:12.5px}
 
 /* popovers (details): partijen, weergave */
@@ -108,11 +205,11 @@ details.pop{position:relative}
 details.pop>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:10px}
 details.pop>summary::-webkit-details-marker{display:none}
 details.pop>summary::after{content:"";width:11px;height:11px;flex:none;transition:transform .15s;
-  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' fill='none' stroke='%235b5a63' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat}
+  background:var(--chev) center/contain no-repeat}
 details.pop[open]>summary::after{transform:rotate(180deg)}
 details.parties>summary{min-width:140px;justify-content:space-between}
 .ppanel,.vpanel{position:absolute;z-index:20;margin-top:6px;background:var(--paper);border:1px solid var(--line-2);border-radius:var(--radius);
-  box-shadow:0 10px 30px rgba(27,26,31,.14);padding:10px;font-weight:400;letter-spacing:0;text-transform:none}
+  box-shadow:var(--shadow-pop);padding:10px;font-weight:400;letter-spacing:0;text-transform:none}
 .ppanel{width:240px;max-height:340px;overflow:auto}
 .ppanel .pp-actions{display:flex;gap:6px;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--line)}
 .ppanel .pp-actions button{font:600 12px var(--sans);border:1px solid var(--control-line);background:var(--surface);color:var(--ink);
@@ -129,7 +226,7 @@ summary.viewbtn{gap:7px;border:1px solid var(--control-line);border-radius:var(-
 summary.viewbtn .ico{color:var(--blue)}
 summary.viewbtn{position:relative}
 summary.viewbtn[data-n]:not([data-n="0"])::before{content:attr(data-n);position:absolute;top:-7px;right:-7px;min-width:17px;height:17px;
-  padding:0 5px;border-radius:999px;background:var(--accent);color:#fff;font-size:10.5px;font-weight:700;line-height:17px;text-align:center}
+  padding:0 5px;border-radius:999px;background:var(--accent);color:var(--on-brand);font-size:10.5px;font-weight:700;line-height:17px;text-align:center}
 summary.viewbtn:hover,details.view[open]>summary.viewbtn{border-color:var(--blue);color:var(--blue);background:var(--blue-tint)}
 .vpanel{right:0;width:260px}
 .toggles{display:flex;flex-direction:column;gap:2px}
@@ -169,7 +266,7 @@ tr.grp-a .grp-title{font:600 13px/1.35 var(--sans);color:var(--ink-2)}
 .grp-links{margin-left:auto;display:flex;align-items:center;gap:10px;white-space:nowrap}
 a.meetlink{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;
   border:1px solid var(--blue-line);background:var(--blue-tint);border-radius:999px;padding:3px 10px}
-a.meetlink:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+a.meetlink:hover{background:var(--blue);border-color:var(--blue);color:var(--on-brand)}
 a.meetlink .ico{width:13px;height:13px}
 .caret{flex:none;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
   transform:rotate(-45deg);transition:transform .15s;margin-left:2px;margin-top:-3px}
@@ -190,6 +287,30 @@ a.back:hover{text-decoration:underline}
 .meet-agenda{margin-top:22px;scroll-margin-top:12px}
 .meet-agenda h3{display:flex;align-items:center;gap:10px;margin:0 0 8px;font:600 17px/1.3 var(--serif);color:var(--ink)}
 .table-scroll.flat{max-height:none}
+
+/* ---- sprekers en transcript (meeting.js, docs/sprekers.md) ---- */
+.meet-sprekers,.meet-zoek{margin-top:16px}
+.tr-search{margin:0 0 10px}
+.tr-search input{width:100%;box-sizing:border-box;min-height:36px;padding:7px 11px;font:14px var(--sans);
+  color:var(--ink);background:var(--paper);border:1px solid var(--control-line);border-radius:var(--radius)}
+.tr-search input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.tr-hits{margin:8px 0 0;padding:0;list-style:none;font-size:13px}
+.tr-hits li{display:grid;grid-template-columns:76px minmax(0,190px) minmax(0,1fr);gap:4px 12px;
+  align-items:baseline;padding:7px 0;border-top:1px solid var(--line)}
+.tr-hits li:first-child{border-top:none}
+.tr-time{font-variant-numeric:tabular-nums;font-size:12px;font-weight:600;color:var(--accent);
+  text-decoration:none;white-space:nowrap}
+.tr-time:hover{text-decoration:underline}
+.tr-who{font-size:12px;color:var(--muted);min-width:0;overflow-wrap:anywhere}
+.tr-tag{display:inline-block;padding:1px 6px;margin-left:4px;border:1px solid var(--line-2);
+  border-radius:999px;font-size:10.5px;color:var(--muted);white-space:nowrap}
+.tr-text{color:var(--ink);line-height:1.5;min-width:0;overflow-wrap:anywhere}
+.tr-hits mark{background:var(--c-staken);color:var(--ink);padding:0 2px;border-radius:3px}
+.meet-zoek .csvbtn{margin-top:10px}
+@media(max-width:700px){
+  .tr-hits li{grid-template-columns:76px minmax(0,1fr)}
+  .tr-hits .tr-text{grid-column:1 / -1}
+}
 .ppanel .pp-n{margin-left:auto;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
 .chart a .bar{transition:opacity .12s}
 .chart a:hover .bar{opacity:.75}
@@ -214,7 +335,7 @@ tbody tr:last-child td{border-bottom:none}
 
 td.onderwerp{position:sticky;left:0;z-index:2;background:var(--surface);width:460px;min-width:320px;max-width:460px;padding:6px 20px 6px 8px;vertical-align:top}
 tbody tr:hover td.onderwerp{background:var(--paper)}
-tbody tr:hover td.cell.afw{background:#e9e6df}
+tbody tr:hover td.cell.afw{background:var(--afw-hover)}
 .ond-row{display:flex;gap:6px;align-items:flex-start}
 button.pin{flex:none;width:22px;height:22px;margin-top:-1px;padding:0;border:none;background:none;cursor:pointer;
   display:inline-flex;align-items:center;justify-content:center;color:var(--muted);border-radius:4px;opacity:.4;transition:opacity .12s,color .12s}
@@ -234,17 +355,17 @@ button.pin:focus-visible{outline:none;box-shadow:0 0 0 2px var(--blue);opacity:1
 .t-motie,.t-amendement,.t-besluit,.t-ordevoorstel,.t-overig{background:none;padding:0;border-radius:0}
 /* vbadge-varianten in modals houden hun kleur; de type-pil in de tabel is nu tekst */
 .res{font-weight:600}
-.r-accepted{color:#177a3e}.r-rejected{color:#b0141c}.r-tie{color:var(--muted)}
+.r-accepted{color:var(--r-ok)}.r-rejected{color:var(--r-no)}.r-tie{color:var(--muted)}
 
 td.cell{width:42px;min-width:42px;height:42px;text-align:center;font-weight:700;font-size:13px;position:relative;
-  border-right-color:rgba(255,255,255,.55)}
+  border-right-color:var(--cell-sep)}
 td.voor{background:var(--voor);color:var(--voor-tx)}
 td.tegen{background:var(--tegen);color:var(--tegen-tx)}
 td.neutraal{background:var(--neutraal);color:var(--neutraal-tx)}
 td.afw{background:var(--afw)}
 td.cell.split::after{content:"";position:absolute;top:4px;right:4px;width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.75}
 td.cell.raw{font-size:11px;font-weight:600;letter-spacing:.02em}
-td.cell.afw{color:#a8a49a;font-weight:600}
+td.cell.afw{color:var(--afw-tx);font-weight:600}
 
 .empty{padding:40px 24px;text-align:center;color:var(--muted);font-size:14px}
 .empty small{display:block;margin-top:6px;font-size:12.5px}
@@ -263,8 +384,8 @@ th.sep,td.sep{border-left:3px solid var(--blue)}
 .foot a:hover{color:var(--blue)}
 
 /* ---- modals ---- */
-.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(27,26,31,.55)}
-.modal-card{background:var(--surface);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.35);
+.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;background:var(--scrim)}
+.modal-card{background:var(--surface);border-radius:10px;box-shadow:var(--shadow-modal);
   max-width:min(96vw,1000px);max-height:90vh;overflow:auto;padding:20px 26px 26px;width:100%}
 .modal-card.wide{max-width:min(96vw,1180px)}
 .modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid var(--line-2);
@@ -310,12 +431,12 @@ table.matrix th{font-weight:600;color:var(--ink);padding:3px 6px;white-space:now
 table.matrix thead th{position:sticky;top:0;background:var(--surface);z-index:2}
 table.matrix th.rowh{position:sticky;left:0;background:var(--surface);text-align:right;z-index:1}
 table.matrix thead th:first-child{left:0;z-index:3}
-table.matrix td{width:34px;height:28px;text-align:center;font-weight:600;color:#1b1a1f;border:1px solid var(--surface);font-variant-numeric:tabular-nums}
-table.matrix td.diag{background:#e4e1d9;color:#8f8c84}
-table.matrix td.na{color:#8f8c84}
-table.matrix td.lown{background:#eeece6;color:#77746c;font-style:italic}
+table.matrix td{width:34px;height:28px;text-align:center;font-weight:600;color:var(--matrix-ink);border:1px solid var(--surface);font-variant-numeric:tabular-nums}
+table.matrix td.diag{background:var(--matrix-diag-bg);color:var(--matrix-diag-tx)}
+table.matrix td.na{color:var(--matrix-diag-tx)}
+table.matrix td.lown{background:var(--matrix-lown-bg);color:var(--matrix-lown-tx);font-style:italic}
 .matrix-legend{display:flex;align-items:center;gap:9px;margin-top:14px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
-.matrix-legend .bar{height:12px;width:170px;border-radius:6px;background:linear-gradient(90deg,hsl(0,70%,72%),hsl(67,70%,72%),hsl(135,70%,72%))}
+.matrix-legend .bar{height:12px;width:170px;border-radius:6px;background:linear-gradient(90deg,hsl(0,70%,var(--matrix-l)),hsl(67,70%,var(--matrix-l)),hsl(135,70%,var(--matrix-l)))}
 
 /* statistieken */
 .charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
@@ -348,7 +469,7 @@ table.matrix td.lown{background:#eeece6;color:#77746c;font-style:italic}
 .help-list li{margin:6px 0;font-size:14.5px;line-height:1.55;color:var(--ink-2)}
 .swatch{display:inline-block;width:22px;height:20px;border-radius:4px;border:1px solid var(--line-2)}
 .swatch.afw{background:var(--afw)}
-.vbadge.afwbadge{background:var(--afw);color:#a8a49a}
+.vbadge.afwbadge{background:var(--afw);color:var(--afw-tx)}
 .splitdot{position:relative}
 .splitdot::after{content:"";position:absolute;top:2px;right:2px;width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.75}
 #legendModal .legenda{margin-top:14px}
