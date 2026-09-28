@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-27T11:45:19+00:00",
+ "generated_at": "2026-09-28T13:21:27+00:00",
  "term": "2023-2027",
  "organisationId": 822,
  "roles": {
@@ -83,6 +83,16 @@
    "role_id": 242567,
    "reason": "te weinig gezamenlijke stemmingen",
    "n": 5
+  },
+  {
+   "role_id": 256950,
+   "reason": "te weinig gezamenlijke stemmingen",
+   "n": 12
+  },
+  {
+   "role_id": 272918,
+   "reason": "te weinig gezamenlijke stemmingen",
+   "n": 12
   }
  ],
  "seats": {
