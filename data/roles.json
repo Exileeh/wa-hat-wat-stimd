@@ -1,17 +1,14 @@
 {
- "generated_at": "2026-09-28T13:21:27+00:00",
+ "generated_at": "2026-09-29T12:27:49+00:00",
  "term": "2023-2027",
  "organisationId": 822,
  "roles": {
   "173341": "pvda",
   "173344": "fnp",
-  "173348": "grienlinks",
-  "173350": "grienlinks",
   "173351": "christenunie",
   "173720": "pvv",
   "173722": "pvv",
   "173728": "pvda",
-  "180324": "grienlinks",
   "194379": "pvdd",
   "197683": "van-dijk-fvd",
   "202690": "d66",
@@ -56,9 +53,34 @@
   "241801": "bbb",
   "237905": "pvda",
   "238157": "pvdd",
-  "246515": "ja21"
+  "246515": "ja21",
+  "256950": "cda"
  },
  "unmapped": [
+  {
+   "role_id": 173348,
+   "reason": "geen eenduidige fractie",
+   "candidates": [
+    "grienlinks",
+    "pvda"
+   ]
+  },
+  {
+   "role_id": 173350,
+   "reason": "geen eenduidige fractie",
+   "candidates": [
+    "grienlinks",
+    "pvda"
+   ]
+  },
+  {
+   "role_id": 180324,
+   "reason": "geen eenduidige fractie",
+   "candidates": [
+    "grienlinks",
+    "pvda"
+   ]
+  },
   {
    "role_id": 236091,
    "reason": "te weinig gezamenlijke stemmingen",
@@ -85,27 +107,24 @@
    "n": 5
   },
   {
-   "role_id": 256950,
-   "reason": "te weinig gezamenlijke stemmingen",
-   "n": 12
-  },
-  {
    "role_id": 272918,
-   "reason": "te weinig gezamenlijke stemmingen",
-   "n": 12
+   "reason": "geen eenduidige fractie",
+   "candidates": [
+    "grienlinks",
+    "pvda"
+   ]
   }
  ],
  "seats": {
   "pvda": 6,
   "fnp": 5,
-  "grienlinks": 3,
   "christenunie": 4,
   "pvv": 3,
   "pvdd": 2,
   "van-dijk-fvd": 1,
   "d66": 1,
   "sp": 1,
-  "cda": 5,
+  "cda": 6,
   "vvd": 3,
   "bbb": 16,
   "provinciaal-belang-frysln": 1,
