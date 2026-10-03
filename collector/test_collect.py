@@ -31,6 +31,14 @@ class Parties(unittest.TestCase):
         self.assertEqual(collect.party_slug("Steatelid Van Dijk"), "van-dijk-fvd")
         self.assertEqual(collect.NOTUBIZ_ALIASES["FVD"], "Van Dijk (FvD)")
 
+    def test_kosse_is_pvdd(self):
+        self.assertEqual(collect.party_slug("Steatelid Kosse"), "pvdd")
+
+    def test_pdf_mostly_rejected(self):
+        self.assertTrue(collect.pdf_mostly_rejected(87, 0))
+        self.assertFalse(collect.pdf_mostly_rejected(2, 36))
+        self.assertFalse(collect.pdf_mostly_rejected(0, 0))
+
     def test_other_parties_untouched(self):
         self.assertEqual(collect.party_slug("Steatelid Jonker"), "steatelid-jonker")
         self.assertEqual(collect.party_slug("Partij voor de Dieren"), "pvdd")

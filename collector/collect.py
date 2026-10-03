@@ -95,6 +95,8 @@ NOTUBIZ_ALIASES = {
     # as "Steatelid Van Dijk" throughout the term. One column, one name.
     "FVD": "Van Dijk (FvD)",
     "Steatelid Van Dijk": "Van Dijk (FvD)",
+    # PvdD's one member, listed as "Steatelid Kosse" on the voting display.
+    "Steatelid Kosse": "PvdD",
 }
 # Labels that are not a real fractie (the absence of one) -> not a voting column.
 NOTUBIZ_SKIP = {"Geen partij", "Gedeputeerde Staten"}
@@ -159,6 +161,9 @@ def http(url, binary=False):
 # Why requests failed, so a run that collects nothing names its own cause ("Network is
 # unreachable" = blocked runner) instead of printing a bare "no data".
 _HTTP_LOG = {}
+# Meetings whose "Útslach stimming" PDF was mostly rejected: (date, rejected, used). The data is
+# still written, but the run turns red — otherwise a meeting silently stays missing.
+PDF_FAILURES = []
 
 
 def note_failure(kind):
@@ -762,6 +767,8 @@ def collect(p):
                           f"{len(stats['rejected'])} afgekeurd)")
                     for pg in stats["rejected"]:
                         print(f"    WARN: pagina {pg['page']} afgekeurd: {pg['warning']} | {pg['title'][:70]}")
+                    if pdf_mostly_rejected(len(stats["rejected"]), len(new)):
+                        PDF_FAILURES.append((mdate, len(stats["rejected"]), len(new)))
                     if stats.get("error"):
                         print(f"    WARN: {stats['error']}")
 
@@ -872,6 +879,11 @@ def lost_data(prev_n, n):
     return n < prev_n - max(5, int(prev_n * 0.02))
 
 
+def pdf_mostly_rejected(rejected, used):
+    """True when the reader turned down more stemming pages of a PDF than it could use."""
+    return rejected > used
+
+
 def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     p = SOURCE
@@ -881,6 +893,7 @@ def main():
         print(f"  requests go through the relay at {urllib.parse.urlparse(RELAY).netloc}"
               f"{'' if RELAY_KEY else ' — WARNING: RELAY_KEY is empty, it will answer 404'}")
     _HTTP_LOG.clear()
+    PDF_FAILURES.clear()
     res, roles, speakers = None, None, None
     try:
         res, roles, speakers = collect(p)
@@ -950,6 +963,11 @@ def main():
                                  encoding="utf-8")
         print(f"  wrote {SPREKERS_FILE.name}: {len(speakers)} vergadering(en), "
               f"{out['meta']['counts']['transcripts']} met transcript")
+    if PDF_FAILURES:
+        for mdate, rejected, used in PDF_FAILURES:
+            print(f"  REGRESSION: {mdate}: {rejected} pagina's van de 'Útslach stimming'-PDF afgekeurd, "
+                  f"{used} gebruikt (zie de WARN-regels hierboven)")
+        return 1
     return 0
 
 

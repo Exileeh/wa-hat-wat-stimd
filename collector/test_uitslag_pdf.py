@@ -66,6 +66,14 @@ class PartyMatch(unittest.TestCase):
         self.assertEqual(up.match_party("PV", self.PRIMARY), "PVV")
         self.assertEqual(up.match_party("SteatelidJonker", self.PRIMARY), "Steatelid Jonker")
 
+    def test_one_member_fracties_do_not_match_each_other(self):
+        # "Steatelid Kosse" only in the full party list must not become "Steatelid Jonker".
+        secondary = self.SECONDARY + ["Steatelid Kosse", "Steatelid Bouma"]
+        self.assertEqual(up.match_party("Steatelid Kosse", self.PRIMARY, secondary), "Steatelid Kosse")
+        self.assertEqual(up.match_party("SteatelidKose", self.PRIMARY, secondary), "Steatelid Kosse")
+        self.assertEqual(up.match_party("Steatelid Jonkr", self.PRIMARY, secondary), "Steatelid Jonker")
+        self.assertIsNone(up.match_party("Steatelid Visser", self.PRIMARY, secondary))
+
     def test_alias_and_secondary(self):
         self.assertEqual(up.match_party("PBF", self.PRIMARY), "Provinciaal Belang Fryslân")
         self.assertEqual(up.match_party("FVD", self.PRIMARY, self.SECONDARY), "FVD")

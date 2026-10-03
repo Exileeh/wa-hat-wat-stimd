@@ -43,6 +43,13 @@ als gewone `motion` en een enkele keer zelfs als `council_proposal`. Daarna pas 
 als indiener in de module; de stemmen staan de hele periode op "Steatelid Van Dijk". Beide namen
 worden in `NOTUBIZ_ALIASES` naar **"Van Dijk (FvD)"** gemapt, dus naar één slug `van-dijk-fvd`.
 
+**Kosse = PvdD.** Op het stemscherm (PDF vanaf 30 september 2026) staat het PvdD-lid als
+"Steatelid Kosse"; `NOTUBIZ_ALIASES` mapt dat naar **"PvdD"**, dus de bestaande kolom `pvdd`.
+Eenmansfracties ("Steatelid …") worden in `match_party` alleen op achternaam fuzzy vergeleken,
+en een exacte naam wint altijd: anders scoorde "Steatelid Kosse" boven de drempel op "Steatelid
+Jonker" en werd elke pagina afgekeurd. Een PDF waarvan meer pagina's afgekeurd dan gebruikt
+worden, maakt de run rood (`REGRESSION`).
+
 4. Resultaat 2026-09-17: **671 van 676** moties+amendementen gekoppeld (99 %); 663 met document
    (8 module-items hebben geen bijlage). Indieners: partij-id's → namen → `slugify` (met alias
    "Partij voor de Dieren" → "PvdD"). Een indiener zonder eigen kolom (bijv. FVD, in deze periode

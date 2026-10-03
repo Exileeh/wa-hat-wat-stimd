@@ -50,7 +50,14 @@ HEADER_ALIASES = {
     "fvd": "FVD",
     "vandijk": "Steatelid Van Dijk",
     "steatelidvandijk": "Steatelid Van Dijk",
+    # Resolves to the PvdD column via collect.NOTUBIZ_ALIASES.
+    "kosse": "Steatelid Kosse",
+    "steatelidkosse": "Steatelid Kosse",
 }
+
+# One-member fracties are named "Steatelid <surname>". The shared prefix makes any two of them look
+# alike ("steatelidkosse" vs "steatelidjonker" scores 0.76), so fuzzy matching compares surnames only.
+MEMBER_PREFIX_RE = re.compile(r"^(?:steatelid|statenlid)")
 
 _OPTIONAL = ("pypdf", "PIL", "numpy", "rapidocr_onnxruntime")
 
@@ -184,6 +191,11 @@ def match_party(text, primary, secondary=()):
     if key in HEADER_ALIASES:
         return HEADER_ALIASES[key]
     known = list(primary) + [n for n in secondary if n not in primary]
+    # An exact name wins over a fuzzy one, wherever it is listed: a fractie that has not voted yet
+    # this term is only in `secondary`, and must not lose to a lookalike in `primary`.
+    for n in known:
+        if key == squash(n):
+            return n
     # Two fracties in one line means two bars were read as one: ambiguous, whatever the ratio of
     # the line as a whole says.
     if len(word_hits(text, known)) > 1:
@@ -193,10 +205,11 @@ def match_party(text, primary, secondary=()):
     # the fractie "Van Dijk (FvD)" on similarity alone.
     if MEMBER_RE.search(text or ""):
         return embedded_party(text, key, known)
+    bare = MEMBER_PREFIX_RE.sub("", key)
     for names in (primary, secondary):
         best = None
         for n in names:
-            r = difflib.SequenceMatcher(None, key, squash(n)).ratio()
+            r = difflib.SequenceMatcher(None, bare, MEMBER_PREFIX_RE.sub("", squash(n))).ratio()
             if best is None or r > best[0]:
                 best = (r, n)
         if best and best[0] >= PARTY_MATCH_MIN:
