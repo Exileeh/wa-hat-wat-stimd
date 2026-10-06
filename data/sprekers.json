@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-05T14:03:28+00:00",
+ "generated_at": "2026-10-06T13:05:04+00:00",
  "term": "2023-2027",
  "source": "https://fryslan.notubiz.nl",
  "meetings": {
@@ -1149,6 +1149,34 @@
     "gedeputeerde": 4907,
     "commissaris van de koning": 3664,
     "griffier": 222
+   },
+   "transcript": true
+  },
+  "1394463": {
+   "date": "2026-09-30",
+   "indexed": 29390,
+   "momenten": 578,
+   "fracties": {
+    "pvda": 2378,
+    "pvv": 2292,
+    "cda": 2251,
+    "grienlinks": 1953,
+    "bbb": 1892,
+    "d66": 1793,
+    "sp": 1215,
+    "pvdd": 1026,
+    "fnp": 824,
+    "christenunie": 817,
+    "vvd": 681,
+    "steatelid-jonker": 397,
+    "van-dijk-fvd": 291,
+    "ja21": 289,
+    "provinciaal-belang-frysln": 278
+   },
+   "rollen": {
+    "commissaris van de koning": 5945,
+    "gedeputeerde": 4971,
+    "griffier": 71
    },
    "transcript": true
   }
