@@ -1,0 +1,66 @@
+name: Vergaderstukken ophalen
+
+# Handmatig starten (Actions -> Vergaderstukken ophalen -> Run workflow) met een vergadering-ID of
+# Notubiz-link. Haalt de wurklist en de tekst van alle stukken van die ene vergadering op
+# (collector/vergaderstukken.py) en zet ze op de branch `vergaderstukken` in stukken/<id>/.
+# Bedoeld als bron voor de foarsittersmemo. Gebruikt dezelfde relay-secrets als refresh.yml.
+on:
+  workflow_dispatch:
+    inputs:
+      vergadering:
+        description: "Vergadering-ID of link, bijv. https://fryslan.notubiz.nl/vergadering/1501613"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vergaderstukken
+  cancel-in-progress: false
+
+jobs:
+  ophalen:
+    runs-on: ${{ vars.RUNNER || 'ubuntu-latest' }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install pypdf
+        shell: bash
+        run: python -m pip install -q --disable-pip-version-check pypdf==6.19.0
+
+      - name: Stukken ophalen
+        shell: bash
+        env:
+          NOTUBIZ_RELAY: ${{ secrets.NOTUBIZ_RELAY }}
+          RELAY_KEY: ${{ secrets.RELAY_KEY }}
+          VERGADERING: ${{ inputs.vergadering }}   # via env, nooit direct in het script
+        run: python collector/vergaderstukken.py "$VERGADERING" --out "$RUNNER_TEMP/stukken"
+
+      - name: Commit naar branch vergaderstukken
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git fetch --depth 1 origin vergaderstukken 2>/dev/null; then
+            git switch -c vergaderstukken FETCH_HEAD
+          else
+            git switch --orphan vergaderstukken
+          fi
+          mkdir -p stukken
+          for dir in "$RUNNER_TEMP"/stukken/*/; do
+            id=$(basename "$dir")
+            rm -rf "stukken/$id"
+            cp -r "$dir" "stukken/$id"
+          done
+          git add stukken
+          if git diff --staged --quiet; then
+            echo "Geen wijzigingen."
+          else
+            git commit -m "stukken: vergadering $id"
+            git push origin vergaderstukken
+          fi

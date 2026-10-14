@@ -96,6 +96,14 @@ python -m http.server 8000       # bekijk de site op http://localhost:8000
 > Bekijk de site via een server (niet `index.html` dubbelklikken): browsers blokkeren `fetch`
 > van het databestand bij `file://`.
 
+## Vergaderstukken (los hulpmiddel)
+
+Los van de site: de workflow [`vergaderstukken.yml`](.github/workflows/vergaderstukken.yml)
+(Actions → *Vergaderstukken ophalen* → Run workflow, met een vergadering-ID of Notubiz-link) haalt
+de wurklist en de tekst van alle stukken van één vergadering op en zet ze op de branch
+`vergaderstukken` in `stukken/<id>/` (`agenda.md` + één `.txt` per document). Handig als bron voor
+een foarsittersmemo. Lokaal: `python collector/vergaderstukken.py <id of link>`.
+
 ## Bestanden
 - [index.html](index.html), [app.css](app.css), [app.js](app.js) — de site (vanilla JS, geen dependencies)
 - [meeting.js](meeting.js) — de pagina van één vergadering, los van de rest van de site
