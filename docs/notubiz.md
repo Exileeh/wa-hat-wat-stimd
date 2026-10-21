@@ -196,3 +196,27 @@ stemming (19-19) en de eindstemming, die de API-route niet had.
 rapidocr_onnxruntime, samen ± 100 MB). `refresh-local.ps1` en de workflow installeren ze; zonder
 deze pakketten draait de API-route gewoon en meldt de collector welke vergaderingen hij oversloeg
 (`WARN: … alleen met een 'Útslach stimming'-PDF overgeslagen`).
+
+## 7. Tekst van de documenten (`collector/teksten.py`, `data/teksten.json`)
+
+Het zoekveld zoekt behalve in titel en indieners ook in de tekst van de Moasje/Amendemint-PDF
+(het veld `document` van een stemming). Besluiten hebben geen eigen document en vallen erbuiten.
+
+```jsonc
+{ "generated_at": "…",
+  "docs":   { "17486774": "Provinsjale Steaten fan Fryslân, … " },   // document-id -> platte tekst
+  "noText": [ "16912345" ] }                                        // PDF zonder tekstlaag (scan)
+```
+
+- **Incrementeel.** Een document dat al in `docs` of `noText` staat wordt nooit opnieuw opgehaald;
+  een document dat niet op te halen was wordt de volgende run opnieuw geprobeerd. Id's waar geen
+  stemming meer naar verwijst vallen eruit.
+- **Tijdslimiet.** De eerste vulling (±800 PDF's) stopt na `TEKSTEN_BUDGET` seconden (standaard
+  1200) en schrijft wat er is; de volgende run gaat verder.
+- **Geen OCR.** Scans komen in `noText` en worden in het log gemeld (`WARN teksten: …`).
+- **Nooit rood.** Een fout in deze stap laat het bestaande `data/teksten.json` staan en raakt de
+  stemdata niet.
+- **Browser.** `app.js` haalt het bestand pas op bij de eerste zoekopdracht. Zoeken negeert
+  hoofdletters en accenten ("fryslan" vindt "Fryslân"); live bijgeladen stemmingen hebben nog geen
+  tekst tot de volgende snapshot.
+

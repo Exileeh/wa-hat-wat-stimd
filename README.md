@@ -45,6 +45,7 @@ niveaus, 12 provincies), teruggebracht tot alleen Fryslân en uitgebreid met een
 ```
 collector/collect.py  ->  data/fryslan.json + data/roles.json     ->  statische site (index.html, app.js, app.css)
                           data/sprekers.json + data/transcript/
+                          data/teksten.json
         ^                                                                     |
         └── GitHub Actions (dagelijks) of collector/refresh-local.ps1         └── browser laadt nieuwe
             ververst de snapshot                                                   vergaderingen live bij
@@ -63,6 +64,10 @@ collector/collect.py  ->  data/fryslan.json + data/roles.json     ->  statische 
   OCR, met een controle op de totaalregel per pagina). Dat vraagt de optionele pakketten uit
   [collector/requirements-pdf.txt](collector/requirements-pdf.txt); zonder die pakketten worden
   zulke vergaderingen gemeld en overgeslagen. Zie [docs/notubiz.md §6](docs/notubiz.md).
+- **Zoeken in de tekst.** [collector/teksten.py](collector/teksten.py) haalt de PDF van elke motie en
+  elk amendement één keer op, leest de tekstlaag (pypdf) en schrijft die naar `data/teksten.json`.
+  De site laadt dat bestand pas wanneer iemand iets in het zoekveld typt; een treffer die alleen in
+  de tekst staat krijgt een fragment met het zoekwoord gemarkeerd. Zie [docs/notubiz.md §7](docs/notubiz.md).
 - De aantallen (`voor` / `tegen` / `onthouden`) staan in de data; V/T wordt in de browser afgeleid
   (`voor > tegen`), zodat afsplitsingen en verdeelde fracties zichtbaar blijven (stip in de cel).
 
@@ -102,7 +107,8 @@ python -m http.server 8000       # bekijk de site op http://localhost:8000
 - [collector/collect.py](collector/collect.py) — de collector;
   [collector/sprekers.py](collector/sprekers.py) — sprekersindex en ondertiteling
 - [data/fryslan.json](data/fryslan.json) — snapshot; [data/roles.json](data/roles.json) — role_id → fractie;
-  [data/sprekers.json](data/sprekers.json) — spreektijd; `data/transcript/<id>.json` — ondertiteling per vergadering
+  [data/sprekers.json](data/sprekers.json) — spreektijd; `data/transcript/<id>.json` — ondertiteling per vergadering;
+  [data/teksten.json](data/teksten.json) — tekst van de moties en amendementen (voor het zoekveld)
 - [docs/notubiz.md](docs/notubiz.md) — databron, API-endpoints, datamodel, blokkade-diagnose
 - [docs/sprekers.md](docs/sprekers.md) — sprekersstatistiek en doorzoekbare transcripten per vergadering
 - [docs/claude-design-prompt.md](docs/claude-design-prompt.md) — briefing voor een herontwerp van de vormgeving
