@@ -379,6 +379,9 @@ button.pin:focus-visible{outline:none;box-shadow:0 0 0 2px var(--blue);opacity:1
 .ext{text-decoration:none;color:var(--blue);font-size:14px;font-weight:600;margin-left:4px}
 .ext:hover{text-decoration:underline}
 .meta{margin-top:2px;font-size:12px;color:var(--muted);display:flex;gap:4px 9px;align-items:baseline;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.tekst-hit{margin-top:4px;font-size:12px;line-height:1.45;color:var(--muted);max-width:60ch;overflow-wrap:anywhere}
+.tekst-hit mark{background:var(--warn-bg);color:var(--warn-tx);box-shadow:0 0 0 1px var(--warn-line);padding:0 2px;border-radius:3px}
+.tekst-tag{display:inline-block;padding:0 6px;margin-right:6px;border:1px solid var(--line-2);border-radius:999px;font-size:10.5px;white-space:nowrap}
 .doclink{display:inline-flex;align-items:center;gap:3px;text-decoration:none;color:var(--blue);font-weight:500;font-size:12px;white-space:nowrap}
 .doclink:hover{text-decoration:underline;color:var(--blue-ink)}
 .indieners{color:var(--muted)}

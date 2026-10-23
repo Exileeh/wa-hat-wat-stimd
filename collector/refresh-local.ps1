@@ -67,7 +67,7 @@ if ($pipCode -ne 0) {
 $collectorCode = Invoke-Logged 'python' @('-u', 'collector/collect.py')
 Write-Log "collector finished (exit $collectorCode)"
 
-$files = @('data/fryslan.json', 'data/roles.json', 'data/sprekers.json', 'data/transcript')
+$files = @('data/fryslan.json', 'data/roles.json', 'data/sprekers.json', 'data/teksten.json', 'data/transcript')
 & git add -- $files
 & git diff --cached --quiet
 if ($LASTEXITCODE -eq 0) {

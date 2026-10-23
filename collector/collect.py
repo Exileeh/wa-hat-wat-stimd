@@ -54,6 +54,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 import sprekers
+import teksten
 import uitslag_pdf
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
@@ -61,6 +62,7 @@ DATA_FILE = DATA_DIR / "fryslan.json"
 ROLES_FILE = DATA_DIR / "roles.json"
 SPREKERS_FILE = DATA_DIR / "sprekers.json"
 TRANSCRIPT_DIR = DATA_DIR / "transcript"
+TEKSTEN_FILE = DATA_DIR / "teksten.json"
 
 SOURCE = {
     "key": "fryslan",
@@ -963,6 +965,12 @@ def main():
                                  encoding="utf-8")
         print(f"  wrote {SPREKERS_FILE.name}: {len(speakers)} vergadering(en), "
               f"{out['meta']['counts']['transcripts']} met transcript")
+    # Full text of the Moasje/Amendemint PDFs for the search box (collector/teksten.py). Additive and
+    # incremental; a failure here never turns the run red — the stemmingen are already written.
+    try:
+        teksten.update(out["moties"], TEKSTEN_FILE, try_bytes, sleep=SLEEP)
+    except Exception as e:   # noqa: BLE001
+        print(f"  WARN teksten: {type(e).__name__}: {e} — {TEKSTEN_FILE.name} niet bijgewerkt")
     if PDF_FAILURES:
         for mdate, rejected, used in PDF_FAILURES:
             print(f"  REGRESSION: {mdate}: {rejected} pagina's van de 'Útslach stimming'-PDF afgekeurd, "

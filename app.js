@@ -4,6 +4,7 @@
 
 const DATA_URL = "data/fryslan.json";
 const ROLES_URL = "data/roles.json";
+const TEXTS_URL = "data/teksten.json";   // full text of the Moasje/Amendemint PDFs, loaded on first search
 const NOTUBIZ_API = "https://api.notubiz.nl";
 const API_VERSION = "1.21";
 const LIVE_MAX_MEETINGS = 10;   // protect the API: never crawl more than this many new meetings per visit
@@ -42,6 +43,44 @@ const docLink = m => m.document
   ? `<a class="doclink" href="${esc(m.document)}" target="_blank" rel="noopener" title="${esc(m.documentTitle || "Open het document")} (PDF)">${ICO("i-doc")}${DOC_LABEL[m.type] || "Document"}</a>`
   : "";
 const indienersText = m => (m.indieners && m.indieners.length) ? m.indieners.map(pLabel).join(", ") : "";
+
+/* ---- Zoeken, ook in de tekst van het document ----
+   Length-preserving fold (same table as meeting.js), so "fryslan" finds "Fryslân" and an index into
+   the folded text also indexes the original for the highlighted fragment. TEXTS (data/teksten.json,
+   ±2-3 MB) is only fetched once someone types in the search box; until then, or when it is missing,
+   the search works on titles and indieners as before. */
+const FOLD = {"à":"a","á":"a","â":"a","ä":"a","ã":"a","å":"a","æ":"a","è":"e","é":"e","ê":"e",
+              "ë":"e","ì":"i","í":"i","î":"i","ï":"i","ò":"o","ó":"o","ô":"o","ö":"o","õ":"o",
+              "ù":"u","ú":"u","û":"u","ü":"u","ý":"y","ÿ":"y","ñ":"n","ç":"c","ø":"o","š":"s"};
+const fold = s => String(s || "").toLowerCase().replace(/[^\x00-\x7f]/g, c => FOLD[c] || c);
+let TEXTS = null;            // {docId: {text, folded}}, false while loading or when unavailable
+const docIdOf = m => (String(m.document || "").match(/\/document\/(\d+)/) || [])[1];
+const textOf = m => { const id = TEXTS && docIdOf(m); return id ? TEXTS[id] : null; };
+function loadTexts(){
+  if(TEXTS !== null) return;
+  TEXTS = false;
+  fetch(TEXTS_URL).then(r => r.ok ? r.json() : null).then(j => {
+    if(!j || !j.docs) return;
+    const t = {};
+    for(const [id, text] of Object.entries(j.docs)) t[id] = {text, folded: fold(text)};
+    TEXTS = t;
+    if(state.search) render();
+  }).catch(() => {});
+}
+const metaHay = m => fold(m.title + " " + indienersText(m) + " " + (m.indieners||[]).map(pName).join(" "));
+// The search hit lies only in the document text (not in title/indieners): a fragment around it.
+function textSnippet(m){
+  if(!state.search || metaHay(m).includes(state.search)) return "";
+  const t = textOf(m);
+  const i = t ? t.folded.indexOf(state.search) : -1;
+  if(i < 0) return "";
+  const n = state.search.length, R = 70;
+  let a = Math.max(0, i - R), b = Math.min(t.text.length, i + n + R);
+  if(a > 0){ const sp = t.text.indexOf(" ", a); if(sp > -1 && sp < i) a = sp + 1; }
+  if(b < t.text.length){ const sp = t.text.lastIndexOf(" ", b); if(sp > i + n) b = sp; }
+  return `<div class="tekst-hit" title="Gevonden in de tekst van het document"><span class="tekst-tag">in tekst</span>${a > 0 ? "… " : ""}${
+    esc(t.text.slice(a, i))}<mark>${esc(t.text.slice(i, i + n))}</mark>${esc(t.text.slice(i + n, b))}${b < t.text.length ? " …" : ""}</div>`;
+}
 
 /* ---- Vergaderingen en agendapunten ----
    Every stemming carries `meetingId` and (nearly always) `agenda` {id, nr, title}; older snapshots
@@ -601,7 +640,8 @@ function buildControls(types){
 
   let searchTimer;
   $("#search").oninput = e => {
-    state.search = e.target.value.toLowerCase().trim();
+    state.search = fold(e.target.value.trim());
+    if(state.search) loadTexts();
     clearTimeout(searchTimer);
     searchTimer = setTimeout(render, 150);
   };
@@ -675,8 +715,10 @@ function passes(m){
   if(!state.types.has(m.type)) return false;
   if(state.result!=="all" && m.result!==state.result) return false;
   if(state.search){
-    const hay = (m.title + " " + indienersText(m) + " " + (m.indieners||[]).map(pName).join(" ")).toLowerCase();
-    if(!hay.includes(state.search)) return false;
+    if(!metaHay(m).includes(state.search)){
+      const t = textOf(m);
+      if(!t || !t.folded.includes(state.search)) return false;
+    }
   }
   if(state.controversial && !isControversial(m)) return false;
   return true;
@@ -737,7 +779,7 @@ function rowHTML(m, vps){
   const first = `<td class="onderwerp"><div class="ond-row">
       <button class="pin${pinned?" on":""}" data-id="${m.id}" title="${pinned?"Losmaken":"Vastpinnen"}" aria-label="${pinned?"Losmaken":"Vastpinnen"}">${ICO("i-pin")}</button>
       <div><div class="titel">${esc(m.title)}${srcLink(m)}${live}</div>
-      <div class="meta"><span>${m.date}</span><span class="type t-${m.type}">${TYPE_LABEL[m.type]||m.type}</span>${res}${docLink(m)}${ind?`<span class="indieners" title="Indieners">${esc(ind)}</span>`:""}</div></div>
+      <div class="meta"><span>${m.date}</span><span class="type t-${m.type}">${TYPE_LABEL[m.type]||m.type}</span>${res}${docLink(m)}${ind?`<span class="indieners" title="Indieners">${esc(ind)}</span>`:""}</div>${textSnippet(m)}</div>
     </div></td>`;
   return `<tr>${first}${vps.map(p=>cellHTML(m,p.slug,p.name,p.sep)).join("")}${PAD_CELL}</tr>`;
 }
