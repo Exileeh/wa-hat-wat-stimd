@@ -3,7 +3,7 @@
     "province": "Fryslân",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-10-28T12:27:52+00:00",
+    "generated_at": "2026-10-29T12:37:49+00:00",
     "source": "https://fryslan.notubiz.nl",
     "sourceName": "",
     "license": "Open data - Provincie Fryslân (Notubiz vergaderportaal)",
@@ -14,9 +14,9 @@
     "note": "Stemmen zijn hoofdelijk (per lid) geregistreerd en hier per fractie met exacte aantallen samengevat (aangenomen én verworpen). Agendapunten zonder hoofdelijke stemming (bijv. bij acclamatie) en leden die niet deelnamen, staan niet in de telling.",
     "granularity": "member",
     "counts": {
-      "moties": 1002,
+      "moties": 1025,
       "parties": 15,
-      "fromPdf": 125,
+      "fromPdf": 148,
       "transcripts": 46
     },
     "types": [
@@ -94,6 +94,2233 @@
     }
   ],
   "moties": [
+    {
+      "id": 17618635024,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "12 Moasje Frjemd - Kat in 't bakkie - Steatelid Kosse, GrienLinks, SP, PvdA",
+      "type": "frjemd",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 1,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10681750,
+        "nr": "12",
+        "title": "Moasje frjemd Steatelid Kosse en GrienLinks oer 'Kat in 't bakkie'"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17618504/1/12+Moasje+Frjemd+-+Kat+in+%27t+bakkie+-+Steatelid+Kosse%2C+GrienLinks%2C+SP%2C+PvdA",
+      "documentTitle": "12 Moasje Frjemd - Kat in 't bakkie - Steatelid Kosse, GrienLinks, SP, PvdA",
+      "indieners": [
+        "pvdd",
+        "grienlinks"
+      ],
+      "totals": {
+        "agree": 16,
+        "disagree": 25
+      }
+    },
+    {
+      "id": 17618635023,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "10 Oanpassing mienskiplike regeling FUMO",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587964,
+        "nr": "10",
+        "title": "Oanpassing mienskiplike regeling FUMO"
+      },
+      "totals": {
+        "agree": 39,
+        "disagree": 2
+      }
+    },
+    {
+      "id": 17618635022,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "09 Feroardering provinsjale prizebelied",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587960,
+        "nr": "9",
+        "title": "Feroardering provinsjale prizebelied"
+      },
+      "totals": {
+        "agree": 39,
+        "disagree": 2
+      }
+    },
+    {
+      "id": 17618635020,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "08 Moasje 01 - Veilige digitale dienstverlening - GrienLinks, PvdA, Steatelid van Dijk, BBB",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587956,
+        "nr": "8",
+        "title": "Fêststelling Referindumferoardering provinsje Fryslân 2026"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17618423/1/08+Moasje+01+-+Veilige+digitale+dienstverlening+-+GrienLinks%2C+PvdA%2C+Steatelid+van+Dijk%2C+BBB",
+      "documentTitle": "08 Moasje 01 - Veilige digitale dienstverlening - GrienLinks, PvdA, Steatelid van Dijk, BBB",
+      "indieners": [
+        "grienlinks",
+        "pvda",
+        "van-dijk-fvd",
+        "bbb"
+      ],
+      "totals": {
+        "agree": 41,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 17618635021,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "08 Fêststelling Referindumferoardering provinsje Fryslân 2026 - Finale beslút",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587956,
+        "nr": "8",
+        "title": "Fêststelling Referindumferoardering provinsje Fryslân 2026"
+      },
+      "totals": {
+        "agree": 32,
+        "disagree": 9
+      }
+    },
+    {
+      "id": 17618635019,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "08 Amendemint 04 - Geen opkomstdrempel voor raadgevend referendum - SP",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587956,
+        "nr": "8",
+        "title": "Fêststelling Referindumferoardering provinsje Fryslân 2026"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17618450/1/08+Amendemint+04+-+Geen+opkomstdrempel+voor+raadgevend+referendum+-+SP",
+      "documentTitle": "08 Amendemint 04 - Geen opkomstdrempel voor raadgevend referendum - SP",
+      "indieners": [
+        "sp"
+      ],
+      "totals": {
+        "agree": 1,
+        "disagree": 40
+      }
+    },
+    {
+      "id": 17618635016,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "08 Amendemint 03 - Referendum uit het instrumentarium - VVD, Steatelid Jonker, CDA",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 1,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 2,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587956,
+        "nr": "8",
+        "title": "Fêststelling Referindumferoardering provinsje Fryslân 2026"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17618429/1/08+Amendemint+03+-+Referendum+uit+het+instrumentarium+-+VVD%2C+Steatelid+Jonker%2C+CDA",
+      "documentTitle": "08 Amendemint 03 - Referendum uit het instrumentarium - VVD, Steatelid Jonker, CDA",
+      "indieners": [
+        "vvd",
+        "steatelid-jonker",
+        "cda"
+      ],
+      "totals": {
+        "agree": 12,
+        "disagree": 29
+      }
+    },
+    {
+      "id": 17618635018,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "08 Amendement 02 - Een representatief referendum -PvdA, GrienLinks, Steatelid Van Dijk",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587956,
+        "nr": "8",
+        "title": "Fêststelling Referindumferoardering provinsje Fryslân 2026"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17622419/1/08+Amendemint+02+-+OANPAST-+Representatief+referendum+-+PvdA%2C+GrienLinks%2C+Steatelid+Van+Dijk",
+      "documentTitle": "08 Amendemint 02 - OANPAST- Representatief referendum - PvdA, GrienLinks, Steatelid Van Dijk",
+      "indieners": [
+        "pvda",
+        "grienlinks",
+        "van-dijk-fvd"
+      ],
+      "totals": {
+        "agree": 37,
+        "disagree": 4
+      }
+    },
+    {
+      "id": 17618635017,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "08 Amendement 01 - Beperking uitzonderingsgrond referendum  - PVV",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587956,
+        "nr": "8",
+        "title": "Fêststelling Referindumferoardering provinsje Fryslân 2026"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17618391/1/08+Amendement+01+-+Beperking+uitzonderingsgrond+referendum+-+PVV",
+      "documentTitle": "08 Amendement 01 - Beperking uitzonderingsgrond referendum - PVV",
+      "indieners": [
+        "pvv"
+      ],
+      "totals": {
+        "agree": 4,
+        "disagree": 37
+      }
+    },
+    {
+      "id": 17618635014,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "07 Moasje 11 - OANPAST- Fugelhoeke - JA21, BBB",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587949,
+        "nr": "7",
+        "title": "Fryske Oanpak Stikstofreduksje en Natuerferbettering"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17618566/1/07+Moasje+11+-+Fugelhoeke+-+JA21%2C+BBB+-+OANPAST",
+      "documentTitle": "07 Moasje 11 - Fugelhoeke - JA21, BBB - OANPAST",
+      "indieners": [
+        "ja21",
+        "bbb"
+      ],
+      "totals": {
+        "agree": 25,
+        "disagree": 16
+      }
+    },
+    {
+      "id": 17618635013,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "07 Moasje 10 - Toepassen RKO - JA21, BBB, CDA, ChristenUnie",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587949,
+        "nr": "7",
+        "title": "Fryske Oanpak Stikstofreduksje en Natuerferbettering"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17617137/1/07+Moasje+10+-+Toepassen+RKO+-+JA21%2C+BBB%2C+CDA%2C+ChristenUnie",
+      "documentTitle": "07 Moasje 10 - Toepassen RKO - JA21, BBB, CDA, ChristenUnie",
+      "indieners": [
+        "ja21",
+        "bbb",
+        "cda",
+        "christenunie"
+      ],
+      "totals": {
+        "agree": 27,
+        "disagree": 14
+      }
+    },
+    {
+      "id": 17618635012,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "07 Moasje 09 - Beloon de voorlopers - SP, Steatelid Kosse",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587949,
+        "nr": "7",
+        "title": "Fryske Oanpak Stikstofreduksje en Natuerferbettering"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17616564/1/07+Moasje+09+-+Beloon+de+voorlopers+-+SP%2C+Steatelid+Kosse",
+      "documentTitle": "07 Moasje 09 - Beloon de voorlopers - SP, Steatelid Kosse ",
+      "indieners": [
+        "sp",
+        "pvdd"
+      ],
+      "totals": {
+        "agree": 19,
+        "disagree": 22
+      }
+    },
+    {
+      "id": 17618635011,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "07 Moasje 08 - Geef jonge boeren toekomstperspectief - SP, BBB",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587949,
+        "nr": "7",
+        "title": "Fryske Oanpak Stikstofreduksje en Natuerferbettering"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17616520/1/07+Moasje+08+-+Geef+jonge+boeren+toekomstperspectief+-+SP%2C+BBB",
+      "documentTitle": "07 Moasje 08 - Geef jonge boeren toekomstperspectief - SP, BBB",
+      "indieners": [
+        "sp",
+        "bbb"
+      ],
+      "totals": {
+        "agree": 39,
+        "disagree": 2
+      }
+    },
+    {
+      "id": 17618635010,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "07 Moasje 07 - Alternatief voor Russische roulette bij de Friese stikstofaanpak - GrienLinks, PvdA, Steatelid Kosse",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587949,
+        "nr": "7",
+        "title": "Fryske Oanpak Stikstofreduksje en Natuerferbettering"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17616456/1/07+Moasje+07+-+Alternatief+voor+Russische+roulette+bij+de+FASN+-+GrienLinks%2C+PvdA%2C+Steatelid+Kosse",
+      "documentTitle": "07 Moasje 07 - Alternatief voor Russische roulette bij de FASN - GrienLinks, PvdA, Steatelid Kosse",
+      "indieners": [
+        "grienlinks",
+        "pvda",
+        "pvdd"
+      ],
+      "totals": {
+        "agree": 11,
+        "disagree": 30
+      }
+    },
+    {
+      "id": 17618635009,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "07 Moasje 06 - Fryslân fertsjinnet maatwurk  - FNP en ChristenUnie",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587949,
+        "nr": "7",
+        "title": "Fryske Oanpak Stikstofreduksje en Natuerferbettering"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17615436/1/07+Moasje+06+-+Frysl%C3%A2n+ferstjinnet+maatwurk+-+FNP",
+      "documentTitle": "07 Moasje 06 - Fryslân ferstjinnet maatwurk  - FNP",
+      "indieners": [
+        "fnp",
+        "christenunie"
+      ],
+      "totals": {
+        "agree": 37,
+        "disagree": 4
+      }
+    },
+    {
+      "id": 17618635008,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "07 Moasje 05 - Versnelling natuurherstelplannen Natura 2000 - PvdA, GrienLinks, CDA en ChristenUnie",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587949,
+        "nr": "7",
+        "title": "Fryske Oanpak Stikstofreduksje en Natuerferbettering"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17614321/1/07+Moasje+05+-+Versnelling+natuurherstelplannen+Natura+2000+-+PvdA%2C+GrienLinks+en+CDA",
+      "documentTitle": "07 Moasje 05 - Versnelling natuurherstelplannen Natura 2000 - PvdA, GrienLinks en CDA",
+      "indieners": [
+        "pvda",
+        "grienlinks",
+        "cda",
+        "christenunie"
+      ],
+      "totals": {
+        "agree": 36,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 17618635007,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "07 Moasje 04 - Voorbereid op 2030 - tijdig zicht op aanvullende stikstofmaatregelen - PvdA, GrienLinks ",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587949,
+        "nr": "7",
+        "title": "Fryske Oanpak Stikstofreduksje en Natuerferbettering"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17614309/1/07+Moasje+04+-+Voorbereid+op+2030+-+tijdig+zicht+op+aanvullende+stikstofmaatregelen",
+      "documentTitle": "07 Moasje 04 - Voorbereid op 2030 - tijdig zicht op aanvullende stikstofmaatregelen",
+      "indieners": [
+        "pvda",
+        "grienlinks"
+      ],
+      "totals": {
+        "agree": 15,
+        "disagree": 26
+      }
+    },
+    {
+      "id": 17618635006,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "07 Moasje 03 - OANPAST- Vergunningen verlenen! - BBB",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587949,
+        "nr": "7",
+        "title": "Fryske Oanpak Stikstofreduksje en Natuerferbettering"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17618565/1/07+Moasje+03+-+Vergunningen+verlenen%21+-+BBB+-+OANPAST",
+      "documentTitle": "07 Moasje 03 - Vergunningen verlenen!  - BBB - OANPAST",
+      "indieners": [
+        "bbb"
+      ],
+      "totals": {
+        "agree": 25,
+        "disagree": 16
+      }
+    },
+    {
+      "id": 17618635005,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "07 Moasje 02 - Voorkom uit(ver)koop Friese landbouw - BBB",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587949,
+        "nr": "7",
+        "title": "Fryske Oanpak Stikstofreduksje en Natuerferbettering"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17613864/1/07+Moasje+02+-+Voorkom+uit%28ver%29koop+Friese+landbouw+-+BBB",
+      "documentTitle": "07 Moasje 02 - Voorkom uit(ver)koop Friese landbouw - BBB",
+      "indieners": [
+        "bbb"
+      ],
+      "totals": {
+        "agree": 24,
+        "disagree": 17
+      }
+    },
+    {
+      "id": 17618635004,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "07 Moasje 01 - Richting 250 meter - BBB",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587949,
+        "nr": "7",
+        "title": "Fryske Oanpak Stikstofreduksje en Natuerferbettering"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17613790/1/7+Moasje+1+-+Richting+250+meter+-+BBB",
+      "documentTitle": "7 Moasje 1 - Richting 250 meter - BBB",
+      "indieners": [
+        "bbb"
+      ],
+      "totals": {
+        "agree": 30,
+        "disagree": 11
+      }
+    },
+    {
+      "id": 17618635015,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "07 Fryske Oanpak Stikstofreduksje en Natuerferbettering - Finale beslút",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587949,
+        "nr": "7",
+        "title": "Fryske Oanpak Stikstofreduksje en Natuerferbettering"
+      },
+      "totals": {
+        "agree": 27,
+        "disagree": 14
+      }
+    },
+    {
+      "id": 17618635003,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "07 Amendemint 01 - Ek foarrang foar ynterimmers - FNP",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10587949,
+        "nr": "7",
+        "title": "Fryske Oanpak Stikstofreduksje en Natuerferbettering"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17615427/1/07+Amendemint+01+-+Ek+foarrang+foar+ynterimmers+-+FNP",
+      "documentTitle": "07 Amendemint 01 - Ek foarrang foar ynterimmers - FNP",
+      "indieners": [
+        "fnp"
+      ],
+      "totals": {
+        "agree": 41,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 17618635002,
+      "date": "2026-10-28",
+      "meetingId": 1394486,
+      "title": "06 Ofhannele moasjes entasizzings",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394486",
+      "uitslag": "https://fryslan.notubiz.nl/document/17618635/1/%C3%9Atslach+stimming+28+oktober+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10588918,
+        "nr": "6",
+        "title": "Ofhannele moasjes en tasizzings"
+      },
+      "totals": {
+        "agree": 41,
+        "disagree": 0
+      }
+    },
     {
       "id": 17485571088,
       "date": "2026-09-30",
