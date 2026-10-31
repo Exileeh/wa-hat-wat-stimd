@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T12:37:49+00:00",
+ "generated_at": "2026-10-31T11:57:44+00:00",
  "term": "2023-2027",
  "organisationId": 822,
  "roles": {
@@ -54,7 +54,8 @@
   "237905": "pvda",
   "238157": "pvdd",
   "246515": "ja21",
-  "256950": "cda"
+  "256950": "cda",
+  "276759": "pvdd"
  },
  "unmapped": [
   {
@@ -113,6 +114,14 @@
     "grienlinks",
     "pvda"
    ]
+  },
+  {
+   "role_id": 252704,
+   "reason": "geen eenduidige fractie",
+   "candidates": [
+    "grienlinks",
+    "pvda"
+   ]
   }
  ],
  "seats": {
@@ -120,7 +129,7 @@
   "fnp": 5,
   "christenunie": 4,
   "pvv": 3,
-  "pvdd": 2,
+  "pvdd": 3,
   "van-dijk-fvd": 1,
   "d66": 1,
   "sp": 1,
