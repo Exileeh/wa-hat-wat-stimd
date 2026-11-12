@@ -3,7 +3,7 @@
     "province": "Fryslân",
     "body": "Provinciale Staten",
     "term": "2023-2027",
-    "generated_at": "2026-11-11T13:51:28+00:00",
+    "generated_at": "2026-11-12T14:56:13+00:00",
     "source": "https://fryslan.notubiz.nl",
     "sourceName": "",
     "license": "Open data - Provincie Fryslân (Notubiz vergaderportaal)",
@@ -14,9 +14,9 @@
     "note": "Stemmen zijn hoofdelijk (per lid) geregistreerd en hier per fractie met exacte aantallen samengevat (aangenomen én verworpen). Agendapunten zonder hoofdelijke stemming (bijv. bij acclamatie) en leden die niet deelnamen, staan niet in de telling.",
     "granularity": "member",
     "counts": {
-      "moties": 1021,
-      "parties": 15,
-      "fromPdf": 61,
+      "moties": 1048,
+      "parties": 16,
+      "fromPdf": 88,
       "transcripts": 47
     },
     "types": [
@@ -91,9 +91,2933 @@
     {
       "slug": "steatelid-jonker",
       "name": "Steatelid Jonker"
+    },
+    {
+      "slug": "steatelid-keuning",
+      "name": "Steatelid Keuning"
     }
   ],
   "moties": [
+    {
+      "id": 17721763028,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 25 - Gegarandeerde drinkwatervoorziening - Steatelid Kosse GrienLinks PvdA",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17719929/1/03+Moasje+25+-+Gegarandeerde+drinkwatervoorziening-+Steatelid+Kosse+GrienLinks+PvdA",
+      "documentTitle": "03 Moasje 25 - Gegarandeerde drinkwatervoorziening- Steatelid Kosse GrienLinks PvdA",
+      "indieners": [
+        "pvdd",
+        "grienlinks",
+        "pvda"
+      ],
+      "totals": {
+        "agree": 14,
+        "disagree": 29
+      }
+    },
+    {
+      "id": 17721763027,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 24 - Alliander dividend realistisch begroten JA21, PvdA, VVD, PBF, Steatelid Keuning, Steatelid Jonker",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17719282/1/03+Moasje+24+-+Alliander+dividend+real.+begroten+-+JA21+PvdA+VVD+PBF+Keuning+Jonker",
+      "documentTitle": "03 Moasje 24 - Alliander dividend real. begroten - JA21 PvdA VVD PBF Keuning Jonker",
+      "indieners": [
+        "ja21",
+        "pvda",
+        "vvd",
+        "provinciaal-belang-frysln",
+        "steatelid-jonker",
+        "steatelid-keuning"
+      ],
+      "totals": {
+        "agree": 23,
+        "disagree": 20
+      }
+    },
+    {
+      "id": 17721763026,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 23 - Dat ferklearje en ûnthjit ik - D66 en Steatelid Kosse",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 3,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17719220/1/03+Moasje+23+-+Dat+ferklearje+en+%C3%BBnthjit+ik+-+D66+Steatelid+Kosse",
+      "documentTitle": "03 Moasje 23 - Dat ferklearje en ûnthjit ik - D66 Steatelid Kosse",
+      "indieners": [
+        "d66",
+        "pvdd"
+      ],
+      "totals": {
+        "agree": 11,
+        "disagree": 32
+      }
+    },
+    {
+      "id": 17721763025,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 22 - OANPAST - Fryslân investeert in bereikbaarheid - D66, Steatelid Kosse en JA21",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 1
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17721594/1/03+Moasje+22+-+OANPAST-+Fryslan+investeert+in+bereikbaarheid+D66+St+Kosse+JA21",
+      "documentTitle": "03 Moasje 22 - OANPAST- Fryslan investeert in bereikbaarheid D66 St Kosse JA21",
+      "indieners": [
+        "d66",
+        "pvdd",
+        "ja21"
+      ],
+      "totals": {
+        "agree": 5,
+        "disagree": 37
+      }
+    },
+    {
+      "id": 17721763024,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 20 - OANPAST Iedereen kan bijdragen aan het Friese Landschap - GrienLinks PvdA Steatelid Kosse ",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17720331/1/03+Moasje+20+OANPAST+-+Iedereen+kan+bijdragen+aan+het+Fr.+Landschap+-+GL+PvdA+Kosse",
+      "documentTitle": "03 Moasje 20 OANPAST - Iedereen kan bijdragen aan het Fr. Landschap - GL PvdA Kosse",
+      "indieners": [
+        "grienlinks",
+        "pvda",
+        "pvdd"
+      ],
+      "totals": {
+        "agree": 31,
+        "disagree": 12
+      }
+    },
+    {
+      "id": 17721763023,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 18 - Provinciaal geld voor Friese stimulans - ChristenUnie GrienLinks FNP",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17718007/1/03+Moasje+18+-+Provinciaal+geld+voor+Friese+stimulans+-+ChristenUnie+GrienLinks+FNP",
+      "documentTitle": "03 Moasje 18 - Provinciaal geld voor Friese stimulans - ChristenUnie GrienLinks FNP",
+      "indieners": [
+        "christenunie",
+        "grienlinks",
+        "fnp"
+      ],
+      "totals": {
+        "agree": 39,
+        "disagree": 4
+      }
+    },
+    {
+      "id": 17721763022,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 17 - De werkvloer als partner in de aanpak van basisvaardigheden - ChristenUnie GrienLinks FNP SP",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17717977/1/03+Moasje+17+-+De+werkvloer+als+partner+in+de+aanpak+van+basisvaardigheden+CU+GL+FNP+SP",
+      "documentTitle": "03 Moasje 17 - De werkvloer als partner in de aanpak van basisvaardigheden CU GL FNP SP",
+      "indieners": [
+        "christenunie",
+        "grienlinks",
+        "fnp",
+        "sp"
+      ],
+      "totals": {
+        "agree": 36,
+        "disagree": 7
+      }
+    },
+    {
+      "id": 17721763021,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 16 - Geen belastinggeld naar politiek activisme - PVV",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17717695/1/03+Moasje+16+-+Geen+belastinggeld+naar+politiek+activisme+-+PVV",
+      "documentTitle": "03 Moasje 16 - Geen belastinggeld naar politiek activisme - PVV",
+      "indieners": [
+        "pvv"
+      ],
+      "totals": {
+        "agree": 3,
+        "disagree": 40
+      }
+    },
+    {
+      "id": 17721763020,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 15 - Jild foar op de planken, net foar op de planke - FNP, PvdA en GrienLinks",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17717653/1/03+Moasje+15+-+Jild+foar+op+de+planken%2C+net+foar+op+de+planke+-+FNP%2C+PvdA+GL",
+      "documentTitle": "03 Moasje 15 - Jild foar op de planken, net foar op de planke - FNP, PvdA GL",
+      "indieners": [
+        "fnp"
+      ],
+      "totals": {
+        "agree": 17,
+        "disagree": 26
+      }
+    },
+    {
+      "id": 17721763019,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 14 - Fryske taaltechnology fierder bringe - FNP",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17717631/1/03+Moasje+14+-+Fryske+taaltechnology+fierder+bringe+-+FNP",
+      "documentTitle": "03 Moasje 14 - Fryske taaltechnology fierder bringe - FNP",
+      "indieners": [
+        "fnp"
+      ],
+      "totals": {
+        "agree": 39,
+        "disagree": 4
+      }
+    },
+    {
+      "id": 17721763018,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 13 - OANPAST Tydskrift heit & mem - FNP D66",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17720197/1/03+Moasje+13+OANPAST+-+Tydskrift+heit%26mem+-+FNP+D66",
+      "documentTitle": "03 Moasje 13 OANPAST - Tydskrift heit&mem - FNP D66",
+      "indieners": [
+        "fnp",
+        "d66"
+      ],
+      "totals": {
+        "agree": 26,
+        "disagree": 17
+      }
+    },
+    {
+      "id": 17721763017,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 12 - Mei inoar sterk - FNP",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17717602/1/03+Moasje+12+-+Mei-inoar+sterk+-+FNP",
+      "documentTitle": "03 Moasje 12 - Mei-inoar sterk - FNP",
+      "indieners": [
+        "fnp"
+      ],
+      "totals": {
+        "agree": 43,
+        "disagree": 0
+      }
+    },
+    {
+      "id": 17721763016,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 11 - Frysk Museum - FNP en PvdA",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17717593/1/03+Moasje+11+-+Frysk+Museum+-+FNP+en+PvdA",
+      "documentTitle": "03 Moasje 11 - Frysk Museum - FNP en PvdA",
+      "indieners": [
+        "fnp",
+        "pvda"
+      ],
+      "totals": {
+        "agree": 40,
+        "disagree": 3
+      }
+    },
+    {
+      "id": 17721763015,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 10 - Finansiering Salta - FNP",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17717588/1/03+Moasje+10+-+Finansiering+Salta+-+FNP",
+      "documentTitle": "03 Moasje 10 - Finansiering Salta - FNP",
+      "indieners": [
+        "fnp"
+      ],
+      "totals": {
+        "agree": 39,
+        "disagree": 4
+      }
+    },
+    {
+      "id": 17721763014,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 09 - Rekenen op gemeenten - CDA",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17717310/1/03+Moasje+09+-+Rekenen+op+gemeenten+-+CDA",
+      "documentTitle": "03 Moasje 09 - Rekenen op gemeenten - CDA",
+      "indieners": [
+        "cda"
+      ],
+      "totals": {
+        "agree": 12,
+        "disagree": 31
+      }
+    },
+    {
+      "id": 17721763013,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 08 - Opcenten koppelen aan infrastructuur - CDA",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17717266/1/03+Moasje+08+-+Opcenten+koppelen+aan+infrastructuur+-+CDA",
+      "documentTitle": "03 Moasje 08 - Opcenten koppelen aan infrastructuur - CDA",
+      "indieners": [
+        "cda"
+      ],
+      "totals": {
+        "agree": 8,
+        "disagree": 35
+      }
+    },
+    {
+      "id": 17721763012,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 07 - Fryslân als werkgever van talent - PvdA en GrienLinks",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17716869/1/03+Moasje+07+-+Frysl%C3%A2n+als+werkgever+van+talent+-+PvdA+GrienLinks",
+      "documentTitle": "03 Moasje 07 - Fryslân als werkgever van talent - PvdA GrienLinks",
+      "indieners": [
+        "pvda",
+        "grienlinks"
+      ],
+      "totals": {
+        "agree": 21,
+        "disagree": 22
+      }
+    },
+    {
+      "id": 17721763011,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 06 - Laat sportclubs niet in de kou staan - PvdA en GrienLinks",
+      "type": "motie",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17716840/1/03+Moasje+06+-+Laat+sportclubs+niet+in+de+kou+staan+-+PvdA+GrienLinks",
+      "documentTitle": "03 Moasje 06 - Laat sportclubs niet in de kou staan - PvdA GrienLinks",
+      "indieners": [
+        "pvda",
+        "grienlinks"
+      ],
+      "totals": {
+        "agree": 11,
+        "disagree": 32
+      }
+    },
+    {
+      "id": 17721763010,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 05 - Behoud middelen voor Idzegea - PvdA  GrienLinks CDA",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17721654/1/03+Moasje+05+-+Behoud+middelen+voor+Idzegea+-+PvdA+GrienLinks+CDA",
+      "documentTitle": "03 Moasje 05 - Behoud middelen voor Idzegea - PvdA GrienLinks CDA",
+      "indieners": [
+        "pvda",
+        "grienlinks",
+        "cda"
+      ],
+      "totals": {
+        "agree": 40,
+        "disagree": 3
+      }
+    },
+    {
+      "id": 17721763008,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 03 - Reactie rapport ombudsman - BBB, JA21 en Steatelid Keuning",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17716753/1/03+Moasje+03+-+Reactie+rapport+ombudsman+-+BBB+JA21+Steatelid+Keuning",
+      "documentTitle": "03 Moasje 03 - Reactie rapport ombudsman - BBB JA21 Steatelid Keuning",
+      "indieners": [
+        "bbb",
+        "ja21",
+        "steatelid-keuning"
+      ],
+      "totals": {
+        "agree": 30,
+        "disagree": 13
+      }
+    },
+    {
+      "id": 17721763007,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 02 - OANPAST - Pilot vervoersregeling cultuur - BBB, D66 SP GrienLinks",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 1
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 1,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17721582/1/03+Moasje+02-+OANPAST-+Pilot+vervoersregeling+cultuur+-+BBB+D66+SP+GL",
+      "documentTitle": "03 Moasje 02- OANPAST- Pilot vervoersregeling cultuur - BBB D66 SP GL",
+      "indieners": [
+        "bbb",
+        "d66",
+        "sp"
+      ],
+      "totals": {
+        "agree": 36,
+        "disagree": 6
+      }
+    },
+    {
+      "id": 17721763006,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Moasje 01 - OANPAST - De Tweede Kamer naar Fryslan halen - BBB en Steatelid Keuning",
+      "type": "motie",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17721587/1/03+Moasje+01+-+OANPAST-+De+Tweede+Kamer+naar+Fryslan+halen+-+BBB+St+Keuning",
+      "documentTitle": "03 Moasje 01 - OANPAST- De Tweede Kamer naar Fryslan halen - BBB St Keuning",
+      "indieners": [
+        "bbb",
+        "steatelid-keuning"
+      ],
+      "totals": {
+        "agree": 35,
+        "disagree": 8
+      }
+    },
+    {
+      "id": 17721763029,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân - Finale beslút",
+      "type": "besluit",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 4,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "totals": {
+        "agree": 38,
+        "disagree": 5
+      }
+    },
+    {
+      "id": 17721763005,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Amendemint 04 - Niet verhogen opcenten - PBF SP VVD JA21 PVV",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 2,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17719449/1/03+Amendemint+04+-+Niet+verhogen+opcenten+-+PBF+SP+VVD+JA21+PVV",
+      "documentTitle": "03 Amendemint 04 - Niet verhogen opcenten - PBF SP VVD JA21 PVV",
+      "indieners": [
+        "provinciaal-belang-frysln",
+        "sp",
+        "vvd",
+        "ja21",
+        "pvv"
+      ],
+      "totals": {
+        "agree": 10,
+        "disagree": 33
+      }
+    },
+    {
+      "id": 17721763004,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Amendemint 03 - Investeren in innovatie - CDA",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 13,
+          "disagree": 0,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17717583/1/03+Amendemint+03+-+Investeren+in+innovatie+-+CDA",
+      "documentTitle": "03 Amendemint 03 - Investeren in innovatie - CDA",
+      "indieners": [
+        "cda"
+      ],
+      "totals": {
+        "agree": 40,
+        "disagree": 3
+      }
+    },
+    {
+      "id": 17721763003,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Amendemint 02 - Opcentenindexering op de rem - CDA, VVD, Steatelid Keuning en Steatelid Jonker",
+      "type": "amendement",
+      "result": "rejected",
+      "resultLabel": "Verworpen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 0,
+          "disagree": 3,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 0,
+          "disagree": 5,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 0,
+          "disagree": 4,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17717113/1/03+Amendemint+02+-+Opcentenindexering+op+de+rem+-+CDA+VVD+Keuning+Jonker",
+      "documentTitle": "03 Amendemint 02 - Opcentenindexering op de rem - CDA VVD Keuning Jonker",
+      "indieners": [
+        "cda",
+        "vvd",
+        "steatelid-keuning",
+        "steatelid-jonker"
+      ],
+      "totals": {
+        "agree": 13,
+        "disagree": 30
+      }
+    },
+    {
+      "id": 17721763002,
+      "date": "2026-11-11",
+      "meetingId": 1394577,
+      "title": "03 Amendemint 01 - Bestemmingsreserve iconische evenementen niet voor eeuwig - PvdA en GrienLinks",
+      "type": "amendement",
+      "result": "accepted",
+      "resultLabel": "Aangenomen",
+      "source": "https://fryslan.notubiz.nl/vergadering/1394577",
+      "uitslag": "https://fryslan.notubiz.nl/document/17721763/1/%C3%9Atslach+stimming+11+novimber+2026",
+      "votes": {
+        "ja21": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvdd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "provinciaal-belang-frysln": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "sp": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvv": {
+          "agree": 0,
+          "disagree": 2,
+          "abstain": 0
+        },
+        "grienlinks": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "pvda": {
+          "agree": 5,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "christenunie": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "d66": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "vvd": {
+          "agree": 3,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-jonker": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "steatelid-keuning": {
+          "agree": 0,
+          "disagree": 1,
+          "abstain": 0
+        },
+        "fnp": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "cda": {
+          "agree": 4,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "van-dijk-fvd": {
+          "agree": 1,
+          "disagree": 0,
+          "abstain": 0
+        },
+        "bbb": {
+          "agree": 0,
+          "disagree": 13,
+          "abstain": 0
+        }
+      },
+      "agenda": {
+        "id": 10649524,
+        "nr": "3",
+        "title": "Begrutting 2027 provinsje Fryslân, aktualisaasje opsinten motorreaubelesting en tariven leezjes en begrutting 2027 Fûns neisoarch stoartplakken Fryslân"
+      },
+      "document": "https://fryslan.notubiz.nl/document/17716914/1/03+Amendemint+01+-+Bestemmingsreserve+iconische+evenementen+niet+voor+eeuwig+-+PvdA+GL",
+      "documentTitle": "03 Amendemint 01 - Bestemmingsreserve iconische evenementen niet voor eeuwig - PvdA GL",
+      "indieners": [
+        "pvda",
+        "grienlinks"
+      ],
+      "totals": {
+        "agree": 27,
+        "disagree": 16
+      }
+    },
     {
       "id": 17628154024,
       "date": "2026-10-28",
